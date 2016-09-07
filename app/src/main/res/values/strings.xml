@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ghost</string>
+    <string name="loading_failed">数据加载失败</string>
 </resources>

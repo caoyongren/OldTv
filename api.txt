@@ -1,0 +1,2 @@
+http://api.svipmovie.com/front/homePageApi/homePage.do?deviceSysVersion=4.4.4&appVersion=6.0.4&deviceModel=HM%20NOTE%201LTE&deviceManufacturer=Xiaomi&deviceId=866722027766312&appId=shoujimovie&deviceSysType=ANDROID&appChannel=tengxun&appCode=604&userId=&locationId=11
+http://api.svipmovie.com/front/homePage/channelList.do?deviceSysVersion=4.4.4&appVersion=6.0.4&deviceModel=HM%20NOTE%201LTE&deviceManufacturer=Xiaomi&deviceId=866722027766312&appId=shoujimovie&deviceSysType=ANDROID&appChannel=tengxun&appCode=604&userId=&locationId=11

@@ -1,16 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.zcy.ghost.ghost.MainActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/tab_rg_menu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/bottom_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/tab_rb_1"
+            style="@style/tab_rb_style"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_01" />
+
+        <RadioButton
+            android:id="@+id/tab_rb_2"
+            style="@style/tab_rb_style"
+            android:drawableTop="@drawable/tab_02" />
+
+        <RadioButton
+            android:id="@+id/tab_rb_3"
+            style="@style/tab_rb_style"
+            android:drawableTop="@drawable/tab_03" />
+
+        <RadioButton
+            android:id="@+id/tab_rb_4"
+            style="@style/tab_rb_style"
+            android:drawableTop="@drawable/tab_04" />
+
+    </RadioGroup>
+
+    <com.zcy.ghost.ghost.views.UnScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_rg_menu"
+        android:background="@android:color/transparent"/>
+
 </RelativeLayout>
