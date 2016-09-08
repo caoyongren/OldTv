@@ -39,7 +39,6 @@ public class CatcheHttpClient {
     public static CatcheHttpClient getMyOkHttpClient() {
         if (myOkHttpClient == null) {
             myOkHttpClient = new CatcheHttpClient();
-
         }
 
         return myOkHttpClient;
@@ -54,40 +53,38 @@ public class CatcheHttpClient {
 
         if (okHttpClient == null) {
             synchronized (CatcheHttpClient.class) {
-                if (okHttpClient == null) {
-                    File cacheFile = new File(
-                            mContext.getCacheDir(),
-                            "HttpCache"
-                    ); // 指定缓存路径
-                    final Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); // 指定缓存大小100Mb
-                    // 云端响应头拦截器，用来配置缓存策略
-                    Interceptor rewriteCacheControlInterceptor = new Interceptor() {
-                        @Override
-                        public Response intercept(Chain chain) throws IOException {
-                            Request request = chain.request();
-                            String cacheControl = request.cacheControl().toString();
-                            if (TextUtils.isEmpty(cacheControl)) {
-                                request = request.newBuilder().cacheControl(new CacheControl.Builder().noStore().build()).build();
-                                cacheControl = "noStore";
-                            } else if (!SystemUtils.checkNet(mContext)) {
-                                request = request.newBuilder()
-                                        .cacheControl(CacheControl.FORCE_CACHE).build();
-                                cacheControl = CACHE_CONTROL_CACHE;
-                            }
-                            Response originalResponse = chain.proceed(request);
-                            return originalResponse.newBuilder()
-                                    .header("Cache-Control", cacheControl)
-                                    .removeHeader("Pragma").build();
+                File cacheFile = new File(
+                        mContext.getCacheDir(),
+                        "HttpCache"
+                ); // 指定缓存路径
+                final Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); // 指定缓存大小100Mb
+                // 云端响应头拦截器，用来配置缓存策略
+                Interceptor rewriteCacheControlInterceptor = new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request request = chain.request();
+                        String cacheControl = request.cacheControl().toString();
+                        if (TextUtils.isEmpty(cacheControl)) {
+                            request = request.newBuilder().cacheControl(new CacheControl.Builder().noStore().build()).build();
+                            cacheControl = "noStore";
+                        } else if (!SystemUtils.checkNet(mContext)) {
+                            request = request.newBuilder()
+                                    .cacheControl(CacheControl.FORCE_CACHE).build();
+                            cacheControl = CACHE_CONTROL_CACHE;
                         }
-                    };
+                        Response originalResponse = chain.proceed(request);
+                        return originalResponse.newBuilder()
+                                .header("Cache-Control", cacheControl)
+                                .removeHeader("Pragma").build();
+                    }
+                };
 
-                    okHttpClient = new OkHttpClient.Builder()
-                            .addInterceptor(getHttpLoggingInterceptor())
-                            .cache(cache)
-                            .addNetworkInterceptor(rewriteCacheControlInterceptor)
-                            .addInterceptor(rewriteCacheControlInterceptor)
-                            .connectTimeout(60, TimeUnit.SECONDS).build();
-                }
+                okHttpClient = new OkHttpClient.Builder()
+                        .addInterceptor(getHttpLoggingInterceptor())
+                        .cache(cache)
+                        .addNetworkInterceptor(rewriteCacheControlInterceptor)
+                        .addInterceptor(rewriteCacheControlInterceptor)
+                        .connectTimeout(60, TimeUnit.SECONDS).build();
             }
         }
         return okHttpClient;

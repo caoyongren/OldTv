@@ -10,7 +10,6 @@ import com.zcy.ghost.ghost.viewholder.VideoTitleViewHolder;
 import com.zcy.ghost.ghost.viewholder.VideoViewHolder;
 
 public class VideoAdapter extends RecyclerArrayAdapter<VideoInfo> {
-    public static final int TYPE_INVALID = 0;
     public static final int TYPE_TITLE = 1;
     public static final int TYPE_INFO = 2;
 

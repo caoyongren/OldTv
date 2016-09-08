@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.SystemUtils;
@@ -60,6 +59,7 @@ public class BaseFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         LogUtils.v(TAG, "onActivityCreated");
+        initEvent();
     }
 
 
@@ -113,11 +113,11 @@ public class BaseFragment extends Fragment {
         super.onDetach();
     }
 
-
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+    protected void initView(LayoutInflater inflater) {
     }
 
+    protected void initEvent() {
+    }
 
     private void regReceiver() {
         IntentFilter filter = new IntentFilter();

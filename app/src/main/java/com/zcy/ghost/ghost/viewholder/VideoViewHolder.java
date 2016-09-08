@@ -1,6 +1,5 @@
 package com.zcy.ghost.ghost.viewholder;
 
-import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -30,11 +29,8 @@ public class VideoViewHolder extends BaseViewHolder<VideoInfo> {
     @Override
     public void setData(VideoInfo data) {
         tv_title.setText(data.title);
-        DisplayMetrics dm = getContext().getResources().getDisplayMetrics();
-        int width = dm.widthPixels / 7 * 2;//宽度为屏幕宽度一半
         Glide.with(getContext())
-                .load(data.pic + "?imageView2/0/w/" + width)
-//                .placeholder(R.mipmap.default_200)
+                .load(data.pic)
                 .into(imgPicture);
     }
 }
