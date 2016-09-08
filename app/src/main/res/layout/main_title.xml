@@ -6,12 +6,7 @@
 
     <TextView
         android:id="@+id/title_name"
+        style="@style/title_tv_style"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/dark_green"
-        android:text="张三"/>
+        android:layout_marginTop="20dp" />
 </RelativeLayout>

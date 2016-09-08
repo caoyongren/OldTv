@@ -39,7 +39,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Description:
+ * Description: 精选
  * Creator: yxc
  * date: $date $time
  */
@@ -129,7 +129,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(getContext(), VideoInfoActivity.class);
-                intent.putExtra("dataId", adapter.getItem(position).dataId);
+                intent.putExtra("videoInfo", adapter.getItem(position));
                 startActivity(intent);
             }
         });
@@ -154,7 +154,6 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
             @Override
             public void run() {
                 //刷新
-                adapter.clear();
                 getPageHomeInfo();
             }
         }, 1000);

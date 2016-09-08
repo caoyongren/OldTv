@@ -2,4 +2,11 @@
     <string name="app_name">小幽</string>
     <string name="loading_failed">数据加载失败</string>
     <string name="title_activity_video_info">VideoInfoActivity</string>
+
+    <string name="score">评分：</string>
+    <string name="videoType">类型：</string>
+    <string name="director">导演：</string>
+    <string name="airTime">上映时间：</string>
+
+
 </resources>

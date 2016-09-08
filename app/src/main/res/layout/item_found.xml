@@ -15,13 +15,9 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
+        style="@style/common_tv_bold_style"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+        android:layout_marginTop="3dp" />
 
 </RelativeLayout>

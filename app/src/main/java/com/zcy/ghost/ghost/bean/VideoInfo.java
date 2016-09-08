@@ -5,7 +5,7 @@ package com.zcy.ghost.ghost.bean;
  * Creator: yxc
  * date: $date $time
  */
-public class VideoInfo {
+public class VideoInfo extends BaseModel {
     VideoInfo() {
     }
 
@@ -17,6 +17,8 @@ public class VideoInfo {
     public String title;
     public String pic;
     public String dataId;
+    public String score;
+    public String airTime;
     private boolean isFirst = false;
     private String type;
 

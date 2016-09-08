@@ -1,9 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:orientation="vertical">
 
     <include layout="@layout/commen_title" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/white_translucent_20">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white_translucent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/img_video"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="@mipmap/default_200"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/small_tv_style"
+                        android:text="@string/score" />
+
+                    <TextView
+                        android:id="@+id/tv_score"
+                        style="@style/small_tv_style" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/small_tv_style"
+                        android:text="@string/videoType" />
+
+                    <TextView
+                        android:id="@+id/tv_type"
+                        style="@style/small_tv_style"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/small_tv_style"
+                        android:text="@string/director" />
+
+                    <TextView
+                        android:id="@+id/tv_director"
+                        style="@style/small_tv_style" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/small_tv_style"
+                        android:text="@string/airTime" />
+
+                    <TextView
+                        android:id="@+id/tv_airTime"
+                        style="@style/small_tv_style" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginTop="10dp"
+                    android:text="播放"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"></LinearLayout>
+
+</LinearLayout>
