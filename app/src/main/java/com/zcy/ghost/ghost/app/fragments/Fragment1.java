@@ -1,7 +1,6 @@
 package com.zcy.ghost.ghost.app.fragments;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,6 +22,7 @@ import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.BannerAdapter;
 import com.zcy.ghost.ghost.adapter.VideoAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
+import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.Network;
@@ -81,6 +81,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         titleName.setText("精选");
         headerView = inflater.inflate(R.layout.choice_header, null);
         banner = ButterKnife.findById(headerView, R.id.banner);
+        banner.setPlayDelay(2000);
         recyclerView.setAdapterWithProgress(adapter = new VideoAdapter(getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));
@@ -95,7 +96,9 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recyclerView.scrollToPosition(0);
+                if (!isFastDoubleClick()) {
+                    recyclerView.scrollToPosition(0);
+                }
             }
         });
         recyclerView.setRefreshListener(this);
@@ -125,7 +128,9 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adapter.getItem(position).shareURL)));
+                Intent intent = new Intent(getContext(), VideoInfoActivity.class);
+                intent.putExtra("dataId", adapter.getItem(position).dataId);
+                startActivity(intent);
             }
         });
     }
@@ -149,6 +154,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
             @Override
             public void run() {
                 //刷新
+                adapter.clear();
                 getPageHomeInfo();
             }
         }, 1000);
@@ -182,20 +188,23 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
 
     private void setAdapter() {
         if (homeResult != null) {
-            adapter.addHeader(new RecyclerArrayAdapter.ItemView() {
-                @Override
-                public View onCreateView(ViewGroup parent) {
-                    banner.setHintView(new IconHintView(getContext(), R.mipmap.ic_page_indicator_focused, R.mipmap.ic_page_indicator, ScreenUtil.dip2px(getContext(), 10)));
-                    banner.setHintPadding(0, 0, 0, ScreenUtil.dip2px(getContext(), 8));
-                    banner.setAdapter(new BannerAdapter(getContext(), homeResult.ret.list.get(0).childList));
-                    return headerView;
-                }
+            adapter.clear();
+            if (adapter.getHeaderCount() == 0) {
+                adapter.addHeader(new RecyclerArrayAdapter.ItemView() {
+                    @Override
+                    public View onCreateView(ViewGroup parent) {
+                        banner.setHintView(new IconHintView(getContext(), R.mipmap.ic_page_indicator_focused, R.mipmap.ic_page_indicator, ScreenUtil.dip2px(getContext(), 10)));
+                        banner.setHintPadding(0, 0, 0, ScreenUtil.dip2px(getContext(), 8));
+                        banner.setAdapter(new BannerAdapter(getContext(), homeResult.ret.list.get(0).childList));
+                        return headerView;
+                    }
 
-                @Override
-                public void onBindView(View headerView) {
+                    @Override
+                    public void onBindView(View headerView) {
 
-                }
-            });
+                    }
+                });
+            }
             List<VideoInfo> videoInfos;
             for (int i = 1; i < homeResult.ret.list.size(); i++) {
                 if (homeResult.ret.list.get(i).title.equals("精彩推荐")) {

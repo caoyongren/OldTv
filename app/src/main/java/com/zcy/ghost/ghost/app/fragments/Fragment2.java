@@ -124,6 +124,7 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
 
     private void setAdapter() {
         if (homeResult != null) {
+            adapter.clear();
             List<VideoInfo> videoInfos = new ArrayList<>();
             for (int i = 1; i < homeResult.ret.list.size(); i++) {
                 if (!TextUtils.isEmpty(homeResult.ret.list.get(i).title) && !homeResult.ret.list.get(i).title.equals("精彩推荐")) {

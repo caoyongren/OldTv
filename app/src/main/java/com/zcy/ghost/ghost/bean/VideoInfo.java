@@ -16,6 +16,7 @@ public class VideoInfo {
     public String shareURL;
     public String title;
     public String pic;
+    public String dataId;
     private boolean isFirst = false;
     private String type;
 

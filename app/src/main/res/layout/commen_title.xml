@@ -1,17 +1,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title"
     android:layout_width="match_parent"
-    android:layout_height="58dp"
+    android:layout_height="42dp"
     android:background="@color/blue_green">
+
+    <RelativeLayout
+        android:layout_width="40dp"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/title_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:gravity="center"
         android:textColor="@color/dark_green"
-        android:text="张三"/>
+        android:textSize="16sp"
+        android:textStyle="bold" />
 </RelativeLayout>

@@ -30,6 +30,7 @@ public class BaseFragment extends Fragment {
     protected Context mContext;
     protected boolean isConnection = false; // 判断网络状态是否连接 默认为false;
     protected Subscription subscription;
+    protected static long lastClickTime;
 
     @Override
     public void onAttach(Context mContext) {
@@ -143,6 +144,22 @@ public class BaseFragment extends Fragment {
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
+    }
+
+    /**
+     * 防止重复点击
+     *
+     * @return 是否重复点击
+     */
+    @SuppressWarnings("unused")
+    public boolean isFastDoubleClick() {
+        long time = System.currentTimeMillis();
+        long timeD = time - lastClickTime;
+        if (0 < timeD && timeD < 800) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
     }
 
 }

@@ -2,7 +2,6 @@ package com.zcy.ghost.ghost.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,6 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.zcy.ghost.ghost.R;
+import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 
 import java.util.List;
@@ -38,7 +38,9 @@ public class BannerAdapter extends StaticPagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctx.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(list.get(position).shareURL)));
+                Intent intent = new Intent(ctx, VideoInfoActivity.class);
+                intent.putExtra("dataId", list.get(position).dataId);
+                ctx.startActivity(intent);
             }
         });
         return imageView;
