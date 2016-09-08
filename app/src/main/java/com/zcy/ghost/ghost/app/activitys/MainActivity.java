@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+    //zjg测试提交
         setTranslucentStatus(true);
         initView();
         initEvent();
