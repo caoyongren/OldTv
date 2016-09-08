@@ -2,7 +2,6 @@ package com.zcy.ghost.ghost.app.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
@@ -44,16 +44,16 @@ import rx.schedulers.Schedulers;
 public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
     final String TAG = Fragment1.class.getSimpleName();
 
-    @Nullable
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
-    @Nullable
     @BindView(R.id.title)
     RelativeLayout title;
+    @BindView(R.id.title_name)
+    TextView titleName;
     RollPagerView banner;
     View headerView;
 
-    private Unbinder unbinder;
+    Unbinder unbinder;
     VideoAdapter adapter;
     int page = 0;
     Handler handler = new Handler();
@@ -70,12 +70,13 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        initEvent();
         initData();
     }
 
     @Override
     protected void initView(LayoutInflater inflater) {
+        title.setVisibility(View.GONE);
+        titleName.setText("精选");
         headerView = inflater.inflate(R.layout.choice_header, null);
         banner = ButterKnife.findById(headerView, R.id.banner);
         recyclerView.setAdapterWithProgress(adapter = new VideoAdapter(getContext()));
@@ -95,7 +96,6 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 if (getHeaderScroll() <= ScreenUtil.dip2px(mContext, 150)) {
-                    // 如果当前显示的位置小于1 则变化alpha值
                     new Handler().postAtTime(new Runnable() {
                         @Override
                         public void run() {

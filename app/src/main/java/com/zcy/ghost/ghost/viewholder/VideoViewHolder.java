@@ -2,7 +2,6 @@ package com.zcy.ghost.ghost.viewholder;
 
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -22,7 +21,6 @@ public class VideoViewHolder extends BaseViewHolder<VideoInfo> {
         super(parent, R.layout.item_video);
         imgPicture = $(R.id.img_video);
         tv_title = $(R.id.tv_title);
-        imgPicture.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
         imgPicture.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 
