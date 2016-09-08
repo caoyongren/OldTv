@@ -1,5 +1,7 @@
 package com.zcy.ghost.ghost.app.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -90,6 +92,12 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
 
     @Override
     protected void initEvent() {
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.scrollToPosition(0);
+            }
+        });
         recyclerView.setRefreshListener(this);
         onRefresh();
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -112,6 +120,12 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
                     title.setAlpha(1.0f);
                     title.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(adapter.getItem(position).shareURL)));
             }
         });
     }
