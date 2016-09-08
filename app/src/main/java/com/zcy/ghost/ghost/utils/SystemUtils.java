@@ -106,7 +106,7 @@ public class SystemUtils {
     }
 
     /**
-     * 根据包名和Activity启动类查询应用信�?
+     * 根据包名和Activity启动类查询应用信息
      *
      * @param cls
      * @param pkg
@@ -147,7 +147,7 @@ public class SystemUtils {
     }
 
     /**
-     * WIFI网络�?��
+     * WIFI网络开关
      */
     public static void toggleWiFi(Context context, boolean enabled) {
         WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -155,29 +155,29 @@ public class SystemUtils {
     }
 
     /**
-     * 移动网络�?��
+     * 移动网络开关
      */
     public static void toggleMobileData(Context context, boolean enabled) {
         ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        Class<?> conMgrClass = null; // ConnectivityManager�?
-        Field iConMgrField = null; // ConnectivityManager类中的字�?
+        Class<?> conMgrClass = null; // ConnectivityManager类
+        Field iConMgrField = null; // ConnectivityManager类中的字段
         Object iConMgr = null; // IConnectivityManager类的引用
-        Class<?> iConMgrClass = null; // IConnectivityManager�?
+        Class<?> iConMgrClass = null; // IConnectivityManager类
         Method setMobileDataEnabledMethod = null; // setMobileDataEnabled方法
         try {
-            // 取得ConnectivityManager�?
+            // 取得ConnectivityManager类
             conMgrClass = Class.forName(conMgr.getClass().getName());
             // 取得ConnectivityManager类中的对象mService
             iConMgrField = conMgrClass.getDeclaredField("mService");
-            // 设置mService可访�?
+            // 设置mService可访问
             iConMgrField.setAccessible(true);
             // 取得mService的实例化类IConnectivityManager
             iConMgr = iConMgrField.get(conMgr);
-            // 取得IConnectivityManager�?
+            // 取得IConnectivityManager类
             iConMgrClass = Class.forName(iConMgr.getClass().getName());
             // 取得IConnectivityManager类中的setMobileDataEnabled(boolean)方法
             setMobileDataEnabledMethod = iConMgrClass.getDeclaredMethod("setMobileDataEnabled", Boolean.TYPE);
-            // 设置setMobileDataEnabled方法可访�?
+            // 设置setMobileDataEnabled方法可访问
             setMobileDataEnabledMethod.setAccessible(true);
             // 调用setMobileDataEnabled方法
             setMobileDataEnabledMethod.invoke(iConMgr, enabled);
@@ -199,7 +199,7 @@ public class SystemUtils {
     }
 
     /**
-     * GPS�?�� 当前若关则打�?当前若开则关�?
+     * GPS开关 当前若关则打，当前若开则关
      */
     public static void toggleGPS(Context context) {
         Intent gpsIntent = new Intent();
@@ -221,7 +221,7 @@ public class SystemUtils {
      */
     public static void holdSystemAudio(Context context) {
         AudioManager audiomanage = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        // 获取系统�?��音量
+        // 获取系统最大音量
         // int maxVolume =
         // audiomanage.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         // 获取当前音量
@@ -230,14 +230,14 @@ public class SystemUtils {
         audiomanage.setStreamVolume(AudioManager.STREAM_SYSTEM, currentVolume, AudioManager.FLAG_PLAY_SOUND);
 
         // 调节音量
-        // ADJUST_RAISE 增大音量，与音量键功能相�?
+        // ADJUST_RAISE 增大音量，与音量键功能相同
         // ADJUST_LOWER 降低音量
         audiomanage.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
 
     }
 
     /**
-     * 设置亮度（每30递增�?
+     * 设置亮度（每30递增）
      *
      * @param activity
      */
@@ -252,7 +252,7 @@ public class SystemUtils {
     }
 
     /**
-     * 获取屏幕的亮�?
+     * 获取屏幕的亮度
      *
      * @param activity
      * @return
@@ -269,7 +269,7 @@ public class SystemUtils {
     }
 
     /**
-     * 跳转到系统设�?
+     * 跳转到系统设置
      *
      * @param context
      */
@@ -285,7 +285,7 @@ public class SystemUtils {
     }
 
     /**
-     * 获取文件夹下�?��文件
+     * 获取文件夹下所以的文件
      *
      * @param path
      * @return
@@ -308,13 +308,13 @@ public class SystemUtils {
     }
 
     /**
-     * 获取视频的缩略图 先�?过ThumbnailUtils来创建一个视频的缩略图，然后再利用ThumbnailUtils来生成指定大小的缩略图�?
-     * 如果想要的缩略图的宽和高都小于MICRO_KIND，则类型要使用MICRO_KIND作为kind的�?，这样会节省内存�?
+     * 获取视频的缩略图 先通过ThumbnailUtils来创建一个视频的缩略图，然后再利用ThumbnailUtils来生成指定大小的缩略图
+     * 如果想要的缩略图的宽和高都小于MICRO_KIND，则类型要使用MICRO_KIND作为kind的，这样会节省内存
      *
-     * @param videoPath 视频的路�?
+     * @param videoPath 视频的路径
      * @param width     指定输出视频缩略图的宽度
-     * @param height    指定输出视频缩略图的高度�?
-     * @param kind      参照MediaStore.Images.Thumbnails类中的常量MINI_KIND和MICRO_KIND�?
+     * @param height    指定输出视频缩略图的高度
+     * @param kind      参照MediaStore.Images.Thumbnails类中的常量MINI_KIND和MICRO_KIND
      *                  其中，MINI_KIND: 512 x 384，MICRO_KIND: 96 x 96
      * @return 指定大小的视频缩略图
      */
@@ -343,7 +343,7 @@ public class SystemUtils {
     }
 
     /**
-     * �?��网络是否可用
+     * 判断网络是否可用
      * <p>
      * This method requires the caller to hold the permission
      * {@link android.Manifest.permission#ACCESS_NETWORK_STATE}.
@@ -393,7 +393,7 @@ public class SystemUtils {
     }
 
     /**
-     * 获取制�?�?
+     * 获取制造商
      *
      * @param context
      * @return
@@ -499,7 +499,7 @@ public class SystemUtils {
 
 
     /**
-     * 获取元数�?
+     * 获取<meta-data>元素的数据
      *
      * @param context
      * @param keyName
