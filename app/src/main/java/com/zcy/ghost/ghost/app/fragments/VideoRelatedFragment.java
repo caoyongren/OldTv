@@ -49,7 +49,7 @@ public class VideoRelatedFragment extends BaseFragment {
 
     @Override
     protected void initView(LayoutInflater inflater) {
-        recyclerView.setAdapterWithProgress(adapter = new RelatedAdapter(getContext()));
+        recyclerView.setAdapter(adapter = new RelatedAdapter(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));
         itemDecoration.setPaddingEdgeSide(true);
