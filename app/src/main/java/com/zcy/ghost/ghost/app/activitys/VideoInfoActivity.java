@@ -166,4 +166,10 @@ public class VideoInfoActivity extends BaseActivity {
     public void play() {
         showToast("敬请期待");
     }
+
+    @Override
+    protected void onDestroy() {
+        unbinder.unbind();
+        super.onDestroy();
+    }
 }

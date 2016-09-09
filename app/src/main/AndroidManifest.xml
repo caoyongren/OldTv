@@ -21,9 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".app.activitys.VideoInfoActivity"
-            android:label="@string/title_activity_video_info"></activity>
+        <activity android:name=".app.activitys.VideoInfoActivity" />
+        <activity android:name=".app.activitys.VideoListActivity" />
     </application>
 
 </manifest>

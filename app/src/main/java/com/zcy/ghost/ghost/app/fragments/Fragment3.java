@@ -36,7 +36,7 @@ public class Fragment3 extends BaseFragment {
 
     @Override
     protected void initView(LayoutInflater inflater) {
-        titleName.setText("专题");
+        titleName.setText("发现");
     }
 
     @Override

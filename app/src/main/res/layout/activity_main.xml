@@ -21,14 +21,14 @@
         <RadioButton
             android:id="@+id/tab_rb_2"
             style="@style/tab_rb_style"
-            android:drawableTop="@drawable/tab_01"
-            android:text="发现" />
+            android:drawableTop="@drawable/tab_03"
+            android:text="专题" />
 
         <RadioButton
             android:id="@+id/tab_rb_3"
             style="@style/tab_rb_style"
-            android:drawableTop="@drawable/tab_03"
-            android:text="专题" />
+            android:drawableTop="@drawable/tab_01"
+            android:text="发现" />
 
         <RadioButton
             android:id="@+id/tab_rb_4"

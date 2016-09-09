@@ -29,10 +29,21 @@ public interface VideoApi {
     /**
      * 影片详情
      *
-     * @param mediaId
+     * @param mediaId 影片id
      * @return
      */
     @Headers("Cache-Control: public, max-age=3600")
     @GET("videoDetailApi/videoDetail.do")
     Observable<VideoResult> getVideoInfo(@Query("mediaId") String mediaId);
+
+    /**
+     * 影片分类列表
+     *
+     * @param catalogId
+     * @param pnum
+     * @return
+     */
+    @Headers("Cache-Control: public, max-age=3600")
+    @GET("columns/getVideoList.do")
+    Observable<VideoResult> getVideoList(@Query("catalogId") String catalogId, @Query("pnum") String pnum);
 }

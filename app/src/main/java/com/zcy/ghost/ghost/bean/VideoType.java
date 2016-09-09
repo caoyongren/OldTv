@@ -11,6 +11,11 @@ import java.util.List;
  */
 public class VideoType {
     public String title;
+    public String moreURL;
+    public String pic;
+    public String dataId;
+    public String airTime;
+    public String score;
     public
     @SerializedName("childList")
     List<VideoInfo> childList;

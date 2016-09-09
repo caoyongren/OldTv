@@ -1,5 +1,6 @@
 package com.zcy.ghost.ghost.app.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
@@ -7,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.RelatedAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
+import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
@@ -53,6 +56,15 @@ public class VideoRelatedFragment extends BaseFragment {
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
         recyclerView.addItemDecoration(itemDecoration);
+        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getContext(), VideoInfoActivity.class);
+                intent.putExtra("videoInfo", adapter.getItem(position));
+                getContext().startActivity(intent);
+                getActivity().finish();
+            }
+        });
     }
 
     @Override

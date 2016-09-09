@@ -6,7 +6,7 @@ package com.zcy.ghost.ghost.bean;
  * date: $date $time
  */
 public class VideoInfo extends BaseModel {
-    VideoInfo() {
+    public VideoInfo() {
     }
 
     public VideoInfo(boolean isFirst) {
@@ -19,7 +19,8 @@ public class VideoInfo extends BaseModel {
     public String dataId;
     public String score;
     public String airTime;
-//    public String description;
+    public String moreURL;
+    //    public String description;
     private boolean isFirst = false;
     private String type;
 
