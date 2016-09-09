@@ -102,7 +102,6 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
             }
         });
         recyclerView.setRefreshListener(this);
-        onRefresh();
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -145,6 +144,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     }
 
     private void initData() {
+        onRefresh();
     }
 
     @Override

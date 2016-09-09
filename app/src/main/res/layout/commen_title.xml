@@ -20,7 +20,9 @@
     <TextView
         android:id="@+id/title_name"
         style="@style/title_tv_style"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:maxLength="15"
+        android:singleLine="true" />
 
     <RelativeLayout
         android:id="@+id/rl_collect"

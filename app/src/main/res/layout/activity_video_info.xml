@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/container_style"
     android:orientation="vertical">
 
     <include layout="@layout/commen_title" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_height="wrap_content"
         android:background="@color/white_translucent_20">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -31,7 +29,7 @@
                     android:layout_width="100dp"
                     android:layout_height="150dp"
                     android:background="@mipmap/default_200"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY" />
             </RelativeLayout>
 
             <LinearLayout
@@ -67,7 +65,7 @@
 
                     <TextView
                         android:id="@+id/tv_type"
-                        style="@style/small_tv_style"/>
+                        style="@style/small_tv_style" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -78,10 +76,10 @@
 
                     <TextView
                         style="@style/small_tv_style"
-                        android:text="@string/director" />
+                        android:text="@string/region" />
 
                     <TextView
-                        android:id="@+id/tv_director"
+                        android:id="@+id/tv_region"
                         style="@style/small_tv_style" />
                 </LinearLayout>
 
@@ -101,11 +99,13 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btn_play"
                     android:layout_width="60dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="-4dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="10dp"
+                    android:background="@drawable/comm_btn_selector"
                     android:text="播放"
+                    android:textColor="@color/comm_btn_color_selector"
                     android:textSize="10sp" />
 
             </LinearLayout>
@@ -115,9 +115,60 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"></LinearLayout>
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/ll_about"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:background="@color/white_translucent_20"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.ogaclejapan.smarttablayout.SmartTabLayout
+                android:id="@+id/viewpagertab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:paddingBottom="4dp"
+                app:stl_defaultTabBackground="@android:color/transparent"
+                app:stl_defaultTabTextColor="@color/tab_ab_tex_selector"
+                app:stl_distributeEvenly="true"
+                app:stl_dividerColor="@android:color/transparent"
+                app:stl_indicatorColor="@android:color/holo_green_dark"
+                app:stl_indicatorCornerRadius="1.5dp"
+                app:stl_indicatorInterpolation="smart"
+                app:stl_indicatorThickness="3dp"
+                app:stl_underlineColor="@android:color/transparent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_about" />
+
+        <ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/circle_progress" />
+
+    </RelativeLayout>
 
 </LinearLayout>

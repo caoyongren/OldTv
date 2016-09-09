@@ -2,6 +2,7 @@ package com.zcy.ghost.ghost.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -22,6 +23,14 @@ public class BannerAdapter extends StaticPagerAdapter {
     public BannerAdapter(Context ctx, List<VideoInfo> list) {
         this.ctx = ctx;
         this.list = list;
+        removeEmpty(this.list);
+    }
+
+    private void removeEmpty(List<VideoInfo> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (TextUtils.isEmpty(list.get(i).dataId))
+                list.remove(i);
+        }
     }
 
     @Override
@@ -39,7 +48,7 @@ public class BannerAdapter extends StaticPagerAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ctx, VideoInfoActivity.class);
-                intent.putExtra("dataId", list.get(position).dataId);
+                intent.putExtra("videoInfo", list.get(position));
                 ctx.startActivity(intent);
             }
         });

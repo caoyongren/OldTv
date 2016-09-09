@@ -19,6 +19,7 @@ public class VideoInfo extends BaseModel {
     public String dataId;
     public String score;
     public String airTime;
+//    public String description;
     private boolean isFirst = false;
     private String type;
 

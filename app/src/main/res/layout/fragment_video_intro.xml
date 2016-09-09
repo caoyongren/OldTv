@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/container_padding">
+
+    <TextView
+        android:id="@+id/tv_director"
+        style="@style/common_tv_style"
+        android:layout_marginTop="10dp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/gray_light" />
+
+    <TextView
+        android:id="@+id/tv_actors"
+        style="@style/common_tv_style"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/gray_light" />
+
+    <TextView
+        android:id="@+id/tv_des"
+        style="@style/common_tv_style"
+        android:layout_marginTop="20dp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/gray_light" />
+
+</LinearLayout>

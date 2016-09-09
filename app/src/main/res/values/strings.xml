@@ -5,8 +5,10 @@
 
     <string name="score">评分：</string>
     <string name="videoType">类型：</string>
-    <string name="director">导演：</string>
+    <string name="region">地区：</string>
     <string name="airTime">上映时间：</string>
+    <string name="video_intro">简介</string>
+    <string name="video_ralated">推荐</string>
 
 
 </resources>

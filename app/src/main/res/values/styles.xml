@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="container_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@mipmap/bg</item>
+    </style>
+
     <style name="tab_rb_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>

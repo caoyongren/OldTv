@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.zcy.ghost.ghost.utils.SystemUtils;
 
+import rx.Subscription;
+
 /**
  * Description: BaseActivity
  * Creator: yxc
@@ -24,6 +26,7 @@ import com.zcy.ghost.ghost.utils.SystemUtils;
 public abstract class BaseActivity extends FragmentActivity {
 
     protected boolean isConnection = false;
+    protected Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,4 +113,9 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    protected void unsubscribe() {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+    }
 }
