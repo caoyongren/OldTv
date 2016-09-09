@@ -64,7 +64,7 @@ public class VideoRelatedFragment extends BaseFragment {
 
     @Subscriber(tag = "refresh_video_info")
     public void setData(VideoRes videoInfo) {
-        if (videoInfo.list.size() > 2)
+        if (videoInfo.list.size() > 1)
             adapter.addAll(videoInfo.list.get(1).childList);
         else
             adapter.addAll(videoInfo.list.get(0).childList);
