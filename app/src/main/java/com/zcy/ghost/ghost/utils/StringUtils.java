@@ -44,4 +44,11 @@ public class StringUtils {
             catalogId = url.substring(url.lastIndexOf("=") + 1);
         return catalogId;
     }
+
+    public static <T> T checkNotNull(T reference) {
+        if (reference == null) {
+            throw new NullPointerException();
+        }
+        return reference;
+    }
 }
