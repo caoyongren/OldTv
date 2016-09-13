@@ -16,6 +16,7 @@ import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
 import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
 import com.zcy.ghost.ghost.taskcontract.VideoListContract;
+import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
 import butterknife.BindView;
@@ -83,14 +84,14 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
     }
 
     protected void initEvent() {
-//        mTitleName.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (isFastDoubleClick()) {
-//                    recyclerView.scrollToPosition(0);
-//                }
-//            }
-//        });
+        mTitleName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (EventUtils.isFastDoubleClick()) {
+                    mRecyclerView.scrollToPosition(0);
+                }
+            }
+        });
         mRecyclerView.setRefreshListener(this);
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
@@ -152,13 +153,20 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
     }
 
     @Override
+    public void clearFooter() {
+        mAdapter.setMore(new View(mContext), this);
+        mAdapter.setError(new View(mContext));
+        mAdapter.setNoMore(new View(mContext));
+    }
+
+    @Override
     public void setPresenter(VideoListContract.Presenter presenter) {
         mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
     }
 
     @Override
     public void onLoadMore() {
-        mPresenter.pauseMore();
+        mPresenter.loadMore();
     }
 
     @Override

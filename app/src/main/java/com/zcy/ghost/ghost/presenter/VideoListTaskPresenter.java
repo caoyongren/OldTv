@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import com.zcy.ghost.ghost.MyApplication;
 import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
@@ -25,7 +24,7 @@ import rx.schedulers.Schedulers;
 
 public class VideoListTaskPresenter implements VideoListContract.Presenter {
     @NonNull
-    private final VideoListContract.View mAddTaskView;
+    final VideoListContract.View mAddTaskView;
     int page = 1;
     String catalogId = "";
     Handler handler = new Handler();
@@ -67,15 +66,15 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
         @Override
         public void onCompleted() {
             if (mAddTaskView.isActive()) {
-                mAddTaskView.getAdapter().pauseMore();
             }
         }
 
         @Override
         public void onError(Throwable e) {
-//            Toast.makeText(MyApplication.mContext, R.string.loading_failed, Toast.LENGTH_SHORT).show();
-            if (page > 1)
+            if (page > 1) {
                 mAddTaskView.getAdapter().pauseMore();
+                page--;
+            }
         }
 
         @Override
@@ -86,9 +85,7 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
                     if (page == 1) {
                         mAddTaskView.getAdapter().clear();
                         if (videos != null && videos.size() < 30) {
-                            mAddTaskView.getAdapter().setMore(new View(mAddTaskView.getContexts()), mAddTaskView.getLoadMoreListener());
-                            mAddTaskView.getAdapter().setError(new View(mAddTaskView.getContexts()));
-                            mAddTaskView.getAdapter().setNoMore(new View(mAddTaskView.getContexts()));
+                            mAddTaskView.clearFooter();
                         }
                     }
                     mAddTaskView.getAdapter().addAll(videos);
@@ -98,13 +95,13 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
     };
 
     @Override
-    public void pauseMore() {
+    public void loadMore() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //刷新
                 page++;
-                getVideoList(MyApplication.mContext, catalogId, page);
+                getVideoList(mAddTaskView.getContexts(), catalogId, page);
             }
         }, 1000);
     }

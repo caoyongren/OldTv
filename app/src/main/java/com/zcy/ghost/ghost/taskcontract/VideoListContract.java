@@ -21,13 +21,15 @@ public interface VideoListContract {
         RecyclerArrayAdapter.OnLoadMoreListener getLoadMoreListener();
 
         boolean isActive();
+
+        void clearFooter();
     }
 
     interface Presenter extends BasePresenter {
 
         void onRefresh();
 
-        void pauseMore();
+        void loadMore();
 
         void onItemClickView(int position);
     }
