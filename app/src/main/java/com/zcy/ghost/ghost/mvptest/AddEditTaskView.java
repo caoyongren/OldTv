@@ -18,6 +18,11 @@ public class AddEditTaskView extends ScrollView implements AddEditTaskContract.V
     private TextView mTvSure;
     private AddEditTaskContract.Presenter mPresenter;
 
+    @Override
+    public void setPresenter(AddEditTaskContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
+    }
+
     private boolean mActive;
 
     public AddEditTaskView(Context context) {
@@ -61,10 +66,6 @@ public class AddEditTaskView extends ScrollView implements AddEditTaskContract.V
         return mActive;
     }
 
-    @Override
-    public void setPresenter(AddEditTaskContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
-    }
 
     public static <T> T checkNotNull(T reference) {
         if (reference == null) {

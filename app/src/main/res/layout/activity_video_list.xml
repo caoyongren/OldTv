@@ -4,13 +4,9 @@
     style="@style/container_style"
     android:orientation="vertical">
 
-    <include layout="@layout/commen_title" />
-
-    <com.jude.easyrecyclerview.EasyRecyclerView
-        android:id="@+id/recyclerView"
+    <com.zcy.ghost.ghost.viewinterface.VideoListTaskView
+        android:id="@+id/list_task_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_empty="@layout/view_empty"
-        app:layout_progress="@layout/view_progress"
-        app:scrollbars="none" />
+        android:layout_height="match_parent" />
+
 </LinearLayout>

@@ -18,6 +18,7 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.FoundAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
+import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
 import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
@@ -83,7 +84,8 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(getContext(), VideoListActivity.class);
+//                 VideoListActivity
+                Intent intent = new Intent(getContext(), MVPVideoListActivity.class);
                 intent.putExtra("catalogId", StringUtils.getCatalogId(adapter.getItem(position).moreURL));
                 intent.putExtra("title", adapter.getItem(position).title);
                 getActivity().startActivity(intent);

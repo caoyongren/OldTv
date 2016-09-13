@@ -24,6 +24,7 @@
         <activity android:name=".app.activitys.VideoInfoActivity" />
         <activity android:name=".app.activitys.VideoListActivity" />
         <activity android:name="com.zcy.ghost.ghost.mvptest.AddEditTaskActivity" />
+        <activity android:name=".app.activitys.MVPVideoListActivity" />
     </application>
 
 </manifest>
