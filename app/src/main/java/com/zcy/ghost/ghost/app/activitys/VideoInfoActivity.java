@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +20,7 @@ import com.zcy.ghost.ghost.app.fragments.VideoRelatedFragment;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.bean.VideoResult;
+import com.zcy.ghost.ghost.views.circleprogress.CircleProgress;
 import com.zcy.ghost.ghost.net.Network;
 import com.zcy.ghost.ghost.utils.StringUtils;
 
@@ -60,8 +60,8 @@ public class VideoInfoActivity extends BaseActivity {
     SmartTabLayout viewpagertab;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
-    @BindView(R.id.pb)
-    ProgressBar pb;
+    @BindView(R.id.loading)
+    CircleProgress loading;
 
     Unbinder unbinder;
     VideoInfo videoInfo;
@@ -129,7 +129,7 @@ public class VideoInfoActivity extends BaseActivity {
     Observer<VideoResult> observer = new Observer<VideoResult>() {
         @Override
         public void onCompleted() {
-            pb.setVisibility(View.GONE);
+            loading.setVisibility(View.GONE);
         }
 
         @Override
@@ -164,7 +164,7 @@ public class VideoInfoActivity extends BaseActivity {
 
     @OnClick(R.id.btn_play)
     public void play() {
-        showToast("敬请期待");
+        showToast(videoInfo.SDURL);
     }
 
     @Override

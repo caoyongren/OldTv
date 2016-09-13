@@ -20,6 +20,9 @@ public class VideoInfo extends BaseModel {
     public String score;
     public String airTime;
     public String moreURL;
+    public String smoothURL;
+    public String SDURL;
+    public String HDURL;
     //    public String description;
     private boolean isFirst = false;
     private String type;

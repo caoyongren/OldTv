@@ -1,4 +1,4 @@
-package com.zcy.ghost.ghost.viewinterface;
+package com.zcy.ghost.ghost.app.viewinterface;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -15,7 +15,7 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
 import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
-import com.zcy.ghost.ghost.taskcontract.VideoListContract;
+import com.zcy.ghost.ghost.app.taskcontract.VideoListContract;
 import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 

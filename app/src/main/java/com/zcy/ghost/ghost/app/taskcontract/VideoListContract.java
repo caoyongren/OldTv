@@ -1,11 +1,11 @@
-package com.zcy.ghost.ghost.taskcontract;
+package com.zcy.ghost.ghost.app.taskcontract;
 
 
 import android.content.Context;
 
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-import com.zcy.ghost.ghost.BasePresenter;
-import com.zcy.ghost.ghost.BaseView;
+import com.zcy.ghost.ghost.app.BasePresenter;
+import com.zcy.ghost.ghost.app.BaseView;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
 
 public interface VideoListContract {

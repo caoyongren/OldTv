@@ -1,4 +1,4 @@
-package com.zcy.ghost.ghost.loading;
+package com.zcy.ghost.ghost.views.circleprogress;
 
 import android.animation.TimeInterpolator;
 

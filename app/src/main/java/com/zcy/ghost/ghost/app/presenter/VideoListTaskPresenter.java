@@ -1,4 +1,4 @@
-package com.zcy.ghost.ghost.presenter;
+package com.zcy.ghost.ghost.app.presenter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.bean.VideoType;
 import com.zcy.ghost.ghost.net.Network;
-import com.zcy.ghost.ghost.taskcontract.VideoListContract;
+import com.zcy.ghost.ghost.app.taskcontract.VideoListContract;
 import com.zcy.ghost.ghost.utils.StringUtils;
 
 import java.util.List;
