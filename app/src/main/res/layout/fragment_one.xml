@@ -1,10 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-
+    <include layout="@layout/main_title" />
     <com.jude.easyrecyclerview.EasyRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -12,7 +11,4 @@
         app:layout_empty="@layout/view_empty"
         app:layout_progress="@layout/view_progress"
         app:scrollbars="none" />
-
-    <include layout="@layout/main_title" />
-
 </RelativeLayout>
