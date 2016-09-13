@@ -23,6 +23,7 @@ import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.Network;
+import com.zcy.ghost.ghost.utils.IntentUtil;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 import com.zcy.ghost.ghost.utils.StringUtils;
@@ -84,11 +85,7 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-//                 VideoListActivity
-                Intent intent = new Intent(getContext(), MVPVideoListActivity.class);
-                intent.putExtra("catalogId", StringUtils.getCatalogId(adapter.getItem(position).moreURL));
-                intent.putExtra("title", adapter.getItem(position).title);
-                getActivity().startActivity(intent);
+                IntentUtil.jumpVideoListActivity(getContext(), adapter.getItem(position).moreURL, adapter.getItem(position).title, getActivity());
             }
         });
     }
