@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.ContentPagerAdapter;
 import com.zcy.ghost.ghost.app.BaseActivity;
+import com.zcy.ghost.ghost.app.SwipeBackActivity;
 import com.zcy.ghost.ghost.app.fragments.Fragment1;
 import com.zcy.ghost.ghost.app.fragments.Fragment2;
 import com.zcy.ghost.ghost.app.fragments.Fragment3;
@@ -21,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends SwipeBackActivity implements RadioGroup.OnCheckedChangeListener {
     final String TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.tab_rg_menu)
     RadioGroup tabRgMenu;
