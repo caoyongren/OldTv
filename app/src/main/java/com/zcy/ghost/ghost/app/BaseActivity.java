@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,7 +23,7 @@ import rx.Subscription;
  * Creator: yxc
  * date: 2016/9/7 11:45
  */
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected boolean isConnection = false;
     protected Subscription subscription;
@@ -133,5 +133,10 @@ public abstract class BaseActivity extends FragmentActivity {
         }
         lastClickTime = time;
         return false;
+    }
+
+    protected void setFullScreen() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }

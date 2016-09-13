@@ -3,6 +3,7 @@ package com.zcy.ghost.ghost.app.activitys;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,9 +21,9 @@ import com.zcy.ghost.ghost.app.fragments.VideoRelatedFragment;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.bean.VideoResult;
-import com.zcy.ghost.ghost.views.circleprogress.CircleProgress;
 import com.zcy.ghost.ghost.net.Network;
 import com.zcy.ghost.ghost.utils.StringUtils;
+import com.zcy.ghost.ghost.views.circleprogress.CircleProgress;
 
 import org.simple.eventbus.EventBus;
 
@@ -30,6 +31,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -164,12 +167,34 @@ public class VideoInfoActivity extends BaseActivity {
 
     @OnClick(R.id.btn_play)
     public void play() {
-        showToast(videoInfo.SDURL);
+
+        if (TextUtils.isEmpty(videoRes.getVideoUrl())) {
+            showToast("该视频暂时不能播放");
+        } else {
+            setFullScreen();
+            JCVideoPlayerStandard.startFullscreen(VideoInfoActivity.this,
+                    JCVideoPlayerStandard.class,
+                    videoRes.getVideoUrl(), videoRes.title);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
     }
 
     @Override
     protected void onDestroy() {
         unbinder.unbind();
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (JCVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
     }
 }
