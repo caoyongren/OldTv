@@ -96,7 +96,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isFastDoubleClick()) {
+                if (isFastDoubleClick()) {
                     recyclerView.scrollToPosition(0);
                 }
             }

@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.widget.Toast;
+import android.view.View;
 
 import com.zcy.ghost.ghost.MyApplication;
-import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
@@ -74,7 +73,9 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
 
         @Override
         public void onError(Throwable e) {
-            Toast.makeText(MyApplication.mContext, R.string.loading_failed, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MyApplication.mContext, R.string.loading_failed, Toast.LENGTH_SHORT).show();
+            if (page > 1)
+                mAddTaskView.getAdapter().pauseMore();
         }
 
         @Override
@@ -84,6 +85,11 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
                     videos = result.ret.list;
                     if (page == 1) {
                         mAddTaskView.getAdapter().clear();
+                        if (videos != null && videos.size() < 30) {
+                            mAddTaskView.getAdapter().setMore(new View(mAddTaskView.getContexts()), mAddTaskView.getLoadMoreListener());
+                            mAddTaskView.getAdapter().setError(new View(mAddTaskView.getContexts()));
+                            mAddTaskView.getAdapter().setNoMore(new View(mAddTaskView.getContexts()));
+                        }
                     }
                     mAddTaskView.getAdapter().addAll(videos);
                 }

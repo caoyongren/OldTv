@@ -27,6 +27,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected boolean isConnection = false;
     protected Subscription subscription;
+    protected static long lastClickTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,5 +118,20 @@ public abstract class BaseActivity extends FragmentActivity {
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
+    }
+
+    /**
+     * 防止重复点击
+     *
+     * @return 是否重复点击
+     */
+    public boolean isFastDoubleClick() {
+        long time = System.currentTimeMillis();
+        long timeD = time - lastClickTime;
+        if (0 < timeD && timeD < 800) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
     }
 }

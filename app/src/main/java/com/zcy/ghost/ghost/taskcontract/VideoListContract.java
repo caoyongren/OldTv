@@ -3,7 +3,7 @@ package com.zcy.ghost.ghost.taskcontract;
 
 import android.content.Context;
 
-import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.zcy.ghost.ghost.BasePresenter;
 import com.zcy.ghost.ghost.BaseView;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
@@ -17,6 +17,8 @@ public interface VideoListContract {
         void showTitle(String title);
 
         Context getContexts();
+
+        RecyclerArrayAdapter.OnLoadMoreListener getLoadMoreListener();
 
         boolean isActive();
     }

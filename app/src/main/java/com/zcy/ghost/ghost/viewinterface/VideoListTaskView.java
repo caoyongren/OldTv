@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,7 +23,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Main UI for the add task screen. Users can enter a task title and description.
@@ -72,7 +72,9 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
         mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(context));
         mAdapter.setMore(R.layout.view_more, this);
         mAdapter.setNoMore(R.layout.view_nomore);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(context, 3));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
+        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
+        mRecyclerView.setLayoutManager(gridLayoutManager);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(context, 8));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
@@ -81,11 +83,25 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
     }
 
     protected void initEvent() {
+//        mTitleName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (isFastDoubleClick()) {
+//                    recyclerView.scrollToPosition(0);
+//                }
+//            }
+//        });
         mRecyclerView.setRefreshListener(this);
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 mPresenter.onItemClickView(position);
+            }
+        });
+        mAdapter.setError(R.layout.view_error).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter.resumeMore();
             }
         });
     }
@@ -126,13 +142,18 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
     }
 
     @Override
+    public RecyclerArrayAdapter.OnLoadMoreListener getLoadMoreListener() {
+        return this;
+    }
+
+    @Override
     public boolean isActive() {
         return mActive;
     }
 
     @Override
     public void setPresenter(VideoListContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
     }
 
     @Override
