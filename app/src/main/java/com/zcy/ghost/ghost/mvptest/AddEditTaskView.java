@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.zcy.ghost.ghost.R;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Main UI for the add task screen. Users can enter a task title and description.
  */
@@ -66,13 +68,6 @@ public class AddEditTaskView extends ScrollView implements AddEditTaskContract.V
         return mActive;
     }
 
-
-    public static <T> T checkNotNull(T reference) {
-        if (reference == null) {
-            throw new NullPointerException();
-        }
-        return reference;
-    }
 
     public String getTitle() {
         return mTitle.getText().toString();
