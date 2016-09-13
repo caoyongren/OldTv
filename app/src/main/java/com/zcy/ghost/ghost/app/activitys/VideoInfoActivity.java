@@ -1,5 +1,6 @@
 package com.zcy.ghost.ghost.app.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -164,7 +165,8 @@ public class VideoInfoActivity extends BaseActivity {
 
     @OnClick(R.id.btn_play)
     public void play() {
-        showToast("敬请期待");
+        Intent intent = new Intent(this, PlayActivity.class);
+        startActivity(intent);
     }
 
     @Override
