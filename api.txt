@@ -1,2 +1,3 @@
 首页：http://api.svipmovie.com/front/homePageApi/homePage.do
 频道：http://api.svipmovie.com/front/homePage/channelList.do
+详情：http://api.svipmovie.com/front/videoDetailApi/videoDetail.do
