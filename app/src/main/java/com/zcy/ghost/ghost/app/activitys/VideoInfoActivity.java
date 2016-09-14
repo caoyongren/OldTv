@@ -16,6 +16,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.app.BaseActivity;
+import com.zcy.ghost.ghost.app.SwipeBackActivity;
 import com.zcy.ghost.ghost.app.fragments.VideoIntroFragment;
 import com.zcy.ghost.ghost.app.fragments.VideoRelatedFragment;
 import com.zcy.ghost.ghost.bean.VideoInfo;
@@ -42,7 +43,7 @@ import rx.schedulers.Schedulers;
  * Creator: yxc
  * date: 2016/9/8 15:45
  */
-public class VideoInfoActivity extends BaseActivity {
+public class VideoInfoActivity extends SwipeBackActivity {
     final String TAG = VideoInfoActivity.class.getSimpleName();
 
     @BindView(R.id.title_name)

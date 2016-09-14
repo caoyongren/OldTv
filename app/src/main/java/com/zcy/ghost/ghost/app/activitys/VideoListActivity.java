@@ -16,6 +16,7 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
 import com.zcy.ghost.ghost.app.BaseActivity;
+import com.zcy.ghost.ghost.app.SwipeBackActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.bean.VideoType;
@@ -32,7 +33,7 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class VideoListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+public class VideoListActivity extends SwipeBackActivity implements SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
     final String TAG = VideoListActivity.class.getSimpleName();
     Context mContext;
     Unbinder unbinder;

@@ -61,5 +61,11 @@
     <style name="common_tv_bold_style" parent="common_tv_style">
         <item name="android:textStyle">bold</item>
     </style>
-
+    <!--设置继承appcompat的activity透明主题-->
+    <style name="CustomTransparent"  parent="Theme.AppCompat">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
 </resources>

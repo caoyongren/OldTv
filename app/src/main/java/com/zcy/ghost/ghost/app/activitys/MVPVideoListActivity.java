@@ -4,10 +4,11 @@ import android.os.Bundle;
 
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.app.BaseActivity;
+import com.zcy.ghost.ghost.app.SwipeBackActivity;
 import com.zcy.ghost.ghost.app.presenter.VideoListTaskPresenter;
 import com.zcy.ghost.ghost.app.viewinterface.VideoListTaskView;
 
-public class MVPVideoListActivity extends BaseActivity {
+public class MVPVideoListActivity extends SwipeBackActivity {
     VideoListTaskView mAddEditTaskView;
     VideoListTaskPresenter mPresenter;
     String mTitle = "";

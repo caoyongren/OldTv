@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends SwipeBackActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
     final String TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.tab_rg_menu)
     RadioGroup tabRgMenu;
