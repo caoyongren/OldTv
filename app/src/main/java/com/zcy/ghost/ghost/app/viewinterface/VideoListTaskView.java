@@ -14,7 +14,7 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
-import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
+import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.app.taskcontract.VideoListContract;
 import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
@@ -122,8 +122,8 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
 
     @OnClick(R.id.rl_back)
     public void back() {
-        if (mContext instanceof MVPVideoListActivity) {
-            ((MVPVideoListActivity) mContext).finish();
+        if (mContext instanceof VideoListActivity) {
+            ((VideoListActivity) mContext).finish();
         }
     }
 

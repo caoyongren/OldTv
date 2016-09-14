@@ -1,6 +1,5 @@
 package com.zcy.ghost.ghost.app.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,15 +17,12 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.FoundAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
-import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
-import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.Network;
 import com.zcy.ghost.ghost.utils.IntentUtil;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
-import com.zcy.ghost.ghost.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;

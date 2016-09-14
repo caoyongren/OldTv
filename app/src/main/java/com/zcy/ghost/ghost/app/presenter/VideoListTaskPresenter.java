@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.zcy.ghost.ghost.MyApplication;
-import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
+import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
@@ -109,7 +109,7 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
     @Override
     public void onItemClickView(int position) {
         switchData(mAddTaskView.getAdapter().getItem(position));
-        if (mAddTaskView.getContexts() instanceof MVPVideoListActivity) {
+        if (mAddTaskView.getContexts() instanceof VideoListActivity) {
             Intent intent = new Intent(mAddTaskView.getContexts(), VideoInfoActivity.class);
             intent.putExtra("videoInfo", videoInfo);
             mAddTaskView.getContexts().startActivity(intent);

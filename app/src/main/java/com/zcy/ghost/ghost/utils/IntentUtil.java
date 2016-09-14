@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.zcy.ghost.ghost.R;
-import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
+import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 
 /******************************************
  * 类名称：IntentUtil
@@ -19,7 +19,7 @@ import com.zcy.ghost.ghost.app.activitys.MVPVideoListActivity;
 public class IntentUtil {
 
     public static void jumpVideoListActivity(Context context, String url, String title, Activity activity) {
-        Intent intent = new Intent(context, MVPVideoListActivity.class);
+        Intent intent = new Intent(context, VideoListActivity.class);
         intent.putExtra("catalogId", StringUtils.getCatalogId(url));
         intent.putExtra("title", title);
         activity.startActivity(intent);
