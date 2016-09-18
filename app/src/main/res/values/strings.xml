@@ -8,6 +8,8 @@
     <string name="airTime">上映时间：</string>
     <string name="video_intro">简介</string>
     <string name="video_ralated">推荐</string>
-
-
+    <string name="set_theme">设置主题</string>
+    <string name="theme">主题</string>
+    <string name="cancel">取消</string>
+    <string name="done">完成</string>
 </resources>

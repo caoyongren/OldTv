@@ -12,8 +12,8 @@
         app:layout_progress="@layout/view_progress"
         app:scrollbars="none" />
 
-    <RelativeLayout
-        android:id="@+id/title"
+    <com.zcy.ghost.ghost.app.theme.ColorRelativeLayout
+        android:id="@+id/titleLayout"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:background="@android:color/black">
@@ -23,5 +23,5 @@
             style="@style/title_tv_style"
             android:layout_width="match_parent"
             android:layout_marginTop="20dp" />
-    </RelativeLayout>
+    </com.zcy.ghost.ghost.app.theme.ColorRelativeLayout>
 </RelativeLayout>

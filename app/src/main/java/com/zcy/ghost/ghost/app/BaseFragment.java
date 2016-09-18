@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.SystemUtils;
 
+import butterknife.ButterKnife;
 import rx.Subscription;
 
 
@@ -24,13 +25,14 @@ import rx.Subscription;
  * Creator: yxc
  * date: 2016/9/7 11:40
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     private final String TAG = getClass().getSimpleName();
     protected Context mContext;
     protected boolean isConnection = false; // 判断网络状态是否连接 默认为false;
     protected Subscription subscription;
     protected static long lastClickTime;
+    protected View rootView;
 
     @Override
     public void onAttach(Context mContext) {
@@ -53,8 +55,24 @@ public class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         LogUtils.v(TAG, "onCreateView");
-        return super.onCreateView(inflater, container, savedInstanceState);
+        if (rootView == null) {
+            rootView = inflater.inflate(getLayoutResource(), container, false);
+            ButterKnife.bind(this, rootView);
+        }
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+        initView(inflater);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
+
+    public String getName() {
+        return BaseFragment.class.getName();
+    }
+
+    protected abstract int getLayoutResource();
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

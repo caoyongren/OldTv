@@ -27,11 +27,8 @@ public class Fragment3 extends BaseFragment {
     Unbinder unbinder;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_three, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
-        initView(inflater);
-        return rootView;
+    protected int getLayoutResource() {
+        return R.layout.fragment_three;
     }
 
     @Override
@@ -39,9 +36,4 @@ public class Fragment3 extends BaseFragment {
         titleName.setText("发现");
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }
