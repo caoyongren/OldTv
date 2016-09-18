@@ -71,7 +71,7 @@
     </style>
 
     <!--blueTheme-->
-    <style name="BlueTheme" parent="AppTheme">
+    <style name="BlueTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorBluePrimary</item>
         <item name="colorPrimaryDark">@color/colorBluePrimaryDark</item>
         <item name="colorAccent">@color/colorBluePrimaryDark</item>
@@ -82,7 +82,7 @@
     </style>
 
     <!--redTheme-->
-    <style name="RedTheme" parent="AppTheme">
+    <style name="RedTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorRedPrimary</item>
         <item name="colorPrimaryDark">@color/colorRedPrimaryDark</item>
         <item name="colorAccent">@color/colorRedPrimaryDark</item>
@@ -92,7 +92,7 @@
 
     </style>
     <!--brownTheme-->
-    <style name="BrownTheme" parent="AppTheme">
+    <style name="BrownTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorBrownPrimary</item>
         <item name="colorPrimaryDark">@color/colorBrownPrimaryDark</item>
         <item name="colorAccent">@color/colorBrownPrimaryDark</item>
@@ -102,7 +102,7 @@
 
     </style>
     <!--greenTheme-->
-    <style name="GreenTheme" parent="AppTheme">
+    <style name="GreenTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorGreenPrimary</item>
         <item name="colorPrimaryDark">@color/colorGreenPrimaryDark</item>
         <item name="colorAccent">@color/colorGreenPrimaryDark</item>
@@ -111,7 +111,7 @@
         <!--<item name="md_positive_color">@color/colorGreenPrimary</item>-->
     </style>
     <!--purpleTheme-->
-    <style name="PurpleTheme" parent="AppTheme">
+    <style name="PurpleTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorPurplePrimary</item>
         <item name="colorPrimaryDark">@color/colorPurplePrimaryDark</item>
         <item name="colorAccent">@color/colorPurplePrimaryDark</item>
@@ -120,7 +120,7 @@
         <!--<item name="md_positive_color">@color/colorPurplePrimary</item>-->
     </style>
     <!--tealTheme-->
-    <style name="TealTheme" parent="AppTheme">
+    <style name="TealTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorTealPrimary</item>
         <item name="colorPrimaryDark">@color/colorTealPrimaryDark</item>
         <item name="colorAccent">@color/colorTealPrimaryDark</item>
@@ -130,7 +130,7 @@
     </style>
 
     <!--pinkTheme-->
-    <style name="PinkTheme" parent="AppTheme">
+    <style name="PinkTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorPinkPrimary</item>
         <item name="colorPrimaryDark">@color/colorPinkPrimaryDark</item>
         <item name="colorAccent">@color/colorPinkPrimaryDark</item>
@@ -140,7 +140,7 @@
     </style>
 
     <!--deepPurpleTheme-->
-    <style name="DeepPurpleTheme" parent="AppTheme">
+    <style name="DeepPurpleTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorDeepPurplePrimary</item>
         <item name="colorPrimaryDark">@color/colorDeepPurplePrimaryDark</item>
         <item name="colorAccent">@color/colorDeepPurplePrimaryDark</item>
@@ -150,7 +150,7 @@
     </style>
 
     <!--orange-->
-    <style name="OrangeTheme" parent="AppTheme">
+    <style name="OrangeTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorOrangePrimary</item>
         <item name="colorPrimaryDark">@color/colorOrangePrimaryDark</item>
         <item name="colorAccent">@color/colorOrangePrimaryDark</item>
@@ -161,7 +161,7 @@
 
 
     <!--indigo-->
-    <style name="IndigoTheme" parent="AppTheme">
+    <style name="IndigoTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorIndigoPrimary</item>
         <item name="colorPrimaryDark">@color/colorIndigoPrimaryDark</item>
         <item name="colorAccent">@color/colorIndigoPrimaryDark</item>
@@ -172,7 +172,7 @@
 
 
     <!--cyan-->
-    <style name="CyanTheme" parent="AppTheme">
+    <style name="CyanTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorCyanPrimary</item>
         <item name="colorPrimaryDark">@color/colorCyanPrimaryDark</item>
         <item name="colorAccent">@color/colorCyanPrimaryDark</item>
@@ -183,7 +183,7 @@
 
 
     <!--lightGreen-->
-    <style name="LightGreenTheme" parent="AppTheme">
+    <style name="LightGreenTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorLightGreenPrimary</item>
         <item name="colorPrimaryDark">@color/colorLightGreenPrimaryDark</item>
         <item name="colorAccent">@color/colorLightGreenPrimaryDark</item>
@@ -195,7 +195,7 @@
 
 
     <!--lime-->
-    <style name="LimeTheme" parent="AppTheme">
+    <style name="LimeTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorLimePrimary</item>
         <item name="colorPrimaryDark">@color/colorLimePrimaryDark</item>
         <item name="colorAccent">@color/colorLimePrimaryDark</item>
@@ -206,7 +206,7 @@
 
 
     <!--deepOrange-->
-    <style name="DeepOrangeTheme" parent="AppTheme">
+    <style name="DeepOrangeTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorDeepOrangePrimary</item>
         <item name="colorPrimaryDark">@color/colorDeepOrangePrimaryDark</item>
         <item name="colorAccent">@color/colorDeepOrangePrimaryDark</item>
@@ -217,7 +217,7 @@
 
 
     <!--blueGrey-->
-    <style name="BlueGreyTheme" parent="AppTheme">
+    <style name="BlueGreyTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/colorBlueGreyPrimary</item>
         <item name="colorPrimaryDark">@color/colorBlueGreyPrimaryDark</item>
         <item name="colorAccent">@color/colorBlueGreyPrimaryDark</item>

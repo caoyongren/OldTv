@@ -51,4 +51,10 @@ dependencies {
     compile 'com.google.guava:guava:19.0'
     compile 'fm.jiecao:jiecaovideoplayer:4.6.5'
     compile 'org.jetbrains:annotations-java5:15.0'
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.4@aar') {
+        transitive = true
+    }
+    compile('com.github.afollestad.material-dialogs:commons:0.8.5.4@aar') {
+        transitive = true
+    }
 }
