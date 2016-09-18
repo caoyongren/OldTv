@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +27,6 @@ import com.zcy.ghost.ghost.app.theme.ColorRelativeLayout;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.NetManager;
-import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
@@ -36,7 +34,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import rx.Subscriber;
 
 /**
@@ -209,24 +206,6 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
                 }
                 LogUtils.e(TAG, i + "");
             }
-                adapter.addFooter(new RecyclerArrayAdapter.ItemView() {
-                    @Override
-                    public View onCreateView(ViewGroup parent) {
-                        View view = LayoutInflater.from(getContext()).inflate(R.layout.frame_one_more,null);
-                        view.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                EventUtils.showToast(getContext(),"查看更多");
-                            }
-                        });
-                        return null;
-                    }
-
-                    @Override
-                    public void onBindView(View headerView) {
-
-                    }
-                });
         }
     }
 
