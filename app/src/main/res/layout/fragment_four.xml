@@ -3,6 +3,15 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/main_title" />
+    <include
+        android:id="@+id/title"
+        layout="@layout/main_title" />
 
+    <TextView
+        android:id="@+id/tv_set_theme"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/title"
+        android:gravity="center_vertical"
+        android:text="@string/set_theme" />
 </RelativeLayout>

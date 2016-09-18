@@ -1,16 +1,15 @@
 package com.zcy.ghost.ghost.app.fragments;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.app.BaseFragment;
 
+import org.simple.eventbus.EventBus;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -19,19 +18,18 @@ import butterknife.Unbinder;
  * date: $date $time
  */
 public class Fragment4 extends BaseFragment {
-    final String TAG = Fragment4.class.getSimpleName();
+
+    public static final String SET_THEME = "SET_THEME";
+    Unbinder unbinder;
 
     @BindView(R.id.title_name)
     TextView titleName;
-
-    Unbinder unbinder;
+    @BindView(R.id.tv_set_theme)
+    TextView tvSetTheme;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_four, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
-        initView(inflater);
-        return rootView;
+    protected int getLayoutResource() {
+        return R.layout.fragment_four;
     }
 
     @Override
@@ -39,9 +37,9 @@ public class Fragment4 extends BaseFragment {
         titleName.setText("我的");
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+
+    @OnClick(R.id.tv_set_theme)
+    public void onClick() {
+        EventBus.getDefault().post("", SET_THEME);
     }
 }

@@ -1,8 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/title"
+<com.zcy.ghost.ghost.app.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titleLayout"
     android:layout_width="match_parent"
     android:layout_height="42dp"
-    android:background="@color/black_translucent">
+    android:background="?attr/colorPrimary">
 
     <RelativeLayout
         android:id="@+id/rl_back"
@@ -38,4 +38,4 @@
             android:background="@mipmap/collection" />
 
     </RelativeLayout>
-</RelativeLayout>
+</com.zcy.ghost.ghost.app.theme.ColorRelativeLayout>

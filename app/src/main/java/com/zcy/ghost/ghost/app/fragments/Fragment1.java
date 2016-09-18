@@ -3,6 +3,7 @@ package com.zcy.ghost.ghost.app.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.zcy.ghost.ghost.adapter.BannerAdapter;
 import com.zcy.ghost.ghost.adapter.VideoAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
+import com.zcy.ghost.ghost.app.theme.ColorRelativeLayout;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.NetManager;
@@ -47,25 +49,22 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
-    @BindView(R.id.title)
-    RelativeLayout title;
+    @Nullable
+    @BindView(R.id.titleLayout)
+    ColorRelativeLayout title;
     @BindView(R.id.title_name)
     TextView titleName;
     RollPagerView banner;
     View headerView;
-
-    Unbinder unbinder;
     VideoAdapter adapter;
     int page = 0;
     Handler handler = new Handler();
     VideoResult homeResult;
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_one, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
-        initView(inflater);
-        return rootView;
+    protected int getLayoutResource() {
+        return R.layout.fragment_one;
     }
 
     @Override
@@ -235,6 +234,5 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     public void onDestroyView() {
         super.onDestroyView();
         unsubscribe();
-        unbinder.unbind();
     }
 }

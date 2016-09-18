@@ -32,19 +32,15 @@ import butterknife.Unbinder;
 public class VideoRelatedFragment extends BaseFragment {
     final String TAG = VideoRelatedFragment.class.getSimpleName();
 
-    Unbinder unbinder;
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
 
     RelatedAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_video_rela, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
-        initView(inflater);
+    protected int getLayoutResource() {
         EventBus.getDefault().register(this);
-        return rootView;
+        return R.layout.fragment_video_rela;
     }
 
     @Override
@@ -69,7 +65,6 @@ public class VideoRelatedFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
-        unbinder.unbind();
         EventBus.getDefault().unregister(this);
         super.onDestroyView();
     }

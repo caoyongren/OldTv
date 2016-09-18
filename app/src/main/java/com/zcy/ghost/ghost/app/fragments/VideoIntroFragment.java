@@ -33,15 +33,10 @@ public class VideoIntroFragment extends BaseFragment {
     @BindView(R.id.tv_actors)
     TextView tvActors;
 
-    Unbinder unbinder;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_video_intro, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
-        initView(inflater);
+    protected int getLayoutResource() {
         EventBus.getDefault().register(this);
-        return rootView;
+        return R.layout.fragment_video_intro;
     }
 
     @Override
@@ -50,7 +45,6 @@ public class VideoIntroFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
-        unbinder.unbind();
         EventBus.getDefault().unregister(this);
         super.onDestroyView();
     }

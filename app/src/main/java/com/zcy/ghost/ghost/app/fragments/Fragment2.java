@@ -46,20 +46,14 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     TextView titleName;
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
-
-    Unbinder unbinder;
-
     FoundAdapter adapter;
     int page = 0;
     Handler handler = new Handler();
     VideoResult homeResult;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_two, container, false);
-        unbinder = ButterKnife.bind(this, rootView);
-        initView(inflater);
-        return rootView;
+    protected int getLayoutResource() {
+        return R.layout.fragment_two;
     }
 
     @Override
@@ -87,12 +81,6 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     @Override

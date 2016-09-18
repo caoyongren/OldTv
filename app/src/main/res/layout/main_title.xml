@@ -1,12 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zcy.ghost.ghost.app.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="68dp"
-    android:background="@color/black_translucent">
+    android:background="?attr/colorPrimary">
 
     <TextView
         android:id="@+id/title_name"
         style="@style/title_tv_style"
         android:layout_width="match_parent"
         android:layout_marginTop="20dp" />
-</RelativeLayout>
+</com.zcy.ghost.ghost.app.theme.ColorRelativeLayout>
