@@ -12,5 +12,16 @@
         app:layout_progress="@layout/view_progress"
         app:scrollbars="none" />
 
-    <include layout="@layout/main_title" />
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@android:color/black">
+
+        <TextView
+            android:id="@+id/title_name"
+            style="@style/title_tv_style"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp" />
+    </RelativeLayout>
 </RelativeLayout>

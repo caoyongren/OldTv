@@ -1,6 +1,5 @@
 package com.zcy.ghost.ghost.app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +29,7 @@ public class SwipeBackActivity extends BaseActivity {
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
-        overridePendingTransition(R.anim.base_slide_right_in, R.anim.base_slide_remain);
+//        overridePendingTransition(R.anim.base_slide_right_in, R.anim.base_slide_remain);
     }
 
 
@@ -40,7 +39,7 @@ public class SwipeBackActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0, R.anim.base_slide_right_out);
+//        overridePendingTransition(0, R.anim.base_slide_right_out);
     }
 
 
