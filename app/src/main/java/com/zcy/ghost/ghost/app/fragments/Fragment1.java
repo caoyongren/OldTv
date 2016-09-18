@@ -25,7 +25,8 @@ import com.zcy.ghost.ghost.app.BaseFragment;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
-import com.zcy.ghost.ghost.net.Network;
+import com.zcy.ghost.ghost.net.NetManager;
+import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
@@ -34,9 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import rx.Subscriber;
 
 /**
  * Description: 精选
@@ -159,7 +158,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         }, 1000);
     }
 
-    Observer<VideoResult> observer = new Observer<VideoResult>() {
+    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
         @Override
         public void onCompleted() {
         }
@@ -178,11 +177,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     };
 
     private void getPageHomeInfo() {
-        subscription = Network.getVideoApi(getContext())
-                .getHomePage()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+        subscription = NetManager.getInstance().getHomePage(subscriber, getContext());
     }
 
     private void setAdapter() {
@@ -215,7 +210,24 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
                 }
                 LogUtils.e(TAG, i + "");
             }
+                adapter.addFooter(new RecyclerArrayAdapter.ItemView() {
+                    @Override
+                    public View onCreateView(ViewGroup parent) {
+                        View view = LayoutInflater.from(getContext()).inflate(R.layout.frame_one_more,null);
+                        view.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                EventUtils.showToast(getContext(),"查看更多");
+                            }
+                        });
+                        return null;
+                    }
 
+                    @Override
+                    public void onBindView(View headerView) {
+
+                    }
+                });
         }
     }
 

@@ -8,16 +8,14 @@ import com.zcy.ghost.ghost.app.taskcontract.VideoInfoContract;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.bean.VideoResult;
-import com.zcy.ghost.ghost.net.Network;
+import com.zcy.ghost.ghost.net.NetManager;
 import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.StringUtils;
 
 import org.simple.eventbus.EventBus;
 
-import rx.Observer;
+import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
     @NonNull
@@ -40,7 +38,7 @@ public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
 
     }
 
-    Observer<VideoResult> observer = new Observer<VideoResult>() {
+    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
         @Override
         public void onCompleted() {
             if (mAddTaskView.isActive())
@@ -49,6 +47,8 @@ public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
 
         @Override
         public void onError(Throwable e) {
+            if (mAddTaskView.isActive())
+                mAddTaskView.hidLoading();
             EventUtils.showToast(mAddTaskView.getContexts(), R.string.loading_failed);
         }
 
@@ -81,10 +81,6 @@ public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
 
     @Override
     public void getVideoInformation() {
-        subscription = Network.getVideoApi(mAddTaskView.getContexts())
-                .getVideoInfo(videoInfo.dataId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+        subscription = NetManager.getInstance().getVideoInformation(subscriber, mAddTaskView.getContexts(), videoInfo.dataId);
     }
 }

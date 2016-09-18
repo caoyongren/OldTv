@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -89,8 +88,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (!TextUtils.isEmpty(action) && action.equals(wifiAction)) {
-                WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-                isConnection = wifiManager.isWifiEnabled();
+//                WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+//                isConnection = wifiManager.isWifiEnabled();
+                isConnection = SystemUtils.checkNet(context);
             }
         }
     };

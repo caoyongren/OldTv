@@ -38,6 +38,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -344,7 +345,7 @@ public class SystemUtils {
 
     /**
      * 判断网络是否可用
-     * <p>
+     * <p/>
      * This method requires the caller to hold the permission
      * {@link android.Manifest.permission#ACCESS_NETWORK_STATE}.
      *
@@ -354,8 +355,15 @@ public class SystemUtils {
     public static boolean checkNet(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        if (info != null) {
-            return true;
+        if (info != null && info.isAvailable()) {
+            try {
+                InetAddress ipAddr = InetAddress.getByName("www.baidu.com");
+                return !ipAddr.equals("");
+
+            } catch (Exception e) {
+                return false;
+            }
+//            return true;
         }
         return false;
     }

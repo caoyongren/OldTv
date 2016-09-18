@@ -6,21 +6,19 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.zcy.ghost.ghost.MyApplication;
-import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
+import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
+import com.zcy.ghost.ghost.app.taskcontract.VideoListContract;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.bean.VideoType;
-import com.zcy.ghost.ghost.net.Network;
-import com.zcy.ghost.ghost.app.taskcontract.VideoListContract;
+import com.zcy.ghost.ghost.net.NetManager;
 import com.zcy.ghost.ghost.utils.StringUtils;
 
 import java.util.List;
 
-import rx.Observer;
+import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class VideoListTaskPresenter implements VideoListContract.Presenter {
     @NonNull
@@ -55,14 +53,10 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
     }
 
     private void getVideoList(Context context, String catalogID, int page) {
-        subscription = Network.getVideoApi(context)
-                .getVideoList(catalogID, page + "")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+        subscription = NetManager.getInstance().getVideoList(subscriber, context, catalogID, page + "");
     }
 
-    Observer<VideoResult> observer = new Observer<VideoResult>() {
+    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
         @Override
         public void onCompleted() {
             if (mAddTaskView.isActive()) {

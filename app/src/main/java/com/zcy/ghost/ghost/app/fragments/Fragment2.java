@@ -21,7 +21,7 @@ import com.zcy.ghost.ghost.app.BaseFragment;
 import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
-import com.zcy.ghost.ghost.net.Network;
+import com.zcy.ghost.ghost.net.NetManager;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 import com.zcy.ghost.ghost.utils.StringUtils;
@@ -32,9 +32,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import rx.Subscriber;
 
 /**
  * Description:
@@ -109,7 +107,7 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         }, 1000);
     }
 
-    Observer<VideoResult> observer = new Observer<VideoResult>() {
+    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
         @Override
         public void onCompleted() {
         }
@@ -128,11 +126,7 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     };
 
     private void getPageHomeInfo() {
-        subscription = Network.getVideoApi(getContext())
-                .getHomePage()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+        subscription = NetManager.getInstance().getHomePage(subscriber, getContext());
     }
 
     private void setAdapter() {

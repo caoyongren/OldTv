@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -134,8 +133,9 @@ public class BaseFragment extends Fragment {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (!TextUtils.isEmpty(action) && action.equals(wifiAction)) {
-                WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
-                isConnection = wifiManager.isWifiEnabled();
+//                WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+//                isConnection = wifiManager.isWifiEnabled();
+                isConnection = SystemUtils.checkNet(context);
             }
         }
     };
