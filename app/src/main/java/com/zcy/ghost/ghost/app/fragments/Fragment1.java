@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     EasyRecyclerView recyclerView;
     @Nullable
     @BindView(R.id.titleLayout)
-    ColorRelativeLayout title;
+    RelativeLayout title;
     @BindView(R.id.title_name)
     TextView titleName;
     RollPagerView banner;
