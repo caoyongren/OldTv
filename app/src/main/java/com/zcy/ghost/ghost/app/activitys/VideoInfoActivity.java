@@ -1,9 +1,9 @@
 package com.zcy.ghost.ghost.app.activitys;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.zcy.ghost.ghost.R;
+import com.zcy.ghost.ghost.app.SwipeBackActivity;
 import com.zcy.ghost.ghost.app.presenter.VideoInfoTaskPresenter;
 import com.zcy.ghost.ghost.app.viewinterface.VideoInfoTaskView;
 import com.zcy.ghost.ghost.bean.VideoInfo;
@@ -11,7 +11,7 @@ import com.zcy.ghost.ghost.bean.VideoInfo;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
-public class VideoInfoActivity extends AppCompatActivity {
+public class VideoInfoActivity extends SwipeBackActivity {
     VideoInfoTaskView mAddEditTaskView;
     VideoInfoTaskPresenter mPresenter;
     VideoInfo videoInfo;

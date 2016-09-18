@@ -1,7 +1,6 @@
 package com.zcy.ghost.ghost.app.viewinterface;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -21,6 +20,7 @@ import com.zcy.ghost.ghost.app.fragments.VideoRelatedFragment;
 import com.zcy.ghost.ghost.app.taskcontract.VideoInfoContract;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.utils.EventUtils;
+import com.zcy.ghost.ghost.views.SwipeViewPager;
 import com.zcy.ghost.ghost.views.circleprogress.CircleProgress;
 
 import butterknife.BindView;
@@ -51,7 +51,7 @@ public class VideoInfoTaskView extends LinearLayout implements VideoInfoContract
     @BindView(R.id.viewpagertab)
     SmartTabLayout mViewpagertab;
     @BindView(R.id.viewpager)
-    ViewPager mViewpager;
+    SwipeViewPager mViewpager;
     @BindView(R.id.loading)
     CircleProgress mLoading;
 

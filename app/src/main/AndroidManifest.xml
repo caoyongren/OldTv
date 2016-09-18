@@ -22,8 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.activitys.VideoInfoActivity" />
-        <activity android:name=".app.activitys.VideoListActivity" />
+        <activity
+            android:name=".app.activitys.VideoInfoActivity"
+            android:theme="@style/CustomTransparent" />
+        <activity
+            android:name=".app.activitys.VideoListActivity"
+            android:theme="@style/CustomTransparent" />
     </application>
 
 </manifest>
