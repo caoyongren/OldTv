@@ -20,14 +20,17 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="both_match_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
     <style name="lwrap_hmatch_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
     <style name="lmatch_hwrap_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -267,9 +270,9 @@
     </style>
     <!--black-->
     <style name="BlackTheme" parent="CustomTransparent">
-        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimary">@color/dark_black</item>
         <item name="md_title_color">@color/dark_green</item>
-        <item name="colorPrimaryLight">@color/black_translucent</item>
+        <item name="colorPrimaryLight">@color/dark_black</item>
     </style>
 
 

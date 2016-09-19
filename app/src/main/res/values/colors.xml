@@ -11,6 +11,7 @@
     <color name="blue_green">#45444d</color>
     <color name="gray_light">#c4c3c9</color>
     <color name="dark_red">#b70000</color>
+    <color name="dark_black">#000000</color>
 
 
     <array name="colors">
