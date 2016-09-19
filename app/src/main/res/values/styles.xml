@@ -89,8 +89,6 @@
     </style>
     <!--设置继承appcompat的activity透明主题-->
     <style name="CustomTransparent" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/black_translucent</item>
-        <item name="md_title_color">@color/dark_green</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
