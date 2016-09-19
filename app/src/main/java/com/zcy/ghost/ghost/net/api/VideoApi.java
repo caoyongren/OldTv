@@ -6,7 +6,6 @@ package com.zcy.ghost.ghost.net.api;
 import com.zcy.ghost.ghost.bean.VideoResult;
 
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -22,7 +21,7 @@ public interface VideoApi {
      *
      * @return
      */
-    @Headers("Cache-Control: public, max-age=3600")
+//    @Headers("Cache-Control: public, max-age=3600")
     @GET("homePageApi/homePage.do")
     Observable<VideoResult> getHomePage();
 
@@ -32,7 +31,7 @@ public interface VideoApi {
      * @param mediaId 影片id
      * @return
      */
-    @Headers("Cache-Control: public, max-age=3600")
+//    @Headers("Cache-Control: public, max-age=3600")
     @GET("videoDetailApi/videoDetail.do")
     Observable<VideoResult> getVideoInfo(@Query("mediaId") String mediaId);
 
@@ -43,7 +42,7 @@ public interface VideoApi {
      * @param pnum
      * @return
      */
-    @Headers("Cache-Control: public, max-age=3600")
+//    @Headers("Cache-Control: public, max-age=3600")
     @GET("columns/getVideoList.do")
     Observable<VideoResult> getVideoList(@Query("catalogId") String catalogId, @Query("pnum") String pnum);
 }

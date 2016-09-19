@@ -1,16 +1,12 @@
 package com.zcy.ghost.ghost.app.fragments;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.app.BaseFragment;
+import com.zcy.ghost.ghost.app.theme.ColorTextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -22,7 +18,7 @@ public class Fragment3 extends BaseFragment {
     final String TAG = Fragment3.class.getSimpleName();
 
     @BindView(R.id.title_name)
-    TextView titleName;
+    ColorTextView titleName;
 
     Unbinder unbinder;
 

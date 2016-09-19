@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
@@ -24,10 +23,11 @@ import com.zcy.ghost.ghost.adapter.BannerAdapter;
 import com.zcy.ghost.ghost.adapter.VideoAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
-import com.zcy.ghost.ghost.app.theme.ColorRelativeLayout;
+import com.zcy.ghost.ghost.app.theme.ColorTextView;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.NetManager;
+import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
@@ -35,7 +35,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Subscriber;
+import rx.Observer;
 
 /**
  * Description: 精选
@@ -51,7 +51,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     @BindView(R.id.titleLayout)
     RelativeLayout title;
     @BindView(R.id.title_name)
-    TextView titleName;
+    ColorTextView titleName;
     RollPagerView banner;
     View headerView;
     VideoAdapter adapter;
@@ -155,7 +155,7 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         }, 1000);
     }
 
-    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
+    Observer<VideoResult> observer = new Observer<VideoResult>() {
         @Override
         public void onCompleted() {
         }
@@ -174,7 +174,11 @@ public class Fragment1 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     };
 
     private void getPageHomeInfo() {
-        subscription = NetManager.getInstance().getHomePage(subscriber, getContext());
+        if(isConnection)
+        subscription = NetManager.getInstance().getHomePage(observer, getContext());
+        else {
+            EventUtils.showToast(getContext(), R.string.loading_failed);
+        }
     }
 
     private void setAdapter() {

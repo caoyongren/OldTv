@@ -1,7 +1,8 @@
 <com.zcy.ghost.ghost.app.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/titleLayout"
     android:layout_width="match_parent"
-    android:layout_height="42dp"
+    android:layout_height="68dp"
+    android:paddingTop="20dp"
     android:background="?attr/colorPrimary">
 
     <RelativeLayout
@@ -17,12 +18,13 @@
 
     </RelativeLayout>
 
-    <TextView
+    <com.zcy.ghost.ghost.app.theme.ColorTextView
         android:id="@+id/title_name"
         style="@style/title_tv_style"
         android:layout_centerHorizontal="true"
         android:maxLength="15"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="?attr/md_title_color" />
 
     <RelativeLayout
         android:id="@+id/rl_collect"

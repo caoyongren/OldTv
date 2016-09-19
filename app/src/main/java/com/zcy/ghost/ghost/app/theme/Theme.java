@@ -18,6 +18,7 @@ public enum Theme {
     LightGreen,
     Lime,
     DeepOrange,
-    BlueGrey
+    BlueGrey,
+    Black
 
 }

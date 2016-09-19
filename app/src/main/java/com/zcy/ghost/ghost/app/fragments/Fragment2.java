@@ -1,15 +1,11 @@
 package com.zcy.ghost.ghost.app.fragments;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
@@ -19,9 +15,11 @@ import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.FoundAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
 import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
+import com.zcy.ghost.ghost.app.theme.ColorTextView;
 import com.zcy.ghost.ghost.bean.VideoInfo;
 import com.zcy.ghost.ghost.bean.VideoResult;
 import com.zcy.ghost.ghost.net.NetManager;
+import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 import com.zcy.ghost.ghost.utils.StringUtils;
@@ -30,9 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import rx.Subscriber;
+import rx.Observer;
 
 /**
  * Description:
@@ -43,7 +39,7 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     final String TAG = Fragment2.class.getSimpleName();
 
     @BindView(R.id.title_name)
-    TextView titleName;
+    ColorTextView titleName;
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
     FoundAdapter adapter;
@@ -95,7 +91,7 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
         }, 1000);
     }
 
-    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
+    Observer<VideoResult> observer = new Observer<VideoResult>() {
         @Override
         public void onCompleted() {
         }
@@ -114,7 +110,11 @@ public class Fragment2 extends BaseFragment implements SwipeRefreshLayout.OnRefr
     };
 
     private void getPageHomeInfo() {
-        subscription = NetManager.getInstance().getHomePage(subscriber, getContext());
+        if (isConnection)
+            subscription = NetManager.getInstance().getHomePage(observer, getContext());
+        else {
+            EventUtils.showToast(getContext(), R.string.loading_failed);
+        }
     }
 
     private void setAdapter() {

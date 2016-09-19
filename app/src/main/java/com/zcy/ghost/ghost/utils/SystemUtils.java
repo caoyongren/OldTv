@@ -39,7 +39,6 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -357,14 +356,14 @@ public class SystemUtils {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
         if (info != null && info.isAvailable()) {
-            try {
-                InetAddress ipAddr = InetAddress.getByName("www.baidu.com");
-                return !ipAddr.equals("");
-
-            } catch (Exception e) {
-                return false;
-            }
-//            return true;
+//            try {
+//                InetAddress ipAddr = InetAddress.getByName("www.baidu.com");
+//                return !ipAddr.equals("");
+//
+//            } catch (Exception e) {
+//                return false;
+//            }
+            return true;
         }
         return false;
     }

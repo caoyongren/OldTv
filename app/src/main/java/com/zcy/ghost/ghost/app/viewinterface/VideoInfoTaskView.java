@@ -18,6 +18,7 @@ import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
 import com.zcy.ghost.ghost.app.fragments.VideoIntroFragment;
 import com.zcy.ghost.ghost.app.fragments.VideoRelatedFragment;
 import com.zcy.ghost.ghost.app.taskcontract.VideoInfoContract;
+import com.zcy.ghost.ghost.app.theme.ColorTextView;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.views.SwipeViewPager;
@@ -37,7 +38,7 @@ public class VideoInfoTaskView extends LinearLayout implements VideoInfoContract
     private VideoInfoContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
-    TextView mTitleName;
+    ColorTextView mTitleName;
     @BindView(R.id.tv_score)
     TextView mTvScore;
     @BindView(R.id.tv_type)

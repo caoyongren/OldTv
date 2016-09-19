@@ -17,7 +17,7 @@ import com.zcy.ghost.ghost.utils.StringUtils;
 
 import java.util.List;
 
-import rx.Subscriber;
+import rx.Observer;
 import rx.Subscription;
 
 public class VideoListTaskPresenter implements VideoListContract.Presenter {
@@ -53,10 +53,10 @@ public class VideoListTaskPresenter implements VideoListContract.Presenter {
     }
 
     private void getVideoList(Context context, String catalogID, int page) {
-        subscription = NetManager.getInstance().getVideoList(subscriber, context, catalogID, page + "");
+        subscription = NetManager.getInstance().getVideoList(observer, context, catalogID, page + "");
     }
 
-    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
+    Observer<VideoResult> observer = new Observer<VideoResult>() {
         @Override
         public void onCompleted() {
             if (mAddTaskView.isActive()) {

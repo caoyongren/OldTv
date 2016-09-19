@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.zcy.ghost.ghost.bean.VideoResult;
 
-import rx.Subscriber;
+import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -27,26 +27,27 @@ public class NetManager {
         return SingletonHolder.INSTANCE;
     }
 
-    public Subscription getHomePage(Subscriber<VideoResult> subscriber, Context context) {
+    public Subscription getHomePage(Observer<VideoResult> observer, Context context) {
         return Network.getVideoApi(context)
                 .getHomePage()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(observer);
     }
 
-    public Subscription getVideoInformation(Subscriber<VideoResult> subscriber, Context context, String dataId) {
+    public Subscription getVideoInformation(Observer<VideoResult> observer, Context context, String dataId) {
         return Network.getVideoApi(context)
                 .getVideoInfo(dataId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(observer);
     }
-    public Subscription getVideoList(Subscriber<VideoResult> subscriber, Context context, String catalogID, String page ) {
+
+    public Subscription getVideoList(Observer<VideoResult> observer, Context context, String catalogID, String page) {
         return Network.getVideoApi(context)
                 .getVideoList(catalogID, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(observer);
     }
 }

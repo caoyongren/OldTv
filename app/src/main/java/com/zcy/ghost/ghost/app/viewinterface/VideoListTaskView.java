@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -16,6 +15,7 @@ import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.VideoListAdapter;
 import com.zcy.ghost.ghost.app.activitys.VideoListActivity;
 import com.zcy.ghost.ghost.app.taskcontract.VideoListContract;
+import com.zcy.ghost.ghost.app.theme.ColorTextView;
 import com.zcy.ghost.ghost.utils.EventUtils;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
@@ -36,7 +36,7 @@ public class VideoListTaskView extends LinearLayout implements VideoListContract
     @BindView(R.id.rl_back)
     RelativeLayout mRlBack;
     @BindView(R.id.title_name)
-    TextView mTitleName;
+    ColorTextView mTitleName;
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView mRecyclerView;

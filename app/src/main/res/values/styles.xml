@@ -15,6 +15,29 @@
         <item name="android:activityCloseExitAnimation">@anim/base_slide_right_out</item>
     </style>
 
+
+    <style name="both_wrap_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="both_match_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="lwrap_hmatch_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="lmatch_hwrap_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="mine_lin_style" parent="lmatch_hwrap_style">
+        <item name="android:padding">13dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
     <style name="container_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -63,6 +86,8 @@
     </style>
     <!--设置继承appcompat的activity透明主题-->
     <style name="CustomTransparent" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/black_translucent</item>
+        <item name="md_title_color">@color/dark_green</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
@@ -75,7 +100,8 @@
         <item name="colorPrimary">@color/colorBluePrimary</item>
         <item name="colorPrimaryDark">@color/colorBluePrimaryDark</item>
         <item name="colorAccent">@color/colorBluePrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorBluePrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorBluePrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorBluePrimary</item>-->
         <!--<item name="md_positive_color">@color/colorBluePrimary</item>-->
 
@@ -86,7 +112,8 @@
         <item name="colorPrimary">@color/colorRedPrimary</item>
         <item name="colorPrimaryDark">@color/colorRedPrimaryDark</item>
         <item name="colorAccent">@color/colorRedPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorRedPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorRedPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorRedPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorRedPrimary</item>-->
 
@@ -96,7 +123,8 @@
         <item name="colorPrimary">@color/colorBrownPrimary</item>
         <item name="colorPrimaryDark">@color/colorBrownPrimaryDark</item>
         <item name="colorAccent">@color/colorBrownPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorBrownPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorBrownPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorBrownPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorBrownPrimary</item>-->
 
@@ -106,7 +134,8 @@
         <item name="colorPrimary">@color/colorGreenPrimary</item>
         <item name="colorPrimaryDark">@color/colorGreenPrimaryDark</item>
         <item name="colorAccent">@color/colorGreenPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorGreenPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorGreenPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorGreenPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorGreenPrimary</item>-->
     </style>
@@ -115,7 +144,8 @@
         <item name="colorPrimary">@color/colorPurplePrimary</item>
         <item name="colorPrimaryDark">@color/colorPurplePrimaryDark</item>
         <item name="colorAccent">@color/colorPurplePrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorPurplePrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorPurplePrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorPurplePrimary</item>-->
         <!--<item name="md_positive_color">@color/colorPurplePrimary</item>-->
     </style>
@@ -124,7 +154,8 @@
         <item name="colorPrimary">@color/colorTealPrimary</item>
         <item name="colorPrimaryDark">@color/colorTealPrimaryDark</item>
         <item name="colorAccent">@color/colorTealPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorTealPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorTealPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorTealPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorTealPrimary</item>-->
     </style>
@@ -134,7 +165,8 @@
         <item name="colorPrimary">@color/colorPinkPrimary</item>
         <item name="colorPrimaryDark">@color/colorPinkPrimaryDark</item>
         <item name="colorAccent">@color/colorPinkPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorPinkPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorPinkPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorPinkPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorPinkPrimary</item>-->
     </style>
@@ -144,7 +176,8 @@
         <item name="colorPrimary">@color/colorDeepPurplePrimary</item>
         <item name="colorPrimaryDark">@color/colorDeepPurplePrimaryDark</item>
         <item name="colorAccent">@color/colorDeepPurplePrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorDeepPurplePrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorDeepPurplePrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorDeepPurplePrimary</item>-->
         <!--<item name="md_positive_color">@color/colorDeepPurplePrimary</item>-->
     </style>
@@ -154,7 +187,8 @@
         <item name="colorPrimary">@color/colorOrangePrimary</item>
         <item name="colorPrimaryDark">@color/colorOrangePrimaryDark</item>
         <item name="colorAccent">@color/colorOrangePrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorOrangePrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorOrangePrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorOrangePrimary</item>-->
         <!--<item name="md_positive_color">@color/colorOrangePrimary</item>-->
     </style>
@@ -165,7 +199,8 @@
         <item name="colorPrimary">@color/colorIndigoPrimary</item>
         <item name="colorPrimaryDark">@color/colorIndigoPrimaryDark</item>
         <item name="colorAccent">@color/colorIndigoPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorIndigoPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorIndigoPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorIndigoPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorIndigoPrimary</item>-->
     </style>
@@ -176,7 +211,8 @@
         <item name="colorPrimary">@color/colorCyanPrimary</item>
         <item name="colorPrimaryDark">@color/colorCyanPrimaryDark</item>
         <item name="colorAccent">@color/colorCyanPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorCyanPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorCyanPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorCyanPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorCyanPrimary</item>-->
     </style>
@@ -188,7 +224,8 @@
         <item name="colorPrimaryDark">@color/colorLightGreenPrimaryDark</item>
         <item name="colorAccent">@color/colorLightGreenPrimaryDark</item>
         <item name="menuBackground">@drawable/light_green_background</item>
-        <!--<item name="md_title_color">@color/colorLightGreenPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorLightGreenPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorLightGreenPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorLightGreenPrimary</item>-->
     </style>
@@ -199,7 +236,8 @@
         <item name="colorPrimary">@color/colorLimePrimary</item>
         <item name="colorPrimaryDark">@color/colorLimePrimaryDark</item>
         <item name="colorAccent">@color/colorLimePrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorLimePrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorLimePrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorLimePrimary</item>-->
         <!--<item name="md_positive_color">@color/colorLimePrimary</item>-->
     </style>
@@ -210,7 +248,8 @@
         <item name="colorPrimary">@color/colorDeepOrangePrimary</item>
         <item name="colorPrimaryDark">@color/colorDeepOrangePrimaryDark</item>
         <item name="colorAccent">@color/colorDeepOrangePrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorDeepOrangePrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorDeepOrangePrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorDeepOrangePrimary</item>-->
         <!--<item name="md_positive_color">@color/colorDeepOrangePrimary</item>-->
     </style>
@@ -221,9 +260,16 @@
         <item name="colorPrimary">@color/colorBlueGreyPrimary</item>
         <item name="colorPrimaryDark">@color/colorBlueGreyPrimaryDark</item>
         <item name="colorAccent">@color/colorBlueGreyPrimaryDark</item>
-        <!--<item name="md_title_color">@color/colorBlueGreyPrimary</item>-->
+        <item name="colorPrimaryLight">@color/colorBlueGreyPrimary</item>
+        <item name="md_title_color">@color/white</item>
         <!--<item name="md_link_color">@color/colorBlueGreyPrimary</item>-->
         <!--<item name="md_positive_color">@color/colorBlueGreyPrimary</item>-->
+    </style>
+    <!--black-->
+    <style name="BlackTheme" parent="CustomTransparent">
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="md_title_color">@color/dark_green</item>
+        <item name="colorPrimaryLight">@color/black_translucent</item>
     </style>
 
 

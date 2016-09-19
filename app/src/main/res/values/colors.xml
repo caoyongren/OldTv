@@ -29,6 +29,7 @@
         <item>@color/colorLimePrimary</item>
         <item>@color/colorDeepOrangePrimary</item>
         <item>@color/colorBlueGreyPrimary</item>
+        <item>@android:color/black</item>
     </array>
 
     <!--basic color-->

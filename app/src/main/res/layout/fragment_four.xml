@@ -1,17 +1,145 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/both_match_style"
     android:orientation="vertical">
 
     <include
         android:id="@+id/title"
         layout="@layout/main_title" />
 
-    <TextView
-        android:id="@+id/tv_set_theme"
+    <LinearLayout
+        style="@style/lmatch_hwrap_style"
+        android:background="@mipmap/my_bg"
+        android:gravity="center_vertical|right">
+
+        <ImageView
+            android:id="@+id/img_setting"
+            style="@style/both_wrap_style"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@mipmap/my_set" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_record"
+        style="@style/mine_lin_style"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img1"
+            style="@style/both_wrap_style"
+            android:background="@mipmap/my_records" />
+
+        <TextView
+            style="@style/common_tv_style"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/img1"
+            android:text="@string/my_record" />
+
+        <ImageView
+            style="@style/both_wrap_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/right" />
+    </RelativeLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/title"
-        android:gravity="center_vertical"
-        android:text="@string/set_theme" />
-</RelativeLayout>
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/min_margin_left"
+        android:layout_marginRight="@dimen/min_margin_right"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:id="@+id/rl_down"
+        style="@style/mine_lin_style"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img2"
+            style="@style/both_wrap_style"
+            android:background="@mipmap/my_down" />
+
+        <TextView
+            style="@style/common_tv_style"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/img2"
+            android:text="@string/my_down" />
+
+        <ImageView
+            style="@style/both_wrap_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/min_margin_left"
+        android:layout_marginRight="@dimen/min_margin_right"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:id="@+id/rl_collection"
+        style="@style/mine_lin_style"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img3"
+            style="@style/both_wrap_style"
+            android:background="@mipmap/my_collection" />
+
+        <TextView
+            style="@style/common_tv_style"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/img3"
+            android:text="@string/my_collection" />
+
+        <ImageView
+            style="@style/both_wrap_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/min_margin_left"
+        android:layout_marginRight="@dimen/min_margin_right"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:id="@+id/rl_them"
+        style="@style/mine_lin_style"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img4"
+            style="@style/both_wrap_style"
+            android:background="@mipmap/my_everyone" />
+
+        <TextView
+            style="@style/common_tv_style"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/img4"
+            android:text="@string/my_them" />
+
+        <ImageView
+            style="@style/both_wrap_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/min_margin_left"
+        android:layout_marginRight="@dimen/min_margin_right"
+        android:background="@android:color/darker_gray" />
+
+</LinearLayout>

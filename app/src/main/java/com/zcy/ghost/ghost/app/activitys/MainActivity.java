@@ -1,15 +1,10 @@
 package com.zcy.ghost.ghost.app.activitys;
 
-import android.animation.Animator;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -22,7 +17,6 @@ import com.zcy.ghost.ghost.app.fragments.Fragment1;
 import com.zcy.ghost.ghost.app.fragments.Fragment2;
 import com.zcy.ghost.ghost.app.fragments.Fragment3;
 import com.zcy.ghost.ghost.app.fragments.Fragment4;
-import com.zcy.ghost.ghost.app.theme.ColorUiUtil;
 import com.zcy.ghost.ghost.app.theme.Theme;
 import com.zcy.ghost.ghost.utils.PreUtils;
 import com.zcy.ghost.ghost.utils.ThemeUtils;
@@ -38,6 +32,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, ColorChooserDialog.ColorCallback {
+
+    public static final String Set_Theme_Color = "Set_Theme_Color";
+
     @BindView(R.id.tab_rg_menu)
     RadioGroup tabRgMenu;
     @BindView(R.id.vp_content)
@@ -51,7 +48,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
-        setTranslucentStatus(true);
         initView();
         initEvent();
     }
@@ -181,42 +177,12 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             setTheme(R.style.CyanTheme);
             PreUtils.setCurrentTheme(this, Theme.Cyan);
 
+        } else if (selectedColor == getResources().getColor(android.R.color.black)) {
+            setTheme(R.style.BlackTheme);
+            PreUtils.setCurrentTheme(this, Theme.Black);
+
         }
-        final View rootView = getWindow().getDecorView();
-        rootView.setDrawingCacheEnabled(true);
-        rootView.buildDrawingCache(true);
-
-        final Bitmap localBitmap = Bitmap.createBitmap(rootView.getDrawingCache());
-        rootView.setDrawingCacheEnabled(false);
-        if (null != localBitmap && rootView instanceof ViewGroup) {
-            final View tmpView = new View(getApplicationContext());
-            tmpView.setBackgroundDrawable(new BitmapDrawable(getResources(), localBitmap));
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            ((ViewGroup) rootView).addView(tmpView, params);
-            tmpView.animate().alpha(0).setDuration(400).setListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-                    ColorUiUtil.changeTheme(rootView, getTheme());
-                    System.gc();
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    ((ViewGroup) rootView).removeView(tmpView);
-                    localBitmap.recycle();
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animation) {
-
-                }
-            }).start();
-        }
+        EventBus.getDefault().post("", Set_Theme_Color);
     }
 
     @Override

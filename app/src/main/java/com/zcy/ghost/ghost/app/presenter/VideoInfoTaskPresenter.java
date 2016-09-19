@@ -14,10 +14,13 @@ import com.zcy.ghost.ghost.utils.StringUtils;
 
 import org.simple.eventbus.EventBus;
 
-import rx.Subscriber;
+import rx.Observer;
 import rx.Subscription;
 
 public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
+
+    public final static String Refresh_Video_Info = "Refresh_Video_Info";
+
     @NonNull
     final VideoInfoContract.View mAddTaskView;
     VideoInfo videoInfo;
@@ -38,7 +41,7 @@ public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
 
     }
 
-    Subscriber<VideoResult> subscriber = new Subscriber<VideoResult>() {
+    Observer<VideoResult> observer = new Observer<VideoResult>() {
         @Override
         public void onCompleted() {
             if (mAddTaskView.isActive())
@@ -62,7 +65,7 @@ public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            EventBus.getDefault().post(videoRes, "refresh_video_info");
+                            EventBus.getDefault().post(videoRes, Refresh_Video_Info);
                         }
                     }, 200);
                 }
@@ -81,6 +84,6 @@ public class VideoInfoTaskPresenter implements VideoInfoContract.Presenter {
 
     @Override
     public void getVideoInformation() {
-        subscription = NetManager.getInstance().getVideoInformation(subscriber, mAddTaskView.getContexts(), videoInfo.dataId);
+        subscription = NetManager.getInstance().getVideoInformation(observer, mAddTaskView.getContexts(), videoInfo.dataId);
     }
 }

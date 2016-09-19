@@ -34,10 +34,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTranslucentStatus(true);
         onPreCreate();
         isConnection = SystemUtils.checkNet(this);
         regReceiver();
     }
+
     private void onPreCreate() {
         Theme theme = PreUtils.getCurrentTheme(this);
         switch (theme) {
@@ -85,6 +87,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 break;
             case BlueGrey:
                 setTheme(R.style.BlueGreyTheme);
+                break;
+            case Black:
+                setTheme(R.style.BlackTheme);
                 break;
         }
 

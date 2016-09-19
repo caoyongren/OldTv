@@ -1,13 +1,11 @@
 package com.zcy.ghost.ghost.app.fragments;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.app.BaseFragment;
+import com.zcy.ghost.ghost.app.presenter.VideoInfoTaskPresenter;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.utils.StringUtils;
 
@@ -15,8 +13,6 @@ import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Description: VideoIntroFragment
@@ -49,7 +45,7 @@ public class VideoIntroFragment extends BaseFragment {
         super.onDestroyView();
     }
 
-    @Subscriber(tag = "refresh_video_info")
+    @Subscriber(tag = VideoInfoTaskPresenter.Refresh_Video_Info)
     public void setData(VideoRes videoInfo) {
         String dir = "导演：" + StringUtils.removeOtherCode(videoInfo.director);
         String act = "主演：" + StringUtils.removeOtherCode(videoInfo.actors);

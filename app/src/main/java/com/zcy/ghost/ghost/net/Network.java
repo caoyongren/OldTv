@@ -6,6 +6,10 @@ import com.zcy.ghost.ghost.net.api.GankApi;
 import com.zcy.ghost.ghost.net.api.VideoApi;
 import com.zcy.ghost.ghost.net.api.ZhuangbiApi;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
@@ -18,6 +22,12 @@ public class Network {
     private static VideoApi videoApi;
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
+    private static HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+    private static OkHttpClient client = new OkHttpClient()
+            .newBuilder()
+            .addInterceptor(interceptor)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .build();
 
     public static ZhuangbiApi getZhuangbiApi(Context context) {
         if (zhuangbiApi == null) {
@@ -44,10 +54,11 @@ public class Network {
         }
         return gankApi;
     }
+
     public static VideoApi getVideoApi(Context context) {
         if (videoApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
-                    .client(CatcheHttpClient.getMyOkHttpClient().init(context))
+                    .client(client)//CatcheHttpClient.getMyOkHttpClient().init(context)
                     .baseUrl("http://api.svipmovie.com/front/")
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)

@@ -1,11 +1,8 @@
 package com.zcy.ghost.ghost.app.fragments;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -14,15 +11,13 @@ import com.zcy.ghost.ghost.R;
 import com.zcy.ghost.ghost.adapter.RelatedAdapter;
 import com.zcy.ghost.ghost.app.BaseFragment;
 import com.zcy.ghost.ghost.app.activitys.VideoInfoActivity;
+import com.zcy.ghost.ghost.app.presenter.VideoInfoTaskPresenter;
 import com.zcy.ghost.ghost.bean.VideoRes;
 import com.zcy.ghost.ghost.utils.ScreenUtil;
 
-import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Description: VideoIntroFragment
@@ -39,7 +34,6 @@ public class VideoRelatedFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        EventBus.getDefault().register(this);
         return R.layout.fragment_video_rela;
     }
 
@@ -65,11 +59,10 @@ public class VideoRelatedFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
-        EventBus.getDefault().unregister(this);
         super.onDestroyView();
     }
 
-    @Subscriber(tag = "refresh_video_info")
+    @Subscriber(tag = VideoInfoTaskPresenter.Refresh_Video_Info)
     public void setData(VideoRes videoInfo) {
         if (videoInfo.list.size() > 1)
             adapter.addAll(videoInfo.list.get(1).childList);

@@ -16,4 +16,8 @@
     <attr name="colorBackgroundAccent" format="color|reference" />
     <attr name="colorHint" format="color|reference" />
     <attr name="menuBackground" format="reference" />
+
+    <!--themeColor-->
+    <attr name="colorPrimaryLight" format="color|reference" />
+
 </resources>

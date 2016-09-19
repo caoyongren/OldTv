@@ -1,9 +1,12 @@
 package com.zcy.ghost.ghost.app;
 
+import android.animation.Animator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,8 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zcy.ghost.ghost.app.activitys.MainActivity;
+import com.zcy.ghost.ghost.app.theme.ColorUiUtil;
 import com.zcy.ghost.ghost.utils.LogUtils;
 import com.zcy.ghost.ghost.utils.SystemUtils;
+
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import butterknife.ButterKnife;
 import rx.Subscription;
@@ -64,6 +72,7 @@ public abstract class BaseFragment extends Fragment {
         }
         initView(inflater);
         ButterKnife.bind(this, rootView);
+        EventBus.getDefault().register(this);
         return rootView;
     }
 
@@ -113,6 +122,7 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        EventBus.getDefault().register(this);
         super.onDestroyView();
         LogUtils.v(TAG, "onDestroyView");
     }
@@ -180,4 +190,42 @@ public abstract class BaseFragment extends Fragment {
         return false;
     }
 
+    @Subscriber(tag = MainActivity.Set_Theme_Color)
+    public void setTheme(String arg) {
+        final View rootView = getActivity().getWindow().getDecorView();
+        rootView.setDrawingCacheEnabled(true);
+        rootView.buildDrawingCache(true);
+
+        final Bitmap localBitmap = Bitmap.createBitmap(rootView.getDrawingCache());
+        rootView.setDrawingCacheEnabled(false);
+        if (null != localBitmap && rootView instanceof ViewGroup) {
+            final View tmpView = new View(getContext());
+            tmpView.setBackgroundDrawable(new BitmapDrawable(getResources(), localBitmap));
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            ((ViewGroup) rootView).addView(tmpView, params);
+            tmpView.animate().alpha(0).setDuration(400).setListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    ColorUiUtil.changeTheme(rootView, getContext().getTheme());
+                    System.gc();
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    ((ViewGroup) rootView).removeView(tmpView);
+                    localBitmap.recycle();
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            }).start();
+        }
+    }
 }
