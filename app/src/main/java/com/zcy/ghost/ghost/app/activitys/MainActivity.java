@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void initView() {
         List<Fragment> fragments = initFragments();
-        vpContent.setScrollable(true);
+        vpContent.setScrollable(false);
         mPagerAdapter = new ContentPagerAdapter(getSupportFragmentManager(), fragments);
         vpContent.setAdapter(mPagerAdapter);
         vpContent.setOffscreenPageLimit(fragments.size());

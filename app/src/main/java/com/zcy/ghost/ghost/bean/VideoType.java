@@ -16,6 +16,7 @@ public class VideoType {
     public String dataId;
     public String airTime;
     public String score;
+    public String description;
     public
     @SerializedName("childList")
     List<VideoInfo> childList;

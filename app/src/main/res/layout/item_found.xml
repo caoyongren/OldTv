@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/white_translucent"
+        android:background="@color/black_translucent"
         android:paddingBottom="3dp"
         android:gravity="center"
         android:paddingTop="3dp">
@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/common_tv_bold_style"
-            android:textColor="@color/dark_green" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 
