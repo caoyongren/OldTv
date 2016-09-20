@@ -73,8 +73,8 @@ public class Fragment3 extends BaseFragment {
         swipeDeck = (SwipeDeck) rootView.findViewById(R.id.swipe_deck);
         swipeDeck.setHardwareAccelerationEnabled(true);
 
-        swipeDeck.setLeftImage(R.id.left_image);
-        swipeDeck.setRightImage(R.id.right_image);
+//        swipeDeck.setLeftImage(R.id.left_image);
+//        swipeDeck.setRightImage(R.id.right_image);
 
         initEvent();
         nextVideos();

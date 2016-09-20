@@ -33,8 +33,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLength="8"
-            android:singleLine="true"
-            android:text="对方水电费对方水电费" />
+            android:singleLine="true" />
 
         <RelativeLayout
             android:layout_width="140dp"
@@ -56,7 +55,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/left_image"
@@ -81,7 +81,6 @@
             android:ellipsize="end"
             android:lineSpacingMultiplier="1.2"
             android:maxLines="6"
-            android:text="\t\t浪费空间撒风景奥斯卡级洁癖问UR拍MV老是扣杜甫发奖品是掉飞机按时缴费脾胃满级"
             android:textColor="@color/gray_light" />
 
     </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">小幽</string>
+    <string name="app_name">微影</string>
     <string name="loading_failed">数据加载失败</string>
 
     <string name="score">评分：</string>
@@ -19,4 +19,5 @@
     <string name="my_down">缓存</string>
     <string name="my_collection">收藏</string>
     <string name="my_them">主题</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
