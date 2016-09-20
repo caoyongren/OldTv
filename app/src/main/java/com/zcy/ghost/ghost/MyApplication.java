@@ -4,6 +4,10 @@ package com.zcy.ghost.ghost;
 import android.app.Application;
 import android.content.Context;
 
+import com.github.moduth.blockcanary.BlockCanary;
+import com.squareup.leakcanary.LeakCanary;
+import com.zcy.ghost.ghost.views.AppBlockCanaryContext;
+
 /******************************************
  * 类名称：MyApplication
  * 类描述：
@@ -19,5 +23,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this.getApplicationContext();
+        //初始化内存泄漏检测
+        LeakCanary.install(this);
+        //初始化过度绘制检测
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 }
