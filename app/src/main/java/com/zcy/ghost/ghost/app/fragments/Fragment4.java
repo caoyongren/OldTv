@@ -51,9 +51,12 @@ public class Fragment4 extends BaseFragment {
         return rootView;
     }
 
-    @OnClick({R.id.rl_down, R.id.rl_collection, R.id.rl_them})
+    @OnClick({R.id.rl_record, R.id.rl_down, R.id.rl_collection, R.id.rl_them, R.id.img_setting})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.rl_record:
+                EventUtils.showToast(getContext(), "本地");
+                break;
             case R.id.rl_down:
                 EventUtils.showToast(getContext(), "暂定下载功能");
                 break;
