@@ -12,7 +12,9 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by codeest on 2016/8/3.
+ * Description: RxUtil
+ * Creator: yxc
+ * date: 2016/9/21 18:45 
  */
 public class RxUtil {
 

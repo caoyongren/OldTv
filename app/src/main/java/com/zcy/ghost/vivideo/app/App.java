@@ -3,6 +3,10 @@ package com.zcy.ghost.vivideo.app;
 
 import android.app.Application;
 
+import com.github.moduth.blockcanary.BlockCanary;
+import com.squareup.leakcanary.LeakCanary;
+import com.zcy.ghost.vivideo.widget.AppBlockCanaryContext;
+
 /******************************************
  * 类名称：App
  * 类描述：
@@ -23,8 +27,8 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         //初始化内存泄漏检测
-//        LeakCanary.install(this);
+        LeakCanary.install(this);
         //初始化过度绘制检测
-//        BlockCanary.install(this, new AppBlockCanaryContext()).start();
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 }

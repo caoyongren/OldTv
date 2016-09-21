@@ -4,7 +4,6 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Created by codeest on 2016/8/2.
  * 基于Rx的Presenter封装,控制订阅的生命周期
  */
 public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
