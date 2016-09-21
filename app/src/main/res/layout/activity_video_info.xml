@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/container_style"
-    android:orientation="vertical">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.zcy.ghost.ghost.app.viewinterface.VideoInfoTaskView
+    <com.zcy.ghost.vivideo.ui.view.VideoInfoView
         android:id="@+id/video_info_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        style="@style/both_match_style"/>
 
 </merge>

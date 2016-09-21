@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/both_match_style"
+    android:orientation="vertical">
+
+    <include layout="@layout/main_title" />
+
+    <FrameLayout style="@style/both_match_style">
+
+        <TextView
+            android:id="@+id/tv_nomore"
+            style="@style/common_tv_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="没有了，点击换下一批"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+
+        <com.daprlabs.cardstack.SwipeFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.daprlabs.cardstack.SwipeDeck
+                android:id="@+id/swipe_deck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="30dp"
+                swipedeck:card_spacing="10dp"
+                swipedeck:max_visible="3"
+                swipedeck:opacity_end="0.2"
+                swipedeck:render_above="true"
+                swipedeck:rotation_degrees="15" />
+
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/comm_btn_selector"
+                android:textColor="@color/comm_btn_color_selector"
+                android:textSize="13sp"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="30dp"
+                android:text="换一批"/>
+
+
+        </com.daprlabs.cardstack.SwipeFrameLayout>
+
+
+        <com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:circleprogress="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/loading"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            circleprogress:autoStart="true"
+            circleprogress:color1="@android:color/holo_red_light"
+            circleprogress:color2="@android:color/holo_green_light"
+            circleprogress:color3="@android:color/holo_blue_light" />
+    </FrameLayout>
+
+
+</LinearLayout>

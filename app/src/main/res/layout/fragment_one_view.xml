@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_empty="@layout/view_empty"
+        app:layout_progress="@layout/view_progress"
+        app:scrollbars="none" />
+
+    <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="?attr/colorPrimary">
+
+        <com.zcy.ghost.vivideo.widget.theme.ColorTextView
+            android:id="@+id/title_name"
+            style="@style/title_tv_style"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:textColor="?attr/md_title_color" />
+    </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
+</RelativeLayout>

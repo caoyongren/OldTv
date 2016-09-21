@@ -1,4 +1,4 @@
-<com.zcy.ghost.ghost.app.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/titleLayout"
     android:layout_width="match_parent"
     android:layout_height="68dp"
@@ -18,7 +18,7 @@
 
     </RelativeLayout>
 
-    <com.zcy.ghost.ghost.app.theme.ColorTextView
+    <com.zcy.ghost.vivideo.widget.theme.ColorTextView
         android:id="@+id/title_name"
         style="@style/title_tv_style"
         android:layout_centerHorizontal="true"
@@ -40,4 +40,4 @@
             android:background="@mipmap/collection" />
 
     </RelativeLayout>
-</com.zcy.ghost.ghost.app.theme.ColorRelativeLayout>
+</com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>

@@ -3,7 +3,7 @@
     style="@style/container_style"
     android:orientation="vertical">
 
-    <com.zcy.ghost.ghost.views.UnScrollViewPager
+    <com.zcy.ghost.vivideo.widget.UnScrollViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
