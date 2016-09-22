@@ -54,7 +54,15 @@ public class StringUtils {
         return reference;
     }
 
-    public static int getRandomNumber(int min, int max){
+    public static int getRandomNumber(int min, int max) {
         return new Random().nextInt(max) % (max - min + 1) + min;
+    }
+
+    public static String getErrorMsg(String msg) {
+        if (msg.contains("*")) {
+            msg = msg.substring(msg.indexOf("*") + 1);
+            return msg;
+        } else
+            return "";
     }
 }

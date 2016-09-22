@@ -30,12 +30,6 @@ public class RetrofitHelper {
 
     private static OkHttpClient okHttpClient = null;
     private static VideoApis videoApi;
-    private static HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-    private static OkHttpClient client = new OkHttpClient()
-            .newBuilder()
-            .addInterceptor(interceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .build();
 
     public static VideoApis getVideoApi() {
         initOkHttp();
@@ -59,7 +53,6 @@ public class RetrofitHelper {
                 loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
                 builder.addInterceptor(loggingInterceptor);
             }
-            Log.e("helper",Constants.PATH_CACHE);
             File cacheFile = new File(Constants.PATH_CACHE);
             Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
             Interceptor cacheInterceptor = new Interceptor() {

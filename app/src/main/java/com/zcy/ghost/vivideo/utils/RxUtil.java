@@ -50,9 +50,9 @@ public class RxUtil {
                         if (videoHttpResponse.getCode() == 200) {
                             return createData(videoHttpResponse.getRet());
                         } else if (!TextUtils.isEmpty(videoHttpResponse.getMsg())) {
-                            return Observable.error(new ApiException(videoHttpResponse.getMsg()));
+                            return Observable.error(new ApiException("*" + videoHttpResponse.getMsg()));
                         } else {
-                            return Observable.error(new ApiException("服务器返回error"));
+                            return Observable.error(new ApiException("*" + "服务器返回error"));
                         }
                     }
                 });

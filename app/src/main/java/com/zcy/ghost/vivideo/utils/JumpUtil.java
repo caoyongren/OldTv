@@ -3,11 +3,11 @@ package com.zcy.ghost.vivideo.utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
 import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.activitys.VideoListActivity;
+import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
 
 /**
  * Description: JumpUtil
@@ -31,7 +31,7 @@ public class JumpUtil {
 
     public static void go2MainActivity(Context context) {
         jump(context, MainActivity.class);
-        ((BaseActivity) context).finish();
+        ((WelcomeActivity) context).finish();
     }
 
     private static void jump(Context a, Class<?> clazz) {

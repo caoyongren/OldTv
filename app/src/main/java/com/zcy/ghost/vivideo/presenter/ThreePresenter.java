@@ -63,7 +63,7 @@ public class ThreePresenter extends RxPresenter implements ThreeContract.Present
                                @Override
                                public void call(Throwable throwable) {
 
-                                   mView.refreshFaild(throwable.getMessage());
+                                   mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                                }
                            }, new Action0() {
                                @Override

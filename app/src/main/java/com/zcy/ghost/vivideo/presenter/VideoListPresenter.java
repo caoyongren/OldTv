@@ -61,11 +61,9 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
                     @Override
                     public void call(Throwable throwable) {
                         if (page > 1) {
-                            mView.loadMoreFaild(throwable.getMessage());
                             page--;
-                        } else {
-                            mView.refreshFaild(throwable.getMessage());
                         }
+                        mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
         addSubscrebe(rxSubscription);

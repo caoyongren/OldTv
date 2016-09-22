@@ -58,7 +58,7 @@ public class TwoPresenter extends RxPresenter implements TwoContract.Presenter {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        mView.refreshFaild(throwable.getMessage());
+                        mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
         addSubscrebe(rxSubscription);

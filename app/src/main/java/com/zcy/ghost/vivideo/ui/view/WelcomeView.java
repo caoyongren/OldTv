@@ -5,12 +5,11 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
 import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
+import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
@@ -78,8 +77,9 @@ public class WelcomeView extends LinearLayout implements WelcomeContract.View {
         mActive = false;
         if (unbinder != null)
             unbinder.unbind();
-        if (ivWelcomeBg != null)
-            Glide.clear(ivWelcomeBg);
+        if (ivWelcomeBg != null) {
+            ivWelcomeBg.clearAnimation();
+        }
         super.onDetachedFromWindow();
     }
 
@@ -101,7 +101,7 @@ public class WelcomeView extends LinearLayout implements WelcomeContract.View {
     @Override
     public void showContent(List<String> list) {
         if (list != null) {
-            int page = StringUtils.getRandomNumber(0, list.size()-1);
+            int page = StringUtils.getRandomNumber(0, list.size() - 1);
             ImageLoader.load(mContext, list.get(page), ivWelcomeBg);
             ivWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
         }
@@ -111,6 +111,6 @@ public class WelcomeView extends LinearLayout implements WelcomeContract.View {
     @Override
     public void jumpToMain() {
         JumpUtil.go2MainActivity(mContext);
-        ((BaseActivity) mContext).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        ((WelcomeActivity) mContext).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }
