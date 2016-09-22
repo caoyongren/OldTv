@@ -10,6 +10,8 @@ import android.widget.RadioGroup;
 
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.app.App;
+import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
@@ -33,7 +35,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, ColorChooserDialog.ColorCallback {
 
     public static final String Set_Theme_Color = "Set_Theme_Color";
-
+    private Long firstTime = 0L;
     @BindView(R.id.tab_rg_menu)
     RadioGroup tabRgMenu;
     @BindView(R.id.vp_content)
@@ -198,5 +200,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 .allowUserColorInput(false)
                 .allowUserColorInputAlpha(false)
                 .show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        long secondTime = System.currentTimeMillis();
+        if (secondTime - firstTime > 1500) {
+            EventUtil.showToast(this, "再按一次退出");
+            firstTime = secondTime;
+        } else {
+            App.getInstance().exitApp();
+        }
     }
 }

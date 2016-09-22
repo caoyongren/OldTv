@@ -2,6 +2,8 @@ package com.zcy.ghost.vivideo.utils;
 
 import android.text.TextUtils;
 
+import java.util.Random;
+
 /**
  * Description:
  * Creator: yxc
@@ -50,5 +52,9 @@ public class StringUtils {
             throw new NullPointerException();
         }
         return reference;
+    }
+
+    public static int getRandomNumber(int min, int max){
+        return new Random().nextInt(max) % (max - min + 1) + min;
     }
 }

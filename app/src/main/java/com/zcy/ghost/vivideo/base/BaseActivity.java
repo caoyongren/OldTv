@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
@@ -39,6 +40,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         onPreCreate();
         isConnection = SystemUtils.checkNet(this);
         regReceiver();
+        App.getInstance().addActivity(this);
     }
 
     protected void attachView(BaseView view) {

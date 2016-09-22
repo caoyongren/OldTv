@@ -11,8 +11,6 @@ import com.zcy.ghost.vivideo.presenter.contract.ThreeContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
-import java.util.Random;
-
 import rx.Subscription;
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -81,6 +79,6 @@ public class ThreePresenter extends RxPresenter implements ThreeContract.Present
 
 
     private int getNextPage() {
-        return new Random().nextInt(90) % (max - min + 1) + min;
+        return StringUtils.getRandomNumber(min,max);
     }
 }

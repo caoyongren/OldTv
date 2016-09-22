@@ -3,7 +3,9 @@ package com.zcy.ghost.vivideo.utils;
 import android.content.Context;
 import android.content.Intent;
 
+import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
+import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
 import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.activitys.VideoListActivity;
 
@@ -20,14 +22,19 @@ public class JumpUtil {
         context.startActivity(intent);
     }
 
-    public static void go2VideoListActivity(Context context, String catalogId, String title){
+    public static void go2VideoListActivity(Context context, String catalogId, String title) {
         Intent intent = new Intent(context, VideoListActivity.class);
         intent.putExtra("catalogId", catalogId);
         intent.putExtra("title", title);
         context.startActivity(intent);
     }
 
-    public void jump(Context a, Class<?> clazz) {
+    public static void go2MainActivity(Context context) {
+        jump(context, MainActivity.class);
+        ((BaseActivity) context).finish();
+    }
+
+    private static void jump(Context a, Class<?> clazz) {
         Intent intent = new Intent(a, clazz);
         a.startActivity(intent);
     }

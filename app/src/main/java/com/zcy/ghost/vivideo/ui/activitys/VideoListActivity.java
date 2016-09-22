@@ -21,7 +21,6 @@ public class VideoListActivity extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
         unbinder = ButterKnife.bind(this);
-        videlListView = (VideoListView) findViewById(R.id.video_list_view);
         getIntentData();
         mPresenter = new VideoListPresenter(videlListView, mCatalogId);
         attachView(videlListView);
