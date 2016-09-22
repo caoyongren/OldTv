@@ -14,7 +14,7 @@ import rx.schedulers.Schedulers;
 /**
  * Description: RxUtil
  * Creator: yxc
- * date: 2016/9/21 18:45 
+ * date: 2016/9/21 18:47
  */
 public class RxUtil {
 

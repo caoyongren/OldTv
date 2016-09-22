@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:name=".app.App"
@@ -28,6 +32,10 @@
         <activity
             android:name=".ui.activitys.VideoListActivity"
             android:theme="@style/CustomTransparent" />
+
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="3b5a14c609a54bfd369ec43ead88852a" />
     </application>
 
 </manifest>

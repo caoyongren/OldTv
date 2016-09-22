@@ -18,10 +18,55 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir/zcy.keystore")
+            storePassword "zcyghost"
+            keyAlias "zcy.keystore"
+            keyPassword "zcyghost"
+        }
+
         release {
+            storeFile file("$rootDir/zcy.keystore")
+            storePassword "zcyghost"
+            keyAlias "zcy.keystore"
+            keyPassword "zcyghost"
+        }
+    }
+    buildTypes {
+
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            //混淆
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
         }
     }
 }
@@ -55,6 +100,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:24.0.0'
     compile 'com.makeramen:roundedimageview:2.2.1'
     compile 'me.yokeyword:fragmentation:0.7.10'
+    compile 'com.pgyersdk:sdk:2.4.0'
     compile('com.github.afollestad.material-dialogs:core:0.8.5.4@aar') {
         transitive = true
     }

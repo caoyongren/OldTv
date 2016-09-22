@@ -4,6 +4,7 @@ package com.zcy.ghost.vivideo.app;
 import android.app.Application;
 
 import com.github.moduth.blockcanary.BlockCanary;
+import com.pgyersdk.crash.PgyCrashManager;
 import com.squareup.leakcanary.LeakCanary;
 import com.zcy.ghost.vivideo.widget.AppBlockCanaryContext;
 
@@ -26,6 +27,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        //蒲公英crash上报
+        PgyCrashManager.register(this);
         //初始化内存泄漏检测
         LeakCanary.install(this);
         //初始化过度绘制检测
