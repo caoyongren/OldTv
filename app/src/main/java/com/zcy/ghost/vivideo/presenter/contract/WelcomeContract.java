@@ -3,7 +3,8 @@ package com.zcy.ghost.vivideo.presenter.contract;
 
 import com.zcy.ghost.vivideo.base.BasePresenter;
 import com.zcy.ghost.vivideo.base.BaseView;
-import com.zcy.ghost.vivideo.model.bean.VideoRes;
+
+import java.util.List;
 
 /**
  * Description: WelcomeContract
@@ -16,7 +17,7 @@ public interface WelcomeContract {
 
         boolean isActive();
 
-        void showContent(VideoRes videoRes);
+        void showContent(List<String> list);
 
         void jumpToMain();
     }

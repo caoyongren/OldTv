@@ -10,8 +10,6 @@ import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.component.ImageLoader;
-import com.zcy.ghost.vivideo.model.bean.VideoInfo;
-import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
@@ -101,21 +99,11 @@ public class WelcomeView extends LinearLayout implements WelcomeContract.View {
     }
 
     @Override
-    public void showContent(VideoRes videoRes) {
-        List<VideoInfo> list = null;
-        if (videoRes != null) {
-            for (int i = 1; i < videoRes.list.size(); i++) {
-                if (videoRes.list.get(i).title.equals("精彩推荐")) {
-                    list = videoRes.list.get(i).childList;
-                    break;
-                }
-            }
-            if (list != null) {
-                int page = StringUtils.getRandomNumber(1, list.size());
-                String imgUrl = list.get(page).pic;
-                ImageLoader.load(mContext, imgUrl, ivWelcomeBg);
-                ivWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
-            }
+    public void showContent(List<String> list) {
+        if (list != null) {
+            int page = StringUtils.getRandomNumber(1, list.size());
+            ImageLoader.load(mContext, list.get(page), ivWelcomeBg);
+            ivWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
         }
 
     }

@@ -3,13 +3,12 @@ package com.zcy.ghost.vivideo.presenter;
 import android.support.annotation.NonNull;
 
 import com.zcy.ghost.vivideo.base.RxPresenter;
-import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
-import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -33,26 +32,28 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
 
     @Override
     public void getWelcomeData() {
-        Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
-                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
-                .compose(RxUtil.<VideoRes>handleResult())
-                .subscribe(new Action1<VideoRes>() {
-                    @Override
-                    public void call(final VideoRes res) {
-                        if (res != null) {
-                            if (mView.isActive()) {
-                                mView.showContent(res);
-                            }
-                        }
-                        startCountDown();
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        startCountDown();
-                    }
-                });
-        addSubscrebe(rxSubscription);
+//        Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
+//                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
+//                .compose(RxUtil.<VideoRes>handleResult())
+//                .subscribe(new Action1<VideoRes>() {
+//                    @Override
+//                    public void call(final VideoRes res) {
+//                        if (res != null) {
+//                            if (mView.isActive()) {
+//                                mView.showContent(res);
+//                            }
+//                        }
+//                        startCountDown();
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        startCountDown();
+//                    }
+//                });
+//        addSubscrebe(rxSubscription);
+        mView.showContent(getImgData());
+        startCountDown();
     }
 
     private void startCountDown() {
@@ -66,4 +67,16 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
                 });
         addSubscrebe(rxSubscription);
     }
+
+    private List<String> getImgData() {
+        List<String> imgs = new ArrayList<>();
+        imgs.add("file:///android_asset/a.jpg");
+        imgs.add("file:///android_asset/b.jpg");
+        imgs.add("file:///android_asset/c.jpg");
+        imgs.add("file:///android_asset/d.jpg");
+        imgs.add("file:///android_asset/e.jpg");
+        imgs.add("file:///android_asset/f.jpg");
+        return imgs;
+    }
+
 }
