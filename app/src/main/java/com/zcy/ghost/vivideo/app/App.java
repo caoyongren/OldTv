@@ -57,7 +57,8 @@ public class App extends Application {
         if (allActivities != null) {
             synchronized (allActivities) {
                 for (Activity act : allActivities) {
-                    act.finish();
+                    if (act != null && !act.isFinishing())
+                        act.finish();
                 }
             }
         }

@@ -10,18 +10,17 @@ import android.widget.RadioGroup;
 
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.utils.EventUtil;
-import com.zcy.ghost.vivideo.widget.theme.Theme;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment1;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment2;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment3;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment4;
+import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ThemeUtils;
 import com.zcy.ghost.vivideo.widget.UnScrollViewPager;
+import com.zcy.ghost.vivideo.widget.theme.Theme;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -209,7 +208,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             EventUtil.showToast(this, "再按一次退出");
             firstTime = secondTime;
         } else {
-            App.getInstance().exitApp();
+//            App.getInstance().exitApp();
+            finish();
         }
     }
 }
