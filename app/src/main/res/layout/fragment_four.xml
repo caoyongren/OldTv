@@ -27,9 +27,8 @@
         </android.support.v7.widget.Toolbar>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-
             android:background="@mipmap/my_bg"
             android:gravity="center_vertical|right"
             >
