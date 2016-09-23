@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.ui.fragments;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,7 @@ public class Fragment4 extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         titleName.setText("我的");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         toolbar.setTitle("");
         titleName .setText("我的");
     }
