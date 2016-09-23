@@ -1,7 +1,5 @@
 package com.zcy.ghost.vivideo.model.net;
 
-import android.util.Log;
-
 import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
