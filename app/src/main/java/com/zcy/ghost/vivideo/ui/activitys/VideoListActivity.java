@@ -23,7 +23,6 @@ public class VideoListActivity extends SwipeBackActivity {
         unbinder = ButterKnife.bind(this);
         getIntentData();
         mPresenter = new VideoListPresenter(videlListView, mCatalogId);
-        attachView(videlListView);
     }
 
     private void getIntentData() {

@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
@@ -24,7 +25,7 @@ import rx.Subscription;
  * Creator: yxc
  * date: 2016/9/7 11:45
  */
-public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity {
+public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements EmptyView {
 
     protected boolean isConnection = false;
     protected Subscription subscription;
@@ -39,12 +40,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         onPreCreate();
         isConnection = SystemUtils.checkNet(this);
         regReceiver();
-//        App.getInstance().addActivity(this);
-    }
-
-    protected void attachView(BaseView view) {
+        App.getInstance().registerActivity(this);
         if (mPresenter != null)
-            mPresenter.attachView(view);
+            mPresenter.attachView(this);
     }
 
     private void onPreCreate() {
@@ -105,6 +103,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        App.getInstance().unregisterActivity(this);
         if (netListener != null)
             unregisterReceiver(netListener);
         if (mPresenter != null)

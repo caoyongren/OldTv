@@ -5,7 +5,7 @@ package com.zcy.ghost.vivideo.base;
  * Creator: yxc
  * date: 2016/9/21 10:42
  */
-public interface BasePresenter<T extends BaseView> {
+public interface BasePresenter<T extends EmptyView> {
     void attachView(T view);
 
     void detachView();

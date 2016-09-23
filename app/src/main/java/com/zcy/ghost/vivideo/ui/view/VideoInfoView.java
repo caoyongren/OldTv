@@ -6,15 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.component.ImageLoader;
-import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.VideoInfoContract;
 import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
@@ -28,7 +27,6 @@ import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 
@@ -37,7 +35,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Creator: yxc
  * date: 2016/9/21 15:54
  */
-public class VideoInfoView extends LinearLayout implements VideoInfoContract.View {
+public class VideoInfoView extends RootView implements VideoInfoContract.View {
     private VideoInfoContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
@@ -59,15 +57,7 @@ public class VideoInfoView extends LinearLayout implements VideoInfoContract.Vie
     @BindView(R.id.loading)
     CircleProgress mLoading;
 
-    Unbinder unbinder;
     VideoRes videoRes;
-    VideoInfo videoInfo;
-
-    /**
-     * 是否被销毁
-     */
-    private boolean mActive;
-    private Context mContext;
 
     public VideoInfoView(Context context) {
         super(context);
@@ -96,20 +86,6 @@ public class VideoInfoView extends LinearLayout implements VideoInfoContract.Vie
                 .create());
         mViewpager.setAdapter(adapter);
         mViewpagertab.setViewPager(mViewpager);
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mActive = true;
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mActive = false;
-        if (unbinder != null)
-            unbinder.unbind();
     }
 
     @OnClick(R.id.rl_back)

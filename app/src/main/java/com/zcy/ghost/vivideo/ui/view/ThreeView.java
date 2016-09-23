@@ -6,12 +6,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daprlabs.cardstack.SwipeDeck;
 import com.daprlabs.cardstack.SwipeFrameLayout;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.contract.ThreeContract;
@@ -27,7 +27,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 
 /**
@@ -35,11 +34,10 @@ import butterknife.Unbinder;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class ThreeView extends LinearLayout implements ThreeContract.View {
+public class ThreeView extends RootView implements ThreeContract.View {
 
     private ThreeContract.Presenter mPresenter;
 
-    Unbinder unbinder;
     @BindView(R.id.title_name)
     ColorTextView titleName;
     @BindView(R.id.swipe_deck)
@@ -55,11 +53,6 @@ public class ThreeView extends LinearLayout implements ThreeContract.View {
 
     private SwipeDeckAdapter adapter;
     private List<VideoType> videos = new ArrayList<>();
-    /**
-     * 是否被销毁
-     */
-    private boolean mActive;
-    private Context mContext;
 
     public ThreeView(Context context) {
         super(context);
@@ -122,19 +115,6 @@ public class ThreeView extends LinearLayout implements ThreeContract.View {
 
             }
         });
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mActive = true;
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mActive = false;
-        unbinder.unbind();
     }
 
     @Override

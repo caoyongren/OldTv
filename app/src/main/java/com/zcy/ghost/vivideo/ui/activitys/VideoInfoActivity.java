@@ -24,7 +24,6 @@ public class VideoInfoActivity extends SwipeBackActivity {
         unbinder = ButterKnife.bind(this);
         getIntentData();
         mPresenter = new VideoInfoPresenter(videoInfoView, videoInfo);
-        attachView(videoInfoView);
     }
 
     private void getIntentData() {

@@ -6,12 +6,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.TwoContract;
@@ -27,7 +27,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 /**
@@ -35,21 +34,15 @@ import butterknife.Unbinder;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class TwoView extends LinearLayout implements TwoContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class TwoView extends RootView implements TwoContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     private TwoContract.Presenter mPresenter;
 
-    Unbinder unbinder;
     @BindView(R.id.title_name)
     ColorTextView titleName;
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
     FoundAdapter adapter;
-    /**
-     * 是否被销毁
-     */
-    private boolean mActive;
-    private Context mContext;
 
     public TwoView(Context context) {
         super(context);
@@ -98,19 +91,6 @@ public class TwoView extends LinearLayout implements TwoContract.View, SwipeRefr
                 onRefresh();
             }
         });
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mActive = true;
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mActive = false;
-        unbinder.unbind();
     }
 
     @Override

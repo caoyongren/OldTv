@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment1;
@@ -208,8 +209,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             EventUtil.showToast(this, "再按一次退出");
             firstTime = secondTime;
         } else {
-//            App.getInstance().exitApp();
-            finish();
+            App.getInstance().exitApp();
+//            finish();
         }
     }
 }

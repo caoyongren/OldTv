@@ -21,6 +21,5 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
         unbinder = ButterKnife.bind(this);
         mPresenter = new WelcomePresenter(welcomeView);
-        attachView(welcomeView);
     }
 }

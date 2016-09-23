@@ -33,7 +33,7 @@ import rx.Subscription;
  * Creator: yxc
  * date: 2016/9/7 11:40
  */
-public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment {
+public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment implements EmptyView {
 
     private final String TAG = getClass().getSimpleName();
     protected Context mContext;
@@ -78,11 +78,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
         return rootView;
     }
 
-    protected void attachView(BaseView view) {
-        if (mPresenter != null)
-            mPresenter.attachView(view);
-    }
-
     public String getName() {
         return BaseFragment.class.getName();
     }
@@ -100,6 +95,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if (mPresenter != null)
+            mPresenter.attachView(this);
         LogUtils.v(TAG, "onViewCreated");
     }
 

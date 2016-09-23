@@ -27,6 +27,5 @@ public class Fragment3 extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         mPresenter = new ThreePresenter(threeView);
-        attachView(threeView);
     }
 }

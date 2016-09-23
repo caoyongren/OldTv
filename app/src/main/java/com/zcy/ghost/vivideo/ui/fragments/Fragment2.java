@@ -27,6 +27,5 @@ public class Fragment2 extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         mPresenter = new TwoPresenter(twoView);
-        attachView(twoView);
     }
 }

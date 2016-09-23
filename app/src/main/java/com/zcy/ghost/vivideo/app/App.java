@@ -40,14 +40,14 @@ public class App extends Application {
         BlockCanary.install(this, new AppBlockCanaryContext()).start();
     }
 
-    public void addActivity(Activity act) {
+    public void registerActivity(Activity act) {
         if (allActivities == null) {
             allActivities = new HashSet<Activity>();
         }
         allActivities.add(act);
     }
 
-    public void removeActivity(Activity act) {
+    public void unregisterActivity(Activity act) {
         if (allActivities != null) {
             allActivities.remove(act);
         }

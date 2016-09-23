@@ -15,7 +15,7 @@
             android:gravity="center"
             android:text="没有了，点击换下一批"
             android:layout_gravity="center"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.daprlabs.cardstack.SwipeFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:swipedeck="http://schemas.android.com/apk/res-auto"

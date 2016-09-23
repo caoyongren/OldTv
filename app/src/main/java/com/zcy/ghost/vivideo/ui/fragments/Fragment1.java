@@ -28,7 +28,6 @@ public class Fragment1 extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         mPresenter = new OnePresenter(oneView);
-        attachView(oneView);
     }
 
 }

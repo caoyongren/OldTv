@@ -3,10 +3,10 @@ package com.zcy.ghost.vivideo.ui.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
 import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
@@ -18,7 +18,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 /**
@@ -26,21 +25,12 @@ import butterknife.Unbinder;
  * Creator: yxc
  * date: 2016/9/22 13:20
  */
-public class WelcomeView extends LinearLayout implements WelcomeContract.View {
+public class WelcomeView extends RootView implements WelcomeContract.View {
 
     private WelcomeContract.Presenter mPresenter;
 
     @BindView(R.id.iv_welcome_bg)
     ImageView ivWelcomeBg;
-
-    Unbinder unbinder;
-
-    /**
-     * 是否被销毁
-     */
-    boolean mActive;
-    Context mContext;
-
 
     public WelcomeView(Context context) {
         super(context);
@@ -57,30 +47,7 @@ public class WelcomeView extends LinearLayout implements WelcomeContract.View {
         mContext = getContext();
         inflate(mContext, R.layout.activity_welcome_view, this);
         unbinder = ButterKnife.bind(this);
-        initView();
         mActive = true;
-    }
-
-    private void initView() {
-        Context context = getContext();
-    }
-
-
-    @Override
-    protected void onAttachedToWindow() {
-        mActive = true;
-        super.onAttachedToWindow();
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        mActive = false;
-        if (unbinder != null)
-            unbinder.unbind();
-        if (ivWelcomeBg != null) {
-            ivWelcomeBg.clearAnimation();
-        }
-        super.onDetachedFromWindow();
     }
 
     @Override

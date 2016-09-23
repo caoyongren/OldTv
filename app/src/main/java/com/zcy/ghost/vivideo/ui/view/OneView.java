@@ -1,7 +1,6 @@
 package com.zcy.ghost.vivideo.ui.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
@@ -21,10 +19,10 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.IconHintView;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.OneContract;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
 import com.zcy.ghost.vivideo.ui.adapter.VideoAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
@@ -36,7 +34,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 /**
@@ -44,11 +41,10 @@ import butterknife.Unbinder;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class OneView extends LinearLayout implements OneContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class OneView extends RootView implements OneContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     private OneContract.Presenter mPresenter;
 
-    Unbinder unbinder;
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
     @Nullable
@@ -59,11 +55,6 @@ public class OneView extends LinearLayout implements OneContract.View, SwipeRefr
     RollPagerView banner;
     View headerView;
     VideoAdapter adapter;
-    /**
-     * 是否被销毁
-     */
-    private boolean mActive;
-    private Context mContext;
 
     public OneView(Context context) {
         super(context);
@@ -136,7 +127,6 @@ public class OneView extends LinearLayout implements OneContract.View, SwipeRefr
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(getContext(), VideoInfoActivity.class);
                 JumpUtil.go2VideoInfoActivity(mContext, adapter.getItem(position));
             }
         });
@@ -147,19 +137,6 @@ public class OneView extends LinearLayout implements OneContract.View, SwipeRefr
                 onRefresh();
             }
         });
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mActive = true;
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mActive = false;
-        unbinder.unbind();
     }
 
     @Override

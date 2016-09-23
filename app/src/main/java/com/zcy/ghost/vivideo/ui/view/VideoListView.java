@@ -6,13 +6,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.contract.VideoListContract;
@@ -29,7 +29,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 
 /**
@@ -37,10 +36,8 @@ import butterknife.Unbinder;
  * Creator: yxc
  * date: 2016/9/21 14:57
  */
-public class VideoListView extends LinearLayout implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+public class VideoListView extends RootView implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
     private VideoListContract.Presenter mPresenter;
-
-    Unbinder unbinder;
 
     @BindView(R.id.rl_back)
     RelativeLayout mRlBack;
@@ -50,12 +47,6 @@ public class VideoListView extends LinearLayout implements VideoListContract.Vie
     @BindView(R.id.recyclerView)
     EasyRecyclerView mRecyclerView;
     VideoListAdapter mAdapter;
-
-    /**
-     * 是否被销毁
-     */
-    boolean mActive;
-    Context mContext;
 
     VideoInfo videoInfo;
 
@@ -125,20 +116,6 @@ public class VideoListView extends LinearLayout implements VideoListContract.Vie
                 onRefresh();
             }
         });
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mActive = true;
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mActive = false;
-        if (unbinder != null)
-            unbinder.unbind();
     }
 
     @OnClick(R.id.rl_back)
