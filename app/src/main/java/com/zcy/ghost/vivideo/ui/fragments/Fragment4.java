@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.ui.fragments;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,8 @@ public class Fragment4 extends BaseFragment {
     ColorTextView titleName;
     @BindView(R.id.rl_them)
     RelativeLayout rlThem;
-
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_four;
@@ -41,6 +43,8 @@ public class Fragment4 extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         titleName.setText("我的");
+        toolbar.setTitle("");
+        titleName .setText("我的");
     }
 
     @Override
