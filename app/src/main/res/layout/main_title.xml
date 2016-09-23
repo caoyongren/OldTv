@@ -7,6 +7,7 @@
     <com.zcy.ghost.vivideo.widget.theme.ColorTextView
         android:id="@+id/title_name"
         style="@style/title_tv_style"
-        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
         android:textColor="?attr/md_title_color"/>
 </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
