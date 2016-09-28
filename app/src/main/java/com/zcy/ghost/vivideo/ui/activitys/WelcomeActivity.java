@@ -6,6 +6,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.presenter.WelcomePresenter;
 import com.zcy.ghost.vivideo.ui.view.WelcomeView;
+import com.zcy.ghost.vivideo.utils.KL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +20,7 @@ public class WelcomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        KL.d(WelcomeActivity.class,"WelcomeActivity");
         unbinder = ButterKnife.bind(this);
         mPresenter = new WelcomePresenter(welcomeView);
     }
