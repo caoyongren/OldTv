@@ -1,24 +1,22 @@
 package com.zcy.ghost.vivideo.ui.fragments;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
-import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
+import com.zcy.ghost.vivideo.ui.activitys.SettingActivity;
 import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import org.simple.eventbus.EventBus;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Description:
@@ -28,7 +26,6 @@ import butterknife.Unbinder;
 public class Fragment4 extends BaseFragment {
 
     public static final String SET_THEME = "SET_THEME";
-    Unbinder unbinder;
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -36,6 +33,7 @@ public class Fragment4 extends BaseFragment {
     RelativeLayout rlThem;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_four;
@@ -46,15 +44,7 @@ public class Fragment4 extends BaseFragment {
         titleName.setText("我的");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         toolbar.setTitle("");
-        titleName .setText("我的");
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+        titleName.setText("我的");
     }
 
     @OnClick({R.id.rl_record, R.id.rl_down, R.id.rl_collection, R.id.rl_them, R.id.img_setting})
@@ -73,7 +63,7 @@ public class Fragment4 extends BaseFragment {
                 EventBus.getDefault().post("", SET_THEME);
                 break;
             case R.id.img_setting:
-                EventUtil.showToast(getContext(), "待定");
+                startActivity(new Intent(mContext, SettingActivity.class));
                 break;
         }
     }

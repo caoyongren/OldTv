@@ -37,13 +37,7 @@ public class ThreePresenter extends RxPresenter implements ThreeContract.Present
 
     @Override
     public void getData() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //刷新
-                getNextVideos();
-            }
-        }, 1000);
+        getNextVideos();
     }
 
     private void getNextVideos() {
@@ -79,6 +73,6 @@ public class ThreePresenter extends RxPresenter implements ThreeContract.Present
 
 
     private int getNextPage() {
-        return StringUtils.getRandomNumber(min,max);
+        return StringUtils.getRandomNumber(min, max);
     }
 }

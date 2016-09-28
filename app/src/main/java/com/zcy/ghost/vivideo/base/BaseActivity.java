@@ -1,5 +1,6 @@
 package com.zcy.ghost.vivideo.base;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +8,17 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.utils.PreUtils;
+import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
+import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
 
 import butterknife.Unbinder;
@@ -101,6 +106,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        setTitleHeight(getRootView(this));
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         App.getInstance().unregisterActivity(this);
@@ -167,4 +178,21 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         }
     }
 
+    private void setTitleHeight(View view) {
+        if (view != null) {
+            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.title);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                if (title != null) {
+                    ViewGroup.LayoutParams lp = title.getLayoutParams();
+                    lp.height = ScreenUtil.dip2px(this, 48);
+                    title.setLayoutParams(lp);
+                    title.setPadding(0, 0, 0, 0);
+                }
+            }
+        }
+    }
+
+    protected static View getRootView(Activity context) {
+        return ((ViewGroup) context.findViewById(android.R.id.content)).getChildAt(0);
+    }
 }

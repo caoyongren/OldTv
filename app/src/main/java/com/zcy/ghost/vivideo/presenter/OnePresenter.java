@@ -33,14 +33,9 @@ public class OnePresenter extends RxPresenter implements OneContract.Presenter {
     @Override
     public void onRefresh() {
         page = 0;
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //刷新
-                getPageHomeInfo();
-            }
-        }, 1000);
+        getPageHomeInfo();
     }
+
     private void getPageHomeInfo() {
         Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
                 .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())

@@ -32,12 +32,7 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
     @Override
     public void onRefresh() {
         page = 1;
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getVideoList(catalogId);
-            }
-        }, 1000);
+        getVideoList(catalogId);
     }
 
     private void getVideoList(String catalogID) {

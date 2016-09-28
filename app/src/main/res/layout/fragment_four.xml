@@ -1,7 +1,7 @@
-<android.support.design.widget.CoordinatorLayout style="@style/both_match_style"
-                                                 xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 android:orientation="vertical">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/both_match_style"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -17,13 +17,13 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
             style="@style/ActionBarStyle"
-            android:layout_height="48dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <include layout="@layout/main_title"/>
+            <!--app:layout_scrollFlags="scroll|enterAlways"-->
+
+            <include layout="@layout/main_title" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -31,14 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@mipmap/my_bg"
-            android:gravity="center_vertical|right"
-            >
+            android:gravity="center_vertical|right">
 
             <ImageView
                 android:id="@+id/img_setting"
                 style="@style/lmatch_hwrap_style"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@mipmap/my_set"/>
+                android:background="@mipmap/my_set" />
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -50,8 +49,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
         <android.support.v7.widget.LinearLayoutCompat
@@ -61,7 +59,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             app:divider="@drawable/line"
-            app:paddingStart="500dp"
+            app:dividerPadding="40dp"
             app:showDividers="middle|end">
 
             <RelativeLayout
@@ -72,20 +70,20 @@
                 <ImageView
                     android:id="@+id/img1"
                     style="@style/both_wrap_style"
-                    android:background="@mipmap/my_records"/>
+                    android:background="@mipmap/my_records" />
 
                 <TextView
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/img1"
-                    android:text="@string/my_record"/>
+                    android:text="@string/my_record" />
 
                 <ImageView
                     style="@style/both_wrap_style"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@mipmap/right"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
             </RelativeLayout>
 
 
@@ -97,20 +95,20 @@
                 <ImageView
                     android:id="@+id/img2"
                     style="@style/both_wrap_style"
-                    android:background="@mipmap/my_down"/>
+                    android:background="@mipmap/my_down" />
 
                 <TextView
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/img2"
-                    android:text="@string/my_down"/>
+                    android:text="@string/my_down" />
 
                 <ImageView
                     style="@style/both_wrap_style"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@mipmap/right"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
             </RelativeLayout>
 
 
@@ -122,20 +120,20 @@
                 <ImageView
                     android:id="@+id/img3"
                     style="@style/both_wrap_style"
-                    android:background="@mipmap/my_collection"/>
+                    android:background="@mipmap/my_collection" />
 
                 <TextView
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/img3"
-                    android:text="@string/my_collection"/>
+                    android:text="@string/my_collection" />
 
                 <ImageView
                     style="@style/both_wrap_style"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@mipmap/right"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
             </RelativeLayout>
 
 
@@ -147,20 +145,20 @@
                 <ImageView
                     android:id="@+id/img4"
                     style="@style/both_wrap_style"
-                    android:background="@mipmap/my_everyone"/>
+                    android:background="@mipmap/my_everyone" />
 
                 <TextView
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/img4"
-                    android:text="@string/my_them"/>
+                    android:text="@string/my_them" />
 
                 <ImageView
                     style="@style/both_wrap_style"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@mipmap/right"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/right" />
             </RelativeLayout>
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v4.widget.NestedScrollView>

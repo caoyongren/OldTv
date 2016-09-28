@@ -1,7 +1,6 @@
 package com.zcy.ghost.vivideo.ui.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 
 import java.util.List;
@@ -46,7 +44,6 @@ public class BannerAdapter extends StaticPagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ctx, VideoInfoActivity.class);
                 JumpUtil.go2VideoInfoActivity(ctx, list.get(position));
             }
         });

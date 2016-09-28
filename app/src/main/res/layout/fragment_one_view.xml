@@ -13,16 +13,16 @@
         app:scrollbars="none" />
 
     <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
-        android:id="@+id/titleLayout"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="68dp"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        android:paddingTop="20dp">
 
         <com.zcy.ghost.vivideo.widget.theme.ColorTextView
             android:id="@+id/title_name"
             style="@style/title_tv_style"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
             android:textColor="?attr/md_title_color" />
     </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
 </RelativeLayout>

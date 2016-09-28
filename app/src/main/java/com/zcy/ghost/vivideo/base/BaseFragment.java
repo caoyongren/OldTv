@@ -7,16 +7,22 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
+import com.zcy.ghost.vivideo.ui.fragments.Fragment4;
 import com.zcy.ghost.vivideo.utils.LogUtils;
+import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
+import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
 
 import org.simple.eventbus.EventBus;
@@ -75,6 +81,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
         unbinder = ButterKnife.bind(this, rootView);
         initView(inflater);
         EventBus.getDefault().register(this);
+        setTitleHeight(rootView);
         return rootView;
     }
 
@@ -236,4 +243,25 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
             }).start();
         }
     }
+
+    private void setTitleHeight(View view) {
+        if (view != null) {
+            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.title);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                if (title != null) {
+                    ViewGroup.LayoutParams lp = title.getLayoutParams();
+                    lp.height = ScreenUtil.dip2px(getContext(), 48);
+                    title.setLayoutParams(lp);
+                    title.setPadding(0, 0, 0, 0);
+                }
+                if (TAG.equals(Fragment4.class.getSimpleName())) {
+                    Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+                    ViewGroup.LayoutParams lp = toolbar.getLayoutParams();
+                    lp.height = ScreenUtil.dip2px(getContext(), 48);
+                    toolbar.setLayoutParams(lp);
+                }
+            }
+        }
+    }
+
 }

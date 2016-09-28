@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -28,6 +27,7 @@ import com.zcy.ghost.vivideo.ui.adapter.VideoAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
+import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import java.util.List;
@@ -48,8 +48,8 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
     @Nullable
-    @BindView(R.id.titleLayout)
-    RelativeLayout title;
+    @BindView(R.id.title)
+    ColorRelativeLayout title;
     @BindView(R.id.title_name)
     ColorTextView titleName;
     RollPagerView banner;
