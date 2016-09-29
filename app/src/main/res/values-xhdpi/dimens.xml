@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_x_big_margin">34dp</dimen>
+    <dimen name="standard_big_margin">32dp</dimen>
+    <dimen name="standard_s_big_margin">30dp</dimen>
+    <dimen name="standard_xxx_margin">24dp</dimen>
+    <dimen name="standard_xx_margin">22dp</dimen>
+    <dimen name="standard_x_margin">20dp</dimen>
+    <dimen name="standard_xs_margin">18dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="standard_x_middle_margin">14dp</dimen>
+    <dimen name="standard_middle_margin">12dp</dimen>
+    <dimen name="standard_x_small_margin">10dp</dimen>
+    <dimen name="standard_small_margin">8dp</dimen>
+    <dimen name="standard_xs_small_margin">6dp</dimen>
+    <dimen name="standard_s_small_margin">4dp</dimen>
+    <dimen name="standard_ss_small_margin">2dp</dimen>
+
+    <dimen name="mine_list_view_margin_left">40dp</dimen>
+</resources>
