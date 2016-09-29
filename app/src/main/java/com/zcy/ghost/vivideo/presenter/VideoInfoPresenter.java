@@ -99,17 +99,21 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
 
     @Override
     public void collect() {
-
-        if (result != null) {
-            Collection bean = new Collection();
-            bean.setId(String.valueOf(dataId));
-            bean.setPic(pic);
-            bean.setTitle(result.title);
-            bean.setAirTime(result.airTime);
-            bean.setScore(result.score);
-            bean.setTime(System.currentTimeMillis());
-            RealmHelper.getInstance().insertCollection(bean);
-            mView.collected();
+        if (RealmHelper.getInstance().queryCollectionId(dataId)) {
+            RealmHelper.getInstance().deleteCollection(dataId);
+            mView.disCollect();
+        } else {
+            if (result != null) {
+                Collection bean = new Collection();
+                bean.setId(String.valueOf(dataId));
+                bean.setPic(pic);
+                bean.setTitle(result.title);
+                bean.setAirTime(result.airTime);
+                bean.setScore(result.score);
+                bean.setTime(System.currentTimeMillis());
+                RealmHelper.getInstance().insertCollection(bean);
+                mView.collected();
+            }
         }
         //刷新收藏列表
         Subscription rxSubscription = Observable.timer(WAIT_TIME, TimeUnit.MILLISECONDS)
