@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.activitys.WelcomeActivity"
-            android:theme="@style/CustomTransparent">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +35,9 @@
         <activity
             android:name=".ui.activitys.VideoListActivity"
             android:theme="@style/CustomTransparent" />
+        <activity
+            android:name=".ui.activitys.CollectionActivity"
+            android:theme="@style/CustomTransparent" />
 
         <meta-data
             android:name="PGYER_APPID"
@@ -42,8 +45,7 @@
 
         <activity
             android:name=".ui.activitys.SettingActivity"
-            android:label="@string/title_activity_setting"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

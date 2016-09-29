@@ -65,9 +65,9 @@ public class VideoListView extends RootView implements VideoListContract.View, S
         mContext = getContext();
         inflate(mContext, R.layout.activity_video_list_view, this);
         unbinder = ButterKnife.bind(this);
+        mActive = true;
         initView();
         initEvent();
-        mActive = true;
     }
 
     private void initView() {

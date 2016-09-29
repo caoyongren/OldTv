@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
+import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
 import com.zcy.ghost.vivideo.ui.activitys.SettingActivity;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
@@ -57,7 +58,7 @@ public class Fragment4 extends BaseFragment {
                 EventUtil.showToast(getContext(), "暂定下载功能");
                 break;
             case R.id.rl_collection:
-                EventUtil.showToast(getContext(), "本地数据库：realm");
+                startActivity(new Intent(mContext, CollectionActivity.class));
                 break;
             case R.id.rl_them:
                 EventBus.getDefault().post("", SET_THEME);

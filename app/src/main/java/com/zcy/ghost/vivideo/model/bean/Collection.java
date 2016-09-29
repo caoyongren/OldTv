@@ -14,6 +14,8 @@ public class Collection extends RealmObject implements Serializable {
     long time;
     public String title;
     public String pic;
+    public String airTime;
+    public String score;
 
     public String getId() {
         return id;
@@ -47,4 +49,19 @@ public class Collection extends RealmObject implements Serializable {
         this.pic = pic;
     }
 
+    public String getAirTime() {
+        return airTime;
+    }
+
+    public void setAirTime(String airTime) {
+        this.airTime = airTime;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 }

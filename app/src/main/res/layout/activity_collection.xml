@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zcy.ghost.vivideo.ui.view.CollectionView
+        android:id="@+id/collect_view"
+        style="@style/both_match_style" />
+
+</merge>

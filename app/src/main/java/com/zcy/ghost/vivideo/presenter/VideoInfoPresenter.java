@@ -31,9 +31,11 @@ import rx.functions.Action1;
 public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract.Presenter {
 
     public final static String Refresh_Video_Info = "Refresh_Video_Info";
+    public static final String Refresh_Collection_List = "Refresh_Collection_List";
     final int WAIT_TIME = 200;
     VideoRes result;
     String dataId = "";
+    String pic = "";
 
     @NonNull
     final VideoInfoContract.View mView;
@@ -43,6 +45,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
         mView.setPresenter(this);
         mView.showContent(BeanUtil.VideoInfo2VideoRes(videoInfo, null));
         this.dataId = videoInfo.dataId;
+        this.pic = videoInfo.pic;
         getDetailData(videoInfo.dataId);
         setCollectState();
     }
@@ -101,13 +104,25 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
             if (result != null) {
                 Collection bean = new Collection();
                 bean.setId(String.valueOf(dataId));
-                bean.setPic(result.pic);
+                bean.setPic(pic);
                 bean.setTitle(result.title);
+                bean.setAirTime(result.airTime);
+                bean.setScore(result.score);
                 bean.setTime(System.currentTimeMillis());
                 RealmHelper.getInstance().insertCollection(bean);
                 mView.collected();
             }
         }
+        //刷新收藏列表
+        Subscription rxSubscription = Observable.timer(WAIT_TIME, TimeUnit.MILLISECONDS)
+                .compose(RxUtil.<Long>rxSchedulerHelper())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        EventBus.getDefault().post("", Refresh_Collection_List);
+                    }
+                });
+        addSubscrebe(rxSubscription);
     }
 
     private void setCollectState() {

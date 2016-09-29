@@ -42,4 +42,19 @@
             android:background="@mipmap/collection" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_collect_clear"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/container_padding"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/common_tv_style"
+            android:layout_centerInParent="true"
+            android:text="@string/clean" />
+
+    </RelativeLayout>
 </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>

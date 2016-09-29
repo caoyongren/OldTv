@@ -63,6 +63,15 @@ public class RealmHelper {
     }
 
     /**
+     * 清空收藏
+     */
+    public void deleteAllCollection() {
+        getRealm().beginTransaction();
+        getRealm().delete(Collection.class);
+        getRealm().commitTransaction();
+    }
+
+    /**
      * 查询 收藏记录
      *
      * @param id
