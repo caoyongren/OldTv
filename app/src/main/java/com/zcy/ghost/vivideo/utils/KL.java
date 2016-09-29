@@ -13,7 +13,7 @@ package com.zcy.ghost.vivideo.utils;
  *
  * 3.抽离简化日志功能。
  *
- * Created by WangQing on 15/8/6.
+ * Created by CP on 15/8/6.
  */
 public class KL extends L {
 }
