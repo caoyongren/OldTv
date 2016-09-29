@@ -25,5 +25,7 @@ public interface VideoInfoContract {
 
         void collect();
 
+        void insertRecord();
+
     }
 }

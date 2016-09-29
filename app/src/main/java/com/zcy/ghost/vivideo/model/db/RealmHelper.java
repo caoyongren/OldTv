@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.model.db;
 
 import com.zcy.ghost.vivideo.model.bean.Collection;
+import com.zcy.ghost.vivideo.model.bean.Record;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class RealmHelper {
             mRealm = Realm.getDefaultInstance();
         return mRealm;
     }
+    //--------------------------------------------------收藏相关----------------------------------------------------
 
     /**
      * 增加 收藏记录
@@ -96,5 +98,62 @@ public class RealmHelper {
         //使用findAllSort ,先findAll再result.sort排序
         RealmResults<Collection> results = getRealm().where(Collection.class).findAllSorted("time");
         return getRealm().copyFromRealm(results);
+    }
+
+
+    //--------------------------------------------------播放记录相关----------------------------------------------------
+
+    /**
+     * 增加 播放记录
+     *
+     * @param bean
+     */
+    public void insertRecord(Record bean) {
+        getRealm().beginTransaction();
+        getRealm().copyToRealm(bean);
+        getRealm().commitTransaction();
+    }
+
+    /**
+     * 删除 播放记录
+     *
+     * @param id
+     */
+    public void deleteRecord(String id) {
+        Record data = getRealm().where(Record.class).equalTo("id", id).findFirst();
+        getRealm().beginTransaction();
+        data.deleteFromRealm();
+        getRealm().commitTransaction();
+    }
+
+    /**
+     * 查询 播放记录
+     *
+     * @param id
+     * @return
+     */
+    public boolean queryRecordId(String id) {
+        RealmResults<Record> results = getRealm().where(Record.class).findAll();
+        for (Record item : results) {
+            if (item.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<Record> getRecordList() {
+        //使用findAllSort ,先findAll再result.sort排序
+        RealmResults<Record> results = getRealm().where(Record.class).findAllSorted("time");
+        return getRealm().copyFromRealm(results);
+    }
+
+    /**
+     * 清空历史
+     */
+    public void deleteAllRecord() {
+        getRealm().beginTransaction();
+        getRealm().delete(Record.class);
+        getRealm().commitTransaction();
     }
 }

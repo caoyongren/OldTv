@@ -16,7 +16,7 @@ import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment1;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment2;
 import com.zcy.ghost.vivideo.ui.fragments.Fragment3;
-import com.zcy.ghost.vivideo.ui.fragments.Fragment4;
+import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ThemeUtils;
@@ -104,11 +104,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         Fragment fragment1 = new Fragment1();
         Fragment fragment2 = new Fragment2();
         Fragment fragment3 = new Fragment3();
-        Fragment fragment4 = new Fragment4();
+        Fragment mineFragment = new MineFragment();
         fragments.add(fragment1);
         fragments.add(fragment2);
         fragments.add(fragment3);
-        fragments.add(fragment4);
+        fragments.add(mineFragment);
         return fragments;
     }
 
@@ -191,7 +191,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscriber(tag = Fragment4.SET_THEME)
+    @Subscriber(tag = MineFragment.SET_THEME)
     public void onClick(String content) {
         new ColorChooserDialog.Builder(this, R.string.theme)
                 .customColors(R.array.colors, null)

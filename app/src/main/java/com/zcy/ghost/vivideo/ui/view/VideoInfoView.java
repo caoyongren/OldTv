@@ -111,6 +111,7 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
         if (TextUtils.isEmpty(videoRes.getVideoUrl())) {
             EventUtil.showToast(mContext, "该视频暂时不能播放");
         } else {
+            mPresenter.insertRecord();
             ((VideoInfoActivity) mContext).getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
             JCVideoPlayerStandard.startFullscreen(mContext,

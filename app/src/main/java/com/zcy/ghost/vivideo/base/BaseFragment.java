@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
-import com.zcy.ghost.vivideo.ui.fragments.Fragment4;
+import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
 import com.zcy.ghost.vivideo.utils.LogUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
@@ -254,7 +254,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
                     title.setLayoutParams(lp);
                     title.setPadding(0, 0, 0, 0);
                 }
-                if (TAG.equals(Fragment4.class.getSimpleName())) {
+                if (TAG.equals(MineFragment.class.getSimpleName())) {
                     Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
                     ViewGroup.LayoutParams lp = toolbar.getLayoutParams();
                     lp.height = ScreenUtil.dip2px(getContext(), 48);
