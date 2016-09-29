@@ -164,7 +164,9 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
 
     @OnClick(R.id.rl_collect)
     public void onClick() {
-        ivCollect.startAnimation(animation);
-        mPresenter.collect();
+        if (videoRes != null) {
+            ivCollect.startAnimation(animation);
+            mPresenter.collect();
+        }
     }
 }

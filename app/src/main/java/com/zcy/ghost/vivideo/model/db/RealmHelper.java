@@ -23,8 +23,12 @@ public class RealmHelper {
     }
 
     public static synchronized RealmHelper getInstance() {
-        if (instance == null)
-            instance = new RealmHelper();
+        if (instance == null) {
+            synchronized (RealmHelper.class) {
+                if (instance == null)
+                    instance = new RealmHelper();
+            }
+        }
         return instance;
     }
 
@@ -74,6 +78,11 @@ public class RealmHelper {
         return false;
     }
 
+    /**
+     * 收藏列表
+     *
+     * @return
+     */
     public List<Collection> getCollectionList() {
         //使用findAllSort ,先findAll再result.sort排序
         RealmResults<Collection> results = getRealm().where(Collection.class).findAllSorted("time");
