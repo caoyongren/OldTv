@@ -24,6 +24,7 @@ public class HistoryRecordPresenter extends RxPresenter implements HistoryContra
     HistoryContract.View mView;
     private boolean isMine;
     private boolean isSetting;
+    public static final int maxSize = 3;
 
     public HistoryRecordPresenter(@NonNull HistoryContract.View oneView, boolean isSetting) {
         this.isSetting = isSetting;
@@ -44,18 +45,7 @@ public class HistoryRecordPresenter extends RxPresenter implements HistoryContra
         List<Record> records = RealmHelper.getInstance().getRecordList();
         List<VideoType> list = new ArrayList<>();
         VideoType videoType;
-        int size = records.size();
-        if (isMine) {
-            if (size > 3) {
-                size = 3;
-            }
-        }
-        if (isSetting) {
-            if (size > 3) {
-                size = 3;
-            }
-        }
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < records.size(); i++) {
             Record record = records.get(i);
             videoType = new VideoType();
             videoType.title = record.title;

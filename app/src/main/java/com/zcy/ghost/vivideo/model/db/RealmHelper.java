@@ -7,6 +7,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 /**
  * Description: RealmHelper
@@ -96,7 +97,7 @@ public class RealmHelper {
      */
     public List<Collection> getCollectionList() {
         //使用findAllSort ,先findAll再result.sort排序
-        RealmResults<Collection> results = getRealm().where(Collection.class).findAllSorted("time");
+        RealmResults<Collection> results = getRealm().where(Collection.class).findAllSorted("time", Sort.DESCENDING);
         return getRealm().copyFromRealm(results);
     }
 
@@ -108,7 +109,15 @@ public class RealmHelper {
      *
      * @param bean
      */
-    public void insertRecord(Record bean) {
+    public void insertRecord(Record bean, int maxSize) {
+        if (maxSize != 0) {
+            RealmResults<Record> results = getRealm().where(Record.class).findAllSorted("time", Sort.DESCENDING);
+            if (results.size() >= maxSize) {
+                for (int i = maxSize - 1; i < results.size(); i++) {
+                    deleteRecord(results.get(i).getId());
+                }
+            }
+        }
         getRealm().beginTransaction();
         getRealm().copyToRealm(bean);
         getRealm().commitTransaction();
@@ -144,7 +153,7 @@ public class RealmHelper {
 
     public List<Record> getRecordList() {
         //使用findAllSort ,先findAll再result.sort排序
-        RealmResults<Record> results = getRealm().where(Record.class).findAllSorted("time");
+        RealmResults<Record> results = getRealm().where(Record.class).findAllSorted("time", Sort.DESCENDING);
         return getRealm().copyFromRealm(results);
     }
 

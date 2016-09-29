@@ -12,7 +12,6 @@ import io.realm.RealmObject;
 public class Record extends RealmObject implements Serializable {
     public String title;
     public String pic;
-    public String dataId;
     String id;
     long time;
 
@@ -39,14 +38,6 @@ public class Record extends RealmObject implements Serializable {
 
     public void setPic(String pic) {
         this.pic = pic;
-    }
-
-    public String getDataId() {
-        return dataId;
-    }
-
-    public void setDataId(String dataId) {
-        this.dataId = dataId;
     }
 
     public String getId() {
