@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -41,7 +43,7 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class OneView extends RootView implements OneContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class OneView extends RootView implements OneContract.View, SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
 
     private OneContract.Presenter mPresenter;
 
@@ -55,7 +57,8 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
     RollPagerView banner;
     View headerView;
     VideoAdapter adapter;
-
+    TextView tvGO;
+    EditText etSearchKey;
     public OneView(Context context) {
         super(context);
         init();
@@ -81,6 +84,8 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
         titleName.setText("精选");
         headerView = LayoutInflater.from(mContext).inflate(R.layout.choice_header, null);
         banner = ButterKnife.findById(headerView, R.id.banner);
+        tvGO = ButterKnife.findById(headerView, R.id.tvGO);
+        etSearchKey = ButterKnife.findById(headerView, R.id.etSearchKey);
         banner.setPlayDelay(2000);
         recyclerView.setAdapterWithProgress(adapter = new VideoAdapter(getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -137,6 +142,7 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
                 onRefresh();
             }
         });
+        tvGO.setOnClickListener(this);
     }
 
     @Override
@@ -207,5 +213,17 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
         int distance = headerView.getTop();
         distance = Math.abs(distance);
         return distance;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tvGO:
+                String searchStr=etSearchKey.getText().toString();
+                if(searchStr!=null && !searchStr.equals("")){
+                    JumpUtil.go2VideoListSearchActivity(mContext, searchStr,"搜索");
+                }
+                break;
+        }
     }
 }

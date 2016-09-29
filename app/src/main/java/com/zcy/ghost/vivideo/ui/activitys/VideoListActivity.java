@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 public class VideoListActivity extends SwipeBackActivity {
     String mTitle = "";
     String mCatalogId = "";
+    String searchStr = "";
     @BindView(R.id.video_list_view)
     VideoListView videlListView;
 
@@ -24,12 +25,13 @@ public class VideoListActivity extends SwipeBackActivity {
         unbinder = ButterKnife.bind(this);
         KL.d(VideoListActivity.class, "onCreate");
         getIntentData();
-        mPresenter = new VideoListPresenter(videlListView, mCatalogId);
+        mPresenter = new VideoListPresenter(videlListView, mCatalogId,searchStr);
     }
 
     private void getIntentData() {
         mCatalogId = getIntent().getStringExtra("catalogId");
         mTitle = getIntent().getStringExtra("title");
+        searchStr = getIntent().getStringExtra("searchStr");
         videlListView.setTitleName(mTitle);
     }
 }

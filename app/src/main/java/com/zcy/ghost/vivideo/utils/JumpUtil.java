@@ -28,6 +28,12 @@ public class JumpUtil {
         intent.putExtra("title", title);
         context.startActivity(intent);
     }
+    public static void go2VideoListSearchActivity(Context context, String searchStr,String title) {
+        Intent intent = new Intent(context, VideoListActivity.class);
+        intent.putExtra("searchStr", searchStr);
+        intent.putExtra("title", title);
+        context.startActivity(intent);
+    }
 
     public static void go2MainActivity(Context context) {
         jump(context, MainActivity.class);

@@ -13,15 +13,19 @@
         app:rollviewpager_play_delay="2000" />
 
     <RelativeLayout
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:background="@drawable/black_trans_bg"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
 
         <EditText
+            android:id="@+id/etSearchKey"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:background="@null"
@@ -29,7 +33,19 @@
             android:drawablePadding="10dp"
             android:text="一念天堂"
             android:textColor="@color/gray_light"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:imeOptions="actionSearch"
+            android:layout_toLeftOf="@+id/tvGO"/>
+        <TextView
+            android:id="@+id/tvGO"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:layout_alignParentRight="true"
+            android:text="GO"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"/>
+
     </RelativeLayout>
 
 </RelativeLayout>
