@@ -1,11 +1,12 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.zcy.ghost.vivideo.base.RxPresenter;
+import com.zcy.ghost.vivideo.model.bean.Collection;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
+import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.VideoInfoContract;
@@ -15,6 +16,9 @@ import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import org.simple.eventbus.EventBus;
 
+import java.util.concurrent.TimeUnit;
+
+import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -27,6 +31,9 @@ import rx.functions.Action1;
 public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract.Presenter {
 
     public final static String Refresh_Video_Info = "Refresh_Video_Info";
+    final int WAIT_TIME = 200;
+    VideoRes result;
+    String dataId = "";
 
     @NonNull
     final VideoInfoContract.View mView;
@@ -35,7 +42,9 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
         mView = StringUtils.checkNotNull(addTaskView);
         mView.setPresenter(this);
         mView.showContent(BeanUtil.VideoInfo2VideoRes(videoInfo, null));
+        this.dataId = videoInfo.dataId;
         getDetailData(videoInfo.dataId);
+        setCollectState();
     }
 
     @Override
@@ -49,12 +58,8 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                         if (res != null) {
                             if (mView.isActive()) {
                                 mView.showContent(res);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        EventBus.getDefault().post(res, Refresh_Video_Info);
-                                    }
-                                }, 200);
+                                result = res;
+                                postData();
                             }
                         }
                     }
@@ -73,5 +78,43 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                     }
                 });
         addSubscrebe(rxSubscription);
+    }
+
+    private void postData() {
+        Subscription rxSubscription = Observable.timer(WAIT_TIME, TimeUnit.MILLISECONDS)
+                .compose(RxUtil.<Long>rxSchedulerHelper())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        EventBus.getDefault().post(result, Refresh_Video_Info);
+                    }
+                });
+        addSubscrebe(rxSubscription);
+    }
+
+    @Override
+    public void collect() {
+        if (RealmHelper.getInstance().queryCollectionId(dataId)) {
+            RealmHelper.getInstance().deleteCollection(dataId);
+            mView.disCollect();
+        } else {
+            if (result != null) {
+                Collection bean = new Collection();
+                bean.setId(String.valueOf(dataId));
+                bean.setPic(result.pic);
+                bean.setTitle(result.title);
+                bean.setTime(System.currentTimeMillis());
+                RealmHelper.getInstance().insertCollection(bean);
+                mView.collected();
+            }
+        }
+    }
+
+    private void setCollectState() {
+        if (RealmHelper.getInstance().queryCollectionId(dataId)) {
+            mView.collected();
+        } else {
+            mView.disCollect();
+        }
     }
 }

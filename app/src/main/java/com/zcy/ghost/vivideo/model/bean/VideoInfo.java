@@ -3,9 +3,9 @@ package com.zcy.ghost.vivideo.model.bean;
 import java.io.Serializable;
 
 /**
- * Description:
+ * Description: 影片详情
  * Creator: yxc
- * date: $date $time
+ * date: 2016/9/29 9:39
  */
 public class VideoInfo implements Serializable {
     public VideoInfo() {
@@ -15,7 +15,6 @@ public class VideoInfo implements Serializable {
         setFirst(isFirst);
     }
 
-    public String shareURL;
     public String title;
     public String pic;
     public String dataId;

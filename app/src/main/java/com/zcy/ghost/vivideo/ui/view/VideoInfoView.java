@@ -5,9 +5,13 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.common.base.Preconditions;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -36,6 +40,8 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * date: 2016/9/21 15:54
  */
 public class VideoInfoView extends RootView implements VideoInfoContract.View {
+    @BindView(R.id.iv_collect)
+    ImageView ivCollect;
     private VideoInfoContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
@@ -56,8 +62,11 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
     SwipeViewPager mViewpager;
     @BindView(R.id.loading)
     CircleProgress mLoading;
+    @BindView(R.id.rl_collect)
+    RelativeLayout rlCollect;
 
     VideoRes videoRes;
+    private Animation animation;
 
     public VideoInfoView(Context context) {
         super(context);
@@ -79,6 +88,8 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
     }
 
     private void initView() {
+        animation = AnimationUtils.loadAnimation(mContext, R.anim.view_hand);
+        rlCollect.setVisibility(View.VISIBLE);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 ((VideoInfoActivity) mContext).getSupportFragmentManager(), FragmentPagerItems.with(mContext)
                 .add(R.string.video_intro, VideoIntroFragment.class)
@@ -118,10 +129,20 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
         mLoading.setVisibility(View.GONE);
     }
 
+    @Override
+    public void collected() {
+        ivCollect.setBackgroundResource(R.mipmap.collection_select);
+    }
+
+    @Override
+    public void disCollect() {
+        ivCollect.setBackgroundResource(R.mipmap.collection);
+    }
+
 
     @Override
     public void setPresenter(VideoInfoContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
+        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override
@@ -141,4 +162,9 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
             ImageLoader.load(mContext, videoRes.pic, mImgVideo);
     }
 
+    @OnClick(R.id.rl_collect)
+    public void onClick() {
+        ivCollect.startAnimation(animation);
+        mPresenter.collect();
+    }
 }

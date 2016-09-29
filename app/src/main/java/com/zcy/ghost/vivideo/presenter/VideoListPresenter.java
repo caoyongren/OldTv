@@ -67,14 +67,8 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
 
     @Override
     public void loadMore() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //刷新
-                page++;
-                getVideoList(catalogId);
-            }
-        }, 1000);
+        page++;
+        getVideoList(catalogId);
     }
 
 }

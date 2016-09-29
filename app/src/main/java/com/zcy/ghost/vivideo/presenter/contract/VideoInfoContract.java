@@ -14,9 +14,16 @@ public interface VideoInfoContract {
         boolean isActive();
 
         void hidLoading();
+
+        void collected();
+
+        void disCollect();
     }
 
     interface Presenter extends BasePresenter {
         void getDetailData(String dataId);
+
+        void collect();
+
     }
 }

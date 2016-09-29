@@ -31,9 +31,11 @@
         android:layout_width="40dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/container_padding"
         android:visibility="gone">
 
         <ImageView
+            android:id="@+id/iv_collect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

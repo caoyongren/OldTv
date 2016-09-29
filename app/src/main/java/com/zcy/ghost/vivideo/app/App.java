@@ -7,10 +7,15 @@ import android.app.Application;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.pgyersdk.crash.PgyCrashManager;
 import com.squareup.leakcanary.LeakCanary;
+import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.widget.AppBlockCanaryContext;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.rx.RealmObservableFactory;
 
 /******************************************
  * 类名称：App
@@ -38,6 +43,8 @@ public class App extends Application {
         LeakCanary.install(this);
         //初始化过度绘制检测
         BlockCanary.install(this, new AppBlockCanaryContext()).start();
+        //初始化realm
+        initRealm();
     }
 
     public void registerActivity(Activity act) {
@@ -65,4 +72,15 @@ public class App extends Application {
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
     }
+
+    private void initRealm() {
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
+                .name(RealmHelper.DB_NAME)
+                .schemaVersion(1)
+                .rxFactory(new RealmObservableFactory())
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
+    }
+
 }
