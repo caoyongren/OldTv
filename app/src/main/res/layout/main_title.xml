@@ -9,6 +9,5 @@
         android:id="@+id/title_name"
         style="@style/title_tv_style"
         android:layout_width="match_parent"
-        android:textColor="?attr/md_title_color"
-        android:text="张三"/>
+        android:textColor="?attr/md_title_color" />
 </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>

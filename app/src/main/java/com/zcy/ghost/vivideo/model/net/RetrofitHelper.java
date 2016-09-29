@@ -1,7 +1,10 @@
 package com.zcy.ghost.vivideo.model.net;
 
+import android.util.Log;
+
 import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
+import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
 
 import java.io.File;
@@ -62,7 +65,19 @@ public class RetrofitHelper {
                                 .cacheControl(CacheControl.FORCE_CACHE)
                                 .build();
                     }
+                    int tryCount = 0;
                     Response response = chain.proceed(request);
+                    while (!response.isSuccessful() && tryCount < 3) {
+
+                        KL.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
+
+                        tryCount++;
+
+                        // retry the request
+                        response = chain.proceed(request);
+                    }
+
+
                     if (SystemUtils.isNetworkConnected()) {
                         int maxAge = 0;
                         // 有网络时, 不缓存, 最大保存时长为0
