@@ -22,7 +22,7 @@ public class RealmHelper {
     private RealmHelper() {
     }
 
-    public static RealmHelper getInstance() {
+    public static synchronized RealmHelper getInstance() {
         if (instance == null)
             instance = new RealmHelper();
         return instance;
