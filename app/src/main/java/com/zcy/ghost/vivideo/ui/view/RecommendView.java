@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.common.base.Preconditions;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
@@ -25,7 +26,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
 import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
-import com.zcy.ghost.vivideo.ui.adapter.VideoAdapter;
+import com.zcy.ghost.vivideo.ui.adapter.RecommendAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
@@ -43,7 +44,7 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class RecommendView extends RootView implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
+public class RecommendView extends RootView implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     private RecommendContract.Presenter mPresenter;
 
@@ -56,9 +57,10 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     ColorTextView titleName;
     RollPagerView banner;
     View headerView;
-    VideoAdapter adapter;
+    RecommendAdapter adapter;
     TextView tvGO;
     EditText etSearchKey;
+
     public RecommendView(Context context) {
         super(context);
         init();
@@ -82,12 +84,12 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     private void initView() {
         title.setVisibility(View.GONE);
         titleName.setText("精选");
-        headerView = LayoutInflater.from(mContext).inflate(R.layout.choice_header, null);
+        headerView = LayoutInflater.from(mContext).inflate(R.layout.recommend_header, null);
         banner = ButterKnife.findById(headerView, R.id.banner);
         tvGO = ButterKnife.findById(headerView, R.id.tvGO);
         etSearchKey = ButterKnife.findById(headerView, R.id.etSearchKey);
         banner.setPlayDelay(2000);
-        recyclerView.setAdapterWithProgress(adapter = new VideoAdapter(getContext()));
+        recyclerView.setAdapterWithProgress(adapter = new RecommendAdapter(getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setErrorView(R.layout.view_error);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));
@@ -98,7 +100,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     }
 
     protected void initEvent() {
-        title.setOnClickListener(new View.OnClickListener() {
+        title.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (EventUtil.isFastDoubleClick()) {
@@ -135,7 +137,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
                 JumpUtil.go2VideoInfoActivity(mContext, adapter.getItem(position));
             }
         });
-        recyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
+        recyclerView.getErrorView().setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 recyclerView.showProgress();
@@ -153,7 +155,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
 
     @Override
     public void setPresenter(RecommendContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
+        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override
@@ -165,6 +167,14 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     public void showContent(final VideoRes videoRes) {
         if (videoRes != null) {
             adapter.clear();
+            List<VideoInfo> videoInfos;
+            for (int i = 1; i < videoRes.list.size(); i++) {
+                if (videoRes.list.get(i).title.equals("精彩推荐")) {
+                    videoInfos = videoRes.list.get(i).childList;
+                    adapter.addAll(videoInfos);
+                    break;
+                }
+            }
             if (adapter.getHeaderCount() == 0) {
                 adapter.addHeader(new RecyclerArrayAdapter.ItemView() {
                     @Override
@@ -180,16 +190,6 @@ public class RecommendView extends RootView implements RecommendContract.View, S
 
                     }
                 });
-            }
-            List<VideoInfo> videoInfos;
-            for (int i = 1; i < videoRes.list.size(); i++) {
-                if (videoRes.list.get(i).title.equals("精彩推荐")) {
-                    videoInfos = videoRes.list.get(i).childList;
-                    videoInfos.get(0).setFirst(true);
-                    videoInfos.get(0).setType(videoRes.list.get(i).title);
-                    adapter.addAll(videoInfos);
-                    break;
-                }
             }
         }
     }
@@ -217,11 +217,11 @@ public class RecommendView extends RootView implements RecommendContract.View, S
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tvGO:
-                String searchStr=etSearchKey.getText().toString();
-                if(searchStr!=null && !searchStr.equals("")){
-                    JumpUtil.go2VideoListSearchActivity(mContext, searchStr,"搜索");
+                String searchStr = etSearchKey.getText().toString();
+                if (searchStr != null && !searchStr.equals("")) {
+                    JumpUtil.go2VideoListSearchActivity(mContext, searchStr, "搜索");
                 }
                 break;
         }

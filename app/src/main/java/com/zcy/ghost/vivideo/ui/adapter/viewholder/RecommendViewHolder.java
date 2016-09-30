@@ -10,16 +10,16 @@ import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 
 /**
- * Description: VideoViewHolder
+ * Description: RecommendViewHolder
  * Creator: yxc
  * date: 2016/9/21 9:53
  */
 
-public class VideoViewHolder extends BaseViewHolder<VideoInfo> {
+public class RecommendViewHolder extends BaseViewHolder<VideoInfo> {
     ImageView imgPicture;
     TextView tv_title;
 
-    public VideoViewHolder(ViewGroup parent) {
+    public RecommendViewHolder(ViewGroup parent) {
         super(parent, R.layout.item_video);
         imgPicture = $(R.id.img_video);
         tv_title = $(R.id.tv_title);

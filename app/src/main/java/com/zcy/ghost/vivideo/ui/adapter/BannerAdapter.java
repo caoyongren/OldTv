@@ -14,6 +14,11 @@ import com.zcy.ghost.vivideo.utils.JumpUtil;
 
 import java.util.List;
 
+/**
+ * Description: BannerAdapter
+ * Creator: yxc
+ * date: 2016/9/30 11:09
+ */
 public class BannerAdapter extends StaticPagerAdapter {
 
     private Context ctx;

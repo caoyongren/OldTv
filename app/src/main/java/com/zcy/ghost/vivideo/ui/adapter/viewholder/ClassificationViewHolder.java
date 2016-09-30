@@ -11,14 +11,16 @@ import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 
 /**
- * Created by zhuchenxi on 16/6/2.
+ * Description: 专题
+ * Creator: yxc
+ * date: 2016/9/30 11:06
  */
 
-public class FoundViewHolder extends BaseViewHolder<VideoInfo> {
+public class ClassificationViewHolder extends BaseViewHolder<VideoInfo> {
     ImageView imgPicture;
     TextView tv_title;
 
-    public FoundViewHolder(ViewGroup parent) {
+    public ClassificationViewHolder(ViewGroup parent) {
         super(parent, R.layout.item_found);
         imgPicture = $(R.id.img_video);
         tv_title = $(R.id.tv_title);

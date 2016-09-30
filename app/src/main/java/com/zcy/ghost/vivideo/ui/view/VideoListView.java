@@ -32,7 +32,7 @@ import butterknife.OnClick;
 
 
 /**
- * Description: VideoListView
+ * Description: 影片列表
  * Creator: yxc
  * date: 2016/9/21 14:57
  */

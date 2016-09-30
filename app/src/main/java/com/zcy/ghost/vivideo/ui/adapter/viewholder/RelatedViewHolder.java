@@ -11,7 +11,9 @@ import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 
 /**
- * Created by zhuchenxi on 16/6/2.
+ * Description: 推荐
+ * Creator: yxc
+ * date: 2016/9/30 11:06
  */
 
 public class RelatedViewHolder extends BaseViewHolder<VideoInfo> {

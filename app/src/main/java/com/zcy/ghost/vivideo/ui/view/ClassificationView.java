@@ -15,7 +15,7 @@ import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
-import com.zcy.ghost.vivideo.ui.adapter.FoundAdapter;
+import com.zcy.ghost.vivideo.ui.adapter.ClassificationAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 
 
 /**
- * Description: TwoView
+ * Description: 专题
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
@@ -42,7 +42,7 @@ public class ClassificationView extends RootView implements ClassificationContra
     ColorTextView titleName;
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
-    FoundAdapter adapter;
+    ClassificationAdapter adapter;
 
     public ClassificationView(Context context) {
         super(context);
@@ -66,7 +66,7 @@ public class ClassificationView extends RootView implements ClassificationContra
 
     private void initView() {
         titleName.setText("专题");
-        recyclerView.setAdapterWithProgress(adapter = new FoundAdapter(getContext()));
+        recyclerView.setAdapterWithProgress(adapter = new ClassificationAdapter(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setErrorView(R.layout.view_error);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));

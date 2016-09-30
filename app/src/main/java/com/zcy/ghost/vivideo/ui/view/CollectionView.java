@@ -31,7 +31,7 @@ import butterknife.OnClick;
 
 
 /**
- * Description: CollectionView
+ * Description: 收藏
  * Creator: yxc
  * date: 2016/9/29 12:16
  */

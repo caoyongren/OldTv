@@ -23,9 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Description:
+ * Description: SwipeDeckAdapter
  * Creator: yxc
- * date: $date $time
+ * date: 2016/9/30 11:10
  */
 public class SwipeDeckAdapter extends BaseAdapter {
 

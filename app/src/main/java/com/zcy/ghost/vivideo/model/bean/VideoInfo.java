@@ -8,13 +8,6 @@ import java.io.Serializable;
  * date: 2016/9/29 9:39
  */
 public class VideoInfo implements Serializable {
-    public VideoInfo() {
-    }
-
-    public VideoInfo(boolean isFirst) {
-        setFirst(isFirst);
-    }
-
     public String title;
     public String pic;
     public String dataId;
@@ -22,16 +15,7 @@ public class VideoInfo implements Serializable {
     public String airTime;
     public String moreURL;
     //    public String description;
-    private boolean isFirst = false;
     private String type;
-
-    public boolean isFirst() {
-        return isFirst;
-    }
-
-    public void setFirst(boolean first) {
-        isFirst = first;
-    }
 
     public String getType() {
         return type;

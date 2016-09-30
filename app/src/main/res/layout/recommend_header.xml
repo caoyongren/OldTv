@@ -24,25 +24,46 @@
             android:id="@+id/etSearchKey"
             android:layout_width="match_parent"
             android:layout_height="38dp"
+            android:layout_toLeftOf="@+id/tvGO"
             android:background="@null"
             android:drawableLeft="@mipmap/search"
             android:drawablePadding="10dp"
+            android:imeOptions="actionSearch"
             android:text="一念天堂"
             android:textColor="@color/gray_light"
-            android:textSize="15sp"
-            android:imeOptions="actionSearch"
-            android:layout_toLeftOf="@+id/tvGO"/>
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/tvGO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="GO"
+            android:layout_centerVertical="true"
             android:gravity="center"
             android:paddingRight="@dimen/standard_x_small_margin"
-            android:textColor="@color/white"
-            android:layout_centerVertical="true"/>
+            android:text="GO"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/banner"
+        android:paddingTop="@dimen/standard_x_small_margin"
+        android:paddingBottom="@dimen/standard_xs_small_margin"
+        android:paddingLeft="@dimen/standard_x_small_margin">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:background="@android:color/holo_green_dark" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/small_tv_style"
+            android:layout_marginLeft="5dp"
+            android:text="@string/recommend"/>
+    </LinearLayout>
 </RelativeLayout>

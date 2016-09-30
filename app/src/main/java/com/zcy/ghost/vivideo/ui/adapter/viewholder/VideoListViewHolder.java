@@ -11,7 +11,9 @@ import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 
 /**
- * Created by zhuchenxi on 16/6/2.
+ * Description: 影片列表
+ * Creator: yxc
+ * date: 2016/9/30 11:06
  */
 
 public class VideoListViewHolder extends BaseViewHolder<VideoType> {
