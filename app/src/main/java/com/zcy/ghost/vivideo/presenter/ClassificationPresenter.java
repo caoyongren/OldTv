@@ -1,13 +1,12 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
-import com.zcy.ghost.vivideo.presenter.contract.TwoContract;
+import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
@@ -15,19 +14,17 @@ import rx.Subscription;
 import rx.functions.Action1;
 
 /**
- * Description: TwoPresenter
+ * Description: ClassificationPresenter
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class TwoPresenter extends RxPresenter implements TwoContract.Presenter {
-    TwoContract.View mView;
+public class ClassificationPresenter extends RxPresenter implements ClassificationContract.Presenter {
+    ClassificationContract.View mView;
     int page = 0;
-    Handler handler = new Handler();
 
-    public TwoPresenter(@NonNull TwoContract.View twoView) {
+    public ClassificationPresenter(@NonNull ClassificationContract.View twoView) {
         mView = StringUtils.checkNotNull(twoView);
         mView.setPresenter(this);
-        onRefresh();
     }
 
     @Override

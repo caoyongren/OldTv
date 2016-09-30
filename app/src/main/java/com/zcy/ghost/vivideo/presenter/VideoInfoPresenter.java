@@ -136,7 +136,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                 bean.setPic(pic);
                 bean.setTitle(result.title);
                 bean.setTime(System.currentTimeMillis());
-                RealmHelper.getInstance().insertRecord(bean, HistoryRecordPresenter.maxSize);
+                RealmHelper.getInstance().insertRecord(bean, MinePresenter.maxSize);
                 //刷新收藏列表
                 Subscription rxSubscription = Observable.timer(WAIT_TIME, TimeUnit.MILLISECONDS)
                         .compose(RxUtil.<Long>rxSchedulerHelper())

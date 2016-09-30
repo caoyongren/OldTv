@@ -23,7 +23,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.presenter.contract.OneContract;
+import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
 import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
 import com.zcy.ghost.vivideo.ui.adapter.VideoAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
@@ -43,9 +43,9 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class OneView extends RootView implements OneContract.View, SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
+public class RecommendView extends RootView implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
 
-    private OneContract.Presenter mPresenter;
+    private RecommendContract.Presenter mPresenter;
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
@@ -59,20 +59,20 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
     VideoAdapter adapter;
     TextView tvGO;
     EditText etSearchKey;
-    public OneView(Context context) {
+    public RecommendView(Context context) {
         super(context);
         init();
     }
 
 
-    public OneView(Context context, AttributeSet attrs) {
+    public RecommendView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         mContext = getContext();
-        inflate(mContext, R.layout.fragment_one_view, this);
+        inflate(mContext, R.layout.fragment_recommend_view, this);
         unbinder = ButterKnife.bind(this);
         initView();
         initEvent();
@@ -152,7 +152,7 @@ public class OneView extends RootView implements OneContract.View, SwipeRefreshL
 
 
     @Override
-    public void setPresenter(OneContract.Presenter presenter) {
+    public void setPresenter(RecommendContract.Presenter presenter) {
         mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
     }
 

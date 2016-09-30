@@ -6,7 +6,7 @@ import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Record;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
-import com.zcy.ghost.vivideo.presenter.contract.HistoryContract;
+import com.zcy.ghost.vivideo.presenter.contract.MineContract;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import org.simple.eventbus.EventBus;
@@ -20,13 +20,13 @@ import java.util.List;
  * Creator: cp
  * date: 2016/9/29 12:19
  */
-public class HistoryRecordPresenter extends RxPresenter implements HistoryContract.Presenter {
-    HistoryContract.View mView;
+public class MinePresenter extends RxPresenter implements MineContract.Presenter {
+    MineContract.View mView;
     private boolean isMine;
     private boolean isSetting;
     public static final int maxSize = 3;
 
-    public HistoryRecordPresenter(@NonNull HistoryContract.View oneView, boolean isSetting) {
+    public MinePresenter(@NonNull MineContract.View oneView, boolean isSetting) {
         this.isSetting = isSetting;
         mView = StringUtils.checkNotNull(oneView);
         mView.setPresenter(this);

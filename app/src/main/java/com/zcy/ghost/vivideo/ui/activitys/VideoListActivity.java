@@ -6,7 +6,6 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.SwipeBackActivity;
 import com.zcy.ghost.vivideo.presenter.VideoListPresenter;
 import com.zcy.ghost.vivideo.ui.view.VideoListView;
-import com.zcy.ghost.vivideo.utils.KL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +22,6 @@ public class VideoListActivity extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
         unbinder = ButterKnife.bind(this);
-        KL.d(VideoListActivity.class, "onCreate");
         getIntentData();
         mPresenter = new VideoListPresenter(videlListView, mCatalogId,searchStr);
     }

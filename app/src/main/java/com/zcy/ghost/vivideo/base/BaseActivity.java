@@ -15,6 +15,7 @@ import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
+import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
@@ -23,7 +24,6 @@ import com.zcy.ghost.vivideo.widget.theme.Theme;
 
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
-import rx.Subscription;
 
 /**
  * Description: BaseActivity
@@ -33,14 +33,13 @@ import rx.Subscription;
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements EmptyView {
 
     protected boolean isConnection = false;
-    protected Subscription subscription;
-    protected static long lastClickTime;
     protected T mPresenter;
     protected Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        KL.d(this.getClass(), this.getClass().getName() + "------>onCreate");
         setTranslucentStatus(true);
         onPreCreate();
         isConnection = SystemUtils.checkNet(this);
@@ -48,6 +47,50 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         App.getInstance().registerActivity(this);
         if (mPresenter != null)
             mPresenter.attachView(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        KL.d(this.getClass(), this.getClass().getName() + "------>onStart");
+        setTitleHeight(getRootView(this));
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        KL.d(this.getClass(), this.getClass().getName() + "------>onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        KL.d(this.getClass(), this.getClass().getName() + "------>onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        KL.d(this.getClass(), this.getClass().getName() + "------>onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        KL.d(this.getClass(), this.getClass().getName() + "------>onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        KL.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
+        App.getInstance().unregisterActivity(this);
+        if (netListener != null)
+            unregisterReceiver(netListener);
+        if (mPresenter != null)
+            mPresenter.detachView();
+        if (unbinder != null)
+            unbinder.unbind();
     }
 
     private void onPreCreate() {
@@ -105,30 +148,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setTitleHeight(getRootView(this));
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        App.getInstance().unregisterActivity(this);
-        if (netListener != null)
-            unregisterReceiver(netListener);
-        if (mPresenter != null)
-            mPresenter.detachView();
-        if (unbinder != null)
-            unbinder.unbind();
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     protected void initView() {
     }
 
@@ -152,8 +171,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (!TextUtils.isEmpty(action) && action.equals(wifiAction)) {
-//                WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-//                isConnection = wifiManager.isWifiEnabled();
                 isConnection = SystemUtils.checkNet(context);
             }
         }

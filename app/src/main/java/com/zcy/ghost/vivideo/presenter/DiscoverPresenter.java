@@ -7,7 +7,7 @@ import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
-import com.zcy.ghost.vivideo.presenter.contract.ThreeContract;
+import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
@@ -16,12 +16,12 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 
 /**
- * Description: ThreePresenter
+ * Description: DiscoverPresenter
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class ThreePresenter extends RxPresenter implements ThreeContract.Presenter {
-    ThreeContract.View mView;
+public class DiscoverPresenter extends RxPresenter implements DiscoverContract.Presenter {
+    DiscoverContract.View mView;
     final String catalogId = "402834815584e463015584e53843000b";
 
     int max = 90;
@@ -29,10 +29,9 @@ public class ThreePresenter extends RxPresenter implements ThreeContract.Present
     Handler handler = new Handler();
 
 
-    public ThreePresenter(@NonNull ThreeContract.View threeView) {
+    public DiscoverPresenter(@NonNull DiscoverContract.View threeView) {
         mView = StringUtils.checkNotNull(threeView);
         mView.setPresenter(this);
-        getData();
     }
 
     @Override

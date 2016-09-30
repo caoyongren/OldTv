@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/both_match_style">
 
-    <com.zcy.ghost.vivideo.ui.view.ThreeView
-        android:id="@+id/three_view"
-        style="@style/both_match_style" />
+    <com.zcy.ghost.vivideo.ui.view.RecommendView
+        android:id="@+id/one_view"
+        style="@style/both_match_style"/>
 
 </RelativeLayout>

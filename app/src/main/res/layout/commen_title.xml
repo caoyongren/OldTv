@@ -31,7 +31,7 @@
         android:layout_width="40dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/container_padding"
+        android:layout_marginRight="@dimen/standard_x_small_margin"
         android:visibility="gone">
 
         <ImageView
@@ -48,7 +48,7 @@
         android:layout_width="40dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/container_padding"
+        android:layout_marginRight="@dimen/standard_x_small_margin"
         android:visibility="gone">
 
         <TextView

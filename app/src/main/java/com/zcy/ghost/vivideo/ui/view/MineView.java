@@ -17,7 +17,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.presenter.contract.HistoryContract;
+import com.zcy.ghost.vivideo.presenter.contract.MineContract;
 import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
 import com.zcy.ghost.vivideo.ui.activitys.SettingActivity;
 import com.zcy.ghost.vivideo.ui.adapter.MineHistoryVideoListAdapter;
@@ -42,9 +42,9 @@ import butterknife.OnClick;
  * Creator: cp
  * date: 2016/9/29 12:16
  */
-public class MineView extends RootView implements HistoryContract.View {
+public class MineView extends RootView implements MineContract.View {
 
-    private HistoryContract.Presenter mPresenter;
+    private MineContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -72,7 +72,7 @@ public class MineView extends RootView implements HistoryContract.View {
 
     private void init() {
         mContext = getContext();
-        inflate(mContext, R.layout.activity_mine_view, this);
+        inflate(mContext, R.layout.fragment_mine_view, this);
         unbinder = ButterKnife.bind(this);
         mActive = true;
         initView();
@@ -107,7 +107,7 @@ public class MineView extends RootView implements HistoryContract.View {
     }
 
     @Override
-    public void setPresenter(HistoryContract.Presenter presenter) {
+    public void setPresenter(MineContract.Presenter presenter) {
         mPresenter = Preconditions.checkNotNull(presenter);
     }
 

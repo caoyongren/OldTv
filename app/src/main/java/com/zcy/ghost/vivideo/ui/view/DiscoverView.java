@@ -14,7 +14,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.presenter.contract.ThreeContract;
+import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
@@ -34,9 +34,9 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class ThreeView extends RootView implements ThreeContract.View {
+public class DiscoverView extends RootView implements DiscoverContract.View {
 
-    private ThreeContract.Presenter mPresenter;
+    private DiscoverContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -54,20 +54,20 @@ public class ThreeView extends RootView implements ThreeContract.View {
     private SwipeDeckAdapter adapter;
     private List<VideoType> videos = new ArrayList<>();
 
-    public ThreeView(Context context) {
+    public DiscoverView(Context context) {
         super(context);
         init();
     }
 
 
-    public ThreeView(Context context, AttributeSet attrs) {
+    public DiscoverView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         mContext = getContext();
-        inflate(mContext, R.layout.fragment_three_view, this);
+        inflate(mContext, R.layout.fragment_discover_view, this);
         unbinder = ButterKnife.bind(this);
         initView();
         initEvent();
@@ -124,7 +124,7 @@ public class ThreeView extends RootView implements ThreeContract.View {
 
 
     @Override
-    public void setPresenter(ThreeContract.Presenter presenter) {
+    public void setPresenter(DiscoverContract.Presenter presenter) {
         mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
     }
 

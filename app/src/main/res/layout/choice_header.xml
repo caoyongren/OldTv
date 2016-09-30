@@ -13,15 +13,12 @@
         app:rollviewpager_play_delay="2000" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:background="@drawable/black_trans_bg"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        >
+        android:paddingLeft="15dp">
 
         <EditText
             android:id="@+id/etSearchKey"
@@ -37,11 +34,12 @@
             android:layout_toLeftOf="@+id/tvGO"/>
         <TextView
             android:id="@+id/tvGO"
-            android:layout_width="60dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="GO"
             android:gravity="center"
+            android:paddingRight="@dimen/standard_x_small_margin"
             android:textColor="@color/white"
             android:layout_centerVertical="true"/>
 

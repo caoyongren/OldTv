@@ -3,25 +3,28 @@ package com.zcy.ghost.vivideo.presenter.contract;
 
 import com.zcy.ghost.vivideo.base.BasePresenter;
 import com.zcy.ghost.vivideo.base.BaseView;
-import com.zcy.ghost.vivideo.model.bean.VideoRes;
+import com.zcy.ghost.vivideo.model.bean.VideoType;
+
+import java.util.List;
 
 /**
- * Description: TwoContract
- * Creator: yxc
- * date: 2016/9/21 17:55
+ * Description: CollectionContract
+ * Creator: cp
+ * date: 2016/9/29 12:19
  */
-public interface TwoContract {
+public interface MineContract {
 
     interface View extends BaseView<Presenter> {
 
         boolean isActive();
 
-        void showContent(VideoRes videoRes);
+        void showContent(List<VideoType> list);
 
-        void refreshFaild(String msg);
     }
 
     interface Presenter extends BasePresenter {
-        void onRefresh();
+        void getHistoryData();
+
+        void delAllHistory();
     }
 }

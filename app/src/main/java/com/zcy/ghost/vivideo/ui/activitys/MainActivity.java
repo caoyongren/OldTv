@@ -13,9 +13,9 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
-import com.zcy.ghost.vivideo.ui.fragments.Fragment1;
-import com.zcy.ghost.vivideo.ui.fragments.Fragment2;
-import com.zcy.ghost.vivideo.ui.fragments.Fragment3;
+import com.zcy.ghost.vivideo.ui.fragments.ClassificationFragment;
+import com.zcy.ghost.vivideo.ui.fragments.DiscoverFragment;
+import com.zcy.ghost.vivideo.ui.fragments.RecommendFragment;
 import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
@@ -101,9 +101,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private List<Fragment> initFragments() {
         List<Fragment> fragments = new ArrayList<>();
-        Fragment fragment1 = new Fragment1();
-        Fragment fragment2 = new Fragment2();
-        Fragment fragment3 = new Fragment3();
+        Fragment fragment1 = new RecommendFragment();
+        Fragment fragment2 = new ClassificationFragment();
+        Fragment fragment3 = new DiscoverFragment();
         Fragment mineFragment = new MineFragment();
         fragments.add(fragment1);
         fragments.add(fragment2);

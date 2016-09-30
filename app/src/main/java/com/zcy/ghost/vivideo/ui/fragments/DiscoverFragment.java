@@ -4,8 +4,8 @@ import android.view.LayoutInflater;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
-import com.zcy.ghost.vivideo.presenter.ThreePresenter;
-import com.zcy.ghost.vivideo.ui.view.ThreeView;
+import com.zcy.ghost.vivideo.presenter.DiscoverPresenter;
+import com.zcy.ghost.vivideo.ui.view.DiscoverView;
 
 import butterknife.BindView;
 
@@ -14,18 +14,23 @@ import butterknife.BindView;
  * Creator: yxc
  * date: $date $time
  */
-public class Fragment3 extends BaseFragment {
+public class DiscoverFragment extends BaseFragment {
 
     @BindView(R.id.three_view)
-    ThreeView threeView;
+    DiscoverView threeView;
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_three;
+        return R.layout.fragment_discover;
     }
 
     @Override
     protected void initView(LayoutInflater inflater) {
-        mPresenter = new ThreePresenter(threeView);
+        mPresenter = new DiscoverPresenter(threeView);
+    }
+
+    @Override
+    protected void lazyFetchData() {
+        ((DiscoverPresenter) mPresenter).getData();
     }
 }

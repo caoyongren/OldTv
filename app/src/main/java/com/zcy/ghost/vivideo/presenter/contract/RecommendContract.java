@@ -6,11 +6,11 @@ import com.zcy.ghost.vivideo.base.BaseView;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 
 /**
- * Description: OneContract
+ * Description: RecommendContract
  * Creator: yxc
  * date: 2016/9/21 15:53
  */
-public interface OneContract {
+public interface RecommendContract {
 
     interface View extends BaseView<Presenter> {
 

@@ -6,11 +6,11 @@ import com.zcy.ghost.vivideo.base.BaseView;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 
 /**
- * Description: OneContract
+ * Description: ClassificationContract
  * Creator: yxc
- * date: 2016/9/21 15:53
+ * date: 2016/9/21 17:55
  */
-public interface ThreeContract {
+public interface ClassificationContract {
 
     interface View extends BaseView<Presenter> {
 
@@ -19,11 +19,9 @@ public interface ThreeContract {
         void showContent(VideoRes videoRes);
 
         void refreshFaild(String msg);
-
-        void hidLoading();
     }
 
     interface Presenter extends BasePresenter {
-        void getData();
+        void onRefresh();
     }
 }

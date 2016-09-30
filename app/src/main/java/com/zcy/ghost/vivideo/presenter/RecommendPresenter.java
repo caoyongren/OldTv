@@ -7,7 +7,7 @@ import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
-import com.zcy.ghost.vivideo.presenter.contract.OneContract;
+import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
@@ -15,19 +15,18 @@ import rx.Subscription;
 import rx.functions.Action1;
 
 /**
- * Description: OnePresenter
+ * Description: RecommendPresenter
  * Creator: yxc
  * date: 2016/9/21 16:26
  */
-public class OnePresenter extends RxPresenter implements OneContract.Presenter {
-    OneContract.View mView;
+public class RecommendPresenter extends RxPresenter implements RecommendContract.Presenter {
+    RecommendContract.View mView;
     int page = 0;
     Handler handler = new Handler();
 
-    public OnePresenter(@NonNull OneContract.View oneView) {
+    public RecommendPresenter(@NonNull RecommendContract.View oneView) {
         mView = StringUtils.checkNotNull(oneView);
         mView.setPresenter(this);
-        onRefresh();
     }
 
     @Override

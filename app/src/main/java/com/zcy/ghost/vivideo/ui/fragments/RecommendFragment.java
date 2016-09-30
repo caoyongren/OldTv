@@ -4,8 +4,8 @@ import android.view.LayoutInflater;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
-import com.zcy.ghost.vivideo.presenter.OnePresenter;
-import com.zcy.ghost.vivideo.ui.view.OneView;
+import com.zcy.ghost.vivideo.presenter.RecommendPresenter;
+import com.zcy.ghost.vivideo.ui.view.RecommendView;
 
 import butterknife.BindView;
 
@@ -14,20 +14,23 @@ import butterknife.BindView;
  * Creator: yxc
  * date: $date $time
  */
-public class Fragment1 extends BaseFragment {
-
+public class RecommendFragment extends BaseFragment {
 
     @BindView(R.id.one_view)
-    OneView oneView;
+    RecommendView oneView;
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_one;
+        return R.layout.fragment_recommend;
     }
 
     @Override
     protected void initView(LayoutInflater inflater) {
-        mPresenter = new OnePresenter(oneView);
+        mPresenter = new RecommendPresenter(oneView);
     }
 
+    @Override
+    protected void lazyFetchData() {
+        ((RecommendPresenter) mPresenter).onRefresh();
+    }
 }

@@ -14,7 +14,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.presenter.contract.TwoContract;
+import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
 import com.zcy.ghost.vivideo.ui.adapter.FoundAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
@@ -34,9 +34,9 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class TwoView extends RootView implements TwoContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class ClassificationView extends RootView implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
-    private TwoContract.Presenter mPresenter;
+    private ClassificationContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -44,20 +44,20 @@ public class TwoView extends RootView implements TwoContract.View, SwipeRefreshL
     EasyRecyclerView recyclerView;
     FoundAdapter adapter;
 
-    public TwoView(Context context) {
+    public ClassificationView(Context context) {
         super(context);
         init();
     }
 
 
-    public TwoView(Context context, AttributeSet attrs) {
+    public ClassificationView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         mContext = getContext();
-        inflate(mContext, R.layout.fragment_two_view, this);
+        inflate(mContext, R.layout.fragment_classification_view, this);
         unbinder = ButterKnife.bind(this);
         initView();
         initEvent();
@@ -100,7 +100,7 @@ public class TwoView extends RootView implements TwoContract.View, SwipeRefreshL
 
 
     @Override
-    public void setPresenter(TwoContract.Presenter presenter) {
+    public void setPresenter(ClassificationContract.Presenter presenter) {
         mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
     }
 
