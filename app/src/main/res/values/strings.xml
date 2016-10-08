@@ -22,6 +22,9 @@
     <string name="my_collection">收藏</string>
     <string name="my_them">主题</string>
     <string name="clean">清除</string>
+    <string name="mine_title">我的</string>
+    <string name="theme_title">主题选择页</string>
+
 
     <string name="share">分享</string>
     <string name="fuli">福利</string>

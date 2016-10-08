@@ -38,7 +38,9 @@
         <activity
             android:name=".ui.activitys.CollectionActivity"
             android:theme="@style/CustomTransparent" />
-
+        <activity
+            android:name=".ui.activitys.HistoryActivity"
+            android:theme="@style/CustomTransparent" />
         <meta-data
             android:name="PGYER_APPID"
             android:value="3b5a14c609a54bfd369ec43ead88852a" />
