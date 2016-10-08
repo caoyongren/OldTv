@@ -73,7 +73,7 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
         imgs.add("file:///android_asset/a.jpg");
         imgs.add("file:///android_asset/b.jpg");
         imgs.add("file:///android_asset/c.jpg");
-        imgs.add("file:///android_asset/d.jpg");
+//        imgs.add("file:///android_asset/d.jpg");
         imgs.add("file:///android_asset/e.jpg");
 
         imgs.add("file:///android_asset/f.jpg");

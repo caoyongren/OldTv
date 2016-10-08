@@ -110,9 +110,9 @@
         <item name="colorAccent">@color/colorBluePrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorBluePrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorBluePrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorBluePrimary</item>-->
-
+        <item name="menuBackground">@drawable/blue_background</item>
+        <item name="background">@mipmap/bg_blue</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
     <!--redTheme-->
@@ -122,9 +122,9 @@
         <item name="colorAccent">@color/colorRedPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorRedPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorRedPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorRedPrimary</item>-->
-
+        <item name="menuBackground">@drawable/red_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
     <!--brownTheme-->
     <style name="BrownTheme" parent="CustomTransparent">
@@ -133,9 +133,9 @@
         <item name="colorAccent">@color/colorBrownPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorBrownPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorBrownPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorBrownPrimary</item>-->
-
+        <item name="menuBackground">@drawable/brown_background</item>
+        <item name="background">@mipmap/bg</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
     <!--greenTheme-->
     <style name="GreenTheme" parent="CustomTransparent">
@@ -144,8 +144,9 @@
         <item name="colorAccent">@color/colorGreenPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorGreenPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorGreenPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorGreenPrimary</item>-->
+        <item name="menuBackground">@drawable/green_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
     <!--purpleTheme-->
     <style name="PurpleTheme" parent="CustomTransparent">
@@ -154,8 +155,9 @@
         <item name="colorAccent">@color/colorPurplePrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorPurplePrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorPurplePrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorPurplePrimary</item>-->
+        <item name="menuBackground">@drawable/purple_background</item>
+        <item name="background">@mipmap/bg_blue</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
     <!--tealTheme-->
     <style name="TealTheme" parent="CustomTransparent">
@@ -164,8 +166,9 @@
         <item name="colorAccent">@color/colorTealPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorTealPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorTealPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorTealPrimary</item>-->
+        <item name="menuBackground">@drawable/teal_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
     <!--pinkTheme-->
@@ -175,8 +178,9 @@
         <item name="colorAccent">@color/colorPinkPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorPinkPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorPinkPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorPinkPrimary</item>-->
+        <item name="menuBackground">@drawable/pink_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
     <!--deepPurpleTheme-->
@@ -186,8 +190,9 @@
         <item name="colorAccent">@color/colorDeepPurplePrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorDeepPurplePrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorDeepPurplePrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorDeepPurplePrimary</item>-->
+        <item name="menuBackground">@drawable/deep_purple_background</item>
+        <item name="background">@mipmap/bg_blue</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
     <!--orange-->
@@ -197,8 +202,9 @@
         <item name="colorAccent">@color/colorOrangePrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorOrangePrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorOrangePrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorOrangePrimary</item>-->
+        <item name="menuBackground">@drawable/orange_background</item>
+        <item name="background">@mipmap/bg_blue</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
 
@@ -209,8 +215,9 @@
         <item name="colorAccent">@color/colorIndigoPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorIndigoPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorIndigoPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorIndigoPrimary</item>-->
+        <item name="menuBackground">@drawable/indigo_background</item>
+        <item name="background">@mipmap/bg_blue</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
 
@@ -221,8 +228,9 @@
         <item name="colorAccent">@color/colorCyanPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorCyanPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorCyanPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorCyanPrimary</item>-->
+        <item name="menuBackground">@drawable/cyan_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
 
@@ -234,8 +242,8 @@
         <item name="menuBackground">@drawable/light_green_background</item>
         <item name="colorPrimaryLight">@color/colorLightGreenPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorLightGreenPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorLightGreenPrimary</item>-->
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
 
@@ -246,8 +254,9 @@
         <item name="colorAccent">@color/colorLimePrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorLimePrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorLimePrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorLimePrimary</item>-->
+        <item name="menuBackground">@drawable/lime_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
 
@@ -258,8 +267,9 @@
         <item name="colorAccent">@color/colorDeepOrangePrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorDeepOrangePrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorDeepOrangePrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorDeepOrangePrimary</item>-->
+        <item name="menuBackground">@drawable/deep_orange_background</item>
+        <item name="background">@mipmap/bg_colorful</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
 
 
@@ -270,14 +280,19 @@
         <item name="colorAccent">@color/colorBlueGreyPrimaryDark</item>
         <item name="colorPrimaryLight">@color/colorBlueGreyPrimary</item>
         <item name="md_title_color">@color/white</item>
-        <!--<item name="md_link_color">@color/colorBlueGreyPrimary</item>-->
-        <!--<item name="md_positive_color">@color/colorBlueGreyPrimary</item>-->
+        <item name="menuBackground">@drawable/blue_grey_background</item>
+        <item name="background">@mipmap/bg_blue</item>
+        <item name="mine_background">@mipmap/my_bg_colorful</item>
     </style>
+
     <!--black-->
     <style name="BlackTheme" parent="CustomTransparent">
         <item name="colorPrimary">@color/dark_black</item>
         <item name="md_title_color">@color/dark_green</item>
         <item name="colorPrimaryLight">@color/dark_black</item>
+        <item name="menuBackground">@mipmap/bg</item>
+        <item name="background">@mipmap/bg</item>
+        <item name="mine_background">@mipmap/my_bg</item>
     </style>
 
 

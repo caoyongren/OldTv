@@ -19,6 +19,8 @@ public interface RecommendContract {
         void showContent(VideoRes videoRes);
 
         void refreshFaild(String msg);
+
+        void stopBanner(boolean stop);
     }
 
     interface Presenter extends BasePresenter {

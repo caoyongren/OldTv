@@ -15,7 +15,7 @@ import org.simple.eventbus.Subscriber;
 import butterknife.BindView;
 
 /**
- * Description: VideoIntroFragment
+ * Description: 详情——简介
  * Creator: yxc
  * date: 2016/9/9 9:54
  */

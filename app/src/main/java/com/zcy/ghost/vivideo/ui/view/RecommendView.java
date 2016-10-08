@@ -202,6 +202,15 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     }
 
     @Override
+    public void stopBanner(boolean stop) {
+        if (stop) {
+            banner.pause();
+        } else {
+            banner.resume();
+        }
+    }
+
+    @Override
     public void onRefresh() {
         mPresenter.onRefresh();
     }
