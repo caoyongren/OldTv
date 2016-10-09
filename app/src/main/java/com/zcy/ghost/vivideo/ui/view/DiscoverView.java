@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.zcy.ghost.vivideo.widget.swipedeck.SwipeDeck;
+import com.zcy.ghost.vivideo.widget.SwipeDeck;
 import com.daprlabs.cardstack.SwipeFrameLayout;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;

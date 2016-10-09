@@ -25,7 +25,7 @@
             android:orientation="vertical">
 
 
-            <com.zcy.ghost.vivideo.widget.swipedeck.SwipeDeck
+            <com.zcy.ghost.vivideo.widget.SwipeDeck
                 android:id="@+id/swipe_deck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

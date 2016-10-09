@@ -23,7 +23,9 @@
 * 1.将详情界面修改成Material Design控件样式
 * 2.缓存功能
 
-## Screenshots
+## 效果
+
+[demo下载地址](https://www.pgyer.com/NqEz)
 
 <a href="art/01.png"><img src="art/01.png" width="40%"/></a> <a href="art/02.png"><img src="art/02.png" width="40%"/></a>
 

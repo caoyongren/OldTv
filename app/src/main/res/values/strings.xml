@@ -34,5 +34,5 @@
     <string name="download">我的下载</string>
     <string name="about">关于我们</string>
     <string name="close">关闭</string>
-    <string name="about_me">\n博 客：<a href="http://blog.csdn.net/jiankeufo">jiankeufo</a>\n\nGithub：<a href="https://github.com/stevenMieMie/Ghost">ghost</a></string>
+    <string name="about_me">\n博 客：<a href="http://blog.csdn.net/jiankeufo">jiankeufo</a>\n\nGithub：<a href="https://github.com/GeekGhost/Ghost">ghost</a></string>
 </resources>

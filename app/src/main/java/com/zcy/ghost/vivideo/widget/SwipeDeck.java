@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.widget.swipedeck;
+package com.zcy.ghost.vivideo.widget;
 
 /**
  * Description:
