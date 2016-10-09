@@ -94,6 +94,10 @@
 * [BlockCanary](https://github.com/markzhai/AndroidPerformanceMonitor)
 * [LeakCanary](https://github.com/square/leakcanary)
 
+####THANKS
+
+* [JieCaoVideoPlayer](https://github.com/lipangit/JieCaoVideoPlayer)
+* [EasyRecyclerView](https://github.com/Jude95/EasyRecyclerView)
 
 ##License
 
