@@ -18,8 +18,11 @@ import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.typeface.IIcon;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
+import com.pgyersdk.feedback.PgyFeedback;
+import com.pgyersdk.views.PgyerDialog;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
+import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
 import com.zcy.ghost.vivideo.ui.fragments.ClassificationFragment;
@@ -186,67 +189,83 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         if (selectedColor == getResources().getColor(R.color.colorBluePrimary)) {
             setTheme(R.style.BlueTheme);
             PreUtils.setCurrentTheme(this, Theme.Blue);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#2196F3");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorRedPrimary)) {
             setTheme(R.style.RedTheme);
             PreUtils.setCurrentTheme(this, Theme.Red);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#F44336");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorBrownPrimary)) {
             setTheme(R.style.BrownTheme);
             PreUtils.setCurrentTheme(this, Theme.Brown);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#795548");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorGreenPrimary)) {
             setTheme(R.style.GreenTheme);
             PreUtils.setCurrentTheme(this, Theme.Green);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#4CAF50");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorPurplePrimary)) {
             setTheme(R.style.PurpleTheme);
             PreUtils.setCurrentTheme(this, Theme.Purple);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#9c27b0");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorTealPrimary)) {
             setTheme(R.style.TealTheme);
             PreUtils.setCurrentTheme(this, Theme.Teal);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#009688");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorPinkPrimary)) {
             setTheme(R.style.PinkTheme);
             PreUtils.setCurrentTheme(this, Theme.Pink);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#E91E63");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorDeepPurplePrimary)) {
             setTheme(R.style.DeepPurpleTheme);
             PreUtils.setCurrentTheme(this, Theme.DeepPurple);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#673AB7");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorOrangePrimary)) {
             setTheme(R.style.OrangeTheme);
             PreUtils.setCurrentTheme(this, Theme.Orange);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#FF9800");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorIndigoPrimary)) {
             setTheme(R.style.IndigoTheme);
             PreUtils.setCurrentTheme(this, Theme.Indigo);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#3F51B5");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorLightGreenPrimary)) {
             setTheme(R.style.LightGreenTheme);
             PreUtils.setCurrentTheme(this, Theme.LightGreen);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#8BC34A");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorDeepOrangePrimary)) {
             setTheme(R.style.DeepOrangeTheme);
             PreUtils.setCurrentTheme(this, Theme.DeepOrange);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "##FF5722");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorLimePrimary)) {
             setTheme(R.style.LimeTheme);
             PreUtils.setCurrentTheme(this, Theme.Lime);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#CDDC39");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorBlueGreyPrimary)) {
             setTheme(R.style.BlueGreyTheme);
             PreUtils.setCurrentTheme(this, Theme.BlueGrey);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#CDDC39");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(R.color.colorCyanPrimary)) {
             setTheme(R.style.CyanTheme);
             PreUtils.setCurrentTheme(this, Theme.Cyan);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#00BCD4");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#ffffff");
         } else if (selectedColor == getResources().getColor(android.R.color.black)) {
             setTheme(R.style.BlackTheme);
             PreUtils.setCurrentTheme(this, Theme.Black);
-
+            PreUtils.putString(this, Constants.PRIMARYCOLOR, "#000000");
+            PreUtils.putString(this, Constants.TITLECOLOR, "#0aa485");
         }
         EventBus.getDefault().post("", Set_Theme_Color);
     }
@@ -308,7 +327,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 EventUtil.showToast(this, "分享");
                 break;
             case R.id.tv_feedback:
-                EventUtil.showToast(this, "建议反馈");
+                // 以对话框的形式弹出
+                PgyerDialog.setDialogTitleBackgroundColor(PreUtils.getString(this, Constants.PRIMARYCOLOR, "#000000"));
+                PgyerDialog.setDialogTitleTextColor(PreUtils.getString(this, Constants.TITLECOLOR, "#0aa485"));
+                PgyFeedback.getInstance().showDialog(MainActivity.this);
                 break;
             case R.id.tv_setting:
                 startActivity(new Intent(this, SettingActivity.class));
