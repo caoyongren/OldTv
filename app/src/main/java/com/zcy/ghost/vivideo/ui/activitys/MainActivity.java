@@ -92,10 +92,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mPagerAdapter = new ContentPagerAdapter(getSupportFragmentManager(), fragments);
         vpContent.setAdapter(mPagerAdapter);
         vpContent.setOffscreenPageLimit(fragments.size());
-        if (PreUtils.getBoolean(this, "isFirst", true)) {
-            mResideLayout.openPane();
-            PreUtils.putBoolean(this, "isFirst", false);
-        }
         setIconDrawable(tvCollect, MaterialDesignIconic.Icon.gmi_collection_add);
         setIconDrawable(tvMydown, MaterialDesignIconic.Icon.gmi_download);
         setIconDrawable(tvFuli, MaterialDesignIconic.Icon.gmi_mood);

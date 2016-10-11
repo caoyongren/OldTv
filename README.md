@@ -100,6 +100,28 @@
 * [EasyRecyclerView](https://github.com/Jude95/EasyRecyclerView)
 * [GanK](https://github.com/dongjunkun/GanK)
 
+## About us
+
+We are developer, We are brothers, We are a group.
+
+caopeng：A adults
+
+[http://blog.csdn.net/jiankeufo](http://blog.csdn.net/jiankeufo)
+
+[https://github.com/caopeng000](https://github.com/caopeng000)
+
+steven：A kid
+
+[http://blog.csdn.net/xiaoxiaoma_yi](http://blog.csdn.net/xiaoxiaoma_yi)
+
+[https://github.com/stevenMieMie](https://github.com/stevenMieMie)
+
+JJZhang：Like Mom
+
+[https://github.com/2231856598](https://github.com/2231856598)
+
+If you want to make friends with us, You can focus on our blog.
+
 ##License
 
 Copyright (c) 2016 codeestX
