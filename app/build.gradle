@@ -118,4 +118,5 @@ dependencies {
     compile 'com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar'
     compile 'com.mikepenz:fontawesome-typeface:4.5.0.1@aar'
     compile 'com.mikepenz:foundation-icons-typeface:3.0.0.1@aar'
+    compile 'com.github.arimorty:floatingsearchview:2.0.3'
 }
