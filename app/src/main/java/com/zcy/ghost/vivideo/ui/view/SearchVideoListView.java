@@ -159,31 +159,8 @@ public class SearchVideoListView extends RootView implements SearchVideoListCont
                     mSearchView.swapSuggestions(newSuggestions);
                 }
                 mSearchView.hideProgress();
-
-
             }
         });
-
-        /*
-         * Here you have access to the left icon and the text of a given suggestion
-         * item after as it is bound to the suggestion list. You can utilize this
-         * callback to change some properties of the left icon and the text. For example, you
-         * can load the left icon images using your favorite image loading library, or change text color.
-
-         *
-         * Important:
-         * Keep in mind that the suggestion list is a RecyclerView, so views are reused for different
-         * items in the list.
-         */
-        mSearchView.setOnBindSuggestionCallback(new SearchSuggestionsAdapter.OnBindSuggestionCallback() {
-            @Override
-            public void onBindSuggestion(View suggestionView, ImageView leftIcon,
-                                         TextView textView, SearchSuggestion item, int itemPosition) {
-            }
-
-        });
-
-
     }
 
     @OnClick(R.id.rl_back)
