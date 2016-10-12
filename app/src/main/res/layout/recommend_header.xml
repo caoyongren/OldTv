@@ -6,7 +6,7 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
-    <com.jude.rollviewpager.RollPagerView
+    <com.zcy.ghost.vivideo.widget.RollPagerView
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="250dp"
