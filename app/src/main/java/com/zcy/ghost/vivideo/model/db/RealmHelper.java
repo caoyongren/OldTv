@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.model.db;
 
 import com.zcy.ghost.vivideo.model.bean.Collection;
+import com.zcy.ghost.vivideo.model.bean.MySearchSuggestion;
 import com.zcy.ghost.vivideo.model.bean.Record;
 
 import java.util.List;
@@ -164,5 +165,56 @@ public class RealmHelper {
         getRealm().beginTransaction();
         getRealm().delete(Record.class);
         getRealm().commitTransaction();
+    }
+
+    /**
+     * 增加 搜索记录
+     *
+     * @param bean
+     */
+    public void insertSearchHistory(MySearchSuggestion bean) {
+        //如果有不保存
+        List<MySearchSuggestion> list=getSearchHistoryList(bean.getBody());
+        if(list==null || list.size()==0){
+            getRealm().beginTransaction();
+            getRealm().copyToRealm(bean);
+            getRealm().commitTransaction();
+        }
+        //如果保存记录超过20条，就删除一条。保存最多20条
+        List<MySearchSuggestion> listAll=getSearchHistoryListAll();
+        if(listAll!=null && listAll.size()>=20){
+            deleteSearchHistoryList(listAll.get(listAll.size()-1).getBody());
+        }
+    }
+
+    /**
+     * 获取搜索历史记录列表
+     *
+     * @return
+     */
+    public List<MySearchSuggestion> getSearchHistoryList(String value) {
+        //使用findAllSort ,先findAll再result.sort排序
+        RealmResults<MySearchSuggestion> results = getRealm().where(MySearchSuggestion.class).contains("strHistorySearchKey",value).findAllSorted("insertTime", Sort.DESCENDING);
+        return getRealm().copyFromRealm(results);
+    }
+    /**
+     * 删除指定搜索历史记录列表
+     * @return
+     */
+    public void deleteSearchHistoryList(String strHistorySearchKey) {
+        MySearchSuggestion data = getRealm().where(MySearchSuggestion.class).equalTo("strHistorySearchKey", strHistorySearchKey).findFirst();
+        getRealm().beginTransaction();
+        data.deleteFromRealm();
+        getRealm().commitTransaction();
+    }
+    /**
+     * 获取搜索历史记录列表
+     *
+     * @return
+     */
+    public List<MySearchSuggestion> getSearchHistoryListAll() {
+        //使用findAllSort ,先findAll再result.sort排序
+        RealmResults<MySearchSuggestion> results = getRealm().where(MySearchSuggestion.class).findAllSorted("insertTime", Sort.DESCENDING);
+        return getRealm().copyFromRealm(results);
     }
 }

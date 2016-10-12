@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+                android:background="?attr/background">
+    <include layout="@layout/commen_title" android:id="@+id/title"/>
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_empty="@layout/view_empty"
+        app:layout_progress="@layout/view_progress"
+        app:scrollbars="none"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="50dp"/>
+   <com.arlib.floatingsearchview.FloatingSearchView
+        android:id="@+id/floating_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:floatingSearch_searchBarMarginLeft="0dp"
+        app:floatingSearch_searchBarMarginTop="0dp"
+        app:floatingSearch_searchBarMarginRight="0dp"
+        app:floatingSearch_searchHint="请输入您的最爱..."
+        app:floatingSearch_suggestionsListAnimDuration="250"
+        app:floatingSearch_showSearchKey="true"
+        app:floatingSearch_leftActionMode="showSearch"
+        app:floatingSearch_close_search_on_keyboard_dismiss="true"
+        app:floatingSearch_suggestionItemTextViewColor="@color/black"
+        android:layout_below="@+id/title"/>
+</RelativeLayout>

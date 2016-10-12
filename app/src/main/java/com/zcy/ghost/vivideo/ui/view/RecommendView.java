@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.common.base.Preconditions;
@@ -60,9 +61,8 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     RollPagerView banner;
     View headerView;
     RecommendAdapter adapter;
-    TextView tvGO;
-    EditText etSearchKey;
-
+    TextView etSearchKey;
+   RelativeLayout rlGoSearch;
     public RecommendView(Context context) {
         super(context);
         init();
@@ -88,7 +88,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
         titleName.setText("精选");
         headerView = LayoutInflater.from(mContext).inflate(R.layout.recommend_header, null);
         banner = ButterKnife.findById(headerView, R.id.banner);
-        tvGO = ButterKnife.findById(headerView, R.id.tvGO);
+        rlGoSearch = ButterKnife.findById(headerView, R.id.rlGoSearch);
         etSearchKey = ButterKnife.findById(headerView, R.id.etSearchKey);
         banner.setPlayDelay(2000);
         recyclerView.setAdapterWithProgress(adapter = new RecommendAdapter(getContext()));
@@ -146,7 +146,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
                 onRefresh();
             }
         });
-        tvGO.setOnClickListener(this);
+        rlGoSearch.setOnClickListener(this);
     }
 
     @Override
@@ -229,13 +229,13 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tvGO:
-//                Intent intent =new Intent(mContext, SearchActivity.class);
-//                mContext.startActivity(intent);
-                String searchStr = etSearchKey.getText().toString();
-                if (searchStr != null && !searchStr.equals("")) {
-                    JumpUtil.go2VideoListSearchActivity(mContext, searchStr, "搜索");
-                }
+            case R.id.rlGoSearch:
+                Intent intent =new Intent(mContext, SearchActivity.class);
+                mContext.startActivity(intent);
+//                String searchStr = etSearchKey.getText().toString();
+//                if (searchStr != null && !searchStr.equals("")) {
+//                    JumpUtil.go2VideoListSearchActivity(mContext, searchStr, "搜索");
+//                }
                 break;
         }
     }
