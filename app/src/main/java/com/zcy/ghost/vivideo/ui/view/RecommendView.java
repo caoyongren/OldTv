@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.ui.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,6 +26,7 @@ import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
+import com.zcy.ghost.vivideo.ui.activitys.SearchActivity;
 import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
 import com.zcy.ghost.vivideo.ui.adapter.RecommendAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
@@ -60,7 +62,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     View headerView;
     RecommendAdapter adapter;
     TextView etSearchKey;
-   RelativeLayout rlGoSearch;
+    RelativeLayout rlGoSearch;
     public RecommendView(Context context) {
         super(context);
         init();
@@ -230,10 +232,6 @@ public class RecommendView extends RootView implements RecommendContract.View, S
             case R.id.rlGoSearch:
                 Intent intent =new Intent(mContext, SearchActivity.class);
                 mContext.startActivity(intent);
-//                String searchStr = etSearchKey.getText().toString();
-//                if (searchStr != null && !searchStr.equals("")) {
-//                    JumpUtil.go2VideoListSearchActivity(mContext, searchStr, "搜索");
-//                }
                 break;
         }
     }

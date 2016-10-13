@@ -50,12 +50,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activitys.SearchActivity"
-            android:theme="@style/AppTheme" >
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            android:theme="@style/CustomTransparent" >
         </activity>
     </application>
 
