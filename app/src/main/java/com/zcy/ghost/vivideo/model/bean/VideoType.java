@@ -17,6 +17,11 @@ public class VideoType {
     public String airTime;
     public String score;
     public String description;
+    public String msg;
+    public String phoneNumber;
+    public String userPic;
+    public String time;
+    public String likeNum;
     public
     @SerializedName("childList")
     List<VideoInfo> childList;

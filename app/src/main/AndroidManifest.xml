@@ -41,6 +41,7 @@
         <activity
             android:name=".ui.activitys.HistoryActivity"
             android:theme="@style/CustomTransparent" />
+
         <meta-data
             android:name="PGYER_APPID"
             android:value="3b5a14c609a54bfd369ec43ead88852a" />
@@ -50,8 +51,10 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activitys.SearchActivity"
-            android:theme="@style/CustomTransparent" >
-        </activity>
+            android:theme="@style/CustomTransparent" />
+        <activity
+            android:name=".ui.activitys.VideoInformationActivity"
+            android:theme="@style/CustomTransparent" />
     </application>
 
 </manifest>

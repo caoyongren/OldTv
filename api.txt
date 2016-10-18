@@ -2,3 +2,4 @@
 频道列表：http://api.svipmovie.com/columns/getVideoList.do 参数：catalogId pnum 请求方式：GET
 详情：http://api.svipmovie.com/front/videoDetailApi/videoDetail.do 参数：mediaId 请求方式：GET
 搜索：http://api.svipmovie.com/front/searchKeyWordApi/getVideoListByKeyWord.do 参数：keyword pnum 请求方式：GET
+评论列表：http://api.svipmovie.com/front/Commentary/getCommentList.do?mediaId=CMCC_00000000000000001_621653189

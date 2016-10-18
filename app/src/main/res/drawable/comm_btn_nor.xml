@@ -6,7 +6,7 @@
 
 
     <gradient
-        android:centerColor="@android:color/white"
-        android:endColor="@android:color/white"
-        android:startColor="@android:color/white" />
+        android:centerColor="@android:color/holo_green_dark"
+        android:endColor="@android:color/holo_green_dark"
+        android:startColor="@android:color/holo_green_dark" />
 </shape>

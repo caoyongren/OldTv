@@ -4,12 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.google.common.base.Preconditions;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -19,8 +17,8 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.presenter.contract.VideoInfoContract;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
+import com.zcy.ghost.vivideo.presenter.contract.VideoInformationContract;
+import com.zcy.ghost.vivideo.ui.activitys.VideoInformationActivity;
 import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.ui.fragments.VideoCommentFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
@@ -39,28 +37,20 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Creator: yxc
  * date: 2016/9/21 15:54
  */
-public class VideoInfoView extends RootView implements VideoInfoContract.View {
+public class VideoInformationView extends RootView implements VideoInformationContract.View {
+    private VideoInformationContract.Presenter mPresenter;
+
     @BindView(R.id.iv_collect)
     ImageView ivCollect;
-    private VideoInfoContract.Presenter mPresenter;
-
+    @BindView(R.id.videoplayer)
+    JCVideoPlayerStandard videoplayer;
     @BindView(R.id.title_name)
     ColorTextView mTitleName;
-    @BindView(R.id.tv_score)
-    TextView mTvScore;
-    @BindView(R.id.tv_type)
-    TextView mTvType;
-    @BindView(R.id.tv_region)
-    TextView mTvRegion;
-    @BindView(R.id.tv_airTime)
-    TextView mTvAirTime;
-    @BindView(R.id.img_video)
-    ImageView mImgVideo;
     @BindView(R.id.viewpagertab)
     SmartTabLayout mViewpagertab;
     @BindView(R.id.viewpager)
     SwipeViewPager mViewpager;
-    @BindView(R.id.loading)
+    @BindView(R.id.circle_loading)
     CircleProgress mLoading;
     @BindView(R.id.rl_collect)
     RelativeLayout rlCollect;
@@ -68,20 +58,20 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
     VideoRes videoRes;
     private Animation animation;
 
-    public VideoInfoView(Context context) {
+    public VideoInformationView(Context context) {
         super(context);
         init();
     }
 
 
-    public VideoInfoView(Context context, AttributeSet attrs) {
+    public VideoInformationView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         mContext = getContext();
-        inflate(mContext, R.layout.activity_video_info_view, this);
+        inflate(mContext, R.layout.activity_video_information_view, this);
         unbinder = ButterKnife.bind(this);
         initView();
         mActive = true;
@@ -91,32 +81,21 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
         animation = AnimationUtils.loadAnimation(mContext, R.anim.view_hand);
         rlCollect.setVisibility(View.VISIBLE);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
-                ((VideoInfoActivity) mContext).getSupportFragmentManager(), FragmentPagerItems.with(mContext)
+                ((VideoInformationActivity) mContext).getSupportFragmentManager(), FragmentPagerItems.with(mContext)
                 .add(R.string.video_intro, VideoIntroFragment.class)
                 .add(R.string.video_comment, VideoCommentFragment.class)
                 .create());
         mViewpager.setAdapter(adapter);
         mViewpagertab.setViewPager(mViewpager);
+        videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        videoplayer.backButton.setVisibility(View.GONE);
+        videoplayer.titleTextView.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.rl_back)
     public void back() {
-        if (mContext instanceof VideoInfoActivity) {
-            ((VideoInfoActivity) mContext).finish();
-        }
-    }
-
-    @OnClick(R.id.btn_play)
-    public void play() {
-        if (TextUtils.isEmpty(videoRes.getVideoUrl())) {
-            EventUtil.showToast(mContext, "该视频暂时不能播放");
-        } else {
-            mPresenter.insertRecord();
-            ((VideoInfoActivity) mContext).getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            JCVideoPlayerStandard.startFullscreen(mContext,
-                    JCVideoPlayerStandard.class,
-                    videoRes.getVideoUrl(), videoRes.title);
+        if (mContext instanceof VideoInformationActivity) {
+            ((VideoInformationActivity) mContext).finish();
         }
     }
 
@@ -142,7 +121,7 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
 
 
     @Override
-    public void setPresenter(VideoInfoContract.Presenter presenter) {
+    public void setPresenter(VideoInformationContract.Presenter presenter) {
         mPresenter = Preconditions.checkNotNull(presenter);
     }
 
@@ -154,13 +133,15 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
     @Override
     public void showContent(VideoRes videoRes) {
         this.videoRes = videoRes;
-        mTvScore.setText(videoRes.score);
-        mTvType.setText(videoRes.videoType);
-        mTvRegion.setText(videoRes.region);
-        mTvAirTime.setText(videoRes.airTime);
         mTitleName.setText(videoRes.title);
         if (!TextUtils.isEmpty(videoRes.pic))
-            ImageLoader.load(mContext, videoRes.pic, mImgVideo);
+            ImageLoader.load(mContext, videoRes.pic, videoplayer.thumbImageView);
+        if (!TextUtils.isEmpty(videoRes.getVideoUrl())) {
+            mPresenter.insertRecord();
+            videoplayer.setUp(videoRes.getVideoUrl()
+                    , JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, videoRes.title);
+            videoplayer.onClick(videoplayer.thumbImageView);
+        }
     }
 
     @OnClick(R.id.rl_collect)

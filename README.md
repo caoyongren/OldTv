@@ -5,6 +5,7 @@
 ##更改日志
 ####2016.10.11
 * 1.增加意见反馈
+* 1.修改影片详情页面（进入自动播放、影片简介展开收回，增加评论列表）
 
 ####2016.9.29
 * 1.增加收藏功能（使用Realm做本地库存储）
@@ -40,6 +41,8 @@
 <a href="art/07.png"><img src="art/07.png" width="40%"/></a> <a href="art/08.png"><img src="art/08.png" width="40%"/></a>
 
 <a href="art/09.png"><img src="art/09.png" width="40%"/></a> <a href="art/10.png"><img src="art/10.png" width="40%"/></a>
+
+<a href="art/11.png"><img src="art/11.png" width="40%"/></a> <a href="art/12.png"><img src="art/12.png" width="40%"/></a>
 
 #技术点
 * 使用RxJava配合Retrofit2做网络请求

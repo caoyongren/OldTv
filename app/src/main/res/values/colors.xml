@@ -13,7 +13,6 @@
     <color name="dark_red">#b70000</color>
     <color name="dark_black">#000000</color>
 
-
     <array name="colors">
         <item>@color/colorBluePrimary</item>
         <item>@color/colorRedPrimary</item>

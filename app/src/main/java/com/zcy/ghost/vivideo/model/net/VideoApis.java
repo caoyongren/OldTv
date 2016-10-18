@@ -6,7 +6,6 @@ package com.zcy.ghost.vivideo.model.net;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -49,10 +48,18 @@ public interface VideoApis {
     /**
      * 影片搜索
      *
-     * @param catalogId
      * @param pnum
      * @return
      */
-    @POST("searchKeyWordApi/getVideoListByKeyWord.do")
+    @GET("searchKeyWordApi/getVideoListByKeyWord.do")
     Observable<VideoHttpResponse<VideoRes>> getVideoListByKeyWord(@Query("keyword") String keyword, @Query("pnum") String pnum);
+
+    /**
+     * 获取评论列表
+     * @param mediaId
+     * @param pnum
+     * @return
+     */
+    @GET("Commentary/getCommentList.do")
+    Observable<VideoHttpResponse<VideoRes>> getCommentList(@Query("mediaId") String mediaId, @Query("pnum") String pnum);
 }
