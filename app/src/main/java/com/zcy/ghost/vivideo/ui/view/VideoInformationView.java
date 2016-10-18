@@ -90,6 +90,7 @@ public class VideoInformationView extends RootView implements VideoInformationCo
         videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         videoplayer.backButton.setVisibility(View.GONE);
         videoplayer.titleTextView.setVisibility(View.GONE);
+        videoplayer.tinyBackImageView.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.rl_back)
