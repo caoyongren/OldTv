@@ -74,6 +74,7 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
         int page = mView.getLastPage();
         if (SystemUtils.isNetworkConnected()) {
             page = StringUtils.getRandomNumber(min, max);
+            mView.setLastPage(page);
         }
         return page;
     }

@@ -23,6 +23,8 @@ public interface DiscoverContract {
         void hidLoading();
 
         int getLastPage();
+
+        void setLastPage(int page);
     }
 
     interface Presenter extends BasePresenter {

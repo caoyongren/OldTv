@@ -165,6 +165,11 @@ public class DiscoverView extends RootView implements DiscoverContract.View {
         return PreUtils.getInt(getContext(), Constants.DISCOVERlASTpAGE, 1);
     }
 
+    @Override
+    public void setLastPage(int page) {
+        PreUtils.putInt(getContext(),Constants.DISCOVERlASTpAGE,page);
+    }
+
     private void nextVideos() {
         swipeDeck.setVisibility(View.VISIBLE);
         loading.setVisibility(View.VISIBLE);
