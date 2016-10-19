@@ -24,7 +24,7 @@ public class MinePresenter extends RxPresenter implements MineContract.Presenter
     MineContract.View mView;
     private boolean isMine;
     private boolean isSetting;
-    public static final int maxSize = 3;
+    public static final int maxSize = 30;
 
     public MinePresenter(@NonNull MineContract.View oneView, boolean isSetting) {
         this.isSetting = isSetting;
@@ -34,7 +34,7 @@ public class MinePresenter extends RxPresenter implements MineContract.Presenter
         getHistoryData();
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Refresh_History_List)
+    @Subscriber(tag = VideoInformationPresenter.Refresh_History_List)
     public void setData(String tag) {
         isMine = true;
         getHistoryData();
@@ -45,7 +45,8 @@ public class MinePresenter extends RxPresenter implements MineContract.Presenter
         List<Record> records = RealmHelper.getInstance().getRecordList();
         List<VideoType> list = new ArrayList<>();
         VideoType videoType;
-        for (int i = 0; i < records.size(); i++) {
+        int maxlinth = records.size() <= 3 ? records.size() : 3;
+        for (int i = 0; i < maxlinth; i++) {
             Record record = records.get(i);
             videoType = new VideoType();
             videoType.title = record.title;

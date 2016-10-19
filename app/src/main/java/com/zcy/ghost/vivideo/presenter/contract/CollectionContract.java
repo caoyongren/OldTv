@@ -25,6 +25,10 @@ public interface CollectionContract {
     interface Presenter extends BasePresenter {
         void getCollectData();
 
-        void delAllCollects();
+        void delAllDatas();
+
+        void getRecordData();
+
+        int getType();
     }
 }

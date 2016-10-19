@@ -11,7 +11,7 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
+import com.zcy.ghost.vivideo.presenter.VideoInformationPresenter;
 import com.zcy.ghost.vivideo.ui.adapter.RelatedAdapter;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
@@ -83,7 +83,7 @@ public class VideoIntroFragment extends BaseFragment {
         super.onDestroyView();
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Refresh_Video_Info)
+    @Subscriber(tag = VideoInformationPresenter.Refresh_Video_Info)
     public void setData(VideoRes videoInfo) {
         String dir = "导演：" + StringUtils.removeOtherCode(videoInfo.director);
         String act = "主演：" + StringUtils.removeOtherCode(videoInfo.actors);

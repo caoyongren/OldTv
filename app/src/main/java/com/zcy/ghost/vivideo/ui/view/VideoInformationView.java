@@ -138,7 +138,6 @@ public class VideoInformationView extends RootView implements VideoInformationCo
         if (!TextUtils.isEmpty(videoRes.pic))
             ImageLoader.load(mContext, videoRes.pic, videoplayer.thumbImageView);
         if (!TextUtils.isEmpty(videoRes.getVideoUrl())) {
-            mPresenter.insertRecord();
             videoplayer.setUp(videoRes.getVideoUrl()
                     , JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, videoRes.title);
             videoplayer.onClick(videoplayer.thumbImageView);

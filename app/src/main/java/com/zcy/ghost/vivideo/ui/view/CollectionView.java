@@ -16,6 +16,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
 import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
+import com.zcy.ghost.vivideo.ui.activitys.HistoryActivity;
 import com.zcy.ghost.vivideo.ui.adapter.VideoListAdapter;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;
@@ -70,7 +71,7 @@ public class CollectionView extends RootView implements CollectionContract.View 
     }
 
     private void initView() {
-        titleName.setText("收藏");
+        setTitle();
         rlCollectClear.setVisibility(View.VISIBLE);
         mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
@@ -120,12 +121,22 @@ public class CollectionView extends RootView implements CollectionContract.View 
             case R.id.rl_back:
                 if (mContext instanceof CollectionActivity) {
                     ((CollectionActivity) mContext).finish();
+                } else if (mContext instanceof HistoryActivity) {
+                    ((HistoryActivity) mContext).finish();
                 }
                 break;
             case R.id.rl_collect_clear:
                 mAdapter.clear();
-                mPresenter.delAllCollects();
+                mPresenter.delAllDatas();
                 break;
+        }
+    }
+
+    private void setTitle() {
+        if (mContext instanceof CollectionActivity) {
+            titleName.setText("收藏");
+        } else if (mContext instanceof HistoryActivity) {
+            titleName.setText("历史");
         }
     }
 }

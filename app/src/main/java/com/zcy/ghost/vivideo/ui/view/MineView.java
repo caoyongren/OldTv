@@ -37,6 +37,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.zcy.ghost.vivideo.R.id.recyclerView;
+
 
 /**
  * Description: MineView
@@ -55,7 +57,7 @@ public class MineView extends RootView implements MineContract.View {
     Toolbar toolbar;
 
 
-    @BindView(R.id.recyclerView)
+    @BindView(recyclerView)
     EasyRecyclerView mRecyclerView;
     MineHistoryVideoListAdapter mAdapter;
     VideoInfo videoInfo;
@@ -86,7 +88,7 @@ public class MineView extends RootView implements MineContract.View {
         titleName.setText(getResources().getString(R.string.mine_title));
 
 
-        mRecyclerView.setAdapterWithProgress(mAdapter = new MineHistoryVideoListAdapter(mContext));
+        mRecyclerView.setAdapter(mAdapter = new MineHistoryVideoListAdapter(mContext));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
         mRecyclerView.setLayoutManager(gridLayoutManager);
@@ -126,6 +128,11 @@ public class MineView extends RootView implements MineContract.View {
     public void showContent(List<VideoType> list) {
         mAdapter.clear();
         mAdapter.addAll(list);
+        if (list.size() > 0) {
+            mRecyclerView.setVisibility(View.VISIBLE);
+        } else {
+            mRecyclerView.setVisibility(View.GONE);
+        }
     }
 
 

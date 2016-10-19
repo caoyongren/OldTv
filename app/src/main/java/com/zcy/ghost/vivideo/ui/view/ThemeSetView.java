@@ -124,7 +124,7 @@ public class ThemeSetView extends RootView implements CollectionContract.View {
                 break;
             case R.id.rl_collect_clear:
                 mAdapter.clear();
-                mPresenter.delAllCollects();
+                mPresenter.delAllDatas();
                 break;
         }
     }

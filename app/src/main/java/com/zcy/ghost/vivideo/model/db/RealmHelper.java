@@ -106,9 +106,10 @@ public class RealmHelper {
     //--------------------------------------------------播放记录相关----------------------------------------------------
 
     /**
-     * 增加 播放记录
+     * 增加播放记录
      *
      * @param bean
+     * @param maxSize 保存最大数量
      */
     public void insertRecord(Record bean, int maxSize) {
         if (maxSize != 0) {
@@ -123,6 +124,7 @@ public class RealmHelper {
         getRealm().copyToRealm(bean);
         getRealm().commitTransaction();
     }
+
 
     /**
      * 删除 播放记录
@@ -174,16 +176,16 @@ public class RealmHelper {
      */
     public void insertSearchHistory(MySearchSuggestion bean) {
         //如果有不保存
-        List<MySearchSuggestion> list=getSearchHistoryList(bean.getBody());
-        if(list==null || list.size()==0){
+        List<MySearchSuggestion> list = getSearchHistoryList(bean.getBody());
+        if (list == null || list.size() == 0) {
             getRealm().beginTransaction();
             getRealm().copyToRealm(bean);
             getRealm().commitTransaction();
         }
         //如果保存记录超过20条，就删除一条。保存最多20条
-        List<MySearchSuggestion> listAll=getSearchHistoryListAll();
-        if(listAll!=null && listAll.size()>=20){
-            deleteSearchHistoryList(listAll.get(listAll.size()-1).getBody());
+        List<MySearchSuggestion> listAll = getSearchHistoryListAll();
+        if (listAll != null && listAll.size() >= 20) {
+            deleteSearchHistoryList(listAll.get(listAll.size() - 1).getBody());
         }
     }
 
@@ -194,11 +196,13 @@ public class RealmHelper {
      */
     public List<MySearchSuggestion> getSearchHistoryList(String value) {
         //使用findAllSort ,先findAll再result.sort排序
-        RealmResults<MySearchSuggestion> results = getRealm().where(MySearchSuggestion.class).contains("strHistorySearchKey",value).findAllSorted("insertTime", Sort.DESCENDING);
+        RealmResults<MySearchSuggestion> results = getRealm().where(MySearchSuggestion.class).contains("strHistorySearchKey", value).findAllSorted("insertTime", Sort.DESCENDING);
         return getRealm().copyFromRealm(results);
     }
+
     /**
      * 删除指定搜索历史记录列表
+     *
      * @return
      */
     public void deleteSearchHistoryList(String strHistorySearchKey) {
@@ -207,6 +211,7 @@ public class RealmHelper {
         data.deleteFromRealm();
         getRealm().commitTransaction();
     }
+
     /**
      * 获取搜索历史记录列表
      *

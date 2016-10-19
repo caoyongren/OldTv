@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Collection;
+import com.zcy.ghost.vivideo.model.bean.Record;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
@@ -22,12 +23,18 @@ import java.util.List;
  */
 public class CollectionPresenter extends RxPresenter implements CollectionContract.Presenter {
     CollectionContract.View mView;
+    int type = 0;//收藏:0; 历史:1:
 
-    public CollectionPresenter(@NonNull CollectionContract.View oneView) {
+    public CollectionPresenter(@NonNull CollectionContract.View oneView, int type) {
+        this.type = type;
         mView = StringUtils.checkNotNull(oneView);
         mView.setPresenter(this);
         EventBus.getDefault().register(this);
-        getCollectData();
+        if (type == 0) {
+            getCollectData();
+        } else {
+            getRecordData();
+        }
     }
 
     @Override
@@ -48,12 +55,37 @@ public class CollectionPresenter extends RxPresenter implements CollectionContra
     }
 
     @Override
-    public void delAllCollects() {
-        RealmHelper.getInstance().deleteAllCollection();
+    public void delAllDatas() {
+        if (type == 0) {
+            RealmHelper.getInstance().deleteAllCollection();
+        } else {
+            RealmHelper.getInstance().deleteAllRecord();
+            EventBus.getDefault().post("", VideoInformationPresenter.Refresh_History_List);
+        }
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Refresh_Collection_List)
+    @Override
+    public void getRecordData() {
+        List<Record> records = RealmHelper.getInstance().getRecordList();
+        List<VideoType> list = new ArrayList<>();
+        VideoType videoType;
+        for (Record record : records) {
+            videoType = new VideoType();
+            videoType.title = record.title;
+            videoType.pic = record.pic;
+            videoType.dataId = record.getId();
+            list.add(videoType);
+        }
+        mView.showContent(list);
+    }
+
+    @Subscriber(tag = VideoInformationPresenter.Refresh_Collection_List)
     public void setData(String tag) {
         getCollectData();
+    }
+
+    @Override
+    public int getType() {
+        return type;
     }
 }

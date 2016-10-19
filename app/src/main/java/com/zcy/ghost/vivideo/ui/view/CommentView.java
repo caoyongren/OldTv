@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.TextView;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -34,6 +35,7 @@ public class CommentView extends RootView implements CommentContract.View, Swipe
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
+    TextView tv_empty;
 
     CommentAdapter adapter;
 
@@ -69,6 +71,8 @@ public class CommentView extends RootView implements CommentContract.View, Swipe
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
         recyclerView.addItemDecoration(itemDecoration);
+        tv_empty = (TextView) recyclerView.getEmptyView();
+        tv_empty.setText("暂无评论");
     }
 
     protected void initEvent() {

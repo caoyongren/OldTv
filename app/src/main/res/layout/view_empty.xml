@@ -6,4 +6,4 @@
     android:layout_gravity="center"
     android:text="暂无数据"
     android:textColor="@color/gray_light"
-    android:textSize="18sp" />
+    android:textSize="14sp" />

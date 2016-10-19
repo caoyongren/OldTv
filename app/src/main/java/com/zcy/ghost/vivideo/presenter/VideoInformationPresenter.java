@@ -67,6 +67,7 @@ public class VideoInformationPresenter extends RxPresenter implements VideoInfor
                                 mView.showContent(res);
                                 result = res;
                                 postData();
+                                insertRecord();
                             }
                         }
                     }
@@ -99,7 +100,7 @@ public class VideoInformationPresenter extends RxPresenter implements VideoInfor
         addSubscrebe(rxSubscription);
     }
 
-    private void putMediaId(){
+    private void putMediaId() {
         Subscription rxSubscription = Observable.timer(WAIT_TIME, TimeUnit.MILLISECONDS)
                 .compose(RxUtil.<Long>rxSchedulerHelper())
                 .subscribe(new Action1<Long>() {
