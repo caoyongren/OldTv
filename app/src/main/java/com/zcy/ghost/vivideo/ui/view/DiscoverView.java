@@ -8,16 +8,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.zcy.ghost.vivideo.widget.SwipeDeck;
 import com.daprlabs.cardstack.SwipeFrameLayout;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
+import com.zcy.ghost.vivideo.widget.SwipeDeck;
 import com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
@@ -156,6 +158,11 @@ public class DiscoverView extends RootView implements DiscoverContract.View {
     @Override
     public void hidLoading() {
         loading.setVisibility(View.GONE);
+    }
+
+    @Override
+    public int getLastPage() {
+        return PreUtils.getInt(getContext(), Constants.DISCOVERlASTpAGE, 1);
     }
 
     private void nextVideos() {

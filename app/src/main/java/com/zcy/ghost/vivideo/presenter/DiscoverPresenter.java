@@ -1,6 +1,5 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.zcy.ghost.vivideo.base.RxPresenter;
@@ -10,6 +9,7 @@ import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
+import com.zcy.ghost.vivideo.utils.SystemUtils;
 
 import rx.Subscription;
 import rx.functions.Action0;
@@ -26,7 +26,6 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
 
     int max = 90;
     int min = 1;
-    Handler handler = new Handler();
 
 
     public DiscoverPresenter(@NonNull DiscoverContract.View threeView) {
@@ -72,6 +71,10 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
 
 
     private int getNextPage() {
-        return StringUtils.getRandomNumber(min, max);
+        int page = mView.getLastPage();
+        if (SystemUtils.isNetworkConnected()) {
+            page = StringUtils.getRandomNumber(min, max);
+        }
+        return page;
     }
 }

@@ -14,4 +14,5 @@ public class Constants {
 
     public static final String PRIMARYCOLOR = "PRIMARYCOLOR";
     public static final String TITLECOLOR = "TITLECOLOR";
+    public static final String DISCOVERlASTpAGE = "DISCOVERlASTpAGE";
 }

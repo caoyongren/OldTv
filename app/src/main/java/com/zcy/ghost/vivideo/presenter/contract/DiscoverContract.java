@@ -21,6 +21,8 @@ public interface DiscoverContract {
         void refreshFaild(String msg);
 
         void hidLoading();
+
+        int getLastPage();
     }
 
     interface Presenter extends BasePresenter {
