@@ -5,8 +5,8 @@
 ##更改日志
 ####2016.10.11
 * 1.增加意见反馈
-* 1.修改影片详情页面（进入自动播放、影片简介展开收回，增加评论列表）
-* 2.增加浏览记录页面(历史)
+* 2.修改影片详情页面（进入自动播放、影片简介展开收回，增加评论列表）
+* 3.增加浏览记录页面(历史)
 
 ####2016.9.29
 * 1.增加收藏功能（使用Realm做本地库存储）
@@ -37,7 +37,7 @@
 
 <a href="art/03.png"><img src="art/03.png" width="40%"/></a> <a href="art/04.png"><img src="art/04.png" width="40%"/></a>
 
-<a href="art/05.png"><img src="art/05.png" width="40%"/></a> <a href="art/06.png"><img src="art/06.png" width="40%"/></a>
+<!--<a href="art/05.png"><img src="art/05.png" width="40%"/></a> <a href="art/06.png"><img src="art/06.png" width="40%"/></a>-->
 
 <a href="art/07.png"><img src="art/07.png" width="40%"/></a> <a href="art/08.png"><img src="art/08.png" width="40%"/></a>
 
