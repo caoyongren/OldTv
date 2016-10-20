@@ -20,7 +20,7 @@ public class ClassificationFragment extends BaseFragment {
     ClassificationView twoView;
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayout() {
         return R.layout.fragment_classification;
     }
 

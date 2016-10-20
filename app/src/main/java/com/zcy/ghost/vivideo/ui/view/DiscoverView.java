@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -58,38 +57,27 @@ public class DiscoverView extends RootView implements DiscoverContract.View {
 
     public DiscoverView(Context context) {
         super(context);
-        init();
     }
-
 
     public DiscoverView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.fragment_discover_view, this);
-        unbinder = ButterKnife.bind(this);
-        initView();
-        initEvent();
-        mActive = true;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         titleName.setText("发现");
-
         ViewGroup.LayoutParams lp = swipeDeck.getLayoutParams();
         lp.height = ScreenUtil.getScreenHeight(getContext()) / 3 * 2;
         swipeDeck.setLayoutParams(lp);
         swipeDeck.setHardwareAccelerationEnabled(true);
-
-//        swipeDeck.setLeftImage(R.id.left_image);
-//        swipeDeck.setRightImage(R.id.right_image);
-
-        initEvent();
     }
 
+    @Override
     protected void initEvent() {
         swipeDeck.setEventCallback(new SwipeDeck.SwipeEventCallback() {
             @Override
@@ -167,7 +155,7 @@ public class DiscoverView extends RootView implements DiscoverContract.View {
 
     @Override
     public void setLastPage(int page) {
-        PreUtils.putInt(getContext(),Constants.DISCOVERlASTpAGE,page);
+        PreUtils.putInt(getContext(), Constants.DISCOVERlASTpAGE, page);
     }
 
     private void nextVideos() {

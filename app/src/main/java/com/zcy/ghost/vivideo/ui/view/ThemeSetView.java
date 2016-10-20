@@ -26,7 +26,6 @@ import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -51,25 +50,19 @@ public class ThemeSetView extends RootView implements CollectionContract.View {
 
     public ThemeSetView(Context context) {
         super(context);
-        init();
     }
-
 
     public ThemeSetView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.activity_collection_view, this);
-        unbinder = ButterKnife.bind(this);
-        mActive = true;
-        initView();
-        initEvent();
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         titleName.setText(getResources().getString(R.string.theme_title));
         rlCollectClear.setVisibility(View.VISIBLE);
         mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
@@ -83,6 +76,7 @@ public class ThemeSetView extends RootView implements CollectionContract.View {
         mRecyclerView.addItemDecoration(itemDecoration);
     }
 
+    @Override
     protected void initEvent() {
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override

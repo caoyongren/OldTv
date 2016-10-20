@@ -6,12 +6,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
-import com.arlib.floatingsearchview.suggestions.SearchSuggestionsAdapter;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -35,7 +32,6 @@ import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -61,39 +57,35 @@ public class SearchVideoListView extends RootView implements SearchVideoListCont
 
     public SearchVideoListView(Context context) {
         super(context);
-        init();
     }
 
     public SearchVideoListView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.activity_search_view, this);
-        unbinder = ButterKnife.bind(this);
-        mActive = true;
-        initView();
-        initEvent();
     }
 
-    private void initView() {
-        Context context = getContext();
-        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(context));
+    @Override
+    protected void initView() {
+        setTitleName("搜索");
+        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
         mAdapter.setMore(R.layout.view_more, this);
         mAdapter.setNoMore(R.layout.view_nomore);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
         mRecyclerView.setLayoutManager(gridLayoutManager);
-        SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(context, 8));
+        SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
         mRecyclerView.addItemDecoration(itemDecoration);
     }
 
+    @Override
     protected void initEvent() {
         mTitleName.setOnClickListener(new OnClickListener() {
             @Override

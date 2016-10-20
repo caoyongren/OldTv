@@ -20,7 +20,7 @@ public class DiscoverFragment extends BaseFragment {
     DiscoverView threeView;
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayout() {
         return R.layout.fragment_discover;
     }
 

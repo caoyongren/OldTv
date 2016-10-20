@@ -14,7 +14,7 @@ import com.zcy.ghost.vivideo.widget.SwipeBackLayout;
  * @author zjg
  *
  */
-public class SwipeBackActivity extends BaseActivity {
+public  abstract class SwipeBackActivity extends BaseActivity {
     protected SwipeBackLayout layout;
 
     @Override
@@ -24,7 +24,6 @@ public class SwipeBackActivity extends BaseActivity {
                 R.layout.base, null);
         layout.attachToActivity(this);
     }
-
 
     @Override
     public void startActivity(Intent intent) {

@@ -17,7 +17,6 @@ import com.zcy.ghost.vivideo.utils.StringUtils;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
@@ -34,20 +33,25 @@ public class WelcomeView extends RootView implements WelcomeContract.View {
 
     public WelcomeView(Context context) {
         super(context);
-        init();
     }
-
 
     public WelcomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.activity_welcome_view, this);
-        unbinder = ButterKnife.bind(this);
-        mActive = true;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initEvent() {
+
     }
 
     @Override

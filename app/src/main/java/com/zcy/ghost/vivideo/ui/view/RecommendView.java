@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -63,27 +62,22 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     RecommendAdapter adapter;
     TextView etSearchKey;
     RelativeLayout rlGoSearch;
+
     public RecommendView(Context context) {
         super(context);
-        init();
     }
-
 
     public RecommendView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.fragment_recommend_view, this);
-        unbinder = ButterKnife.bind(this);
-        initView();
-        initEvent();
-        mActive = true;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         title.setVisibility(View.GONE);
         titleName.setText("精选");
         headerView = LayoutInflater.from(mContext).inflate(R.layout.recommend_header, null);
@@ -101,6 +95,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
         recyclerView.addItemDecoration(itemDecoration);
     }
 
+    @Override
     protected void initEvent() {
         title.setOnClickListener(new OnClickListener() {
             @Override
@@ -230,7 +225,7 @@ public class RecommendView extends RootView implements RecommendContract.View, S
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rlGoSearch:
-                Intent intent =new Intent(mContext, SearchActivity.class);
+                Intent intent = new Intent(mContext, SearchActivity.class);
                 mContext.startActivity(intent);
                 break;
         }

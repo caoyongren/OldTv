@@ -34,7 +34,6 @@ import org.simple.eventbus.EventBus;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.zcy.ghost.vivideo.R.id.recyclerView;
@@ -64,25 +63,19 @@ public class MineView extends RootView implements MineContract.View {
 
     public MineView(Context context) {
         super(context);
-        init();
     }
-
 
     public MineView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.fragment_mine_view, this);
-        unbinder = ButterKnife.bind(this);
-        mActive = true;
-        initView();
-        initEvent();
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ((AppCompatActivity) getContext()).setSupportActionBar(toolbar);
         toolbar.setTitle("");
         titleName.setText(getResources().getString(R.string.mine_title));
@@ -99,6 +92,7 @@ public class MineView extends RootView implements MineContract.View {
         mRecyclerView.addItemDecoration(itemDecoration);
     }
 
+    @Override
     protected void initEvent() {
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override

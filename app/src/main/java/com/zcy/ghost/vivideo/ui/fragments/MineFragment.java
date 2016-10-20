@@ -20,7 +20,7 @@ public class MineFragment extends BaseFragment {
     MineView mineView;
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayout() {
         return R.layout.fragment_mine;
     }
 

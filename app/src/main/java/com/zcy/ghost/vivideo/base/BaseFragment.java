@@ -1,17 +1,13 @@
 package com.zcy.ghost.vivideo.base;
 
 import android.animation.Animator;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +18,6 @@ import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
 import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
 import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
-import com.zcy.ghost.vivideo.utils.SystemUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
 
@@ -43,7 +38,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
 
     private final String TAG = getClass().getSimpleName();
     protected Context mContext;
-    protected boolean isConnection = false; // 判断网络状态是否连接 默认为false;
     protected View rootView;
     protected T mPresenter;
     protected Unbinder unbinder;
@@ -65,15 +59,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         KL.d(this.getClass(), getName() + "------>onCreate");
-        isConnection = SystemUtils.checkNet(mContext);
-        regReceiver();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         KL.d(this.getClass(), getName() + "------>onCreateView");
         if (rootView == null) {
-            rootView = inflater.inflate(getLayoutResource(), container, false);
+            rootView = inflater.inflate(getLayout(), container, false);
         }
         ViewGroup parent = (ViewGroup) rootView.getParent();
         if (parent != null) {
@@ -129,7 +121,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
 
     @Override
     public void onDestroyView() {
-        EventBus.getDefault().register(this);
+        EventBus.getDefault().unregister(this);
         super.onDestroyView();
         KL.d(this.getClass(), getName() + "------>onDestroyView");
         // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
@@ -141,8 +133,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     public void onDestroy() {
         super.onDestroy();
         KL.d(this.getClass(), getName() + "------>onDestroy");
-        if (netListener != null)
-            mContext.unregisterReceiver(netListener);
         if (mPresenter != null)
             mPresenter.detachView();
         if (unbinder != null)
@@ -184,32 +174,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
         return BaseFragment.class.getName();
     }
 
-    protected abstract int getLayoutResource();
+    protected abstract int getLayout();
 
     protected void initView(LayoutInflater inflater) {
     }
 
     protected void initEvent() {
     }
-
-    private void regReceiver() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
-        mContext.registerReceiver(netListener, filter);
-    }
-
-    private BroadcastReceiver netListener = new BroadcastReceiver() {
-
-        String wifiAction = "android.net.wifi.WIFI_STATE_CHANGED";
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (!TextUtils.isEmpty(action) && action.equals(wifiAction)) {
-                isConnection = SystemUtils.checkNet(context);
-            }
-        }
-    };
 
     @Subscriber(tag = MainActivity.Set_Theme_Color)
     public void setTheme(String arg) {

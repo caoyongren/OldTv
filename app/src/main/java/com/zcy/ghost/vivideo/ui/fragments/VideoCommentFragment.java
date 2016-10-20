@@ -20,7 +20,7 @@ public class VideoCommentFragment extends BaseFragment {
     CommentView commentView;
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayout() {
         return R.layout.fragment_comment;
     }
 

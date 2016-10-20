@@ -20,7 +20,7 @@ public class RecommendFragment extends BaseFragment {
     RecommendView oneView;
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayout() {
         return R.layout.fragment_recommend;
     }
 

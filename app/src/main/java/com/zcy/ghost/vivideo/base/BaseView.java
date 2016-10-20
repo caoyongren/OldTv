@@ -10,5 +10,6 @@ package com.zcy.ghost.vivideo.base;
  ******************************************/
 public interface BaseView<T> {
     void setPresenter(T presenter);
+
     void showError(String msg);
 }

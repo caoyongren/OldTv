@@ -30,7 +30,6 @@ import butterknife.ButterKnife;
  * date: 2016/9/9 9:54
  */
 public class VideoIntroFragment extends BaseFragment {
-    final String TAG = VideoIntroFragment.class.getSimpleName();
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
@@ -40,7 +39,7 @@ public class VideoIntroFragment extends BaseFragment {
     RelatedAdapter adapter;
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayout() {
         return R.layout.fragment_video_intro;
     }
 

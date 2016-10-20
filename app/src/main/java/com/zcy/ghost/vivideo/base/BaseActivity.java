@@ -1,13 +1,8 @@
 package com.zcy.ghost.vivideo.base;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -18,7 +13,6 @@ import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
-import com.zcy.ghost.vivideo.utils.SystemUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
 
@@ -32,7 +26,6 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements EmptyView {
 
-    protected boolean isConnection = false;
     protected T mPresenter;
     protected Unbinder unbinder;
 
@@ -40,10 +33,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         KL.d(this.getClass(), this.getClass().getName() + "------>onCreate");
+        inint();
+    }
+
+    protected void inint() {
         setTranslucentStatus(true);
         onPreCreate();
-        isConnection = SystemUtils.checkNet(this);
-        regReceiver();
         App.getInstance().registerActivity(this);
         if (mPresenter != null)
             mPresenter.attachView(this);
@@ -85,8 +80,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         super.onDestroy();
         KL.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
         App.getInstance().unregisterActivity(this);
-        if (netListener != null)
-            unregisterReceiver(netListener);
         if (mPresenter != null)
             mPresenter.detachView();
         if (unbinder != null)
@@ -147,34 +140,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         }
 
     }
-
-    protected void initView() {
-    }
-
-    protected void initEvent() {
-    }
-
-    /**
-     * 注册广播，监听网络状态
-     */
-    private void regReceiver() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
-        registerReceiver(netListener, filter);
-    }
-
-    private BroadcastReceiver netListener = new BroadcastReceiver() {
-
-        String wifiAction = "android.net.wifi.WIFI_STATE_CHANGED";
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (!TextUtils.isEmpty(action) && action.equals(wifiAction)) {
-                isConnection = SystemUtils.checkNet(context);
-            }
-        }
-    };
 
     /**
      * 设置沉浸式

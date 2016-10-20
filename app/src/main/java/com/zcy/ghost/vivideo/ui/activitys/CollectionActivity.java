@@ -20,7 +20,6 @@ public class CollectionActivity extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
         unbinder = ButterKnife.bind(this);
-        mPresenter = new CollectionPresenter(collectView, 0);
+        mPresenter = new CollectionPresenter(collectView,0);
     }
-
 }

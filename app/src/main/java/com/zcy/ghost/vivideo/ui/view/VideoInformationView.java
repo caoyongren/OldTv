@@ -19,15 +19,14 @@ import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.VideoInformationContract;
 import com.zcy.ghost.vivideo.ui.activitys.VideoInformationActivity;
-import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.ui.fragments.VideoCommentFragment;
+import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.widget.SwipeViewPager;
 import com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
@@ -60,24 +59,19 @@ public class VideoInformationView extends RootView implements VideoInformationCo
 
     public VideoInformationView(Context context) {
         super(context);
-        init();
     }
-
 
     public VideoInformationView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.activity_video_information_view, this);
-        unbinder = ButterKnife.bind(this);
-        initView();
-        mActive = true;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         animation = AnimationUtils.loadAnimation(mContext, R.anim.view_hand);
         rlCollect.setVisibility(View.VISIBLE);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
@@ -91,6 +85,11 @@ public class VideoInformationView extends RootView implements VideoInformationCo
         videoplayer.backButton.setVisibility(View.GONE);
         videoplayer.titleTextView.setVisibility(View.GONE);
         videoplayer.tinyBackImageView.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void initEvent() {
+
     }
 
     @OnClick(R.id.rl_back)

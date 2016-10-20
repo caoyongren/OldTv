@@ -21,15 +21,14 @@ import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.VideoInfoContract;
 import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
-import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.ui.fragments.VideoCommentFragment;
+import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.widget.SwipeViewPager;
 import com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
@@ -70,24 +69,19 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
 
     public VideoInfoView(Context context) {
         super(context);
-        init();
     }
-
 
     public VideoInfoView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.activity_video_info_view, this);
-        unbinder = ButterKnife.bind(this);
-        initView();
-        mActive = true;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         animation = AnimationUtils.loadAnimation(mContext, R.anim.view_hand);
         rlCollect.setVisibility(View.VISIBLE);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
@@ -97,6 +91,11 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
                 .create());
         mViewpager.setAdapter(adapter);
         mViewpagertab.setViewPager(mViewpager);
+    }
+
+    @Override
+    protected void initEvent() {
+
     }
 
     @OnClick(R.id.rl_back)

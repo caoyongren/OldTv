@@ -22,7 +22,6 @@ import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
@@ -41,27 +40,20 @@ public class CommentView extends RootView implements CommentContract.View, Swipe
 
     public CommentView(Context context) {
         super(context);
-        init();
     }
-
 
     public CommentView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.fragment_comment_view, this);
-        unbinder = ButterKnife.bind(this);
-        initView();
-        initEvent();
-        mActive = true;
     }
 
-    private void initView() {
-        Context context = getContext();
-        recyclerView.setAdapterWithProgress(adapter = new CommentAdapter(context));
+    @Override
+    protected void initView() {
+        recyclerView.setAdapterWithProgress(adapter = new CommentAdapter(mContext));
         recyclerView.setErrorView(R.layout.view_error);
         adapter.setMore(R.layout.view_more, this);
         adapter.setNoMore(R.layout.view_nomore);
@@ -75,6 +67,7 @@ public class CommentView extends RootView implements CommentContract.View, Swipe
         tv_empty.setText("暂无评论");
     }
 
+    @Override
     protected void initEvent() {
         recyclerView.setRefreshListener(this);
         adapter.setError(R.layout.view_error_footer).setOnClickListener(new OnClickListener() {

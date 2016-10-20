@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
@@ -46,25 +45,19 @@ public class ClassificationView extends RootView implements ClassificationContra
 
     public ClassificationView(Context context) {
         super(context);
-        init();
     }
-
 
     public ClassificationView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-        mContext = getContext();
+    @Override
+    protected void getLayout() {
         inflate(mContext, R.layout.fragment_classification_view, this);
-        unbinder = ButterKnife.bind(this);
-        initView();
-        initEvent();
-        mActive = true;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         titleName.setText("专题");
         recyclerView.setAdapterWithProgress(adapter = new ClassificationAdapter(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -76,6 +69,7 @@ public class ClassificationView extends RootView implements ClassificationContra
         recyclerView.addItemDecoration(itemDecoration);
     }
 
+    @Override
     protected void initEvent() {
         recyclerView.setRefreshListener(this);
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
