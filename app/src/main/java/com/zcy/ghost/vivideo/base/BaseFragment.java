@@ -34,12 +34,12 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Creator: yxc
  * date: 2016/9/7 11:40
  */
-public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment implements EmptyView {
+public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment {
 
     private final String TAG = getClass().getSimpleName();
+    protected T mPresenter;
     protected Context mContext;
     protected View rootView;
-    protected T mPresenter;
     protected Unbinder unbinder;
     private boolean isViewPrepared; // 标识fragment视图已经初始化完毕
     private boolean hasFetchData; // 标识已经触发过懒加载数据
@@ -101,8 +101,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         KL.d(this.getClass(), getName() + "------>onViewCreated");
-        if (mPresenter != null)
-            mPresenter.attachView(this);
         isViewPrepared = true;
         lazyFetchDataIfPrepared();
     }
@@ -127,14 +125,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
         // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
         hasFetchData = false;
         isViewPrepared = false;
+        mPresenter = null;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         KL.d(this.getClass(), getName() + "------>onDestroy");
-        if (mPresenter != null)
-            mPresenter.detachView();
         if (unbinder != null)
             unbinder.unbind();
     }

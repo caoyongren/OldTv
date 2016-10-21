@@ -12,10 +12,11 @@ import butterknife.Unbinder;
  * Creator: yxc
  * date: $date $time
  */
-public abstract class RootView extends LinearLayout {
+public abstract class RootView<T extends BasePresenter> extends LinearLayout {
     protected boolean mActive;//是否被销毁
     protected Context mContext;
     protected Unbinder unbinder;
+    protected T mPresenter;
 
     public RootView(Context context) {
         super(context);
@@ -50,12 +51,16 @@ public abstract class RootView extends LinearLayout {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        if (mPresenter != null)
+            mPresenter.attachView(this);
         mActive = true;
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        if (mPresenter != null)
+            mPresenter.detachView();
         mActive = false;
         unbinder.unbind();
         mContext = null;

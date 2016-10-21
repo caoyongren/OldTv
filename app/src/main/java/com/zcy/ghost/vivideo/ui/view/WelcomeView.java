@@ -24,9 +24,8 @@ import butterknife.BindView;
  * Creator: yxc
  * date: 2016/9/22 13:20
  */
-public class WelcomeView extends RootView implements WelcomeContract.View {
+public class WelcomeView extends RootView<WelcomeContract.Presenter> implements WelcomeContract.View {
 
-    private WelcomeContract.Presenter mPresenter;
 
     @BindView(R.id.iv_welcome_bg)
     ImageView ivWelcomeBg;

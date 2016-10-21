@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 public class VideoInfoActivity extends SwipeBackActivity {
+
     VideoInfo videoInfo;
     @BindView(R.id.video_info_view)
     VideoInfoView videoInfoView;

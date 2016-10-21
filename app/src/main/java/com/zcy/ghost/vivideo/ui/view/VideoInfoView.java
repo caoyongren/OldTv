@@ -4,12 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.google.common.base.Preconditions;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -38,28 +36,19 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Creator: yxc
  * date: 2016/9/21 15:54
  */
-public class VideoInfoView extends RootView implements VideoInfoContract.View {
+public class VideoInfoView extends RootView<VideoInfoContract.Presenter> implements VideoInfoContract.View {
+
     @BindView(R.id.iv_collect)
     ImageView ivCollect;
-    private VideoInfoContract.Presenter mPresenter;
-
+    @BindView(R.id.videoplayer)
+    JCVideoPlayerStandard videoplayer;
     @BindView(R.id.title_name)
     ColorTextView mTitleName;
-    @BindView(R.id.tv_score)
-    TextView mTvScore;
-    @BindView(R.id.tv_type)
-    TextView mTvType;
-    @BindView(R.id.tv_region)
-    TextView mTvRegion;
-    @BindView(R.id.tv_airTime)
-    TextView mTvAirTime;
-    @BindView(R.id.img_video)
-    ImageView mImgVideo;
     @BindView(R.id.viewpagertab)
     SmartTabLayout mViewpagertab;
     @BindView(R.id.viewpager)
     SwipeViewPager mViewpager;
-    @BindView(R.id.loading)
+    @BindView(R.id.circle_loading)
     CircleProgress mLoading;
     @BindView(R.id.rl_collect)
     RelativeLayout rlCollect;
@@ -91,6 +80,10 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
                 .create());
         mViewpager.setAdapter(adapter);
         mViewpagertab.setViewPager(mViewpager);
+        videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        videoplayer.backButton.setVisibility(View.GONE);
+        videoplayer.titleTextView.setVisibility(View.GONE);
+        videoplayer.tinyBackImageView.setVisibility(View.GONE);
     }
 
     @Override
@@ -102,20 +95,6 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
     public void back() {
         if (mContext instanceof VideoInfoActivity) {
             ((VideoInfoActivity) mContext).finish();
-        }
-    }
-
-    @OnClick(R.id.btn_play)
-    public void play() {
-        if (TextUtils.isEmpty(videoRes.getVideoUrl())) {
-            EventUtil.showToast(mContext, "该视频暂时不能播放");
-        } else {
-            mPresenter.insertRecord();
-            ((VideoInfoActivity) mContext).getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            JCVideoPlayerStandard.startFullscreen(mContext,
-                    JCVideoPlayerStandard.class,
-                    videoRes.getVideoUrl(), videoRes.title);
         }
     }
 
@@ -153,13 +132,14 @@ public class VideoInfoView extends RootView implements VideoInfoContract.View {
     @Override
     public void showContent(VideoRes videoRes) {
         this.videoRes = videoRes;
-        mTvScore.setText(videoRes.score);
-        mTvType.setText(videoRes.videoType);
-        mTvRegion.setText(videoRes.region);
-        mTvAirTime.setText(videoRes.airTime);
         mTitleName.setText(videoRes.title);
         if (!TextUtils.isEmpty(videoRes.pic))
-            ImageLoader.load(mContext, videoRes.pic, mImgVideo);
+            ImageLoader.load(mContext, videoRes.pic, videoplayer.thumbImageView);
+        if (!TextUtils.isEmpty(videoRes.getVideoUrl())) {
+            videoplayer.setUp(videoRes.getVideoUrl()
+                    , JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, videoRes.title);
+            videoplayer.onClick(videoplayer.thumbImageView);
+        }
     }
 
     @OnClick(R.id.rl_collect)

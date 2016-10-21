@@ -60,7 +60,7 @@ public class CollectionPresenter extends RxPresenter implements CollectionContra
             RealmHelper.getInstance().deleteAllCollection();
         } else {
             RealmHelper.getInstance().deleteAllRecord();
-            EventBus.getDefault().post("", VideoInformationPresenter.Refresh_History_List);
+            EventBus.getDefault().post("", VideoInfoPresenter.Refresh_History_List);
         }
     }
 
@@ -79,7 +79,7 @@ public class CollectionPresenter extends RxPresenter implements CollectionContra
         mView.showContent(list);
     }
 
-    @Subscriber(tag = VideoInformationPresenter.Refresh_Collection_List)
+    @Subscriber(tag = VideoInfoPresenter.Refresh_Collection_List)
     public void setData(String tag) {
         getCollectData();
     }

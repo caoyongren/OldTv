@@ -35,8 +35,7 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2016/9/21 14:57
  */
-public class VideoListView extends RootView implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
-    private VideoListContract.Presenter mPresenter;
+public class VideoListView extends RootView<VideoListContract.Presenter> implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
     @BindView(R.id.rl_back)
     RelativeLayout mRlBack;

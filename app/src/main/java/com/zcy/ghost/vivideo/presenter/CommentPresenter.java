@@ -75,7 +75,7 @@ public class CommentPresenter extends RxPresenter implements CommentContract.Pre
         }
     }
 
-    @Subscriber(tag = VideoInformationPresenter.Put_DataId)
+    @Subscriber(tag = VideoInfoPresenter.Put_DataId)
     public void setData(String dataId) {
         mediaId = dataId;
         onRefresh();

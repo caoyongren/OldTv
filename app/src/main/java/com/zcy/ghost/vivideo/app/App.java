@@ -4,11 +4,7 @@ package com.zcy.ghost.vivideo.app;
 import android.app.Activity;
 import android.app.Application;
 
-import com.github.moduth.blockcanary.BlockCanary;
-import com.pgyersdk.crash.PgyCrashManager;
-import com.squareup.leakcanary.LeakCanary;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
-import com.zcy.ghost.vivideo.widget.AppBlockCanaryContext;
 
 import java.util.HashSet;
 import java.util.Set;

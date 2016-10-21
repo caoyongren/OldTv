@@ -46,9 +46,7 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class RecommendView extends RootView implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
-
-    private RecommendContract.Presenter mPresenter;
+public class RecommendView extends RootView<RecommendContract.Presenter > implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;

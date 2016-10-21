@@ -34,7 +34,7 @@ public class MinePresenter extends RxPresenter implements MineContract.Presenter
         getHistoryData();
     }
 
-    @Subscriber(tag = VideoInformationPresenter.Refresh_History_List)
+    @Subscriber(tag = VideoInfoPresenter.Refresh_History_List)
     public void setData(String tag) {
         isMine = true;
         getHistoryData();

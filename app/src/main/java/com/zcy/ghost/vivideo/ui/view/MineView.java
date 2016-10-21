@@ -44,9 +44,8 @@ import static com.zcy.ghost.vivideo.R.id.recyclerView;
  * Creator: cp
  * date: 2016/9/29 12:16
  */
-public class MineView extends RootView implements MineContract.View {
+public class MineView extends RootView<MineContract.Presenter> implements MineContract.View {
 
-    private MineContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
     ColorTextView titleName;

@@ -29,8 +29,7 @@ import butterknife.BindView;
  * Creator: yxc
  * date: 2016/9/21 14:57
  */
-public class CommentView extends RootView implements CommentContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
-    private CommentContract.Presenter mPresenter;
+public class CommentView extends RootView<CommentContract.Presenter> implements CommentContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;

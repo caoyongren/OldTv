@@ -33,9 +33,7 @@ import butterknife.BindView;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class ClassificationView extends RootView implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
-
-    private ClassificationContract.Presenter mPresenter;
+public class ClassificationView extends RootView<ClassificationContract.Presenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;

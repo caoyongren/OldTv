@@ -24,10 +24,10 @@ import me.yokeyword.fragmentation.SupportActivity;
  * Creator: yxc
  * date: 2016/9/7 11:45
  */
-public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements EmptyView {
+public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity {
 
-    protected T mPresenter;
     protected Unbinder unbinder;
+    protected T mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         setTranslucentStatus(true);
         onPreCreate();
         App.getInstance().registerActivity(this);
-        if (mPresenter != null)
-            mPresenter.attachView(this);
     }
 
     @Override
@@ -80,10 +78,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         super.onDestroy();
         KL.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
         App.getInstance().unregisterActivity(this);
-        if (mPresenter != null)
-            mPresenter.detachView();
         if (unbinder != null)
             unbinder.unbind();
+        mPresenter = null;
     }
 
     private void onPreCreate() {

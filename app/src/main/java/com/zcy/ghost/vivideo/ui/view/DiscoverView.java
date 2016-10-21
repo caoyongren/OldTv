@@ -35,9 +35,8 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class DiscoverView extends RootView implements DiscoverContract.View {
+public class DiscoverView extends RootView<DiscoverContract.Presenter> implements DiscoverContract.View {
 
-    private DiscoverContract.Presenter mPresenter;
 
     @BindView(R.id.title_name)
     ColorTextView titleName;

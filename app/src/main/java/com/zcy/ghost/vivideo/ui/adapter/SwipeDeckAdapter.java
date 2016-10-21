@@ -1,7 +1,6 @@
 package com.zcy.ghost.vivideo.ui.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 
 import java.util.List;
@@ -80,7 +78,6 @@ public class SwipeDeckAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 switchData(data.get(position));
-                Intent intent = new Intent(context, VideoInfoActivity.class);
                 JumpUtil.go2VideoInfoActivity(context, videoInfo);
             }
         });

@@ -35,9 +35,8 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2016/9/29 12:16
  */
-public class CollectionView extends RootView implements CollectionContract.View {
+public class CollectionView extends RootView<CollectionContract.Presenter> implements CollectionContract.View {
 
-    private CollectionContract.Presenter mPresenter;
     @BindView(R.id.rl_collect_clear)
     RelativeLayout rlCollectClear;
     @BindView(R.id.rl_back)

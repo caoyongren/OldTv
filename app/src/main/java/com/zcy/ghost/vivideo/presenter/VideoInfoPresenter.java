@@ -32,6 +32,7 @@ import rx.functions.Action1;
 public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract.Presenter {
 
     public final static String Refresh_Video_Info = "Refresh_Video_Info";
+    public final static String Put_DataId = "Put_DataId";
     public static final String Refresh_Collection_List = "Refresh_Collection_List";
     public static final String Refresh_History_List = "Refresh_History_List";
     final int WAIT_TIME = 200;
@@ -50,6 +51,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
         this.pic = videoInfo.pic;
         getDetailData(videoInfo.dataId);
         setCollectState();
+        putMediaId();
     }
 
     @Override
@@ -65,6 +67,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                                 mView.showContent(res);
                                 result = res;
                                 postData();
+                                insertRecord();
                             }
                         }
                     }
@@ -92,6 +95,18 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                     @Override
                     public void call(Long aLong) {
                         EventBus.getDefault().post(result, Refresh_Video_Info);
+                    }
+                });
+        addSubscrebe(rxSubscription);
+    }
+
+    private void putMediaId() {
+        Subscription rxSubscription = Observable.timer(WAIT_TIME, TimeUnit.MILLISECONDS)
+                .compose(RxUtil.<Long>rxSchedulerHelper())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        EventBus.getDefault().post(dataId, Put_DataId);
                     }
                 });
         addSubscrebe(rxSubscription);

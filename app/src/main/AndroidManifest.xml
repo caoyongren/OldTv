@@ -30,9 +30,6 @@
         </activity>
         <activity android:name=".ui.activitys.MainActivity" />
         <activity
-            android:name=".ui.activitys.VideoInfoActivity"
-            android:theme="@style/CustomTransparent" />
-        <activity
             android:name=".ui.activitys.VideoListActivity"
             android:theme="@style/CustomTransparent" />
         <activity
@@ -53,7 +50,7 @@
             android:name=".ui.activitys.SearchActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name=".ui.activitys.VideoInformationActivity"
+            android:name=".ui.activitys.VideoInfoActivity"
             android:theme="@style/CustomTransparent" />
     </application>
 

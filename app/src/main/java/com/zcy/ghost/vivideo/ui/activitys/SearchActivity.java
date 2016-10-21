@@ -11,14 +11,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SearchActivity extends SwipeBackActivity {
+
     @BindView(R.id.search_video_info_view)
     SearchVideoListView searchVideoListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         unbinder = ButterKnife.bind(this);
-        searchVideoListView.setTitleName("搜索");
-        mPresenter = new SearchVideoListPresenter(searchVideoListView,"一念天堂");
+        mPresenter = new SearchVideoListPresenter(searchVideoListView, "一念天堂");
     }
 }

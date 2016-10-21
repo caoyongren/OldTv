@@ -56,9 +56,8 @@ import static com.zcy.ghost.vivideo.ui.activitys.MainActivity.Banner_Stop;
  * Creator: yxc
  * date: 2016/10/20 10:14
  */
-public class MainView extends RootView implements MainContract.View, RadioGroup.OnCheckedChangeListener {
+public class MainView extends RootView<MainContract.Presenter> implements MainContract.View, RadioGroup.OnCheckedChangeListener {
 
-    private MainContract.Presenter mPresenter;
     final int WAIT_TIME = 200;
     @BindView(R.id.tv_collect)
     TextView tvCollect;

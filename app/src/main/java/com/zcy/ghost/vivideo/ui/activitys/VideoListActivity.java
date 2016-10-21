@@ -11,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class VideoListActivity extends SwipeBackActivity {
+
     String mTitle = "";
     String mCatalogId = "";
     String searchStr = "";

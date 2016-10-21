@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInformationActivity;
+import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.activitys.VideoListActivity;
 import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
 
@@ -17,7 +17,7 @@ import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
 public class JumpUtil {
 
     public static void go2VideoInfoActivity(Context context, VideoInfo videoInfo) {
-        Intent intent = new Intent(context, VideoInformationActivity.class);
+        Intent intent = new Intent(context, VideoInfoActivity.class);
         intent.putExtra("videoInfo", videoInfo);
         context.startActivity(intent);
     }
