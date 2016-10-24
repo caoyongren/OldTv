@@ -2,10 +2,10 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
-import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
     private static final int COUNT_DOWN_TIME = 2200;
 
     public WelcomePresenter(@NonNull WelcomeContract.View oneView) {
-        mView = StringUtils.checkNotNull(oneView);
+        mView = Preconditions.checkNotNull(oneView);
         mView.setPresenter(this);
         getWelcomeData();
     }

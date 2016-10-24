@@ -2,6 +2,7 @@ package com.zcy.ghost.vivideo.utils;
 
 import android.text.TextUtils;
 
+import com.zcy.ghost.vivideo.model.bean.GankHttpResponse;
 import com.zcy.ghost.vivideo.model.net.ApiException;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 
@@ -53,6 +54,24 @@ public class RxUtil {
                             return Observable.error(new ApiException("*" + videoHttpResponse.getMsg()));
                         } else {
                             return Observable.error(new ApiException("*" + "服务器返回error"));
+                        }
+                    }
+                });
+            }
+        };
+    }
+
+    public static <T> Observable.Transformer<GankHttpResponse<T>, T> handleGankResult() {   //compose判断结果
+        return new Observable.Transformer<GankHttpResponse<T>, T>() {
+            @Override
+            public Observable<T> call(Observable<GankHttpResponse<T>> httpResponseObservable) {
+                return httpResponseObservable.flatMap(new Func1<GankHttpResponse<T>, Observable<T>>() {
+                    @Override
+                    public Observable<T> call(GankHttpResponse<T> tGankHttpResponse) {
+                        if(!tGankHttpResponse.getError()) {
+                            return createData(tGankHttpResponse.getResults());
+                        } else {
+                            return Observable.error(new ApiException("服务器返回error"));
                         }
                     }
                 });

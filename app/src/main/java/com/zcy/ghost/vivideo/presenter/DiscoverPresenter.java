@@ -2,6 +2,7 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
@@ -29,7 +30,7 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
 
 
     public DiscoverPresenter(@NonNull DiscoverContract.View threeView) {
-        mView = StringUtils.checkNotNull(threeView);
+        mView = Preconditions.checkNotNull(threeView);
         mView.setPresenter(this);
     }
 

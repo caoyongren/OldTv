@@ -330,7 +330,7 @@
         <item name="android:layout_marginTop">@dimen/standard_x_margin</item>
     </style>
 
-    <style name="settingItemLittleMarginStyle" >
+    <style name="settingItemLittleMarginStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/title_bar_height</item>
         <item name="android:background">@color/white_translucent_20</item>

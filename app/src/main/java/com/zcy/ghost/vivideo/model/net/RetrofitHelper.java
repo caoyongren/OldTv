@@ -1,7 +1,5 @@
 package com.zcy.ghost.vivideo.model.net;
 
-import android.util.Log;
-
 import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.utils.KL;
@@ -31,6 +29,7 @@ public class RetrofitHelper {
 
     private static OkHttpClient okHttpClient = null;
     private static VideoApis videoApi;
+    private static GankApis gankApis;
 
     public static VideoApis getVideoApi() {
         initOkHttp();
@@ -45,7 +44,19 @@ public class RetrofitHelper {
         }
         return videoApi;
     }
-
+    public static GankApis getGankApis() {
+        initOkHttp();
+        if (gankApis == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .baseUrl(GankApis.HOST)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .build();
+            gankApis = retrofit.create(GankApis.class);
+        }
+        return gankApis;
+    }
     private static void initOkHttp() {
         if (okHttpClient == null) {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();

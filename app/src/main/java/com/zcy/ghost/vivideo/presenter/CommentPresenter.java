@@ -2,6 +2,7 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
@@ -24,7 +25,7 @@ public class CommentPresenter extends RxPresenter implements CommentContract.Pre
 
 
     public CommentPresenter(@NonNull CommentContract.View addTaskView) {
-        mView = StringUtils.checkNotNull(addTaskView);
+        mView = Preconditions.checkNotNull(addTaskView);
         mView.setPresenter(this);
         EventBus.getDefault().register(this);
         onRefresh();

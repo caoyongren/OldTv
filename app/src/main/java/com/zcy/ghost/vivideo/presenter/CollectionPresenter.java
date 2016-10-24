@@ -2,13 +2,13 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Collection;
 import com.zcy.ghost.vivideo.model.bean.Record;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
-import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -27,7 +27,7 @@ public class CollectionPresenter extends RxPresenter implements CollectionContra
 
     public CollectionPresenter(@NonNull CollectionContract.View oneView, int type) {
         this.type = type;
-        mView = StringUtils.checkNotNull(oneView);
+        mView = Preconditions.checkNotNull(oneView);
         mView.setPresenter(this);
         EventBus.getDefault().register(this);
         if (type == 0) {

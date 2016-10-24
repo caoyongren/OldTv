@@ -53,13 +53,6 @@ public class StringUtils {
         return catalogId;
     }
 
-    public static <T> T checkNotNull(T reference) {
-        if (reference == null) {
-            throw new NullPointerException();
-        }
-        return reference;
-    }
-
     public static int getRandomNumber(int min, int max) {
         return new Random().nextInt(max) % (max - min + 1) + min;
     }

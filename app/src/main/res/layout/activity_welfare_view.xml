@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/both_match_style"
+    android:background="?attr/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/commen_title" />
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_progress="@layout/view_progress"
+        app:scrollbars="none" />
+</com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout>

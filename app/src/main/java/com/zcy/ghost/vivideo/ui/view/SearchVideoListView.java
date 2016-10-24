@@ -54,6 +54,7 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
     VideoInfo videoInfo;
     @BindView(R.id.floating_search_view)
     FloatingSearchView mSearchView;
+    int pageSize = 30;
 
     public SearchVideoListView(Context context) {
         super(context);
@@ -210,7 +211,7 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
     @Override
     public void showContent(List<VideoType> list) {
         mAdapter.clear();
-        if (list != null && list.size() < 30) {
+        if (list != null && list.size() < pageSize) {
             clearFooter();
         }
         mAdapter.addAll(list);

@@ -7,6 +7,7 @@
 * 1.调整mvp结构
 * 2.完善设置页面（推荐好友、关于我们、建议反馈）
 * 3.增加分享功能（调用系统分享）
+* 4.增加美女福利页面（瀑布流）
 
 ####2016.10.11
 * 1.增加意见反馈
@@ -114,6 +115,7 @@
 * [JieCaoVideoPlayer](https://github.com/lipangit/JieCaoVideoPlayer)
 * [EasyRecyclerView](https://github.com/Jude95/EasyRecyclerView)
 * [GanK](https://github.com/dongjunkun/GanK)
+* 美女福利图片接口来[自干货集中营](http://gank.io/api)
 
 ## About us
 

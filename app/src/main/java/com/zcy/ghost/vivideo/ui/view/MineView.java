@@ -91,7 +91,6 @@ public class MineView extends RootView<MineContract.Presenter> implements MineCo
         StringUtils.setIconDrawable(mContext, tvCollection, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 15);
         StringUtils.setIconDrawable(mContext, tvThem, MaterialDesignIconic.Icon.gmi_palette, 16, 15);
 
-
         mRecyclerView.setAdapter(mAdapter = new MineHistoryVideoListAdapter(mContext));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));

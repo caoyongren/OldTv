@@ -2,6 +2,7 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
@@ -23,7 +24,7 @@ public class ClassificationPresenter extends RxPresenter implements Classificati
     int page = 0;
 
     public ClassificationPresenter(@NonNull ClassificationContract.View twoView) {
-        mView = StringUtils.checkNotNull(twoView);
+        mView = Preconditions.checkNotNull(twoView);
         mView.setPresenter(this);
     }
 

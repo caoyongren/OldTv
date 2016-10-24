@@ -1,8 +1,8 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.os.Handler;
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
@@ -11,7 +11,6 @@ import com.zcy.ghost.vivideo.presenter.contract.VideoListContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
-import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -20,26 +19,19 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
     final VideoListContract.View mView;
     int page = 1;
     String catalogId = "";
-    String searchStr = "";
-    Handler handler = new Handler();
 
 
-    public VideoListPresenter(@NonNull VideoListContract.View addTaskView, String catalogId,String searchStr) {
-        mView = StringUtils.checkNotNull(addTaskView);
+    public VideoListPresenter(@NonNull VideoListContract.View addTaskView, String catalogId) {
+        mView = Preconditions.checkNotNull(addTaskView);
         mView.setPresenter(this);
         this.catalogId = catalogId;
-        this.searchStr = searchStr;
         onRefresh();
     }
 
     @Override
     public void onRefresh() {
         page = 1;
-        if(catalogId!=null && !catalogId.equals("")) {
-            getVideoList(catalogId);
-        }else if(searchStr!=null && !searchStr.equals("")){
-            getSearchVideoList(searchStr);
-        }
+        getVideoList(catalogId);
     }
 
     private void getVideoList(String catalogID) {
@@ -73,6 +65,7 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
 
     /**
      * 搜索电影
+     *
      * @param searchStr
      */
     private void getSearchVideoList(String searchStr) {
@@ -107,11 +100,7 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
     @Override
     public void loadMore() {
         page++;
-        if(catalogId!=null && catalogId.equals("")) {
-            getVideoList(catalogId);
-        }else if(searchStr!=null && searchStr.equals("")){
-            getSearchVideoList(searchStr);
-        }
+        getVideoList(catalogId);
     }
 
 }

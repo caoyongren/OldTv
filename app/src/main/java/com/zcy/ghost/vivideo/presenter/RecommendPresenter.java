@@ -2,6 +2,7 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
@@ -27,7 +28,7 @@ public class RecommendPresenter extends RxPresenter implements RecommendContract
     int page = 0;
 
     public RecommendPresenter(@NonNull RecommendContract.View oneView) {
-        mView = StringUtils.checkNotNull(oneView);
+        mView = Preconditions.checkNotNull(oneView);
         mView.setPresenter(this);
         EventBus.getDefault().register(this);
     }

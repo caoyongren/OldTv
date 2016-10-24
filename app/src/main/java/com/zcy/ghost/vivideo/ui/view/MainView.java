@@ -25,6 +25,7 @@ import com.zcy.ghost.vivideo.presenter.contract.MainContract;
 import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
 import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
 import com.zcy.ghost.vivideo.ui.activitys.SettingActivity;
+import com.zcy.ghost.vivideo.ui.activitys.WelfareActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
 import com.zcy.ghost.vivideo.ui.fragments.ClassificationFragment;
 import com.zcy.ghost.vivideo.ui.fragments.DiscoverFragment;
@@ -219,7 +220,7 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
                 EventUtil.showToast(mContext, "我的下载");
                 break;
             case R.id.tv_fuli:
-                EventUtil.showToast(mContext, "福利");
+                mContext.startActivity(new Intent(mContext, WelfareActivity.class));
                 break;
             case R.id.tv_share:
                 Intent shareIntent = new Intent();

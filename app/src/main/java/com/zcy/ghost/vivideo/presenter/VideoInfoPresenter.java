@@ -2,6 +2,7 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Collection;
 import com.zcy.ghost.vivideo.model.bean.Record;
@@ -13,7 +14,6 @@ import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.VideoInfoContract;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.RxUtil;
-import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import org.simple.eventbus.EventBus;
 
@@ -44,7 +44,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
     final VideoInfoContract.View mView;
 
     public VideoInfoPresenter(@NonNull VideoInfoContract.View addTaskView, VideoInfo videoInfo) {
-        mView = StringUtils.checkNotNull(addTaskView);
+        mView = Preconditions.checkNotNull(addTaskView);
         mView.setPresenter(this);
         mView.showContent(BeanUtil.VideoInfo2VideoRes(videoInfo, null));
         this.dataId = videoInfo.dataId;

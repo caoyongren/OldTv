@@ -19,6 +19,22 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_clearcache"
+        style="@style/settingItemLittleMarginStyle">
+
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/setting_recommend_clear" />
+
+        <TextView
+            android:id="@+id/tv_cache"
+            style="@style/both_wrap_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="0kb"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/rl_about"
         style="@style/settingItemStyle">
 

@@ -2,25 +2,23 @@ package com.zcy.ghost.vivideo.ui.view;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
 
+import com.google.common.base.Preconditions;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
-import com.zcy.ghost.vivideo.model.bean.VideoInfo;
-import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.presenter.contract.VideoListContract;
-import com.zcy.ghost.vivideo.ui.activitys.VideoListActivity;
-import com.zcy.ghost.vivideo.ui.adapter.VideoListAdapter;
-import com.zcy.ghost.vivideo.utils.BeanUtil;
+import com.zcy.ghost.vivideo.model.bean.GankItemBean;
+import com.zcy.ghost.vivideo.presenter.WelfarePresenter;
+import com.zcy.ghost.vivideo.presenter.contract.WelfareContract;
+import com.zcy.ghost.vivideo.ui.activitys.WelfareActivity;
+import com.zcy.ghost.vivideo.ui.adapter.WelfareAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
-import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
@@ -29,48 +27,52 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-
 /**
- * Description: 影片列表
+ * Description: 福利
  * Creator: yxc
- * date: 2016/9/21 14:57
+ * date: 2016/10/24 13:43
  */
-public class VideoListView extends RootView<VideoListContract.Presenter> implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
-    @BindView(R.id.rl_back)
-    RelativeLayout mRlBack;
+public class WelfareView extends RootView<WelfareContract.Presenter> implements WelfareContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+
     @BindView(R.id.title_name)
-    ColorTextView mTitleName;
-
+    ColorTextView titleName;
     @BindView(R.id.recyclerView)
     EasyRecyclerView mRecyclerView;
-    VideoListAdapter mAdapter;
 
-    VideoInfo videoInfo;
-    int pageSize = 30;
+    WelfareAdapter mAdapter;
 
-    public VideoListView(Context context) {
+    public WelfareView(Context context) {
         super(context);
     }
 
-    public VideoListView(Context context, AttributeSet attrs) {
+    public WelfareView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
+    public void setPresenter(WelfareContract.Presenter presenter) {
+        mPresenter = Preconditions.checkNotNull(presenter);
+    }
+
+    @Override
+    public void showError(String msg) {
+        EventUtil.showToast(mContext, msg);
+    }
+
+    @Override
     protected void getLayout() {
-        inflate(mContext, R.layout.activity_video_list_view, this);
+        inflate(mContext, R.layout.activity_welfare_view, this);
     }
 
     @Override
     protected void initView() {
-        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
+        titleName.setText("福利");
+        mRecyclerView.setAdapterWithProgress(mAdapter = new WelfareAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
         mAdapter.setMore(R.layout.view_more, this);
         mAdapter.setNoMore(R.layout.view_nomore);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
-        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
@@ -80,20 +82,10 @@ public class VideoListView extends RootView<VideoListContract.Presenter> impleme
 
     @Override
     protected void initEvent() {
-        mTitleName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (EventUtil.isFastDoubleClick()) {
-                    mRecyclerView.scrollToPosition(0);
-                }
-            }
-        });
         mRecyclerView.setRefreshListener(this);
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                videoInfo = BeanUtil.VideoType2VideoInfo(mAdapter.getItem(position), videoInfo);
-                JumpUtil.go2VideoInfoActivity(getContext(), videoInfo);
             }
         });
         mAdapter.setError(R.layout.view_error_footer).setOnClickListener(new View.OnClickListener() {
@@ -111,16 +103,9 @@ public class VideoListView extends RootView<VideoListContract.Presenter> impleme
         });
     }
 
-    @OnClick(R.id.rl_back)
-    public void back() {
-        if (mContext instanceof VideoListActivity) {
-            ((VideoListActivity) mContext).finish();
-        }
-    }
-
     @Override
-    public void showTitle(String title) {
-        mTitleName.setText(title);
+    public boolean isActive() {
+        return mActive;
     }
 
     @Override
@@ -137,11 +122,6 @@ public class VideoListView extends RootView<VideoListContract.Presenter> impleme
         mAdapter.pauseMore();
     }
 
-    @Override
-    public boolean isActive() {
-        return mActive;
-    }
-
     public void clearFooter() {
         mAdapter.setMore(new View(mContext), this);
         mAdapter.setError(new View(mContext));
@@ -149,27 +129,24 @@ public class VideoListView extends RootView<VideoListContract.Presenter> impleme
     }
 
     @Override
-    public void showContent(List<VideoType> list) {
+    public void showContent(List<GankItemBean> list) {
         mAdapter.clear();
-        if (list != null && list.size() < pageSize) {
+        if (list != null && list.size() < WelfarePresenter.NUM_OF_PAGE) {
             clearFooter();
         }
         mAdapter.addAll(list);
     }
 
     @Override
-    public void showMoreContent(List<VideoType> list) {
+    public void showMoreContent(List<GankItemBean> list) {
         mAdapter.addAll(list);
     }
 
-    @Override
-    public void setPresenter(VideoListContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
-    }
-
-    @Override
-    public void onLoadMore() {
-        mPresenter.loadMore();
+    @OnClick(R.id.rl_back)
+    public void onClick() {
+        if (mContext instanceof WelfareActivity) {
+            ((WelfareActivity) mContext).finish();
+        }
     }
 
     @Override
@@ -177,12 +154,8 @@ public class VideoListView extends RootView<VideoListContract.Presenter> impleme
         mPresenter.onRefresh();
     }
 
-    public void setTitleName(String title) {
-        mTitleName.setText(title);
-    }
-
     @Override
-    public void showError(String msg) {
-        EventUtil.showToast(mContext, msg);
+    public void onLoadMore() {
+        mPresenter.loadMore();
     }
 }
