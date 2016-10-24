@@ -45,7 +45,7 @@
 
         <activity
             android:name=".ui.activitys.SettingActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/CustomTransparent"  />
         <activity
             android:name=".ui.activitys.SearchActivity"
             android:theme="@style/CustomTransparent" />

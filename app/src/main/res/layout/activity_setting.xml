@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/container_style"
+    style="@style/both_match_style"
+    android:background="?attr/background"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_img"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+    <include layout="@layout/commen_title" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_recommend"
+        style="@style/settingItemStyle">
+
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/setting_recommend" />
+
+        <ImageView style="@style/settingItemImgStyle" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_about"
+        style="@style/settingItemStyle">
+
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/about" />
+
+        <ImageView style="@style/settingItemImgStyle" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_feedback"
+        style="@style/settingItemLittleMarginStyle">
+
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/feedback" />
+
+        <ImageView style="@style/settingItemImgStyle" />
+    </RelativeLayout>
+
+</com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout>

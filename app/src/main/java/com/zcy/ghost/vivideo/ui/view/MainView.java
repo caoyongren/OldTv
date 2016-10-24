@@ -2,7 +2,6 @@ package com.zcy.ghost.vivideo.ui.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,7 +15,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.google.common.base.Preconditions;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.iconics.typeface.IIcon;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.pgyersdk.feedback.PgyFeedback;
 import com.pgyersdk.views.PgyerDialog;
@@ -34,7 +32,7 @@ import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
 import com.zcy.ghost.vivideo.ui.fragments.RecommendFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
-import com.zcy.ghost.vivideo.utils.ScreenUtil;
+import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.utils.ThemeUtils;
 import com.zcy.ghost.vivideo.widget.ResideLayout;
 import com.zcy.ghost.vivideo.widget.UnScrollViewPager;
@@ -105,14 +103,14 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
         mPagerAdapter = new ContentPagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         vpContent.setAdapter(mPagerAdapter);
         vpContent.setOffscreenPageLimit(fragments.size());
-        setIconDrawable(tvCollect, MaterialDesignIconic.Icon.gmi_collection_add);
-        setIconDrawable(tvMydown, MaterialDesignIconic.Icon.gmi_download);
-        setIconDrawable(tvFuli, MaterialDesignIconic.Icon.gmi_mood);
-        setIconDrawable(tvShare, MaterialDesignIconic.Icon.gmi_share);
-        setIconDrawable(tvFeedback, MaterialDesignIconic.Icon.gmi_android);
-        setIconDrawable(tvSetting, MaterialDesignIconic.Icon.gmi_settings);
-        setIconDrawable(about, MaterialDesignIconic.Icon.gmi_account);
-        setIconDrawable(theme, MaterialDesignIconic.Icon.gmi_palette);
+        StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_add,16 , 10);
+        StringUtils.setIconDrawable(mContext, tvMydown, MaterialDesignIconic.Icon.gmi_download,16 , 10);
+        StringUtils.setIconDrawable(mContext, tvFuli, MaterialDesignIconic.Icon.gmi_mood,16 , 10);
+        StringUtils.setIconDrawable(mContext, tvShare, MaterialDesignIconic.Icon.gmi_share,16 , 10);
+        StringUtils.setIconDrawable(mContext, tvFeedback, MaterialDesignIconic.Icon.gmi_android,16 , 10);
+        StringUtils.setIconDrawable(mContext, tvSetting, MaterialDesignIconic.Icon.gmi_settings,16 , 10);
+        StringUtils.setIconDrawable(mContext, about, MaterialDesignIconic.Icon.gmi_account,16 , 10);
+        StringUtils.setIconDrawable(mContext, theme, MaterialDesignIconic.Icon.gmi_palette,16 , 10);
     }
 
     @Override
@@ -211,15 +209,6 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
                 .show();
     }
 
-    private void setIconDrawable(TextView view, IIcon icon) {
-        view.setCompoundDrawablesWithIntrinsicBounds(new IconicsDrawable(mContext)
-                        .icon(icon)
-                        .color(Color.WHITE)
-                        .sizeDp(16),
-                null, null, null);
-        view.setCompoundDrawablePadding(ScreenUtil.dip2px(mContext, 10));
-    }
-
     @OnClick({R.id.tv_collect, R.id.tv_mydown, R.id.tv_fuli, R.id.tv_share, R.id.tv_feedback, R.id.tv_setting, R.id.about, R.id.theme})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -233,7 +222,13 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
                 EventUtil.showToast(mContext, "福利");
                 break;
             case R.id.tv_share:
-                EventUtil.showToast(mContext, "分享");
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.setting_recommend_content));
+                shareIntent.setType("text/plain");
+
+                //设置分享列表的标题，并且每次都显示分享列表
+                mContext.startActivity(Intent.createChooser(shareIntent, "分享到"));
                 break;
             case R.id.tv_feedback:
                 // 以对话框的形式弹出

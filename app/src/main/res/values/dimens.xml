@@ -52,12 +52,15 @@
     <dimen name="standard_xs_small_margin">6dp</dimen>
     <dimen name="standard_s_small_margin">4dp</dimen>
     <dimen name="standard_ss_small_margin">2dp</dimen>
+    <dimen name="standard_sss_small_margin">1dp</dimen>
 
     <dimen name="tab_height">40dp</dimen>
     <dimen name="default_circle_view_size">200dp</dimen>
     <dimen name="min_margin_left">40dp</dimen>
     <dimen name="min_margin_right">30dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="title_bar_height">48dp</dimen>
 
 
 </resources>

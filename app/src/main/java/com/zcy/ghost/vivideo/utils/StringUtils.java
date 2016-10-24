@@ -1,6 +1,12 @@
 package com.zcy.ghost.vivideo.utils;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.text.TextUtils;
+import android.widget.TextView;
+
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.typeface.IIcon;
 
 import java.util.Random;
 
@@ -64,5 +70,14 @@ public class StringUtils {
             return msg;
         } else
             return "";
+    }
+
+    public static void setIconDrawable(Context mContext, TextView view, IIcon icon, int size,int padding) {
+        view.setCompoundDrawablesWithIntrinsicBounds(new IconicsDrawable(mContext)
+                        .icon(icon)
+                        .color(Color.WHITE)
+                        .sizeDp(size),
+                null, null, null);
+        view.setCompoundDrawablePadding(ScreenUtil.dip2px(mContext, padding));
     }
 }

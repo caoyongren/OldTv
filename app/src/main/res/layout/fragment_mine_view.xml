@@ -67,16 +67,11 @@
                 style="@style/mine_lin_style"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:id="@+id/img1"
-                    style="@style/both_wrap_style"
-                    android:background="@mipmap/my_records" />
 
                 <TextView
+                    android:id="@+id/tv_history"
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img1"
                     android:text="@string/my_record" />
 
                 <ImageView
@@ -106,16 +101,11 @@
                 style="@style/mine_lin_style"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:id="@+id/img2"
-                    style="@style/both_wrap_style"
-                    android:background="@mipmap/my_down" />
 
                 <TextView
+                    android:id="@+id/tv_down"
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img2"
                     android:text="@string/my_down" />
 
                 <ImageView
@@ -131,16 +121,10 @@
                 style="@style/mine_lin_style"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:id="@+id/img3"
-                    style="@style/both_wrap_style"
-                    android:background="@mipmap/my_collection" />
-
                 <TextView
+                    android:id="@+id/tv_collection"
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img3"
                     android:text="@string/my_collection" />
 
                 <ImageView
@@ -156,16 +140,10 @@
                 style="@style/mine_lin_style"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:id="@+id/img4"
-                    style="@style/both_wrap_style"
-                    android:background="@mipmap/my_everyone" />
-
                 <TextView
+                    android:id="@+id/tv_them"
                     style="@style/common_tv_style"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/img4"
                     android:text="@string/my_them" />
 
                 <ImageView

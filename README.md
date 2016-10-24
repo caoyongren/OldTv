@@ -3,6 +3,11 @@
 微影，一款纯粹的在线视频App，基于Material Design + MVP + RxJava + Retrofit + Realm + Glide
 
 ##更改日志
+####2016.10.24
+* 1.调整mvp结构
+* 2.完善设置页面（推荐好友、关于我们、建议反馈）
+* 3.增加分享功能（调用系统分享）
+
 ####2016.10.11
 * 1.增加意见反馈
 * 2.修改影片详情页面（进入自动播放、影片简介展开收回，增加评论列表）
@@ -37,13 +42,15 @@
 
 <a href="art/03.png"><img src="art/03.png" width="40%"/></a> <a href="art/04.png"><img src="art/04.png" width="40%"/></a>
 
+<a href="art/11.png"><img src="art/11.png" width="40%"/></a> <a href="art/12.png"><img src="art/12.png" width="40%"/></a>
+
 <!--<a href="art/05.png"><img src="art/05.png" width="40%"/></a> <a href="art/06.png"><img src="art/06.png" width="40%"/></a>-->
 
 <a href="art/07.png"><img src="art/07.png" width="40%"/></a> <a href="art/08.png"><img src="art/08.png" width="40%"/></a>
 
 <a href="art/09.png"><img src="art/09.png" width="40%"/></a> <a href="art/10.png"><img src="art/10.png" width="40%"/></a>
 
-<a href="art/11.png"><img src="art/11.png" width="40%"/></a> <a href="art/12.png"><img src="art/12.png" width="40%"/></a>
+
 
 #技术点
 * 使用RxJava配合Retrofit2做网络请求

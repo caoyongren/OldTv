@@ -9,7 +9,7 @@
     <com.zcy.ghost.vivideo.widget.RollPagerView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         app:rollviewpager_play_delay="2000" />
 
     <RelativeLayout

@@ -38,4 +38,9 @@
     <string name="expand">展开</string>
     <string name="shrink">收起</string>
 
+    <string name="setting_recommend">推荐给好友</string>
+    <string name="setting_recommend_content">有个看片神器\n\nhttps://github.com/GeekGhost/Ghost</string>
+    <string name="setting_recommend_url">https://github.com/GeekGhost/Ghost</string>
+    <string name="setting_recommend_copy">复制</string>
+
 </resources>

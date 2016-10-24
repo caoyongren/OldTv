@@ -8,11 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.common.base.Preconditions;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
@@ -27,6 +29,7 @@ import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
+import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import org.simple.eventbus.EventBus;
@@ -46,19 +49,24 @@ import static com.zcy.ghost.vivideo.R.id.recyclerView;
  */
 public class MineView extends RootView<MineContract.Presenter> implements MineContract.View {
 
-
+    MineHistoryVideoListAdapter mAdapter;
+    VideoInfo videoInfo;
     @BindView(R.id.title_name)
     ColorTextView titleName;
     @BindView(R.id.rl_them)
     RelativeLayout rlThem;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
-
     @BindView(recyclerView)
     EasyRecyclerView mRecyclerView;
-    MineHistoryVideoListAdapter mAdapter;
-    VideoInfo videoInfo;
+    @BindView(R.id.tv_history)
+    TextView mTvHistory;
+    @BindView(R.id.tv_down)
+    TextView tvDown;
+    @BindView(R.id.tv_collection)
+    TextView tvCollection;
+    @BindView(R.id.tv_them)
+    TextView tvThem;
 
     public MineView(Context context) {
         super(context);
@@ -78,6 +86,10 @@ public class MineView extends RootView<MineContract.Presenter> implements MineCo
         ((AppCompatActivity) getContext()).setSupportActionBar(toolbar);
         toolbar.setTitle("");
         titleName.setText(getResources().getString(R.string.mine_title));
+        StringUtils.setIconDrawable(mContext, mTvHistory, MaterialDesignIconic.Icon.gmi_account_calendar, 16, 15);
+        StringUtils.setIconDrawable(mContext, tvDown, MaterialDesignIconic.Icon.gmi_time_countdown, 16, 15);
+        StringUtils.setIconDrawable(mContext, tvCollection, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 15);
+        StringUtils.setIconDrawable(mContext, tvThem, MaterialDesignIconic.Icon.gmi_palette, 16, 15);
 
 
         mRecyclerView.setAdapter(mAdapter = new MineHistoryVideoListAdapter(mContext));
