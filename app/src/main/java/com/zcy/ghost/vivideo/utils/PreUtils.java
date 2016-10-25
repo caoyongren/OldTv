@@ -94,7 +94,7 @@ public class PreUtils {
     }
 
     public static Theme getCurrentTheme(Context context) {
-        return Theme.valueOf(PreUtils.getString(context, "app_theme", Theme.Black.name()));
+        return Theme.valueOf(PreUtils.getString(context, "app_theme", Theme.Red.name()));
     }
 
     public static void setCurrentTheme(Context context, Theme currentTheme) {

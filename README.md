@@ -71,11 +71,12 @@
 
 [material UP](http://www.material.uplabs.com/) 提供了Material Design风格的素材
 
+[Launcher icons](http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
+
 ###LIB:
 ####UI
 * [MaterialSearchView](https://github.com/MiguelCatalan/MaterialSearchView)
 * [multiline-collapsingtoolbar](https://github.com/opacapp/multiline-collapsingtoolbar)
-
 
 ####RX
 

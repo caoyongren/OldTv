@@ -184,7 +184,7 @@ public class RealmHelper {
         }
         //如果保存记录超过20条，就删除一条。保存最多20条
         List<MySearchSuggestion> listAll = getSearchHistoryListAll();
-        if (listAll != null && listAll.size() >= 20) {
+        if (listAll != null && listAll.size() >= 10) {
             deleteSearchHistoryList(listAll.get(listAll.size() - 1).getBody());
         }
     }
@@ -209,6 +209,12 @@ public class RealmHelper {
         MySearchSuggestion data = getRealm().where(MySearchSuggestion.class).equalTo("strHistorySearchKey", strHistorySearchKey).findFirst();
         getRealm().beginTransaction();
         data.deleteFromRealm();
+        getRealm().commitTransaction();
+    }
+
+    public void deleteSearchHistoryAll() {
+        getRealm().beginTransaction();
+        getRealm().delete(MySearchSuggestion.class);
         getRealm().commitTransaction();
     }
 

@@ -35,6 +35,7 @@ import com.zcy.ghost.vivideo.widget.RollPagerView;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,6 +61,7 @@ public class RecommendView extends RootView<RecommendContract.Presenter > implem
     RecommendAdapter adapter;
     TextView etSearchKey;
     RelativeLayout rlGoSearch;
+    List<VideoInfo> recommend;
 
     public RecommendView(Context context) {
         super(context);
@@ -170,6 +172,12 @@ public class RecommendView extends RootView<RecommendContract.Presenter > implem
                     break;
                 }
             }
+            for (int i = 1; i < videoRes.list.size(); i++) {
+                if (videoRes.list.get(i).title.equals("免费推荐")) {
+                    recommend = videoRes.list.get(i).childList;
+                    break;
+                }
+            }
             if (adapter.getHeaderCount() == 0) {
                 adapter.addHeader(new RecyclerArrayAdapter.ItemView() {
                     @Override
@@ -224,6 +232,7 @@ public class RecommendView extends RootView<RecommendContract.Presenter > implem
         switch (view.getId()) {
             case R.id.rlGoSearch:
                 Intent intent = new Intent(mContext, SearchActivity.class);
+                intent.putExtra("recommend", (Serializable) recommend);
                 mContext.startActivity(intent);
                 break;
         }

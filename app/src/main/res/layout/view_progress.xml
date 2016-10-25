@@ -6,16 +6,20 @@
     <!--android:layout_centerVertical="true"-->
     <!--android:layout_gravity="center" />&lt;!&ndash;android:indeterminateDrawable="@drawable/circle_progress" &ndash;&gt;-->
     <!--//加载进度条-->
-<com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress
+<!--<com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:circleprogress="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/loading"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--circleprogress:color1="@android:color/holo_red_light"-->
+    <!--circleprogress:color2="@android:color/holo_green_light"-->
+    <!--circleprogress:color3="@android:color/holo_blue_light"-->
+    <!--circleprogress:autoStart="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_gravity="center"/>-->
+<com.zcy.ghost.vivideo.widget.LVGhost
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:circleprogress="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loading"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    circleprogress:color1="@android:color/holo_red_light"
-    circleprogress:color2="@android:color/holo_green_light"
-    circleprogress:color3="@android:color/holo_blue_light"
-    circleprogress:autoStart="true"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:layout_gravity="center"/>
+    style="@style/loading_style"/>

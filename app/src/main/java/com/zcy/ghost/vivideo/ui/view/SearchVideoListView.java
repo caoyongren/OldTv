@@ -1,20 +1,26 @@
 package com.zcy.ghost.vivideo.ui.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
-import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
+import com.google.common.base.Preconditions;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
+import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.MySearchSuggestion;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
@@ -25,14 +31,15 @@ import com.zcy.ghost.vivideo.ui.adapter.VideoListAdapter;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
-import com.zcy.ghost.vivideo.utils.LogUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
-import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
+import com.zcy.ghost.vivideo.widget.WordWrapView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.zcy.ghost.vivideo.R.id.recyclerView;
 
 
 /**
@@ -42,19 +49,34 @@ import butterknife.OnClick;
  */
 public class SearchVideoListView extends RootView<SearchVideoListContract.Presenter> implements SearchVideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
-    @BindView(R.id.rl_back)
-    RelativeLayout mRlBack;
-    @BindView(R.id.title_name)
-    ColorTextView mTitleName;
-
-    @BindView(R.id.recyclerView)
+    VideoInfo videoInfo;
+    @BindView(recyclerView)
     EasyRecyclerView mRecyclerView;
     VideoListAdapter mAdapter;
-
-    VideoInfo videoInfo;
-    @BindView(R.id.floating_search_view)
-    FloatingSearchView mSearchView;
     int pageSize = 30;
+    @BindView(R.id.edt_search)
+    EditText edtSearch;
+    @BindView(R.id.img_clear)
+    ImageView imgClear;
+    @BindView(R.id.tv_operate)
+    TextView tvOperate;
+    @BindView(R.id.img_search_clear)
+    ImageView imgSearchClear;
+    @BindView(R.id.wv_search_history)
+    WordWrapView wvSearchHistory;
+    @BindView(R.id.rl_history)
+    LinearLayout rlHistory;
+    @BindView(R.id.img_video)
+    ImageView imgVideo;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.img_video1)
+    ImageView imgVideo1;
+    @BindView(R.id.tv_title1)
+    TextView tvTitle1;
+    @BindView(R.id.ll_recommend)
+    LinearLayout llRecommend;
+    List<VideoInfo> recommend;
 
     public SearchVideoListView(Context context) {
         super(context);
@@ -71,7 +93,6 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
 
     @Override
     protected void initView() {
-        setTitleName("搜索");
         mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
         mAdapter.setMore(R.layout.view_more, this);
@@ -84,18 +105,11 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
         mRecyclerView.addItemDecoration(itemDecoration);
+        setHistory();
     }
 
     @Override
     protected void initEvent() {
-        mTitleName.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (EventUtil.isFastDoubleClick()) {
-                    mRecyclerView.scrollToPosition(0);
-                }
-            }
-        });
         mRecyclerView.setRefreshListener(this);
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
@@ -118,51 +132,85 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
             }
         });
 
-        mSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
-            @Override
-            public void onSuggestionClicked(final SearchSuggestion searchSuggestion) {
-                LogUtils.d("TAG", "onSuggestionClicked()");
-                if (searchSuggestion.getBody() != null && !searchSuggestion.getBody().equals("")) {
-                    mPresenter.setSearchKey(searchSuggestion.getBody());
-                    mPresenter.onRefresh();
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    imgClear.setVisibility(View.VISIBLE);
+                    tvOperate.setText("搜索");
                 } else {
-                    EventUtil.showToast(mContext, "请输入搜索关键字...");
+                    imgClear.setVisibility(View.INVISIBLE);
+                    tvOperate.setText("取消");
                 }
             }
 
-            @Override
-            public void onSearchAction(String query) {
-                LogUtils.d("TAG", "onSearchAction()" + query);
-                if (query != null && !query.equals("")) {
-                    MySearchSuggestion search = new MySearchSuggestion(query, System.currentTimeMillis());
-                    RealmHelper.getInstance().insertSearchHistory(search);
-                    mPresenter.setSearchKey(query);
-                    mPresenter.onRefresh();
-                } else {
-                    EventUtil.showToast(mContext, "请输入搜索关键字...");
-                }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-        });
-        mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
-            @Override
-            public void onSearchTextChanged(String oldQuery, final String newQuery) {
-                mSearchView.showProgress();
-                List<MySearchSuggestion> newSuggestions = RealmHelper.getInstance().getSearchHistoryList(newQuery);
-                if (newSuggestions != null && newSuggestions.size() > 0) {
-                    mSearchView.swapSuggestions(newSuggestions);
-                }
-                mSearchView.hideProgress();
+
+            public void afterTextChanged(Editable s) {
             }
         });
     }
 
-    @OnClick(R.id.rl_back)
-    public void back() {
-        if (mContext instanceof SearchActivity) {
-            ((SearchActivity) mContext).finish();
+    private void setHistory() {
+        final List<MySearchSuggestion> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
+        if (searchHistory != null && searchHistory.size() > 0) {
+            wvSearchHistory.removeAllViewsInLayout();
+            int size = searchHistory.size();
+            for (int i = 0; i < size; i++) {
+                final String query = searchHistory.get(i).getBody();
+                TextView textView = new TextView(getContext());
+                textView.setTextColor(Color.parseColor("#ffffff"));
+                textView.setText(query);
+                textView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        edtSearch.setText(query);
+                        search(query);
+                    }
+                });
+                wvSearchHistory.addView(textView);
+            }
         }
     }
 
+    @OnClick({R.id.tv_operate, R.id.img_clear, R.id.img_search_clear, R.id.ll_reco, R.id.ll_reco1})
+    public void back(View view) {
+        switch (view.getId()) {
+            case R.id.tv_operate:
+                String searchStr = edtSearch.getText().toString();
+                if (!TextUtils.isEmpty(searchStr)) {
+                    MySearchSuggestion search = new MySearchSuggestion(searchStr, System.currentTimeMillis());
+                    RealmHelper.getInstance().insertSearchHistory(search);
+                    search(searchStr);
+                } else {
+                    if (mContext instanceof SearchActivity) {
+                        ((SearchActivity) mContext).finish();
+                    }
+                }
+                break;
+            case R.id.img_clear:
+                edtSearch.setText("");
+                break;
+            case R.id.img_search_clear:
+                RealmHelper.getInstance().deleteSearchHistoryAll();
+                wvSearchHistory.removeAllViews();
+                break;
+            case R.id.ll_reco:
+                JumpUtil.go2VideoInfoActivity(getContext(), recommend.get(0));
+                break;
+            case R.id.ll_reco1:
+                JumpUtil.go2VideoInfoActivity(getContext(), recommend.get(1));
+                break;
+        }
+
+    }
+
+    private void search(String searchStr) {
+        mRecyclerView.getProgressView().setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        mPresenter.setSearchKey(searchStr);
+        mPresenter.onRefresh();
+    }
 
     public void clearFooter() {
         mAdapter.setMore(new View(mContext), this);
@@ -178,15 +226,6 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
     @Override
     public void onRefresh() {
         mPresenter.onRefresh();
-    }
-
-    public void setTitleName(String title) {
-        mTitleName.setText(title);
-    }
-
-    @Override
-    public void showTitle(String title) {
-        mTitleName.setText(title);
     }
 
     @Override
@@ -215,6 +254,8 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
             clearFooter();
         }
         mAdapter.addAll(list);
+        mRecyclerView.getProgressView().setVisibility(View.GONE);
+        rlHistory.setVisibility(View.GONE);
     }
 
     @Override
@@ -223,8 +264,22 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
     }
 
     @Override
+    public void showRecommend(List<VideoInfo> list) {
+        if (list != null && list.size() == 2) {
+            recommend = list;
+            VideoInfo videoInfo = list.get(0);
+            ImageLoader.load(getContext(), videoInfo.pic, imgVideo);
+            tvTitle.setText(videoInfo.title);
+            videoInfo = list.get(1);
+            ImageLoader.load(getContext(), videoInfo.pic, imgVideo1);
+            tvTitle1.setText(videoInfo.title);
+        } else
+            llRecommend.setVisibility(View.GONE);
+    }
+
+    @Override
     public void setPresenter(SearchVideoListContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
+        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override

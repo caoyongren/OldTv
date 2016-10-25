@@ -19,8 +19,8 @@ import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
+import com.zcy.ghost.vivideo.widget.LVGhost;
 import com.zcy.ghost.vivideo.widget.SwipeDeck;
-import com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class DiscoverView extends RootView<DiscoverContract.Presenter> implement
     @BindView(R.id.swipeLayout)
     SwipeFrameLayout swipeLayout;
     @BindView(R.id.loading)
-    CircleProgress loading;
+    LVGhost loading;
     @BindView(R.id.btn_next)
     Button btn_next;
     @BindView(R.id.tv_nomore)

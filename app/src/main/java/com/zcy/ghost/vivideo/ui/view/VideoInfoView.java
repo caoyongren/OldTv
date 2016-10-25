@@ -22,8 +22,8 @@ import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.fragments.VideoCommentFragment;
 import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.widget.LVGhost;
 import com.zcy.ghost.vivideo.widget.SwipeViewPager;
-import com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import butterknife.BindView;
@@ -49,7 +49,7 @@ public class VideoInfoView extends RootView<VideoInfoContract.Presenter> impleme
     @BindView(R.id.viewpager)
     SwipeViewPager mViewpager;
     @BindView(R.id.circle_loading)
-    CircleProgress mLoading;
+    LVGhost mLoading;
     @BindView(R.id.rl_collect)
     RelativeLayout rlCollect;
 

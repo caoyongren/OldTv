@@ -3,6 +3,8 @@ package com.zcy.ghost.vivideo.utils;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
@@ -46,6 +48,7 @@ public class EventUtil {
         Snackbar.make(view, res, Snackbar.LENGTH_SHORT).show();
     }
 
+//    file.lengthz转单位
     public static String getFormatSize(double size) {
         double kiloByte = size / 1024;
         if (kiloByte < 1) {
@@ -71,5 +74,16 @@ public class EventUtil {
         }
         BigDecimal result4 = new BigDecimal(teraBytes);
         return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB";
+    }
+
+    public static void openInputKeyBoard(Context mContext, EditText mEditText){
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    public static void closeInputKeyBoard(Context mContext, EditText mEditText){
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mEditText.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

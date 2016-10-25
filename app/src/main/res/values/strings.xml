@@ -44,4 +44,7 @@
     <string name="setting_recommend_copy">复制</string>
     <string name="setting_recommend_clear">清理缓存</string>
 
+    <string name="search_history">搜索记录</string>
+    <string name="search_recommend">热门推荐</string>
+
 </resources>

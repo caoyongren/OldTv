@@ -3,6 +3,7 @@ package com.zcy.ghost.vivideo.presenter.contract;
 
 import com.zcy.ghost.vivideo.base.BasePresenter;
 import com.zcy.ghost.vivideo.base.BaseView;
+import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 
 import java.util.List;
@@ -18,8 +19,6 @@ public interface SearchVideoListContract {
 
         boolean isActive();
 
-        void showTitle(String title);
-
         void refreshFaild(String msg);
 
         void loadMoreFaild(String msg);
@@ -27,6 +26,8 @@ public interface SearchVideoListContract {
         void showContent(List<VideoType> list);
 
         void showMoreContent(List<VideoType> list);
+
+        void showRecommend(List<VideoInfo> list);
     }
 
     interface Presenter extends BasePresenter {
