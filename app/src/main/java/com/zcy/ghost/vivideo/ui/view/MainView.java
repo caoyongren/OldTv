@@ -104,7 +104,7 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
         mPagerAdapter = new ContentPagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         vpContent.setAdapter(mPagerAdapter);
         vpContent.setOffscreenPageLimit(fragments.size());
-        StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_add, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 10);
         StringUtils.setIconDrawable(mContext, tvMydown, MaterialDesignIconic.Icon.gmi_download, 16, 10);
         StringUtils.setIconDrawable(mContext, tvFuli, MaterialDesignIconic.Icon.gmi_mood, 16, 10);
         StringUtils.setIconDrawable(mContext, tvShare, MaterialDesignIconic.Icon.gmi_share, 16, 10);
@@ -217,7 +217,7 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
                 mContext.startActivity(new Intent(mContext, CollectionActivity.class));
                 break;
             case R.id.tv_mydown:
-                EventUtil.showToast(mContext, "我的下载");
+                EventUtil.showToast(mContext, "敬请期待");
                 break;
             case R.id.tv_fuli:
                 mContext.startActivity(new Intent(mContext, WelfareActivity.class));
@@ -235,7 +235,7 @@ public class MainView extends RootView<MainContract.Presenter> implements MainCo
                 // 以对话框的形式弹出
                 PgyerDialog.setDialogTitleBackgroundColor(PreUtils.getString(mContext, Constants.PRIMARYCOLOR, "#000000"));
                 PgyerDialog.setDialogTitleTextColor(PreUtils.getString(mContext, Constants.TITLECOLOR, "#0aa485"));
-                PgyFeedback.getInstance().showDialog(mContext);
+                PgyFeedback.getInstance().showDialog(mContext).d().setChecked(false);
                 break;
             case R.id.tv_setting:
                 mContext.startActivity(new Intent(mContext, SettingActivity.class));

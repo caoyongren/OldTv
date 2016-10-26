@@ -147,7 +147,7 @@ public class MineView extends RootView<MineContract.Presenter> implements MineCo
                 getContext().startActivity(new Intent(mContext, HistoryActivity.class));
                 break;
             case R.id.rl_down:
-                EventUtil.showToast(getContext(), "暂定下载功能");
+                EventUtil.showToast(getContext(), "敬请期待");
                 break;
             case R.id.rl_collection:
                 getContext().startActivity(new Intent(mContext, CollectionActivity.class));

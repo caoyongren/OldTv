@@ -1,7 +1,6 @@
 package com.zcy.ghost.vivideo.ui.adapter;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -32,8 +31,10 @@ public class BannerAdapter extends StaticPagerAdapter {
 
     private void removeEmpty(List<VideoInfo> list) {
         for (int i = 0; i < list.size(); i++) {
-            if (TextUtils.isEmpty(list.get(i).dataId))
+            if (!list.get(i).loadType.equals("video")) {
                 list.remove(i);
+                i--;
+            }
         }
     }
 

@@ -14,15 +14,7 @@ public class VideoInfo implements Serializable {
     public String score;
     public String airTime;
     public String moreURL;
+    public String loadType;
     //    public String description;
-    private String type;
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
 }

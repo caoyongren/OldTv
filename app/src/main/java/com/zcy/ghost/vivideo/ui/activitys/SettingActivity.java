@@ -91,6 +91,7 @@ public class SettingActivity extends SwipeBackActivity {
                 PgyerDialog.setDialogTitleBackgroundColor(PreUtils.getString(this, Constants.PRIMARYCOLOR, "#000000"));
                 PgyerDialog.setDialogTitleTextColor(PreUtils.getString(this, Constants.TITLECOLOR, "#0aa485"));
                 PgyFeedback.getInstance().showDialog(this);
+                PgyFeedback.getInstance().showDialog(this).d().setChecked(false);
                 break;
             case R.id.rl_clearcache:
                 tvCache.setText("0kb");
