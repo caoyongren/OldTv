@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.common.base.Preconditions;
@@ -21,7 +22,7 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.component.ImageLoader;
-import com.zcy.ghost.vivideo.model.bean.MySearchSuggestion;
+import com.zcy.ghost.vivideo.model.bean.SearchKey;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
@@ -64,8 +65,8 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
     ImageView imgSearchClear;
     @BindView(R.id.wv_search_history)
     WordWrapView wvSearchHistory;
-    @BindView(R.id.rl_history)
-    LinearLayout rlHistory;
+    @BindView(R.id.rl_his_rec)
+    RelativeLayout rlHisRec;
     @BindView(R.id.img_video)
     ImageView imgVideo;
     @BindView(R.id.tv_title)
@@ -152,12 +153,12 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
     }
 
     private void setHistory() {
-        final List<MySearchSuggestion> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
+        final List<SearchKey> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
         if (searchHistory != null && searchHistory.size() > 0) {
             wvSearchHistory.removeAllViewsInLayout();
             int size = searchHistory.size();
             for (int i = 0; i < size; i++) {
-                final String query = searchHistory.get(i).getBody();
+                final String query = searchHistory.get(i).getSearchKey();
                 TextView textView = new TextView(getContext());
                 textView.setTextColor(Color.parseColor("#ffffff"));
                 textView.setText(query);
@@ -179,7 +180,7 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
             case R.id.tv_operate:
                 String searchStr = edtSearch.getText().toString();
                 if (!TextUtils.isEmpty(searchStr)) {
-                    MySearchSuggestion search = new MySearchSuggestion(searchStr, System.currentTimeMillis());
+                    SearchKey search = new SearchKey(searchStr, System.currentTimeMillis());
                     RealmHelper.getInstance().insertSearchHistory(search);
                     search(searchStr);
                 } else {
@@ -255,7 +256,7 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
         }
         mAdapter.addAll(list);
         mRecyclerView.getProgressView().setVisibility(View.GONE);
-        rlHistory.setVisibility(View.GONE);
+        rlHisRec.setVisibility(View.GONE);
     }
 
     @Override

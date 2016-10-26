@@ -65,124 +65,129 @@
 
     </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/rl_history"
+    <RelativeLayout
+        android:id="@+id/rl_his_rec"
         style="@style/lmatch_hwrap_style"
-        android:layout_below="@+id/title"
-        android:orientation="vertical">
-
-        <RelativeLayout
+        android:layout_below="@+id/title">
+        <LinearLayout
+            android:id="@+id/rl_history"
             style="@style/lmatch_hwrap_style"
-            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/lmatch_hwrap_style"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/standard_margin"
+                android:layout_marginRight="@dimen/standard_x_big_margin"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_search_history"
+                    style="@style/common_tv_style"
+                    android:text="@string/search_history" />
+
+                <ImageView
+                    android:id="@+id/img_search_clear"
+                    style="@style/both_wrap_style"
+                    android:layout_alignParentRight="true"
+                    android:background="@mipmap/search_clear" />
+            </RelativeLayout>
+
+
+            <com.zcy.ghost.vivideo.widget.WordWrapView
+                android:id="@+id/wv_search_history"
+                style="@style/lmatch_hwrap_style"
+                android:layout_below="@+id/tv_search_history"
+                android:layout_marginLeft="@dimen/standard_xs_small_margin"
+                android:layout_marginRight="@dimen/standard_xs_small_margin" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_recommed"
+            style="@style/common_tv_style"
+            android:layout_below="@+id/rl_history"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_x_big_margin"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:text="@string/search_recommend" />
 
-            <TextView
-                android:id="@+id/tv_search_history"
-                style="@style/common_tv_style"
-                android:text="@string/search_history" />
-
-            <ImageView
-                android:id="@+id/img_search_clear"
-                style="@style/both_wrap_style"
-                android:layout_alignParentRight="true"
-                android:background="@mipmap/search_clear" />
-        </RelativeLayout>
-
-
-        <com.zcy.ghost.vivideo.widget.WordWrapView
-            android:id="@+id/wv_search_history"
+        <LinearLayout
+            android:id="@+id/ll_recommend"
             style="@style/lmatch_hwrap_style"
-            android:layout_below="@+id/tv_search_history"
-            android:layout_marginLeft="@dimen/standard_xs_small_margin"
-            android:layout_marginRight="@dimen/standard_xs_small_margin" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_recommed"
-        style="@style/common_tv_style"
-        android:layout_below="@+id/rl_history"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="@dimen/standard_margin"
-        android:layout_marginRight="@dimen/standard_x_big_margin"
-        android:layout_marginTop="10dp"
-        android:text="@string/search_recommend" />
-
-    <LinearLayout
-        android:id="@+id/ll_recommend"
-        style="@style/lmatch_hwrap_style"
-        android:layout_below="@+id/tv_recommed"
-        android:layout_marginLeft="@dimen/standard_margin"
-        android:layout_marginRight="@dimen/standard_margin">
-
-
-        <LinearLayout
-            android:id="@+id/ll_reco"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                style="@style/both_match_style"
-                android:background="@color/white_translucent"
-                android:padding="5dp">
-
-                <ImageView
-                    android:id="@+id/img_video"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_centerVertical="true"
-                    android:background="@mipmap/default_200" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_title"
-                style="@style/small_tv_style"
-                android:layout_width="match_parent"
-                android:layout_marginTop="3dp"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="sdfasdfasdfasf" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_reco1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_recommed"
             android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginRight="@dimen/standard_margin">
 
-            <RelativeLayout
-                style="@style/both_match_style"
-                android:background="@color/white_translucent"
-                android:padding="5dp">
 
-                <ImageView
-                    android:id="@+id/img_video1"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_centerVertical="true"
-                    android:background="@mipmap/default_200"
-                    android:scaleType="fitXY" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_title1"
-                style="@style/small_tv_style"
-                android:layout_width="match_parent"
-                android:layout_marginTop="3dp"
+            <LinearLayout
+                android:id="@+id/ll_reco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:scaleType="fitXY"
-                android:singleLine="true"
-                android:text="sdfasdfasdfasf" />
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    style="@style/both_match_style"
+                    android:background="@color/white_translucent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/img_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/default_200" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/small_tv_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="sdfasdfasdfasf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_reco1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/standard_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    style="@style/both_match_style"
+                    android:background="@color/white_translucent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/img_video1"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/default_200"
+                        android:scaleType="fitXY" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_title1"
+                    style="@style/small_tv_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:singleLine="true"
+                    android:text="sdfasdfasdfasf" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
+
 
     <com.jude.easyrecyclerview.EasyRecyclerView
         android:id="@+id/recyclerView"

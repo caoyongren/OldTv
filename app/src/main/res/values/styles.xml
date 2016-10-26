@@ -113,6 +113,7 @@
         <item name="menuBackground">@drawable/blue_background</item>
         <item name="background">@mipmap/bg_blue</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
     <!--redTheme-->
@@ -125,6 +126,7 @@
         <item name="menuBackground">@drawable/red_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
     <!--brownTheme-->
     <style name="BrownTheme" parent="CustomTransparent">
@@ -136,6 +138,7 @@
         <item name="menuBackground">@drawable/brown_background</item>
         <item name="background">@mipmap/bg</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
     <!--greenTheme-->
     <style name="GreenTheme" parent="CustomTransparent">
@@ -147,6 +150,7 @@
         <item name="menuBackground">@drawable/green_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
     <!--purpleTheme-->
     <style name="PurpleTheme" parent="CustomTransparent">
@@ -158,6 +162,7 @@
         <item name="menuBackground">@drawable/purple_background</item>
         <item name="background">@mipmap/bg_blue</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
     <!--tealTheme-->
     <style name="TealTheme" parent="CustomTransparent">
@@ -169,6 +174,7 @@
         <item name="menuBackground">@drawable/teal_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
     <!--pinkTheme-->
@@ -181,6 +187,7 @@
         <item name="menuBackground">@drawable/pink_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
     <!--deepPurpleTheme-->
@@ -193,6 +200,7 @@
         <item name="menuBackground">@drawable/deep_purple_background</item>
         <item name="background">@mipmap/bg_blue</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
     <!--orange-->
@@ -205,6 +213,7 @@
         <item name="menuBackground">@drawable/orange_background</item>
         <item name="background">@mipmap/bg_blue</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
 
@@ -218,6 +227,7 @@
         <item name="menuBackground">@drawable/indigo_background</item>
         <item name="background">@mipmap/bg_blue</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
 
@@ -231,6 +241,7 @@
         <item name="menuBackground">@drawable/cyan_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
 
@@ -244,6 +255,7 @@
         <item name="md_title_color">@color/white</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
 
@@ -257,6 +269,7 @@
         <item name="menuBackground">@drawable/lime_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
 
@@ -270,6 +283,7 @@
         <item name="menuBackground">@drawable/deep_orange_background</item>
         <item name="background">@mipmap/bg_colorful</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
 
@@ -283,6 +297,7 @@
         <item name="menuBackground">@drawable/blue_grey_background</item>
         <item name="background">@mipmap/bg_blue</item>
         <item name="mine_background">@mipmap/my_bg_colorful</item>
+        <item name="card_background">@mipmap/card_bg_def</item>
     </style>
 
     <!--black-->
@@ -293,6 +308,7 @@
         <item name="menuBackground">@mipmap/bg</item>
         <item name="background">@mipmap/bg</item>
         <item name="mine_background">@mipmap/my_bg</item>
+        <item name="card_background">@mipmap/card_bg</item>
     </style>
 
 

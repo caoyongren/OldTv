@@ -1,7 +1,7 @@
 package com.zcy.ghost.vivideo.model.db;
 
 import com.zcy.ghost.vivideo.model.bean.Collection;
-import com.zcy.ghost.vivideo.model.bean.MySearchSuggestion;
+import com.zcy.ghost.vivideo.model.bean.SearchKey;
 import com.zcy.ghost.vivideo.model.bean.Record;
 
 import java.util.List;
@@ -174,18 +174,18 @@ public class RealmHelper {
      *
      * @param bean
      */
-    public void insertSearchHistory(MySearchSuggestion bean) {
+    public void insertSearchHistory(SearchKey bean) {
         //如果有不保存
-        List<MySearchSuggestion> list = getSearchHistoryList(bean.getBody());
+        List<SearchKey> list = getSearchHistoryList(bean.getSearchKey());
         if (list == null || list.size() == 0) {
             getRealm().beginTransaction();
             getRealm().copyToRealm(bean);
             getRealm().commitTransaction();
         }
         //如果保存记录超过20条，就删除一条。保存最多20条
-        List<MySearchSuggestion> listAll = getSearchHistoryListAll();
+        List<SearchKey> listAll = getSearchHistoryListAll();
         if (listAll != null && listAll.size() >= 10) {
-            deleteSearchHistoryList(listAll.get(listAll.size() - 1).getBody());
+            deleteSearchHistoryList(listAll.get(listAll.size() - 1).getSearchKey());
         }
     }
 
@@ -194,9 +194,9 @@ public class RealmHelper {
      *
      * @return
      */
-    public List<MySearchSuggestion> getSearchHistoryList(String value) {
+    public List<SearchKey> getSearchHistoryList(String value) {
         //使用findAllSort ,先findAll再result.sort排序
-        RealmResults<MySearchSuggestion> results = getRealm().where(MySearchSuggestion.class).contains("strHistorySearchKey", value).findAllSorted("insertTime", Sort.DESCENDING);
+        RealmResults<SearchKey> results = getRealm().where(SearchKey.class).contains("searchKey", value).findAllSorted("insertTime", Sort.DESCENDING);
         return getRealm().copyFromRealm(results);
     }
 
@@ -205,8 +205,8 @@ public class RealmHelper {
      *
      * @return
      */
-    public void deleteSearchHistoryList(String strHistorySearchKey) {
-        MySearchSuggestion data = getRealm().where(MySearchSuggestion.class).equalTo("strHistorySearchKey", strHistorySearchKey).findFirst();
+    public void deleteSearchHistoryList(String value) {
+        SearchKey data = getRealm().where(SearchKey.class).equalTo("searchKey", value).findFirst();
         getRealm().beginTransaction();
         data.deleteFromRealm();
         getRealm().commitTransaction();
@@ -214,7 +214,7 @@ public class RealmHelper {
 
     public void deleteSearchHistoryAll() {
         getRealm().beginTransaction();
-        getRealm().delete(MySearchSuggestion.class);
+        getRealm().delete(SearchKey.class);
         getRealm().commitTransaction();
     }
 
@@ -223,9 +223,9 @@ public class RealmHelper {
      *
      * @return
      */
-    public List<MySearchSuggestion> getSearchHistoryListAll() {
+    public List<SearchKey> getSearchHistoryListAll() {
         //使用findAllSort ,先findAll再result.sort排序
-        RealmResults<MySearchSuggestion> results = getRealm().where(MySearchSuggestion.class).findAllSorted("insertTime", Sort.DESCENDING);
+        RealmResults<SearchKey> results = getRealm().where(SearchKey.class).findAllSorted("insertTime", Sort.DESCENDING);
         return getRealm().copyFromRealm(results);
     }
 }

@@ -10,11 +10,11 @@
 
     <FrameLayout style="@style/both_match_style">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.zcy.ghost.vivideo.widget.theme.RoundedImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@mipmap/card_bg"
+            android:src="?attr/card_background"
             app:riv_border_width="0dip"
             app:riv_corner_radius="4dp" />
     </FrameLayout>
