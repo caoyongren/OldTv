@@ -37,7 +37,7 @@
 
 ## 效果
 
-[demo下载地址](https://www.pgyer.com/NqEz)
+[demo下载地址](https://www.pgyer.com/bAQp)
 
 <a href="art/01.png"><img src="art/01.png" width="40%"/></a> <a href="art/02.png"><img src="art/02.png" width="40%"/></a>
 
