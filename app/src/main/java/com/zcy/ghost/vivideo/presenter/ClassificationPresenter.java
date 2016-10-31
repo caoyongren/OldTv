@@ -53,6 +53,6 @@ public class ClassificationPresenter extends RxPresenter implements Classificati
                         mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 }
