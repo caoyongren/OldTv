@@ -20,6 +20,7 @@ public interface RecommendContract {
 
         void refreshFaild(String msg);
 
+        void stopBanner(boolean stop);
     }
 
     interface Presenter extends BasePresenter {

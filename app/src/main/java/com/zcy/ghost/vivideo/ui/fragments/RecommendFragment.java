@@ -33,4 +33,16 @@ public class RecommendFragment extends BaseFragment {
     protected void lazyFetchData() {
         ((RecommendPresenter) mPresenter).onRefresh();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        oneView.stopBanner(false);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        oneView.stopBanner(true);
+    }
 }
