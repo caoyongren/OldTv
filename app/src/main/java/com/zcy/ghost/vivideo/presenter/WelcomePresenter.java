@@ -51,7 +51,7 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
 //                        startCountDown();
 //                    }
 //                });
-//        addSubscrebe(rxSubscription);
+//        addSubscribe(rxSubscription);
         mView.showContent(getImgData());
         startCountDown();
     }
@@ -65,7 +65,7 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
                         mView.jumpToMain();
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     private List<String> getImgData() {

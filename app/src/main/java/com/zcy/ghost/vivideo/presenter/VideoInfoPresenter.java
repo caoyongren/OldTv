@@ -85,7 +85,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                             mView.hidLoading();
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     private void postData() {
@@ -97,7 +97,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                         EventBus.getDefault().post(result, Refresh_Video_Info);
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     private void putMediaId() {
@@ -109,7 +109,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                         EventBus.getDefault().post(dataId, Put_DataId);
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     @Override
@@ -139,7 +139,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                         EventBus.getDefault().post("", Refresh_Collection_List);
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     @Override
@@ -161,7 +161,7 @@ public class VideoInfoPresenter extends RxPresenter implements VideoInfoContract
                                 EventBus.getDefault().post("", Refresh_History_List);
                             }
                         });
-                addSubscrebe(rxSubscription);
+                addSubscribe(rxSubscription);
             }
         }
     }

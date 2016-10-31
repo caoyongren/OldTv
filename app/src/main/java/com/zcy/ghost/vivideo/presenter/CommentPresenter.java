@@ -65,7 +65,7 @@ public class CommentPresenter extends RxPresenter implements CommentContract.Pre
                         mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     @Override

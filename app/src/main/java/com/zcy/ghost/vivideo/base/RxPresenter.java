@@ -17,7 +17,7 @@ public class RxPresenter<T> implements BasePresenter<T> {
         }
     }
 
-    protected void addSubscrebe(Subscription subscription) {
+    protected void addSubscribe(Subscription subscription) {
         if (mCompositeSubscription == null) {
             mCompositeSubscription = new CompositeSubscription();
         }

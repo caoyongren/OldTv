@@ -83,7 +83,7 @@ public class SearchVideoListPresenter extends RxPresenter implements SearchVideo
                         mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
 

@@ -67,7 +67,7 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
                            }
                 );
 
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
 

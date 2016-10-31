@@ -58,7 +58,7 @@ public class RecommendPresenter extends RxPresenter implements RecommendContract
                         mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     @Subscriber(tag = MainActivity.Banner_Stop)

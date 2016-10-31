@@ -53,7 +53,7 @@ public class WelfarePresenter extends RxPresenter implements WelfareContract.Pre
                         mView.showError("数据加载失败ヽ(≧Д≦)ノ");
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class WelfarePresenter extends RxPresenter implements WelfareContract.Pre
                         mView.showError("加载更多数据失败ヽ(≧Д≦)ノ");
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     private void setHeight(List<GankItemBean> list) {

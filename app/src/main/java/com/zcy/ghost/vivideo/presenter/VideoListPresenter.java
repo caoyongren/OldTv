@@ -60,7 +60,7 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
                         mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     /**
@@ -94,7 +94,7 @@ public class VideoListPresenter extends RxPresenter implements VideoListContract
                         mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                     }
                 });
-        addSubscrebe(rxSubscription);
+        addSubscribe(rxSubscription);
     }
 
     @Override
