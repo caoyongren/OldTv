@@ -14,6 +14,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
+import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
 import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
 import com.zcy.ghost.vivideo.ui.activitys.HistoryActivity;
@@ -23,6 +24,9 @@ import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
+
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.List;
 
@@ -131,5 +135,22 @@ public class CollectionView extends RootView<CollectionContract.Presenter> imple
         } else if (mContext instanceof HistoryActivity) {
             titleName.setText("历史");
         }
+    }
+
+    @Subscriber(tag = VideoInfoPresenter.Refresh_Collection_List)
+    public void setData(String tag) {
+        mPresenter.getCollectData();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        EventBus.getDefault().unregister(this);
+        super.onDetachedFromWindow();
     }
 }

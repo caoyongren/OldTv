@@ -14,10 +14,14 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
+import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CommentContract;
 import com.zcy.ghost.vivideo.ui.adapter.CommentAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
+
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.List;
 
@@ -135,5 +139,23 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
     @Override
     public void showError(String msg) {
         EventUtil.showToast(mContext, msg);
+    }
+
+    @Subscriber(tag = VideoInfoPresenter.Put_DataId)
+    public void setData(String dataId) {
+        mPresenter.setMediaId(dataId);
+        mPresenter.onRefresh();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        EventBus.getDefault().unregister(this);
+        super.onDetachedFromWindow();
     }
 }

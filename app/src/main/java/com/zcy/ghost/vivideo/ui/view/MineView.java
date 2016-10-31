@@ -19,6 +19,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
+import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.MineContract;
 import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
 import com.zcy.ghost.vivideo.ui.activitys.HistoryActivity;
@@ -33,6 +34,7 @@ import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.List;
 
@@ -159,5 +161,22 @@ public class MineView extends RootView<MineContract.Presenter> implements MineCo
                 getContext().startActivity(new Intent(mContext, SettingActivity.class));
                 break;
         }
+    }
+
+    @Subscriber(tag = VideoInfoPresenter.Refresh_History_List)
+    public void setData(String tag) {
+        mPresenter.getHistoryData();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        EventBus.getDefault().unregister(this);
+        super.onDetachedFromWindow();
     }
 }

@@ -27,6 +27,6 @@ public class MineFragment extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         super.initView(inflater);
-        mPresenter = new MinePresenter(mineView, true);
+        mPresenter = new MinePresenter(mineView);
     }
 }

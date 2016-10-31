@@ -8,12 +8,8 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
-import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
-
-import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
 
 import rx.Subscription;
 import rx.functions.Action1;
@@ -30,7 +26,6 @@ public class RecommendPresenter extends RxPresenter implements RecommendContract
     public RecommendPresenter(@NonNull RecommendContract.View oneView) {
         mView = Preconditions.checkNotNull(oneView);
         mView.setPresenter(this);
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -61,8 +56,4 @@ public class RecommendPresenter extends RxPresenter implements RecommendContract
         addSubscribe(rxSubscription);
     }
 
-    @Subscriber(tag = MainActivity.Banner_Stop)
-    public void stopBanner(boolean stop) {
-        mView.stopBanner(stop);
-    }
 }

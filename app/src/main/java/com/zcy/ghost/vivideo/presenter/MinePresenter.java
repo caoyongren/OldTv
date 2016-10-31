@@ -9,9 +9,6 @@ import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.MineContract;
 
-import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,21 +19,11 @@ import java.util.List;
  */
 public class MinePresenter extends RxPresenter implements MineContract.Presenter {
     MineContract.View mView;
-    private boolean isMine;
-    private boolean isSetting;
     public static final int maxSize = 30;
 
-    public MinePresenter(@NonNull MineContract.View oneView, boolean isSetting) {
-        this.isSetting = isSetting;
+    public MinePresenter(@NonNull MineContract.View oneView) {
         mView = Preconditions.checkNotNull(oneView);
         mView.setPresenter(this);
-        EventBus.getDefault().register(this);
-        getHistoryData();
-    }
-
-    @Subscriber(tag = VideoInfoPresenter.Refresh_History_List)
-    public void setData(String tag) {
-        isMine = true;
         getHistoryData();
     }
 

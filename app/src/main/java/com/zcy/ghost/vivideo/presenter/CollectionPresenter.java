@@ -11,7 +11,6 @@ import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
 
 import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,6 @@ public class CollectionPresenter extends RxPresenter implements CollectionContra
         this.type = type;
         mView = Preconditions.checkNotNull(oneView);
         mView.setPresenter(this);
-        EventBus.getDefault().register(this);
         if (type == 0) {
             getCollectData();
         } else {
@@ -77,11 +75,6 @@ public class CollectionPresenter extends RxPresenter implements CollectionContra
             list.add(videoType);
         }
         mView.showContent(list);
-    }
-
-    @Subscriber(tag = VideoInfoPresenter.Refresh_Collection_List)
-    public void setData(String tag) {
-        getCollectData();
     }
 
     @Override

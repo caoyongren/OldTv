@@ -31,5 +31,7 @@ public interface CommentContract {
 
         void loadMore();
 
+        void setMediaId(String id);
+
     }
 }

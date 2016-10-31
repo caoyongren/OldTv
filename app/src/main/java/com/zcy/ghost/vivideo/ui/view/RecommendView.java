@@ -25,6 +25,7 @@ import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
+import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
 import com.zcy.ghost.vivideo.ui.activitys.SearchActivity;
 import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
 import com.zcy.ghost.vivideo.ui.adapter.RecommendAdapter;
@@ -34,6 +35,9 @@ import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.RollPagerView;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
+
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.io.Serializable;
 import java.util.List;
@@ -47,7 +51,7 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: 2016/9/21 17:56
  */
-public class RecommendView extends RootView<RecommendContract.Presenter > implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
+public class RecommendView extends RootView<RecommendContract.Presenter> implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
@@ -204,7 +208,7 @@ public class RecommendView extends RootView<RecommendContract.Presenter > implem
         recyclerView.showError();
     }
 
-    @Override
+    @Subscriber(tag = MainActivity.Banner_Stop)
     public void stopBanner(boolean stop) {
         if (stop) {
             banner.pause();
@@ -236,5 +240,17 @@ public class RecommendView extends RootView<RecommendContract.Presenter > implem
                 mContext.startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        EventBus.getDefault().unregister(this);
+        super.onDetachedFromWindow();
     }
 }

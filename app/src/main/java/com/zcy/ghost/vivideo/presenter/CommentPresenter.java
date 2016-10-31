@@ -11,9 +11,6 @@ import com.zcy.ghost.vivideo.presenter.contract.CommentContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
-import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
-
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -27,7 +24,6 @@ public class CommentPresenter extends RxPresenter implements CommentContract.Pre
     public CommentPresenter(@NonNull CommentContract.View addTaskView) {
         mView = Preconditions.checkNotNull(addTaskView);
         mView.setPresenter(this);
-        EventBus.getDefault().register(this);
         onRefresh();
     }
 
@@ -76,9 +72,9 @@ public class CommentPresenter extends RxPresenter implements CommentContract.Pre
         }
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Put_DataId)
-    public void setData(String dataId) {
-        mediaId = dataId;
-        onRefresh();
+    @Override
+    public void setMediaId(String id) {
+        this.mediaId = id;
     }
+
 }
