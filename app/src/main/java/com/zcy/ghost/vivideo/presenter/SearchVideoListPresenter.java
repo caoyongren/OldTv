@@ -9,7 +9,6 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.SearchVideoListContract;
-import com.zcy.ghost.vivideo.utils.LogUtils;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
@@ -42,7 +41,6 @@ public class SearchVideoListPresenter extends RxPresenter implements SearchVideo
 
     @Override
     public void loadMore() {
-        LogUtils.e(">>>>>>>>", "loadMore");
         page++;
         if (searchStr != null && !searchStr.equals("")) {
             getSearchVideoList(searchStr);
