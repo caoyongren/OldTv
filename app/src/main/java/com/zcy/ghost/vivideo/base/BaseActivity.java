@@ -33,10 +33,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         KL.d(this.getClass(), this.getClass().getName() + "------>onCreate");
-        inint();
+
+        init();
     }
 
-    protected void inint() {
+    protected void init() {
         setTranslucentStatus(true);
         onPreCreate();
         App.getInstance().registerActivity(this);

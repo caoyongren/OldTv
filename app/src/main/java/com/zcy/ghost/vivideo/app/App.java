@@ -25,7 +25,7 @@ public class App extends Application {
     private static App instance;
     private Set<Activity> allActivities;
 
-    public static synchronized App getInstance() {
+    public static App getInstance() {
         return instance;
     }
 
