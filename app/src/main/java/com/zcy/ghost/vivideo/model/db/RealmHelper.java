@@ -25,7 +25,7 @@ public class RealmHelper {
     private RealmHelper() {
     }
 
-    public static synchronized RealmHelper getInstance() {
+    public static RealmHelper getInstance() {
         if (instance == null) {
             synchronized (RealmHelper.class) {
                 if (instance == null)
