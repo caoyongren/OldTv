@@ -141,9 +141,6 @@ JJZhang：Like Mom
 
 If you want to make friends with us, You can focus on our blog.
 
-## 如果你有任何疑问或者有好的提议可以这样
-
-加入QQ群 138485840，快来加入吧
 
 ##License
 
