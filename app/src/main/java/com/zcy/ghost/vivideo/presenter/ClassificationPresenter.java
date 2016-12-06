@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
+import com.zcy.ghost.vivideo.model.exception.ApiException;
+import com.zcy.ghost.vivideo.model.net.HttpMethods;
+import com.zcy.ghost.vivideo.model.net.MyObserver;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
 import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
@@ -35,24 +38,25 @@ public class ClassificationPresenter extends RxPresenter implements Classificati
     }
 
     private void getPageHomeInfo() {
-        Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
-                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
-                .compose(RxUtil.<VideoRes>handleResult())
-                .subscribe(new Action1<VideoRes>() {
+        HttpMethods.getInstance().queryClassification()
+                .subscribe(new MyObserver<VideoRes>() {
                     @Override
-                    public void call(final VideoRes res) {
+                    protected void onError(ApiException ex) {
+                        mView.refreshFaild(ex.getDisplayMessage());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onNext(VideoRes res) {
                         if (res != null) {
                             if (mView.isActive()) {
                                 mView.showContent(res);
                             }
                         }
                     }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
-                    }
                 });
-        addSubscribe(rxSubscription);
     }
 }
