@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.google.common.base.Preconditions;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
@@ -19,6 +18,7 @@ import com.zcy.ghost.vivideo.presenter.contract.WelfareContract;
 import com.zcy.ghost.vivideo.ui.activitys.WelfareActivity;
 import com.zcy.ghost.vivideo.ui.adapter.WelfareAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 

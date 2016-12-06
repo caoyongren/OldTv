@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.component.ImageLoader;
@@ -12,6 +11,7 @@ import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
 import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import java.util.List;

@@ -18,6 +18,7 @@ import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.LVGhost;
 import com.zcy.ghost.vivideo.widget.SwipeDeck;
@@ -114,7 +115,7 @@ public class DiscoverView extends RootView<DiscoverContract.Presenter> implement
 
     @Override
     public void setPresenter(DiscoverContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
+        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override

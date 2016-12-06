@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.common.base.Preconditions;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
@@ -31,6 +30,7 @@ import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
 import com.zcy.ghost.vivideo.ui.adapter.RecommendAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.RollPagerView;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
-import com.google.common.base.Preconditions;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.pgyersdk.feedback.PgyFeedback;
@@ -33,6 +32,7 @@ import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
 import com.zcy.ghost.vivideo.ui.fragments.RecommendFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.utils.ThemeUtils;
 import com.zcy.ghost.vivideo.widget.ResideLayout;

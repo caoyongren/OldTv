@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.google.common.base.Preconditions;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -22,6 +21,7 @@ import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.fragments.VideoCommentFragment;
 import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.widget.LVGhost;
 import com.zcy.ghost.vivideo.widget.SwipeViewPager;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;

@@ -18,6 +18,7 @@ import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CommentContract;
 import com.zcy.ghost.vivideo.ui.adapter.CommentAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 
 import org.simple.eventbus.EventBus;
@@ -123,7 +124,7 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
 
     @Override
     public void setPresenter(CommentContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
+        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override

@@ -2,13 +2,13 @@ package com.zcy.ghost.vivideo.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.google.common.base.Preconditions;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Collection;
 import com.zcy.ghost.vivideo.model.bean.Record;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 
 import org.simple.eventbus.EventBus;
 

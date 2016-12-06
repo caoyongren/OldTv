@@ -18,6 +18,7 @@ import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
 import com.zcy.ghost.vivideo.ui.adapter.ClassificationAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
+import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
@@ -93,7 +94,7 @@ public class ClassificationView extends RootView<ClassificationContract.Presente
 
     @Override
     public void setPresenter(ClassificationContract.Presenter presenter) {
-        mPresenter = com.google.common.base.Preconditions.checkNotNull(presenter);
+        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override
