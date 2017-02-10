@@ -266,7 +266,7 @@ public class SearchVideoListView extends RootView<SearchVideoListContract.Presen
 
     @Override
     public void showRecommend(List<VideoInfo> list) {
-        if (list != null && list.size() == 2) {
+        if (list != null) {
             recommend = list;
             VideoInfo videoInfo = list.get(0);
             ImageLoader.load(getContext(), videoInfo.pic, imgVideo);

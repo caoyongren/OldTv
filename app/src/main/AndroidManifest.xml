@@ -51,7 +51,10 @@
             android:theme="@style/CustomTransparent"  />
         <activity
             android:name=".ui.activitys.VideoInfoActivity"
-            android:theme="@style/CustomTransparent" />
+            android:theme="@style/CustomTransparent"/>
+
+        <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
+        <!--android:screenOrientation="portrait"-->
         <activity
             android:name=".ui.activitys.WelfareActivity"
             android:theme="@style/CustomTransparent" />
