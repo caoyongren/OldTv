@@ -48,10 +48,12 @@
             android:theme="@style/CustomTransparent" />
         <activity
             android:name=".ui.activitys.SearchActivity"
-            android:theme="@style/CustomTransparent"  />
+            android:theme="@style/CustomTransparent" />
         <activity
             android:name=".ui.activitys.VideoInfoActivity"
-            android:theme="@style/CustomTransparent"/>
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTransparent" />
 
         <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
         <!--android:screenOrientation="portrait"-->
