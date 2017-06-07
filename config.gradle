@@ -1,0 +1,85 @@
+ext {
+
+    android = [
+            compileSdkVersion: 24,
+            buildToolsVersion: '24.0.1',
+            applicationId    : "com.zcy.ghost.vivideo",
+            minSdkVersion    : 17,
+            targetSdkVersion : 24,
+            versionCode      : 1,
+            versionName      : "1.3.0"
+    ]
+
+    def dependVersion = [
+            support    : "24.0.0",
+            retrofit   : "2.1.0",
+            okhttp     : "3.3.1",
+            dagger2    : "2.0.2",
+            butterknife: "8.4.0",
+            blockcanary: "1.2.1",
+            leakcanary : "1.4-beta2"
+    ]
+
+    dependencies = [
+            //base
+            "appcompat-v7"                   : "com.android.support:appcompat-v7:${dependVersion.support}",
+            "recyclerview-v7"                : "com.android.support:recyclerview-v7:${dependVersion.support}",
+            "design"                         : "com.android.support:design:${dependVersion.support}",
+
+            //ui
+            "easyrecyclerview"               : "com.jude:easyrecyclerview:4.0.6",
+            "rollviewpager"                  : "com.jude:rollviewpager:1.4.5",
+            "glide"                          : "com.github.bumptech.glide:glide:3.7.0",
+            "glide-transformations"          : "jp.wasabeef:glide-transformations:2.0.1",
+            "smarttablayout"                 : "com.ogaclejapan.smarttablayout:library:1.6.1@aar",
+            "smarttablayout:utils"           : "com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar",
+            "jiecaovideoplayer"              : "fm.jiecao:jiecaovideoplayer:4.8.2",
+            "cardstack"                      : "com.daprlabs.aaron:cardstack:0.3.1-beta0",
+            "roundedimageview"               : "com.makeramen:roundedimageview:2.2.1",
+            "cardview"                       : "com.android.support:cardview-v7:24.0.0",
+            "material-dialogs"               : "com.github.afollestad.material-dialogs:core:0.8.5.4@aar",
+            "material-dialogs:commons"       : "com.github.afollestad.material-dialogs:commons:0.8.5.4@aar",
+
+            "iconics-core"                   : "com.mikepenz:iconics-core:2.5.5@aar",
+            "material-design-iconic-typeface": "com.mikepenz:material-design-iconic-typeface:2.2.0.1@aar",
+            "fontawesome-typeface"           : "com.mikepenz:fontawesome-typeface:4.5.0.1@aar",
+            "foundation-icons-typeface"      : "com.mikepenz:foundation-icons-typeface:3.0.0.1@aar",
+            //rx
+            "rxjava"                         : "io.reactivex:rxjava:1.1.6",
+            "rxandroid"                      : "io.reactivex:rxandroid:1.2.1",
+
+            //network
+            "gson"                           : "com.google.code.gson:gson:2.7",
+            "retrofit"                       : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+            "retrofit-converter-gson"        : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}",
+            "retrofit-adapter-rxjava"       : "com.squareup.retrofit2:adapter-rxjava:${dependVersion.retrofit}",
+            "okhttp"                         : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
+            "okhttp-logging-interceptor"     : "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",
+            "glide"                          : "com.github.bumptech.glide:glide:3.7.0",
+            "glide-okhttp3-integration"      : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
+            "jsoup"                          : "org.jsoup:jsoup:1.10.1",
+
+            //di
+            "dagger"                         : "com.google.dagger:dagger:${dependVersion.dagger2}",
+            "dagger-compiler"                : "com.google.dagger:dagger-compiler:${dependVersion.dagger2}",
+            "butterknife"                    : "com.jakewharton:butterknife:${dependVersion.butterknife}",
+            "butterknife-compiler"           : "com.jakewharton:butterknife-compiler:${dependVersion.butterknife}",
+            "annotation"                     : "org.glassfish:javax.annotation:10.0-b28",
+
+            //other
+            "logger"                         : "com.orhanobut:logger:1.15",
+            "fragmentation"                  : "me.yokeyword:fragmentation:0.7.10",
+            "androideventbus"                : "org.simple:androideventbus:1.0.5.1",
+            "annotations"                    : "org.jetbrains:annotations-java5:15.0",
+            "pgyersdk"                       : "com.pgyersdk:sdk:2.4.0",
+            "slf4j"                          : "org.slf4j:slf4j-api:1.7.12",
+
+            //canary
+            "blockcanary-android"            : "com.github.moduth:blockcanary-android:${dependVersion.blockcanary}",
+            "blockcanary-no-op"              : "com.github.moduth:blockcanary-no-op:${dependVersion.blockcanary}",
+            "leakcanary-android"             : "com.squareup.leakcanary:leakcanary-android:${dependVersion.leakcanary}",
+            "leakcanary-android-no-op"       : "com.squareup.leakcanary:leakcanary-android-no-op:${dependVersion.leakcanary}"
+    ]
+
+
+}
