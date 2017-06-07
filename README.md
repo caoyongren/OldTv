@@ -3,6 +3,9 @@
 微影，一款纯粹的在线视频App，基于Material Design + MVP + RxJava + Retrofit + Realm + Glide
 
 ## 更改日志
+#### 2017.6.7
+* 1.调整gradle配置
+
 #### 2016.10.24
 * 1.调整mvp结构
 * 2.完善设置页面（推荐好友、关于我们、建议反馈）
