@@ -3,8 +3,8 @@ package com.zcy.ghost.vivideo.utils;
 import android.text.TextUtils;
 
 import com.zcy.ghost.vivideo.model.bean.GankHttpResponse;
-import com.zcy.ghost.vivideo.model.net.ApiException;
-import com.zcy.ghost.vivideo.model.net.VideoHttpResponse;
+import com.zcy.ghost.vivideo.model.http.exception.ApiException;
+import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
 
 import rx.Observable;
 import rx.Subscriber;

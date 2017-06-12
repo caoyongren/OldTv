@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.model.net;
+package com.zcy.ghost.vivideo.model.http.response;
 
 /**
  * Created by codeest on 16/8/28.

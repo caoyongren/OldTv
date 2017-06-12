@@ -1,16 +1,14 @@
-package com.zcy.ghost.vivideo.presenter;
+package com.zcy.ghost.vivideo.ui.fragments.discover;
 
-import android.support.annotation.NonNull;
-
-import com.zcy.ghost.vivideo.base.RxPresenter;
+import com.zcy.ghost.vivideo.model.DataManager;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
-import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
-import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
+import com.zcy.ghost.vivideo.newbase.RxPresenter;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
+
+import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action0;
@@ -21,17 +19,17 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class DiscoverPresenter extends RxPresenter implements DiscoverContract.Presenter {
-    DiscoverContract.View mView;
+public class DiscoverPresenter extends RxPresenter<DiscoverContract.View> implements DiscoverContract.Presenter {
     final String catalogId = "402834815584e463015584e53843000b";
 
     int max = 90;
     int min = 1;
 
+    private DataManager mDataManager;
 
-    public DiscoverPresenter(@NonNull DiscoverContract.View threeView) {
-        mView = Preconditions.checkNotNull(threeView);
-        mView.setPresenter(this);
+    @Inject
+    public DiscoverPresenter(DataManager mDataManager) {
+        this.mDataManager = mDataManager;
     }
 
     @Override
@@ -40,16 +38,14 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
     }
 
     private void getNextVideos() {
-        Subscription rxSubscription = RetrofitHelper.getVideoApi().getVideoList(catalogId, getNextPage() + "")
+        Subscription rxSubscription = mDataManager.fetchVideoList(catalogId, getNextPage() + "")
                 .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
                 .compose(RxUtil.<VideoRes>handleResult())
                 .subscribe(new Action1<VideoRes>() {
                                @Override
                                public void call(final VideoRes res) {
                                    if (res != null) {
-                                       if (mView.isActive()) {
-                                           mView.showContent(res);
-                                       }
+                                       mView.showContent(res);
                                    }
                                }
                            }, new Action1<Throwable>() {
@@ -61,8 +57,7 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
                            }, new Action0() {
                                @Override
                                public void call() {
-                                   if (mView.isActive())
-                                       mView.hidLoading();
+                                   mView.hidLoading();
                                }
                            }
                 );
@@ -79,4 +74,6 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
         }
         return page;
     }
+
+
 }

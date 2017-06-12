@@ -1,24 +1,20 @@
-package com.zcy.ghost.vivideo.ui.view;
+package com.zcy.ghost.vivideo.ui.fragments.classification;
 
-import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
+import com.zcy.ghost.vivideo.newbase.BaseFragment;
 import com.zcy.ghost.vivideo.ui.adapter.ClassificationAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.JumpUtil;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
@@ -28,13 +24,12 @@ import java.util.List;
 
 import butterknife.BindView;
 
-
 /**
- * Description: 专题
+ * Description: ClassificationFragment
  * Creator: yxc
- * date: 2016/9/21 17:55
+ * date: 2016/9/21 17:45
  */
-public class ClassificationView extends RootView<ClassificationContract.Presenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class ClassificationFragment extends BaseFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -42,21 +37,14 @@ public class ClassificationView extends RootView<ClassificationContract.Presente
     EasyRecyclerView recyclerView;
     ClassificationAdapter adapter;
 
-    public ClassificationView(Context context) {
-        super(context);
-    }
 
-    public ClassificationView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_classification_view;
     }
 
     @Override
-    protected void getLayout() {
-        inflate(mContext, R.layout.fragment_classification_view, this);
-    }
-
-    @Override
-    protected void initView() {
+    protected void initEventAndData() {
         titleName.setText("专题");
         recyclerView.setAdapterWithProgress(adapter = new ClassificationAdapter(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -66,10 +54,7 @@ public class ClassificationView extends RootView<ClassificationContract.Presente
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
         recyclerView.addItemDecoration(itemDecoration);
-    }
 
-    @Override
-    protected void initEvent() {
         recyclerView.setRefreshListener(this);
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
@@ -84,26 +69,52 @@ public class ClassificationView extends RootView<ClassificationContract.Presente
                 onRefresh();
             }
         });
+
+        mPresenter.onRefresh();
     }
 
     @Override
-    public boolean isActive() {
-        return mActive;
-    }
-
-
-    @Override
-    public void setPresenter(ClassificationContract.Presenter presenter) {
-        mPresenter = Preconditions.checkNotNull(presenter);
-    }
-
-    @Override
-    public void showError(String msg) {
+    public void showErrorMsg(String msg) {
         EventUtil.showToast(mContext, msg);
     }
 
     @Override
-    public void showContent(final VideoRes videoRes) {
+    public void useNightMode(boolean isNight) {
+
+    }
+
+    @Override
+    public void stateError() {
+
+    }
+
+    @Override
+    public void stateEmpty() {
+
+    }
+
+    @Override
+    public void stateLoading() {
+
+    }
+
+    @Override
+    public void stateMain() {
+
+    }
+
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
+    }
+
+    @Override
+    public boolean isActive() {
+        return false;
+    }
+
+    @Override
+    public void showContent(VideoRes videoRes) {
         if (videoRes != null) {
             adapter.clear();
             List<VideoInfo> videoInfos = new ArrayList<>();
@@ -122,13 +133,13 @@ public class ClassificationView extends RootView<ClassificationContract.Presente
     @Override
     public void refreshFaild(String msg) {
         if (!TextUtils.isEmpty(msg))
-            showError(msg);
+            showErrorMsg(msg);
         recyclerView.showError();
     }
+
 
     @Override
     public void onRefresh() {
         mPresenter.onRefresh();
     }
-
 }

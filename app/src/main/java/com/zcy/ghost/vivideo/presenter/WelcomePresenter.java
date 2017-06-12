@@ -32,7 +32,7 @@ public class WelcomePresenter extends RxPresenter implements WelcomeContract.Pre
 
     @Override
     public void getWelcomeData() {
-//        Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
+//        Subscription rxSubscription = RetrofitHelper1.getVideoApi().getHomePage()
 //                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
 //                .compose(RxUtil.<VideoRes>handleResult())
 //                .subscribe(new Action1<VideoRes>() {

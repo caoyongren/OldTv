@@ -1,12 +1,15 @@
 package com.zcy.ghost.vivideo.model.db;
 
 import com.zcy.ghost.vivideo.model.bean.Collection;
-import com.zcy.ghost.vivideo.model.bean.SearchKey;
 import com.zcy.ghost.vivideo.model.bean.Record;
+import com.zcy.ghost.vivideo.model.bean.SearchKey;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
@@ -16,14 +19,12 @@ import io.realm.Sort;
  * date: 2016/9/21 17:46
  */
 
-public class RealmHelper {
+public class RealmHelper implements DBHelper {
 
     public static final String DB_NAME = "ghost.realm";
     private Realm mRealm;
     private static RealmHelper instance;
 
-    private RealmHelper() {
-    }
 
     public static RealmHelper getInstance() {
         if (instance == null) {
@@ -35,8 +36,15 @@ public class RealmHelper {
         return instance;
     }
 
+    @Inject
+    public RealmHelper() {
+        mRealm = Realm.getInstance(new RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
+                .name(DB_NAME)
+                .build());
+    }
 
-    protected Realm getRealm() {
+    public Realm getRealm() {
         if (mRealm == null || mRealm.isClosed())
             mRealm = Realm.getDefaultInstance();
         return mRealm;

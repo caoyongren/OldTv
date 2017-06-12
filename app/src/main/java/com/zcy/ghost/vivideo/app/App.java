@@ -3,15 +3,17 @@ package com.zcy.ghost.vivideo.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 
-import com.zcy.ghost.vivideo.model.db.RealmHelper;
+import com.zcy.ghost.vivideo.di.component.AppComponent;
+import com.zcy.ghost.vivideo.di.component.DaggerAppComponent;
+import com.zcy.ghost.vivideo.di.module.AppModule;
+import com.zcy.ghost.vivideo.di.module.HttpModule;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.rx.RealmObservableFactory;
 
 /******************************************
  * 类名称：App
@@ -29,6 +31,12 @@ public class App extends Application {
         return instance;
     }
 
+    static {
+        AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -40,7 +48,8 @@ public class App extends Application {
         //初始化过度绘制检测
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
         //初始化realm
-        initRealm();
+//        initRealm();
+        Realm.init(getApplicationContext());
     }
 
     public void registerActivity(Activity act) {
@@ -69,14 +78,25 @@ public class App extends Application {
         System.exit(0);
     }
 
-    private void initRealm() {
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-                .name(RealmHelper.DB_NAME)
-                .schemaVersion(1)
-                .rxFactory(new RealmObservableFactory())
-                .deleteRealmIfMigrationNeeded()
-                .build();
-        Realm.setDefaultConfiguration(realmConfiguration);
-    }
+//    private void initRealm() {
+//        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
+//                .name(RealmHelper.DB_NAME)
+//                .schemaVersion(1)
+//                .rxFactory(new RealmObservableFactory())
+//                .deleteRealmIfMigrationNeeded()
+//                .build();
+//        Realm.setDefaultConfiguration(realmConfiguration);
+//    }
 
+    public static AppComponent appComponent;
+
+    public static AppComponent getAppComponent() {
+        if (appComponent == null) {
+            appComponent = DaggerAppComponent.builder()
+                    .appModule(new AppModule(instance))
+                    .httpModule(new HttpModule())
+                    .build();
+        }
+        return appComponent;
+    }
 }

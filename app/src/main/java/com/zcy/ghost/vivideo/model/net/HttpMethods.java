@@ -6,6 +6,8 @@ import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.exception.ExceptionEngine;
 import com.zcy.ghost.vivideo.model.exception.ServerException;
+import com.zcy.ghost.vivideo.model.http.api.VideoApis;
+import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
 import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
 

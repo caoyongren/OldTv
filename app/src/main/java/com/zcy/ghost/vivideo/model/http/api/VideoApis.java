@@ -1,9 +1,10 @@
 // (c)2016 Flipboard Inc, All Rights Reserved.
 
-package com.zcy.ghost.vivideo.model.net;
+package com.zcy.ghost.vivideo.model.http.api;
 
 
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
+import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

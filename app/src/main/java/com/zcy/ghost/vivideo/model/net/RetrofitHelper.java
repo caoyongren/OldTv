@@ -2,6 +2,8 @@ package com.zcy.ghost.vivideo.model.net;
 
 import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
+import com.zcy.ghost.vivideo.model.http.api.GankApis;
+import com.zcy.ghost.vivideo.model.http.api.VideoApis;
 import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
 
@@ -21,7 +23,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Description: RetrofitHelper
+ * Description: RetrofitHelper1
  * Creator: yxc
  * date: 2016/9/21 10:03
  */

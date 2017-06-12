@@ -30,7 +30,7 @@ public class AppBlockCanaryContext extends BlockCanaryContext {
     }
 
     /**
-     * RetrofitHelper type
+     * RetrofitHelper1 type
      *
      * @return {@link String} like 2G, 3G, 4G, wifi, etc.
      */

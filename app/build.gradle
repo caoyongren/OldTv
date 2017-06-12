@@ -113,14 +113,18 @@ dependencies {
     compile rootProject.ext.dependencies["foundation-icons-typeface"]
 
     //di
+    compile rootProject.ext.dependencies["dagger"]
+    compile rootProject.ext.dependencies["dagger-compiler"]
     compile rootProject.ext.dependencies["butterknife"]
     apt rootProject.ext.dependencies["butterknife-compiler"]
+    provided rootProject.ext.dependencies["annotation"]
+    compile rootProject.ext.dependencies["annotations"]
 
     //other
     compile rootProject.ext.dependencies["logger"]
     compile rootProject.ext.dependencies["fragmentation"]
     compile rootProject.ext.dependencies["androideventbus"]
-    compile rootProject.ext.dependencies["annotations"]
+
     compile rootProject.ext.dependencies["pgyersdk"]
     compile rootProject.ext.dependencies["slf4j"]
 

@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.model.net;
+package com.zcy.ghost.vivideo.model.http.exception;
 
 /**
  * Created by codeest on 2016/8/4.

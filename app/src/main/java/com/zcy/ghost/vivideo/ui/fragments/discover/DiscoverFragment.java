@@ -1,8 +1,7 @@
-package com.zcy.ghost.vivideo.ui.view;
+package com.zcy.ghost.vivideo.ui.fragments.discover;
 
-import android.content.Context;
+
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -11,14 +10,12 @@ import android.widget.TextView;
 import com.daprlabs.cardstack.SwipeFrameLayout;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.Constants;
-import com.zcy.ghost.vivideo.base.RootView;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
+import com.zcy.ghost.vivideo.newbase.BaseFragment;
 import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.LVGhost;
 import com.zcy.ghost.vivideo.widget.SwipeDeck;
@@ -30,14 +27,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-
 /**
- * Description: ThreeView
+ * Description: 发现页
  * Creator: yxc
- * date: 2016/9/21 17:56
+ * date: $date $time
  */
-public class DiscoverView extends RootView<DiscoverContract.Presenter> implements DiscoverContract.View {
-
+public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements DiscoverContract.View {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -55,30 +50,25 @@ public class DiscoverView extends RootView<DiscoverContract.Presenter> implement
     private SwipeDeckAdapter adapter;
     private List<VideoType> videos = new ArrayList<>();
 
-    public DiscoverView(Context context) {
-        super(context);
-    }
-
-    public DiscoverView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 
     @Override
-    protected void getLayout() {
-        inflate(mContext, R.layout.fragment_discover_view, this);
+    protected int getLayoutId() {
+        return R.layout.fragment_new_discover;
     }
 
+
     @Override
-    protected void initView() {
+    protected void initEventAndData() {
         titleName.setText("发现");
         ViewGroup.LayoutParams lp = swipeDeck.getLayoutParams();
         lp.height = ScreenUtil.getScreenHeight(getContext()) / 3 * 2;
         swipeDeck.setLayoutParams(lp);
         swipeDeck.setHardwareAccelerationEnabled(true);
-    }
 
-    @Override
-    protected void initEvent() {
         swipeDeck.setEventCallback(new SwipeDeck.SwipeEventCallback() {
             @Override
             public void cardSwipedLeft(int position) {
@@ -105,26 +95,11 @@ public class DiscoverView extends RootView<DiscoverContract.Presenter> implement
 
             }
         });
+        mPresenter.getData();
     }
 
     @Override
-    public boolean isActive() {
-        return mActive;
-    }
-
-
-    @Override
-    public void setPresenter(DiscoverContract.Presenter presenter) {
-        mPresenter = Preconditions.checkNotNull(presenter);
-    }
-
-    @Override
-    public void showError(String msg) {
-        EventUtil.showToast(mContext, msg);
-    }
-
-    @Override
-    public void showContent(final VideoRes videoRes) {
+    public void showContent(VideoRes videoRes) {
         if (videoRes != null) {
             videos.clear();
             videos.addAll(videoRes.list);
@@ -140,7 +115,7 @@ public class DiscoverView extends RootView<DiscoverContract.Presenter> implement
     public void refreshFaild(String msg) {
         hidLoading();
         if (!TextUtils.isEmpty(msg))
-            showError(msg);
+            EventUtil.showToast(mContext, msg);
     }
 
     @Override
@@ -174,4 +149,6 @@ public class DiscoverView extends RootView<DiscoverContract.Presenter> implement
                 break;
         }
     }
+
+
 }
