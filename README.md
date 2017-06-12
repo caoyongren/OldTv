@@ -1,6 +1,6 @@
 # Ghost
 
-微影，一款纯粹的在线视频App，基于Material Design + MVP + RxJava + Retrofit + Realm + Glide
+微影，一款纯粹的在线视频App，基于Material Design + MVP + Dagger2 + RxJava + Retrofit + Realm + Glide 
 
 ## 更改日志
 #### 2017.6.7
