@@ -54,8 +54,16 @@ public class HttpModule {
     @GankUrl
     Retrofit provideGankRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         Log.i("TAG", "--provideGankRetrofit");
-        return createRetrofit(builder, client, VideoApis.HOST);//GankApis
+        return createRetrofit(builder, client, GankApis.HOST);//GankApis
     }
+
+
+    @Singleton
+    @Provides
+    GankApis provideGankService(@GankUrl Retrofit retrofit) {
+        return retrofit.create(GankApis.class);
+    }
+
 
     @Singleton
     @Provides
@@ -65,6 +73,11 @@ public class HttpModule {
         return createRetrofit(builder, client, VideoApis.HOST);
     }
 
+    @Singleton
+    @Provides
+    VideoApis provideVideoService(@VideoUrl Retrofit retrofit) {
+        return retrofit.create(VideoApis.class);
+    }
 
     @Singleton
     @Provides
@@ -139,16 +152,4 @@ public class HttpModule {
     }
 
 
-    @Singleton
-    @Provides
-    GankApis provideGankService(@GankUrl Retrofit retrofit) {
-        return retrofit.create(GankApis.class);
-    }
-
-
-    @Singleton
-    @Provides
-    VideoApis provideVideoService(@GankUrl Retrofit retrofit) {
-        return retrofit.create(VideoApis.class);
-    }
 }
