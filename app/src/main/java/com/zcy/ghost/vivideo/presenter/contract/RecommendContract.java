@@ -12,18 +12,15 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
  */
 public interface RecommendContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
+    interface View extends BaseView {
 
         void showContent(VideoRes videoRes);
 
         void refreshFaild(String msg);
 
-        void stopBanner(boolean stop);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void onRefresh();
     }
 }

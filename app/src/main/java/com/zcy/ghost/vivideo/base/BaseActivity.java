@@ -16,25 +16,32 @@ import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
 
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
- * Description: BaseActivity
+ * Description: Activity基类
  * Creator: yxc
- * date: 2016/9/7 11:45
+ * date: 17/9/14
  */
-public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity {
+public abstract class BaseActivity extends SupportActivity {
 
-    protected Unbinder unbinder;
-    protected T mPresenter;
+    protected Activity mContext;
+    private Unbinder mUnBinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         KL.d(this.getClass(), this.getClass().getName() + "------>onCreate");
-
         init();
+
+        setContentView(getLayout());
+        getIntentData();
+        mContext = this;
+        mUnBinder = ButterKnife.bind(this);
+        initView();
+        initEvent();
     }
 
     protected void init() {
@@ -78,10 +85,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     protected void onDestroy() {
         super.onDestroy();
         KL.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
+        if (mUnBinder != null)
+            mUnBinder.unbind();
         App.getInstance().unregisterActivity(this);
-        if (unbinder != null)
-            unbinder.unbind();
-        mPresenter = null;
     }
 
     private void onPreCreate() {
@@ -174,5 +180,16 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
 
     protected static View getRootView(Activity context) {
         return ((ViewGroup) context.findViewById(android.R.id.content)).getChildAt(0);
+    }
+
+    protected abstract int getLayout();
+
+    protected void initView() {
+    }
+
+    protected void initEvent() {
+    }
+
+    protected void getIntentData() {
     }
 }

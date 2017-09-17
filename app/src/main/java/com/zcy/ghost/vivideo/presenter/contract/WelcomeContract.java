@@ -13,16 +13,14 @@ import java.util.List;
  */
 public interface WelcomeContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
+    interface View extends BaseView {
 
         void showContent(List<String> list);
 
         void jumpToMain();
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void getWelcomeData();
     }
 }

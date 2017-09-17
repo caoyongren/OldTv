@@ -14,9 +14,7 @@ import java.util.List;
  */
 public interface CommentContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
+    interface View extends BaseView {
 
         void refreshFaild(String msg);
 
@@ -25,7 +23,7 @@ public interface CommentContract {
         void showMoreContent(List<VideoType> list);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
 
         void onRefresh();
 

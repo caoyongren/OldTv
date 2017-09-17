@@ -14,11 +14,7 @@ import java.util.List;
  */
 public interface VideoListContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
-
-        void showTitle(String title);
+    interface View extends BaseView {
 
         void refreshFaild(String msg);
 
@@ -29,9 +25,9 @@ public interface VideoListContract {
         void showMoreContent(List<VideoType> list);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
 
-        void onRefresh();
+        void onRefresh(String catalogId);
 
         void loadMore();
 

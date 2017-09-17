@@ -13,7 +13,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.utils.JumpUtil;
+import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 
 import java.util.List;
 
@@ -78,7 +78,7 @@ public class SwipeDeckAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 switchData(data.get(position));
-                JumpUtil.go2VideoInfoActivity(context, videoInfo);
+                VideoInfoActivity.start(context, videoInfo);
             }
         });
         return convertView;

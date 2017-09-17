@@ -1,30 +1,26 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Record;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.MineContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Description: CollectionPresenter
- * Creator: cp
+ * Creator: yxc
  * date: 2016/9/29 12:19
  */
-public class MinePresenter extends RxPresenter implements MineContract.Presenter {
-    MineContract.View mView;
+public class MinePresenter extends RxPresenter<MineContract.View> implements MineContract.Presenter {
     public static final int maxSize = 30;
 
-    public MinePresenter(@NonNull MineContract.View oneView) {
-        mView = Preconditions.checkNotNull(oneView);
-        mView.setPresenter(this);
-        getHistoryData();
+    @Inject
+    public MinePresenter() {
     }
 
     @Override
@@ -48,4 +44,5 @@ public class MinePresenter extends RxPresenter implements MineContract.Presenter
     public void delAllHistory() {
         RealmHelper.getInstance().deleteAllRecord();
     }
+
 }

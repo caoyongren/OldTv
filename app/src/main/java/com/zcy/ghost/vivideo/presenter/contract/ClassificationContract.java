@@ -12,16 +12,14 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
  */
 public interface ClassificationContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
+    interface View extends BaseView {
 
         void showContent(VideoRes videoRes);
 
         void refreshFaild(String msg);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void onRefresh();
     }
 }

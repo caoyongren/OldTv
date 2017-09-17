@@ -12,9 +12,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
  */
 public interface DiscoverContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
+    interface View extends BaseView {
 
         void showContent(VideoRes videoRes);
 
@@ -27,7 +25,7 @@ public interface DiscoverContract {
         void setLastPage(int page);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void getData();
     }
 }

@@ -14,15 +14,13 @@ import java.util.List;
  */
 public interface MineContract {
 
-    interface View extends BaseView<Presenter> {
-
-        boolean isActive();
+    interface View extends BaseView {
 
         void showContent(List<VideoType> list);
 
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void getHistoryData();
 
         void delAllHistory();

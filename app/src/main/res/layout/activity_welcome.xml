@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <com.zcy.ghost.vivideo.ui.view.WelcomeView
-        android:id="@+id/welcome_view"
-        style="@style/both_match_style" />
+    <ImageView
+        android:id="@+id/iv_welcome_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"/>
 
-</merge>
+    <TextView
+        style="@style/title_tv_style"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="20dp"
+        android:text="@string/author" />
+
+</FrameLayout>

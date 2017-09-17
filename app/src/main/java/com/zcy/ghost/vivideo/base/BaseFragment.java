@@ -21,7 +21,6 @@ import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
 
-import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
 
 import butterknife.ButterKnife;
@@ -34,10 +33,9 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Creator: yxc
  * date: 2016/9/7 11:40
  */
-public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment {
+public abstract class BaseFragment extends SupportFragment {
 
     private final String TAG = getClass().getSimpleName();
-    protected T mPresenter;
     protected Context mContext;
     protected View rootView;
     protected Unbinder unbinder;
@@ -73,7 +71,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
         }
         unbinder = ButterKnife.bind(this, rootView);
         initView(inflater);
-        EventBus.getDefault().register(this);
         setTitleHeight(rootView);
         return rootView;
     }
@@ -119,13 +116,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
 
     @Override
     public void onDestroyView() {
-        EventBus.getDefault().unregister(this);
         super.onDestroyView();
         KL.d(this.getClass(), getName() + "------>onDestroyView");
         // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
         hasFetchData = false;
         isViewPrepared = false;
-        mPresenter = null;
     }
 
     @Override
@@ -169,14 +164,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
 
     public String getName() {
         return BaseFragment.class.getName();
-    }
-
-    protected abstract int getLayout();
-
-    protected void initView(LayoutInflater inflater) {
-    }
-
-    protected void initEvent() {
     }
 
     @Subscriber(tag = MainActivity.Set_Theme_Color)
@@ -236,6 +223,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends SupportFragm
                 }
             }
         }
+    }
+
+    protected abstract int getLayout();
+
+    protected void initView(LayoutInflater inflater) {
+    }
+
+    protected void initEvent() {
     }
 
 }

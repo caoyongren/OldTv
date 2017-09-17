@@ -12,8 +12,8 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
+import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.ui.adapter.RelatedAdapter;
-import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.TextViewExpandableAnimation;
@@ -45,6 +45,7 @@ public class VideoIntroFragment extends BaseFragment {
 
     @Override
     protected void initView(LayoutInflater inflater) {
+        EventBus.getDefault().register(this);
         headerView = LayoutInflater.from(mContext).inflate(R.layout.intro_header, null);
         tvExpand = ButterKnife.findById(headerView, R.id.tv_expand);
         recyclerView.setAdapter(adapter = new RelatedAdapter(getContext()));
@@ -59,7 +60,7 @@ public class VideoIntroFragment extends BaseFragment {
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                JumpUtil.go2VideoInfoActivity(getContext(), adapter.getItem(position));
+                VideoInfoActivity.start(getContext(), adapter.getItem(position));
                 getActivity().finish();
             }
         });

@@ -9,11 +9,14 @@ import com.zcy.ghost.vivideo.di.component.AppComponent;
 import com.zcy.ghost.vivideo.di.component.DaggerAppComponent;
 import com.zcy.ghost.vivideo.di.module.AppModule;
 import com.zcy.ghost.vivideo.di.module.HttpModule;
+import com.zcy.ghost.vivideo.model.db.RealmHelper;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.rx.RealmObservableFactory;
 
 /******************************************
  * 类名称：App
@@ -47,8 +50,8 @@ public class App extends Application {
 //        LeakCanary.install(this);
         //初始化过度绘制检测
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
-        //初始化realm
-//        initRealm();
+//        初始化realm
+        initRealm();
         Realm.init(getApplicationContext());
     }
 
@@ -78,15 +81,16 @@ public class App extends Application {
         System.exit(0);
     }
 
-//    private void initRealm() {
-//        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this)
-//                .name(RealmHelper.DB_NAME)
-//                .schemaVersion(1)
-//                .rxFactory(new RealmObservableFactory())
-//                .deleteRealmIfMigrationNeeded()
-//                .build();
-//        Realm.setDefaultConfiguration(realmConfiguration);
-//    }
+    private void initRealm() {
+        Realm.init(this);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name(RealmHelper.DB_NAME)
+                .schemaVersion(1)
+                .rxFactory(new RealmObservableFactory())
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
+    }
 
     public static AppComponent appComponent;
 

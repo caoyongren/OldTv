@@ -1,15 +1,14 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscription;
@@ -20,14 +19,12 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/22 13:17
  */
-public class WelcomePresenter extends RxPresenter implements WelcomeContract.Presenter {
-    WelcomeContract.View mView;
+public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implements WelcomeContract.Presenter {
+
     private static final int COUNT_DOWN_TIME = 2200;
 
-    public WelcomePresenter(@NonNull WelcomeContract.View oneView) {
-        mView = Preconditions.checkNotNull(oneView);
-        mView.setPresenter(this);
-        getWelcomeData();
+    @Inject
+    public WelcomePresenter() {
     }
 
     @Override

@@ -27,6 +27,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Description: 设置
+ * Creator: yxc
+ * date: 2017/9/6 14:57
+ */
 public class SettingActivity extends SwipeBackActivity {
 
 
@@ -44,11 +49,12 @@ public class SettingActivity extends SwipeBackActivity {
     ColorTextView titleName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
-        unbinder = ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_setting;
+    }
 
+    @Override
+    protected void initView() {
         titleName.setText("设置");
         tvCache.setText(EventUtil.getFormatSize(Glide.getPhotoCacheDir(this).length()));
     }
@@ -98,5 +104,15 @@ public class SettingActivity extends SwipeBackActivity {
                 EventUtil.showToast(this, "已清理缓存");
                 break;
         }
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
+
+    @Override
+    protected void initInject() {
+
     }
 }

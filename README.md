@@ -3,6 +3,11 @@
 微影，一款纯粹的在线视频App，基于Material Design + MVP + Dagger2 + RxJava + Retrofit + Realm + Glide 
 
 ## 更改日志
+#### 2017.9.15
+* 1.mvp架构调整（移除自定义View层，简化代码，去除无用功）
+* 2.代码优化
+* 3.接口数据调整
+
 #### 2017.6.7
 * 1.调整gradle配置
 
@@ -126,21 +131,21 @@ We are developer, We are brothers, We are a group.
 
 caopeng：A adults
 
-[http://blog.csdn.net/jiankeufo](http://blog.csdn.net/jiankeufo)
+[csdn](http://blog.csdn.net/jiankeufo)
 
-[https://github.com/caopeng000](https://github.com/caopeng000)
+[Github](https://github.com/caopeng000)
 
-steven：A kid
+yxc：A kid
 
-[http://blog.csdn.net/xiaoxiaoma_yi](http://blog.csdn.net/xiaoxiaoma_yi)
+[简书](http://www.jianshu.com/u/2c351e91afa7)
 
-[https://github.com/stevenMieMie](https://github.com/stevenMieMie)
+[Github](https://github.com/stevenMieMie)
 
 JJZhang：Like Mom
 
-[http://blog.sina.com.cn/jiqiren2231856598](http://blog.sina.com.cn/jiqiren2231856598)
+[csdn](http://blog.sina.com.cn/jiqiren2231856598)
 
-[https://github.com/2231856598](https://github.com/2231856598)
+[Github](https://github.com/2231856598)
 
 If you want to make friends with us, You can focus on our blog.
 

@@ -1,27 +1,24 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.exception.ApiException;
 import com.zcy.ghost.vivideo.model.net.HttpMethods;
 import com.zcy.ghost.vivideo.model.net.MyObserver;
 import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
+
+import javax.inject.Inject;
 
 /**
  * Description: ClassificationPresenter
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class ClassificationPresenter extends RxPresenter implements ClassificationContract.Presenter {
-    ClassificationContract.View mView;
+public class ClassificationPresenter extends RxPresenter<ClassificationContract.View> implements ClassificationContract.Presenter {
     int page = 0;
 
-    public ClassificationPresenter(@NonNull ClassificationContract.View twoView) {
-        mView = Preconditions.checkNotNull(twoView);
-        mView.setPresenter(this);
+    @Inject
+    public ClassificationPresenter() {
     }
 
     @Override
@@ -45,9 +42,7 @@ public class ClassificationPresenter extends RxPresenter implements Classificati
                     @Override
                     public void onNext(VideoRes res) {
                         if (res != null) {
-                            if (mView.isActive()) {
-                                mView.showContent(res);
-                            }
+                            mView.showContent(res);
                         }
                     }
                 });

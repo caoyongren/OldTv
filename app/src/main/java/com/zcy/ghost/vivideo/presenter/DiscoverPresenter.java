@@ -1,16 +1,15 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
+
+import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action0;
@@ -21,17 +20,14 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class DiscoverPresenter extends RxPresenter implements DiscoverContract.Presenter {
-    DiscoverContract.View mView;
-    final String catalogId = "402834815584e463015584e53843000b";
+public class DiscoverPresenter extends RxPresenter<DiscoverContract.View> implements DiscoverContract.Presenter {
+    final String catalogId = "402834815584e463015584e539330016";
 
-    int max = 90;
+    int max = 108;
     int min = 1;
 
-
-    public DiscoverPresenter(@NonNull DiscoverContract.View threeView) {
-        mView = Preconditions.checkNotNull(threeView);
-        mView.setPresenter(this);
+    @Inject
+    public DiscoverPresenter() {
     }
 
     @Override
@@ -47,9 +43,7 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
                                @Override
                                public void call(final VideoRes res) {
                                    if (res != null) {
-                                       if (mView.isActive()) {
-                                           mView.showContent(res);
-                                       }
+                                       mView.showContent(res);
                                    }
                                }
                            }, new Action1<Throwable>() {
@@ -61,8 +55,7 @@ public class DiscoverPresenter extends RxPresenter implements DiscoverContract.P
                            }, new Action0() {
                                @Override
                                public void call() {
-                                   if (mView.isActive())
-                                       mView.hidLoading();
+                                   mView.hidLoading();
                                }
                            }
                 );

@@ -1,30 +1,24 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.presenter.contract.CommentContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
+
+import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action1;
 
-public class CommentPresenter extends RxPresenter implements CommentContract.Presenter {
-    @NonNull
-    final CommentContract.View mView;
+public class CommentPresenter extends RxPresenter<CommentContract.View> implements CommentContract.Presenter {
     int page = 1;
     String mediaId = "";
 
-
-    public CommentPresenter(@NonNull CommentContract.View addTaskView) {
-        mView = Preconditions.checkNotNull(addTaskView);
-        mView.setPresenter(this);
-        onRefresh();
+    @Inject
+    public CommentPresenter() {
     }
 
     @Override
@@ -43,12 +37,10 @@ public class CommentPresenter extends RxPresenter implements CommentContract.Pre
                     @Override
                     public void call(VideoRes res) {
                         if (res != null) {
-                            if (mView.isActive()) {
-                                if (page == 1) {
-                                    mView.showContent(res.list);
-                                } else {
-                                    mView.showMoreContent(res.list);
-                                }
+                            if (page == 1) {
+                                mView.showContent(res.list);
+                            } else {
+                                mView.showMoreContent(res.list);
                             }
                         }
                     }

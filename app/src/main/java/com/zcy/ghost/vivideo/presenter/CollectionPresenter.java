@@ -1,33 +1,34 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.Collection;
 import com.zcy.ghost.vivideo.model.bean.Record;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 
 import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Description: CollectionPresenter
  * Creator: yxc
  * date: 2016/9/29 12:15
  */
-public class CollectionPresenter extends RxPresenter implements CollectionContract.Presenter {
-    CollectionContract.View mView;
+public class CollectionPresenter extends RxPresenter<CollectionContract.View> implements CollectionContract.Presenter {
     int type = 0;//收藏:0; 历史:1:
 
-    public CollectionPresenter(@NonNull CollectionContract.View oneView, int type) {
+    @Inject
+    public CollectionPresenter() {
+    }
+
+    @Override
+    public void getData(int type) {
         this.type = type;
-        mView = Preconditions.checkNotNull(oneView);
-        mView.setPresenter(this);
         if (type == 0) {
             getCollectData();
         } else {

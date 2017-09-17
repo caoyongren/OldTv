@@ -1,34 +1,25 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.zcy.ghost.vivideo.base.RxPresenter;
-import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.presenter.contract.SearchVideoListContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
-import java.util.List;
+import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action1;
 
-public class SearchVideoListPresenter extends RxPresenter implements SearchVideoListContract.Presenter {
-    @NonNull
-    final SearchVideoListContract.View mView;
+public class SearchVideoListPresenter extends RxPresenter<SearchVideoListContract.View> implements SearchVideoListContract.Presenter {
     int page = 1;
 
     String searchStr = "";
 
-
-    public SearchVideoListPresenter(@NonNull SearchVideoListContract.View addTaskView, List<VideoInfo> list) {
-        mView = Preconditions.checkNotNull(addTaskView);
-        mView.setPresenter(this);
-        mView.showRecommend(list);
+    @Inject
+    public SearchVideoListPresenter() {
     }
 
     @Override
@@ -65,12 +56,10 @@ public class SearchVideoListPresenter extends RxPresenter implements SearchVideo
                     @Override
                     public void call(VideoRes res) {
                         if (res != null) {
-                            if (mView.isActive()) {
-                                if (page == 1) {
-                                    mView.showContent(res.list);
-                                } else {
-                                    mView.showMoreContent(res.list);
-                                }
+                            if (page == 1) {
+                                mView.showContent(res.list);
+                            } else {
+                                mView.showMoreContent(res.list);
                             }
                         }
                     }

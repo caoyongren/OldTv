@@ -1,18 +1,19 @@
 package com.zcy.ghost.vivideo.presenter;
 
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 
+import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.GankHttpResponse;
 import com.zcy.ghost.vivideo.model.bean.GankItemBean;
 import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.presenter.contract.WelfareContract;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action1;
@@ -23,16 +24,13 @@ import rx.functions.Action1;
  * date: $date $time
  */
 
-public class WelfarePresenter extends RxPresenter implements WelfareContract.Presenter {
-    WelfareContract.View mView;
+public class WelfarePresenter extends RxPresenter<WelfareContract.View> implements WelfareContract.Presenter {
     public static final int NUM_OF_PAGE = 20;
 
     private int currentPage = 1;
 
-    public WelfarePresenter(@NonNull WelfareContract.View view) {
-        mView = Preconditions.checkNotNull(view);
-        mView.setPresenter(this);
-        onRefresh();
+    @Inject
+    public WelfarePresenter() {
     }
 
     @Override
@@ -77,13 +75,11 @@ public class WelfarePresenter extends RxPresenter implements WelfareContract.Pre
     }
 
     private void setHeight(List<GankItemBean> list) {
-        DisplayMetrics dm = mView.getContext().getResources().getDisplayMetrics();
+        DisplayMetrics dm = App.getInstance().getApplicationContext().getResources().getDisplayMetrics();
         int width = dm.widthPixels / 2;//宽度为屏幕宽度一半
         for (GankItemBean gankItemBean : list) {
             gankItemBean.setHeight(width * StringUtils.getRandomNumber(3, 6) / 3);//随机的高度
         }
-
     }
-
 
 }

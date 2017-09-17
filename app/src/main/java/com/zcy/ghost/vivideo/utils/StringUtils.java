@@ -48,8 +48,9 @@ public class StringUtils {
      */
     public static String getCatalogId(String url) {
         String catalogId = "";
+        String key = "catalogId=";
         if (!TextUtils.isEmpty(url) && url.contains("="))
-            catalogId = url.substring(url.lastIndexOf("=") + 1);
+            catalogId = url.substring(url.indexOf(key) + key.length(), url.lastIndexOf("&"));
         return catalogId;
     }
 
@@ -65,7 +66,7 @@ public class StringUtils {
             return "";
     }
 
-    public static void setIconDrawable(Context mContext, TextView view, IIcon icon, int size,int padding) {
+    public static void setIconDrawable(Context mContext, TextView view, IIcon icon, int size, int padding) {
         view.setCompoundDrawablesWithIntrinsicBounds(new IconicsDrawable(mContext)
                         .icon(icon)
                         .color(Color.WHITE)

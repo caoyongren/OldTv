@@ -9,7 +9,7 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
-import com.zcy.ghost.vivideo.utils.JumpUtil;
+import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class BannerAdapter extends StaticPagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JumpUtil.go2VideoInfoActivity(ctx, list.get(position));
+                VideoInfoActivity.start(ctx, list.get(position));
             }
         });
         return imageView;

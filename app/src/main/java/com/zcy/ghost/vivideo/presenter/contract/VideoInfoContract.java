@@ -7,11 +7,9 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
 
 public interface VideoInfoContract {
 
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView {
 
         void showContent(VideoRes videoRes);
-
-        boolean isActive();
 
         void hidLoading();
 
@@ -20,7 +18,7 @@ public interface VideoInfoContract {
         void disCollect();
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
         void getDetailData(String dataId);
 
         void collect();

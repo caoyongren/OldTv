@@ -14,15 +14,16 @@ import java.util.List;
  */
 public interface CollectionContract {
 
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView {
 
-        boolean isActive();
 
         void showContent(List<VideoType> list);
 
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
+        void getData(int type);
+
         void getCollectData();
 
         void delAllDatas();

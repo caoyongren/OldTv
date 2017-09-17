@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/both_match_style"
+    android:background="?attr/background"
+    android:orientation="vertical">
 
-    <com.zcy.ghost.vivideo.ui.view.VideoListView
-        android:id="@+id/video_list_view"
-        style="@style/both_match_style" />
+    <include layout="@layout/commen_title" />
 
-</merge>
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_empty="@layout/view_empty"
+        app:layout_progress="@layout/view_progress"
+        app:scrollbars="none" />
+</com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout>
