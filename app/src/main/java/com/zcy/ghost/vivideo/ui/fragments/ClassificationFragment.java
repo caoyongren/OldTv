@@ -1,20 +1,23 @@
-package com.zcy.ghost.vivideo.ui.fragments.classification;
+package com.zcy.ghost.vivideo.ui.fragments;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.base.BaseMvpFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.newbase.BaseFragment;
+import com.zcy.ghost.vivideo.presenter.ClassificationPresenter;
+import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
+import com.zcy.ghost.vivideo.ui.activitys.VideoListActivity;
 import com.zcy.ghost.vivideo.ui.adapter.ClassificationAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
-import com.zcy.ghost.vivideo.utils.JumpUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
@@ -29,7 +32,7 @@ import butterknife.BindView;
  * Creator: yxc
  * date: 2016/9/21 17:45
  */
-public class ClassificationFragment extends BaseFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class ClassificationFragment extends BaseMvpFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -37,14 +40,8 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
     EasyRecyclerView recyclerView;
     ClassificationAdapter adapter;
 
-
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_classification_view;
-    }
-
-    @Override
-    protected void initEventAndData() {
+    protected void initView(LayoutInflater inflater) {
         titleName.setText("专题");
         recyclerView.setAdapterWithProgress(adapter = new ClassificationAdapter(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -54,12 +51,15 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
         recyclerView.addItemDecoration(itemDecoration);
+    }
 
+    @Override
+    protected void initEvent() {
         recyclerView.setRefreshListener(this);
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                JumpUtil.go2VideoListActivity(mContext, StringUtils.getCatalogId(adapter.getItem(position).moreURL), adapter.getItem(position).title);
+                VideoListActivity.start(mContext, StringUtils.getCatalogId(adapter.getItem(position).moreURL), adapter.getItem(position).title);
             }
         });
         recyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
@@ -74,43 +74,8 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
     }
 
     @Override
-    public void showErrorMsg(String msg) {
-        EventUtil.showToast(mContext, msg);
-    }
-
-    @Override
-    public void useNightMode(boolean isNight) {
-
-    }
-
-    @Override
-    public void stateError() {
-
-    }
-
-    @Override
-    public void stateEmpty() {
-
-    }
-
-    @Override
-    public void stateLoading() {
-
-    }
-
-    @Override
-    public void stateMain() {
-
-    }
-
-    @Override
     protected void initInject() {
         getFragmentComponent().inject(this);
-    }
-
-    @Override
-    public boolean isActive() {
-        return false;
     }
 
     @Override
@@ -133,7 +98,7 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
     @Override
     public void refreshFaild(String msg) {
         if (!TextUtils.isEmpty(msg))
-            showErrorMsg(msg);
+            showError(msg);
         recyclerView.showError();
     }
 
@@ -141,5 +106,15 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
     @Override
     public void onRefresh() {
         mPresenter.onRefresh();
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_classification;
+    }
+
+    @Override
+    public void showError(String msg) {
+        EventUtil.showToast(mContext, msg);
     }
 }

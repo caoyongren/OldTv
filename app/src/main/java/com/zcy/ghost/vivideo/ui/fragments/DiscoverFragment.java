@@ -1,7 +1,8 @@
-package com.zcy.ghost.vivideo.ui.fragments.discover;
+package com.zcy.ghost.vivideo.ui.fragments;
 
 
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 import com.daprlabs.cardstack.SwipeFrameLayout;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.Constants;
+import com.zcy.ghost.vivideo.base.BaseMvpFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.newbase.BaseFragment;
+import com.zcy.ghost.vivideo.presenter.DiscoverPresenter;
+import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
@@ -32,7 +35,7 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: $date $time
  */
-public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements DiscoverContract.View {
+public class DiscoverFragment extends BaseMvpFragment<DiscoverPresenter> implements DiscoverContract.View {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
@@ -56,19 +59,16 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_new_discover;
-    }
-
-
-    @Override
-    protected void initEventAndData() {
+    protected void initView(LayoutInflater inflater) {
         titleName.setText("发现");
         ViewGroup.LayoutParams lp = swipeDeck.getLayoutParams();
         lp.height = ScreenUtil.getScreenHeight(getContext()) / 3 * 2;
         swipeDeck.setLayoutParams(lp);
         swipeDeck.setHardwareAccelerationEnabled(true);
+    }
 
+    @Override
+    protected void initEvent() {
         swipeDeck.setEventCallback(new SwipeDeck.SwipeEventCallback() {
             @Override
             public void cardSwipedLeft(int position) {
@@ -151,4 +151,13 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
+    @Override
+    public void showError(String msg) {
+
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_discover;
+    }
 }

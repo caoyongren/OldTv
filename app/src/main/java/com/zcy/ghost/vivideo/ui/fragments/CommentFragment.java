@@ -1,10 +1,9 @@
-package com.zcy.ghost.vivideo.ui.view;
+package com.zcy.ghost.vivideo.ui.fragments;
 
-import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
-import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,13 +11,13 @@ import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.base.RootView;
+import com.zcy.ghost.vivideo.base.BaseMvpFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
+import com.zcy.ghost.vivideo.presenter.CommentPresenter;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CommentContract;
 import com.zcy.ghost.vivideo.ui.adapter.CommentAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
-import com.zcy.ghost.vivideo.utils.Preconditions;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 
 import org.simple.eventbus.EventBus;
@@ -28,13 +27,12 @@ import java.util.List;
 
 import butterknife.BindView;
 
-
 /**
- * Description: 评论列表
+ * Description: 详情--评论
  * Creator: yxc
- * date: 2016/9/21 14:57
+ * date: 2016/9/9 9:54
  */
-public class CommentView extends RootView<CommentContract.Presenter> implements CommentContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+public class CommentFragment extends BaseMvpFragment<CommentPresenter> implements CommentContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
@@ -42,21 +40,14 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
 
     CommentAdapter adapter;
 
-    public CommentView(Context context) {
-        super(context);
-    }
-
-    public CommentView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_comment;
     }
 
     @Override
-    protected void getLayout() {
-        inflate(mContext, R.layout.fragment_comment_view, this);
-    }
-
-    @Override
-    protected void initView() {
+    protected void initView(LayoutInflater inflater) {
+        EventBus.getDefault().register(this);
         recyclerView.setAdapterWithProgress(adapter = new CommentAdapter(mContext));
         recyclerView.setErrorView(R.layout.view_error);
         adapter.setMore(R.layout.view_more, this);
@@ -74,13 +65,13 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
     @Override
     protected void initEvent() {
         recyclerView.setRefreshListener(this);
-        adapter.setError(R.layout.view_error_footer).setOnClickListener(new OnClickListener() {
+        adapter.setError(R.layout.view_error_footer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 adapter.resumeMore();
             }
         });
-        recyclerView.getErrorView().setOnClickListener(new OnClickListener() {
+        recyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 recyclerView.showProgress();
@@ -96,10 +87,9 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
         recyclerView.showError();
     }
 
-
     @Override
-    public boolean isActive() {
-        return mActive;
+    protected void lazyFetchData() {
+        mPresenter.onRefresh();
     }
 
     public void clearFooter() {
@@ -120,11 +110,6 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
     @Override
     public void showMoreContent(List<VideoType> list) {
         adapter.addAll(list);
-    }
-
-    @Override
-    public void setPresenter(CommentContract.Presenter presenter) {
-        mPresenter = Preconditions.checkNotNull(presenter);
     }
 
     @Override
@@ -149,14 +134,13 @@ public class CommentView extends RootView<CommentContract.Presenter> implements 
     }
 
     @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        EventBus.getDefault().register(this);
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
-    protected void onDetachedFromWindow() {
-        EventBus.getDefault().unregister(this);
-        super.onDetachedFromWindow();
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 }
