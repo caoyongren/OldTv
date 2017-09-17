@@ -53,7 +53,7 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
 
     @Override
     protected void initView() {
-
+        mTitleName.setText(mTitle);
         mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
         mAdapter.setMore(R.layout.view_more, this);
@@ -162,6 +162,7 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
     @Override
     protected void getIntentData() {
         mCatalogId = getIntent().getStringExtra("catalogId");
+        mTitle = getIntent().getStringExtra("title");
     }
 
     @Override
