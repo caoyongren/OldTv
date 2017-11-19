@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+//apply plugin: 'android-apt'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion 'Google Inc.:Google APIs:24'
+    buildToolsVersion '24.0.3'
 
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
@@ -62,24 +62,25 @@ android {
         }
     }
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
+        variant.outputs.all { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
-                output.outputFile = new File(outputFile.parent, fileName)
+                output.outputFileName = new File(outputFile.parent, fileName)
             }
         }
     }
+    buildToolsVersion '26.0.2'
 }
 repositories {
     maven { url "https://jitpack.io" }
+    google()
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     //base
     compile rootProject.ext.dependencies["appcompat-v7"]
-
     //network
     compile rootProject.ext.dependencies["retrofit"]
     compile rootProject.ext.dependencies["retrofit-converter-gson"]
@@ -90,7 +91,6 @@ dependencies {
     //rx
     compile rootProject.ext.dependencies["rxjava"]
     compile rootProject.ext.dependencies["rxandroid"]
-
     //ui
     compile rootProject.ext.dependencies["easyrecyclerview"]
     compile rootProject.ext.dependencies["rollviewpager"]
@@ -106,33 +106,29 @@ dependencies {
     compile('com.github.afollestad.material-dialogs:commons:0.8.5.4@aar') {
         transitive = true
     }
-
     compile rootProject.ext.dependencies["iconics-core"]
     compile rootProject.ext.dependencies["material-design-iconic-typeface"]
     compile rootProject.ext.dependencies["fontawesome-typeface"]
     compile rootProject.ext.dependencies["foundation-icons-typeface"]
-
     //di
     compile rootProject.ext.dependencies["dagger"]
     compile rootProject.ext.dependencies["dagger-compiler"]
     compile rootProject.ext.dependencies["butterknife"]
-    apt rootProject.ext.dependencies["butterknife-compiler"]
+    //    apt rootProject.ext.dependencies["butterknife-compiler"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     provided rootProject.ext.dependencies["annotation"]
     compile rootProject.ext.dependencies["annotations"]
-
     //other
     compile rootProject.ext.dependencies["logger"]
     compile rootProject.ext.dependencies["fragmentation"]
     compile rootProject.ext.dependencies["androideventbus"]
-
     compile rootProject.ext.dependencies["pgyersdk"]
     compile rootProject.ext.dependencies["slf4j"]
-
     //canary
     debugCompile rootProject.ext.dependencies["blockcanary-android"]
     releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
     debugCompile rootProject.ext.dependencies["leakcanary-android"]
     releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
 
-
+    annotationProcessor"com.google.dagger:dagger-compiler:2.0.2"
 }

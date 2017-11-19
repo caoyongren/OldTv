@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.adapter;
+package com.zcy.ghost.vivideo.view.adapter;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
@@ -10,37 +10,32 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.component.ImageLoader;
-import com.zcy.ghost.vivideo.model.bean.VideoInfo;
+import com.zcy.ghost.vivideo.model.bean.VideoType;
 
-/**
- * Description: 推荐
- * Creator: yxc
- * date: 2016/9/30 11:10
- */
-public class RelatedAdapter extends RecyclerArrayAdapter<VideoInfo> {
+public class MineHistoryVideoListAdapter extends RecyclerArrayAdapter<VideoType> {
 
-    public RelatedAdapter(Context context) {
+    public MineHistoryVideoListAdapter(Context context) {
         super(context);
     }
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return new RelatedViewHolder(parent);
+        return new MineHistoryVideoListViewHolder(parent);
     }
 
-    class RelatedViewHolder extends BaseViewHolder<VideoInfo> {
+    class MineHistoryVideoListViewHolder extends BaseViewHolder<VideoType> {
         ImageView imgPicture;
         TextView tv_title;
 
-        public RelatedViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_related);
+        public MineHistoryVideoListViewHolder(ViewGroup parent) {
+            super(parent, R.layout.item_mine_history);
             imgPicture = $(R.id.img_video);
             tv_title = $(R.id.tv_title);
             imgPicture.setScaleType(ImageView.ScaleType.FIT_XY);
         }
 
         @Override
-        public void setData(VideoInfo data) {
+        public void setData(VideoType data) {
             tv_title.setText(data.title);
             ViewGroup.LayoutParams params = imgPicture.getLayoutParams();
 
@@ -48,7 +43,7 @@ public class RelatedAdapter extends RecyclerArrayAdapter<VideoInfo> {
             int width = dm.widthPixels / 3;//宽度为屏幕宽度一半
 //        int height = data.getHeight()*width/data.getWidth();//计算View的高度
 
-            params.height = (int) (width * 1.2);
+            params.height = width;
             imgPicture.setLayoutParams(params);
             ImageLoader.load(getContext(), data.pic, imgPicture);
         }

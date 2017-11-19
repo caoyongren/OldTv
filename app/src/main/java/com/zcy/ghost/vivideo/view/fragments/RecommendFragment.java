@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.fragments;
+package com.zcy.ghost.vivideo.view.fragments;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -23,11 +23,11 @@ import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.RecommendPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
-import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
-import com.zcy.ghost.vivideo.ui.activitys.SearchActivity;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
-import com.zcy.ghost.vivideo.ui.adapter.BannerAdapter;
-import com.zcy.ghost.vivideo.ui.adapter.RecommendAdapter;
+import com.zcy.ghost.vivideo.view.activitys.MainActivity;
+import com.zcy.ghost.vivideo.view.activitys.SearchActivity;
+import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
+import com.zcy.ghost.vivideo.view.adapter.BannerAdapter;
+import com.zcy.ghost.vivideo.view.adapter.RecommendAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.RollPagerView;

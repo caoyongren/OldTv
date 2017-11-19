@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.fragments;
+package com.zcy.ghost.vivideo.view.fragments;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
-import com.zcy.ghost.vivideo.ui.adapter.RelatedAdapter;
+import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
+import com.zcy.ghost.vivideo.view.adapter.RelatedAdapter;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.widget.TextViewExpandableAnimation;

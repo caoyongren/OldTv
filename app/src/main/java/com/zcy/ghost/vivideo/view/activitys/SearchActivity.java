@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.activitys;
+package com.zcy.ghost.vivideo.view.activitys;
 
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,7 +25,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.presenter.SearchVideoListPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.SearchVideoListContract;
-import com.zcy.ghost.vivideo.ui.adapter.VideoListAdapter;
+import com.zcy.ghost.vivideo.view.adapter.VideoListAdapter;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;

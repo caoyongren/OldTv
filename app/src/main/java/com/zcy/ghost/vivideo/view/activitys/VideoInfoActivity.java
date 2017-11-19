@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.activitys;
+package com.zcy.ghost.vivideo.view.activitys;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +19,8 @@ import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.VideoInfoContract;
-import com.zcy.ghost.vivideo.ui.fragments.CommentFragment;
-import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
+import com.zcy.ghost.vivideo.view.fragments.CommentFragment;
+import com.zcy.ghost.vivideo.view.fragments.VideoIntroFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.widget.LVGhost;
 import com.zcy.ghost.vivideo.widget.SwipeViewPager;

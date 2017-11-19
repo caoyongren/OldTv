@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.fragments;
+package com.zcy.ghost.vivideo.view.fragments;
 
 
 import android.text.TextUtils;
@@ -16,7 +16,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.DiscoverPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
-import com.zcy.ghost.vivideo.ui.adapter.SwipeDeckAdapter;
+import com.zcy.ghost.vivideo.view.adapter.SwipeDeckAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;

@@ -150,6 +150,4 @@ public class HttpModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
-
 }

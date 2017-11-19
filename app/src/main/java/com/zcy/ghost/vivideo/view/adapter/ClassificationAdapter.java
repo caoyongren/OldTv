@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.adapter;
+package com.zcy.ghost.vivideo.view.adapter;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

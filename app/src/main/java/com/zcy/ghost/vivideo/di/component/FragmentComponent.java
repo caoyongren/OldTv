@@ -4,12 +4,11 @@ import android.app.Activity;
 
 import com.zcy.ghost.vivideo.di.module.FragmentModule;
 import com.zcy.ghost.vivideo.di.scope.FragmentScope;
-import com.zcy.ghost.vivideo.ui.fragments.CommentFragment;
-import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
-import com.zcy.ghost.vivideo.ui.fragments.RecommendFragment;
-import com.zcy.ghost.vivideo.ui.fragments.ClassificationFragment;
-import com.zcy.ghost.vivideo.ui.fragments.DiscoverFragment;
-import com.zcy.ghost.vivideo.ui.fragments.VideoIntroFragment;
+import com.zcy.ghost.vivideo.view.fragments.CommentFragment;
+import com.zcy.ghost.vivideo.view.fragments.MineFragment;
+import com.zcy.ghost.vivideo.view.fragments.RecommendFragment;
+import com.zcy.ghost.vivideo.view.fragments.ClassificationFragment;
+import com.zcy.ghost.vivideo.view.fragments.DiscoverFragment;
 
 import dagger.Component;
 

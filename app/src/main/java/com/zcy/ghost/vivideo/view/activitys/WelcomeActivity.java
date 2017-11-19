@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.activitys;
+package com.zcy.ghost.vivideo.view.activitys;
 
 import android.widget.ImageView;
 
@@ -14,11 +14,12 @@ import java.util.List;
 
 import butterknife.BindView;
 /**
- * Description: 开屏页
+ * Description: 首页
  * Creator: yxc
  * date: 2017/9/6 14:57
  */
-public class WelcomeActivity extends BaseMvpActivity<WelcomePresenter> implements WelcomeContract.View {
+public class WelcomeActivity extends BaseMvpActivity<WelcomePresenter>
+        implements WelcomeContract.View {
 
     @BindView(R.id.iv_welcome_bg)
     ImageView ivWelcomeBg;
@@ -42,6 +43,7 @@ public class WelcomeActivity extends BaseMvpActivity<WelcomePresenter> implement
     public void showContent(List<String> list) {
         if (list != null) {
             int page = StringUtils.getRandomNumber(0, list.size() - 1);
+            //图片加载工具,使用的是Glide;
             ImageLoader.load(mContext, list.get(page), ivWelcomeBg);
             ivWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
         }

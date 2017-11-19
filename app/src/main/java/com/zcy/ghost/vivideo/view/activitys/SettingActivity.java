@@ -1,8 +1,7 @@
-package com.zcy.ghost.vivideo.ui.activitys;
+package com.zcy.ghost.vivideo.view.activitys;
 
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -24,7 +23,6 @@ import com.zcy.ghost.vivideo.utils.ThemeUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

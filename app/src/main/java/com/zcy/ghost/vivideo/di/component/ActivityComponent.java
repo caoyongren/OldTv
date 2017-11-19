@@ -4,13 +4,13 @@ import android.app.Activity;
 
 import com.zcy.ghost.vivideo.di.module.ActivityModule;
 import com.zcy.ghost.vivideo.di.scope.ActivityScope;
-import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
-import com.zcy.ghost.vivideo.ui.activitys.HistoryActivity;
-import com.zcy.ghost.vivideo.ui.activitys.SearchActivity;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
-import com.zcy.ghost.vivideo.ui.activitys.VideoListActivity;
-import com.zcy.ghost.vivideo.ui.activitys.WelcomeActivity;
-import com.zcy.ghost.vivideo.ui.activitys.WelfareActivity;
+import com.zcy.ghost.vivideo.view.activitys.CollectionActivity;
+import com.zcy.ghost.vivideo.view.activitys.HistoryActivity;
+import com.zcy.ghost.vivideo.view.activitys.SearchActivity;
+import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
+import com.zcy.ghost.vivideo.view.activitys.VideoListActivity;
+import com.zcy.ghost.vivideo.view.activitys.WelcomeActivity;
+import com.zcy.ghost.vivideo.view.activitys.WelfareActivity;
 
 import dagger.Component;
 

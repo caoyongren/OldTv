@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.activitys;
+package com.zcy.ghost.vivideo.view.activitys;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,11 +20,11 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.base.BaseActivity;
-import com.zcy.ghost.vivideo.ui.adapter.ContentPagerAdapter;
-import com.zcy.ghost.vivideo.ui.fragments.ClassificationFragment;
-import com.zcy.ghost.vivideo.ui.fragments.DiscoverFragment;
-import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
-import com.zcy.ghost.vivideo.ui.fragments.RecommendFragment;
+import com.zcy.ghost.vivideo.view.adapter.ContentPagerAdapter;
+import com.zcy.ghost.vivideo.view.fragments.ClassificationFragment;
+import com.zcy.ghost.vivideo.view.fragments.DiscoverFragment;
+import com.zcy.ghost.vivideo.view.fragments.MineFragment;
+import com.zcy.ghost.vivideo.view.fragments.RecommendFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.StringUtils;

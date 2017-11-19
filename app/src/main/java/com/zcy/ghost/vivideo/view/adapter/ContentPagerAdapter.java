@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.adapter;
+package com.zcy.ghost.vivideo.view.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activitys.WelcomeActivity"
+            android:name=".view.activitys.WelcomeActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,15 +28,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activitys.MainActivity" />
+        <activity android:name=".view.activitys.MainActivity" />
         <activity
-            android:name=".ui.activitys.VideoListActivity"
+            android:name=".view.activitys.VideoListActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name=".ui.activitys.CollectionActivity"
+            android:name=".view.activitys.CollectionActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name=".ui.activitys.HistoryActivity"
+            android:name=".view.activitys.HistoryActivity"
             android:theme="@style/CustomTransparent" />
 
         <meta-data
@@ -44,13 +44,13 @@
             android:value="3b5a14c609a54bfd369ec43ead88852a" />
 
         <activity
-            android:name=".ui.activitys.SettingActivity"
+            android:name=".view.activitys.SettingActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name=".ui.activitys.SearchActivity"
+            android:name=".view.activitys.SearchActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name=".ui.activitys.VideoInfoActivity"
+            android:name=".view.activitys.VideoInfoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/CustomTransparent" />
@@ -58,7 +58,7 @@
         <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
         <!--android:screenOrientation="portrait"-->
         <activity
-            android:name=".ui.activitys.WelfareActivity"
+            android:name=".view.activitys.WelfareActivity"
             android:theme="@style/CustomTransparent" />
     </application>
 

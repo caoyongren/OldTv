@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.ui.activitys.MainActivity;
-import com.zcy.ghost.vivideo.ui.fragments.MineFragment;
+import com.zcy.ghost.vivideo.view.activitys.MainActivity;
+import com.zcy.ghost.vivideo.view.fragments.MineFragment;
 import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;

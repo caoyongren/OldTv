@@ -1,7 +1,9 @@
-package com.zcy.ghost.vivideo.ui.activitys;
+package com.zcy.ghost.vivideo.view.activitys;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -10,10 +12,12 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.SwipeBackActivity;
-import com.zcy.ghost.vivideo.model.bean.GankItemBean;
-import com.zcy.ghost.vivideo.presenter.WelfarePresenter;
-import com.zcy.ghost.vivideo.presenter.contract.WelfareContract;
-import com.zcy.ghost.vivideo.ui.adapter.WelfareAdapter;
+import com.zcy.ghost.vivideo.model.bean.VideoInfo;
+import com.zcy.ghost.vivideo.model.bean.VideoType;
+import com.zcy.ghost.vivideo.presenter.VideoListPresenter;
+import com.zcy.ghost.vivideo.presenter.contract.VideoListContract;
+import com.zcy.ghost.vivideo.view.adapter.VideoListAdapter;
+import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
@@ -24,36 +28,39 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Description: 福利墙
+ * Description: 影片列表
  * Creator: yxc
  * date: 2017/9/6 14:57
  */
-public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> implements WelfareContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+
+    String mTitle = "";
+    String mCatalogId = "";
     @BindView(R.id.title_name)
-    ColorTextView titleName;
+    ColorTextView mTitleName;
+
     @BindView(R.id.recyclerView)
     EasyRecyclerView mRecyclerView;
+    VideoListAdapter mAdapter;
 
-    WelfareAdapter mAdapter;
+    VideoInfo videoInfo;
+    int pageSize = 30;
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_welfare;
-    }
-
-    @Override
-    public void showError(String msg) {
-        EventUtil.showToast(mContext, msg);
+        return R.layout.activity_video_list;
     }
 
     @Override
     protected void initView() {
-        titleName.setText("福利");
-        mRecyclerView.setAdapterWithProgress(mAdapter = new WelfareAdapter(mContext));
+        mTitleName.setText(mTitle);
+        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
         mAdapter.setMore(R.layout.view_more, this);
         mAdapter.setNoMore(R.layout.view_nomore);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
+        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
+        mRecyclerView.setLayoutManager(gridLayoutManager);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
@@ -64,10 +71,20 @@ public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> impleme
 
     @Override
     protected void initEvent() {
+        mTitleName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (EventUtil.isFastDoubleClick()) {
+                    mRecyclerView.scrollToPosition(0);
+                }
+            }
+        });
         mRecyclerView.setRefreshListener(this);
         mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                videoInfo = BeanUtil.VideoType2VideoInfo(mAdapter.getItem(position), videoInfo);
+                VideoInfoActivity.start(mContext, videoInfo);
             }
         });
         mAdapter.setError(R.layout.view_error_footer).setOnClickListener(new View.OnClickListener() {
@@ -85,6 +102,12 @@ public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> impleme
         });
     }
 
+    @OnClick(R.id.rl_back)
+    public void back() {
+        if (mContext instanceof VideoListActivity) {
+            finish();
+        }
+    }
 
     @Override
     public void refreshFaild(String msg) {
@@ -107,30 +130,19 @@ public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> impleme
     }
 
     @Override
-    public void showContent(List<GankItemBean> list) {
+    public void showContent(List<VideoType> list) {
         mAdapter.clear();
-        if (list != null && list.size() < WelfarePresenter.NUM_OF_PAGE) {
+        if (list != null && list.size() < pageSize) {
             clearFooter();
         }
         mAdapter.addAll(list);
     }
 
     @Override
-    public void showMoreContent(List<GankItemBean> list) {
+    public void showMoreContent(List<VideoType> list) {
         mAdapter.addAll(list);
     }
 
-    @OnClick(R.id.rl_back)
-    public void onClick() {
-        if (mContext instanceof WelfareActivity) {
-            finish();
-        }
-    }
-
-    @Override
-    public void onRefresh() {
-        mPresenter.onRefresh();
-    }
 
     @Override
     public void onLoadMore() {
@@ -138,7 +150,30 @@ public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> impleme
     }
 
     @Override
+    public void onRefresh() {
+        mPresenter.onRefresh(mCatalogId);
+    }
+
+    @Override
+    public void showError(String msg) {
+        EventUtil.showToast(mContext, msg);
+    }
+
+    @Override
+    protected void getIntentData() {
+        mCatalogId = getIntent().getStringExtra("catalogId");
+        mTitle = getIntent().getStringExtra("title");
+    }
+
+    @Override
     protected void initInject() {
         getActivityComponent().inject(this);
+    }
+
+    public static void start(Context context, String catalogId, String title) {
+        Intent starter = new Intent(context, VideoListActivity.class);
+        starter.putExtra("catalogId", catalogId);
+        starter.putExtra("title", title);
+        context.startActivity(starter);
     }
 }

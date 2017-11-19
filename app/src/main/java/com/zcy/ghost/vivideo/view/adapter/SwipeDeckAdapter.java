@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.adapter;
+package com.zcy.ghost.vivideo.view.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -13,7 +13,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.component.ImageLoader;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
+import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
 
 import java.util.List;
 

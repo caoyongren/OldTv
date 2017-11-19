@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.fragments;
+package com.zcy.ghost.vivideo.view.fragments;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +20,11 @@ import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.MinePresenter;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.MineContract;
-import com.zcy.ghost.vivideo.ui.activitys.CollectionActivity;
-import com.zcy.ghost.vivideo.ui.activitys.HistoryActivity;
-import com.zcy.ghost.vivideo.ui.activitys.SettingActivity;
-import com.zcy.ghost.vivideo.ui.activitys.VideoInfoActivity;
-import com.zcy.ghost.vivideo.ui.adapter.MineHistoryVideoListAdapter;
+import com.zcy.ghost.vivideo.view.activitys.CollectionActivity;
+import com.zcy.ghost.vivideo.view.activitys.HistoryActivity;
+import com.zcy.ghost.vivideo.view.activitys.SettingActivity;
+import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
+import com.zcy.ghost.vivideo.view.adapter.MineHistoryVideoListAdapter;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;

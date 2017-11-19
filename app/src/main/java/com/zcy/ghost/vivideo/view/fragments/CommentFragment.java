@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.ui.fragments;
+package com.zcy.ghost.vivideo.view.fragments;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +16,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.CommentPresenter;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CommentContract;
-import com.zcy.ghost.vivideo.ui.adapter.CommentAdapter;
+import com.zcy.ghost.vivideo.view.adapter.CommentAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 

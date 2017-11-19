@@ -29,26 +29,6 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
 
     @Override
     public void getWelcomeData() {
-//        Subscription rxSubscription = RetrofitHelper1.getVideoApi().getHomePage()
-//                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
-//                .compose(RxUtil.<VideoRes>handleResult())
-//                .subscribe(new Action1<VideoRes>() {
-//                    @Override
-//                    public void call(final VideoRes res) {
-//                        if (res != null) {
-//                            if (mView.isActive()) {
-//                                mView.showContent(res);
-//                            }
-//                        }
-//                        startCountDown();
-//                    }
-//                }, new Action1<Throwable>() {
-//                    @Override
-//                    public void call(Throwable throwable) {
-//                        startCountDown();
-//                    }
-//                });
-//        addSubscribe(rxSubscription);
         mView.showContent(getImgData());
         startCountDown();
     }
