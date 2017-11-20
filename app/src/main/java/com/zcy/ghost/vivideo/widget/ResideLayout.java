@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.widget;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -356,6 +357,7 @@ public class ResideLayout extends ViewGroup {
         mPostedRunnables.clear();
     }
 
+    @SuppressLint("Range")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);

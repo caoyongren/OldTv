@@ -562,7 +562,7 @@ public class SystemUtils {
                 TelephonyManager tManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
                 serial = tManager.getDeviceId();
             }
-            KL.d(SystemUtils.class, "Serial:" + serial);
+            LogUtil.d(SystemUtils.class, "Serial:" + serial);
         } catch (Exception ignored) {
             ignored.printStackTrace();
         }

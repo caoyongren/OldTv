@@ -1,15 +1,11 @@
 package com.zcy.ghost.vivideo.utils;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
 
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
-
-import org.simple.eventbus.EventBus;
 
 /**
  * Created by yuexingchuan on 17/9/17.
@@ -101,6 +97,5 @@ public class ThemeUtil {
             PreUtils.putString(context, Constants.PRIMARYCOLOR, "#000000");
             PreUtils.putString(context, Constants.TITLECOLOR, "#0aa485");
         }
-
     }
 }

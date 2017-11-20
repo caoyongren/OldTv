@@ -1,6 +1,7 @@
 package com.zcy.ghost.vivideo.widget.theme;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import com.makeramen.roundedimageview.Corner;
 import com.makeramen.roundedimageview.RoundedDrawable;
 
+@SuppressLint("AppCompatCustomView")
 @SuppressWarnings("UnusedDeclaration")
 public class RoundedImageView extends ImageView implements ColorUiInterface {
 

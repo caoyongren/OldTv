@@ -4,7 +4,7 @@ import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.model.http.api.GankApis;
 import com.zcy.ghost.vivideo.model.http.api.VideoApis;
-import com.zcy.ghost.vivideo.utils.KL;
+import com.zcy.ghost.vivideo.utils.LogUtil;
 import com.zcy.ghost.vivideo.utils.SystemUtils;
 
 import java.io.File;
@@ -82,7 +82,7 @@ public class RetrofitHelper {
                     Response response = chain.proceed(request);
                     while (!response.isSuccessful() && tryCount < 3) {
 
-                        KL.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
+                        LogUtil.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
 
                         tryCount++;
 

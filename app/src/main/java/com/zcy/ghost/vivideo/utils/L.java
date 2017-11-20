@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
 
 
 /**
- * Log日志输出， 子类是 KL
+ * Log日志输出， 子类是 LogUtil
  * <p/>
  * <p/>
  * 1.多彩格式的日志，提供关键信息；

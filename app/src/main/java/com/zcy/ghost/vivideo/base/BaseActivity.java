@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.utils.KL;
+import com.zcy.ghost.vivideo.utils.LogUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
@@ -33,7 +33,7 @@ public abstract class BaseActivity extends SupportActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KL.d(this.getClass(), this.getClass().getName() + "------>onCreate");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onCreate");
         init();
 
         setContentView(getLayout());
@@ -53,38 +53,38 @@ public abstract class BaseActivity extends SupportActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        KL.d(this.getClass(), this.getClass().getName() + "------>onStart");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onStart");
         setTitleHeight(getRootView(this));
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        KL.d(this.getClass(), this.getClass().getName() + "------>onRestart");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onRestart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        KL.d(this.getClass(), this.getClass().getName() + "------>onResume");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        KL.d(this.getClass(), this.getClass().getName() + "------>onPause");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        KL.d(this.getClass(), this.getClass().getName() + "------>onStop");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        KL.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
+        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
         if (mUnBinder != null)
             mUnBinder.unbind();
         App.getInstance().unregisterActivity(this);

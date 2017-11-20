@@ -37,7 +37,7 @@ public class CommentAdapter extends RecyclerArrayAdapter<VideoType> {
 
         public CommentViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_comment);
-            avatar = $(R.id.avatar);
+            avatar = $(R.id.main_user_icon);
             tv_nick = $(R.id.tv_nick);
             tv_time = $(R.id.tv_time);
             tv_like = $(R.id.tv_like);

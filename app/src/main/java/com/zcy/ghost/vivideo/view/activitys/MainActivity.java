@@ -49,30 +49,32 @@ import butterknife.OnClick;
  */
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, ColorChooserDialog.ColorCallback {
 
+    private static final String TAG = "MaiActivity";
     public static final String Set_Theme_Color = "Set_Theme_Color";
     public final static String Banner_Stop = "Banner_Stop";
+
     private Long firstTime = 0L;
     final int WAIT_TIME = 200;
-    @BindView(R.id.tv_collect)
+    @BindView(R.id.drawer_tv_collect)
     TextView tvCollect;
-    @BindView(R.id.tv_mydown)
+    @BindView(R.id.drawer_tv_download)
     TextView tvMydown;
-    @BindView(R.id.tv_fuli)
+    @BindView(R.id.drawer_tv_welfare)
     TextView tvFuli;
-    @BindView(R.id.tv_share)
+    @BindView(R.id.draw_tv_share)
     TextView tvShare;
-    @BindView(R.id.tv_feedback)
+    @BindView(R.id.drawer_tv_feedback)
     TextView tvFeedback;
-    @BindView(R.id.tv_setting)
+    @BindView(R.id.drawer_tv_settings)
     TextView tvSetting;
-    @BindView(R.id.about)
+    @BindView(R.id.main_tv_about)
     TextView about;
-    @BindView(R.id.theme)
+    @BindView(R.id.main_tv_theme)
     TextView theme;
-    @BindView(R.id.tab_rg_menu)
+    @BindView(R.id.main_tab_menu)
     RadioGroup tabRgMenu;
-    @BindView(R.id.vp_content)
-    UnScrollViewPager vpContent;
+    @BindView(R.id.viewpager_content)
+    UnScrollViewPager mViewPagerContent;
     @BindView(R.id.resideLayout)
     ResideLayout mResideLayout;
     ContentPagerAdapter mPagerAdapter;
@@ -86,10 +88,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void initView() {
         EventBus.getDefault().register(this);
         List<Fragment> fragments = initFragments();
-        vpContent.setScrollable(false);
+        mViewPagerContent.setScrollable(false);
         mPagerAdapter = new ContentPagerAdapter(getSupportFragmentManager(), fragments);
-        vpContent.setAdapter(mPagerAdapter);
-        vpContent.setOffscreenPageLimit(fragments.size());
+        mViewPagerContent.setAdapter(mPagerAdapter);
+        mViewPagerContent.setOffscreenPageLimit(fragments.size());
         StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 10);
         StringUtils.setIconDrawable(mContext, tvMydown, MaterialDesignIconic.Icon.gmi_download, 16, 10);
         StringUtils.setIconDrawable(mContext, tvFuli, MaterialDesignIconic.Icon.gmi_mood, 16, 10);
@@ -103,7 +105,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void initEvent() {
         tabRgMenu.setOnCheckedChangeListener(this);
-        vpContent.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPagerContent.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -117,6 +119,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             public void onPageScrollStateChanged(int state) {
             }
         });
+
         mResideLayout.setPanelSlideListener(new ResideLayout.PanelSlideListener() {
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
@@ -147,17 +150,17 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
         switch (checkedId) {
-            case R.id.tab_rb_1:
-                vpContent.setCurrentItem(0, false);
+            case R.id.main_tab_choice:
+                mViewPagerContent.setCurrentItem(0, false);
                 break;
-            case R.id.tab_rb_2:
-                vpContent.setCurrentItem(1, false);
+            case R.id.main_tab_topic:
+                mViewPagerContent.setCurrentItem(1, false);
                 break;
-            case R.id.tab_rb_3:
-                vpContent.setCurrentItem(2, false);
+            case R.id.main_tab_find:
+                mViewPagerContent.setCurrentItem(2, false);
                 break;
-            case R.id.tab_rb_4:
-                vpContent.setCurrentItem(3, false);
+            case R.id.main_tab_myself:
+                mViewPagerContent.setCurrentItem(3, false);
                 break;
         }
     }
@@ -186,19 +189,19 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 .show();
     }
 
-    @OnClick({R.id.tv_collect, R.id.tv_mydown, R.id.tv_fuli, R.id.tv_share, R.id.tv_feedback, R.id.tv_setting, R.id.about, R.id.theme})
+    @OnClick({R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare, R.id.draw_tv_share, R.id.drawer_tv_feedback, R.id.drawer_tv_settings, R.id.main_tv_about, R.id.main_tv_theme})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_collect:
+            case R.id.drawer_tv_collect:
                 mContext.startActivity(new Intent(mContext, CollectionActivity.class));
                 break;
-            case R.id.tv_mydown:
+            case R.id.drawer_tv_download:
                 EventUtil.showToast(mContext, "敬请期待");
                 break;
-            case R.id.tv_fuli:
+            case R.id.drawer_tv_welfare:
                 mContext.startActivity(new Intent(mContext, WelfareActivity.class));
                 break;
-            case R.id.tv_share:
+            case R.id.draw_tv_share:
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.setting_recommend_content));
@@ -207,16 +210,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 //设置分享列表的标题，并且每次都显示分享列表
                 mContext.startActivity(Intent.createChooser(shareIntent, "分享到"));
                 break;
-            case R.id.tv_feedback:
+            case R.id.drawer_tv_feedback:
                 // 以对话框的形式弹出
                 PgyerDialog.setDialogTitleBackgroundColor(PreUtils.getString(mContext, Constants.PRIMARYCOLOR, "#000000"));
                 PgyerDialog.setDialogTitleTextColor(PreUtils.getString(mContext, Constants.TITLECOLOR, "#0aa485"));
                 PgyFeedback.getInstance().showDialog(mContext).d().setChecked(false);
                 break;
-            case R.id.tv_setting:
+            case R.id.drawer_tv_settings:
                 mContext.startActivity(new Intent(mContext, SettingActivity.class));
                 break;
-            case R.id.about:
+            case R.id.main_tv_about:
                 new MaterialDialog.Builder(mContext)
                         .title(R.string.about)
                         .titleColor(ThemeUtils.getThemeColor(mContext, R.attr.colorPrimary))
@@ -229,7 +232,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                         .positiveText(R.string.close)
                         .show();
                 break;
-            case R.id.theme:
+            case R.id.main_tv_theme:
                 setTheme("");
                 break;
         }
@@ -266,5 +269,4 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);
     }
-
 }

@@ -62,5 +62,16 @@
 
     <dimen name="title_bar_height">48dp</dimen>
 
-
+    <!--  add dimen-->
+    <dimen name="size_ten">10dp</dimen>
+    <dimen name="font_size_sixteen">16sp</dimen>
+    <dimen name="icon_size_eighty">80dp</dimen>
+    <dimen name="size_twenty_five">20dp</dimen>
+    <dimen name="size_fifty_five">55dp</dimen>
+    <dimen name="size_six">6dp</dimen>
+    <dimen name="size_hundred">100dp</dimen>
+    <dimen name="size_twelve">12dp</dimen>
+    <dimen name="size_fifteen">15dp</dimen>
+    <dimen name="size_forty">40dp</dimen>
+    <dimen name="size_twenty">20dp</dimen>
 </resources>

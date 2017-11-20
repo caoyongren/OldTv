@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zcy.ghost.vivideo.R;
+import com.zcy.ghost.vivideo.utils.LogUtil;
 import com.zcy.ghost.vivideo.view.activitys.MainActivity;
 import com.zcy.ghost.vivideo.view.fragments.MineFragment;
-import com.zcy.ghost.vivideo.utils.KL;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
@@ -45,7 +45,7 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onAttach(Context mContext) {
         super.onAttach(mContext);
-        KL.d(this.getClass(), getName() + "------>onAttach");
+        LogUtil.d(this.getClass(), getName() + "------>onAttach");
         if (mContext != null) {
             this.mContext = mContext;
         } else {
@@ -56,12 +56,12 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KL.d(this.getClass(), getName() + "------>onCreate");
+        LogUtil.d(this.getClass(), getName() + "------>onCreate");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        KL.d(this.getClass(), getName() + "------>onCreateView");
+        LogUtil.d(this.getClass(), getName() + "------>onCreateView");
         if (rootView == null) {
             rootView = inflater.inflate(getLayout(), container, false);
         }
@@ -78,26 +78,26 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        KL.d(this.getClass(), getName() + "------>onActivityCreated");
+        LogUtil.d(this.getClass(), getName() + "------>onActivityCreated");
         initEvent();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        KL.d(this.getClass(), getName() + "------>onStart");
+        LogUtil.d(this.getClass(), getName() + "------>onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        KL.d(this.getClass(), getName() + "------>onResume");
+        LogUtil.d(this.getClass(), getName() + "------>onResume");
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        KL.d(this.getClass(), getName() + "------>onViewCreated");
+        LogUtil.d(this.getClass(), getName() + "------>onViewCreated");
         isViewPrepared = true;
         lazyFetchDataIfPrepared();
     }
@@ -105,19 +105,19 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onPause() {
         super.onPause();
-        KL.d(this.getClass(), getName() + "------>onPause");
+        LogUtil.d(this.getClass(), getName() + "------>onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        KL.d(this.getClass(), getName() + "------>onStop");
+        LogUtil.d(this.getClass(), getName() + "------>onStop");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        KL.d(this.getClass(), getName() + "------>onDestroyView");
+        LogUtil.d(this.getClass(), getName() + "------>onDestroyView");
         // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
         hasFetchData = false;
         isViewPrepared = false;
@@ -126,7 +126,7 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        KL.d(this.getClass(), getName() + "------>onDestroy");
+        LogUtil.d(this.getClass(), getName() + "------>onDestroy");
         if (unbinder != null)
             unbinder.unbind();
     }
@@ -134,7 +134,7 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        KL.d(this.getClass(), getName() + "------>onDetach");
+        LogUtil.d(this.getClass(), getName() + "------>onDetach");
     }
 
     @Override

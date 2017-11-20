@@ -47,4 +47,12 @@
     <string name="search_history">搜索记录</string>
     <string name="search_recommend">热门推荐</string>
 
+    <!-- add str -->
+    <string name="signature">只做一件事, 做好一件事!</string>
+    <string name="drawer_about">关于</string>
+    <string name="drawer_theme">主题</string>
+    <string name="good_choice">精选</string>
+    <string name="topic">专题</string>
+    <string name="find">发现</string>
+    <string name="myself">我的</string>
 </resources>

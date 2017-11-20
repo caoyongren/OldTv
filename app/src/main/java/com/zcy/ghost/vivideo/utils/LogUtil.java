@@ -15,5 +15,5 @@ package com.zcy.ghost.vivideo.utils;
  *
  * Created by CP on 15/8/6.
  */
-public class KL extends L {
+public class LogUtil extends L {
 }

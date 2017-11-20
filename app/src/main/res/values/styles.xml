@@ -311,16 +311,21 @@
         <item name="card_background">@mipmap/card_bg</item>
     </style>
 
-
     <style name="MenuStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">25dp</item>
-        <item name="android:layout_marginBottom">1dp</item>
-        <item name="android:layout_marginRight">80dp</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:padding">@dimen/size_ten</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/font_size_sixteen</item>
+    </style>
+
+    <style name="DrawerBottomStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">@dimen/size_twelve</item>
+        <item name="android:textSize">@dimen/font_size_sixteen</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">

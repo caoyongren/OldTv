@@ -15,8 +15,12 @@ import java.util.List;
 import butterknife.BindView;
 /**
  * Description: 首页
- * Creator: yxc
- * date: 2017/9/6 14:57
+ * //设计Ｍvp中presenter解释:
+ * 1. Presenter 主要负责的是控制　数据data 和　视图view
+ * 2. view 中在initView中填充视图, 其实真正的填充是在presenter中
+ * 3. 既然获取了数据自然要放到view中，则需要showContent, 则展示还是在view中．
+ * 4. 总而言之: presenter 就是为了控制(调用各种方法), View负责展示；
+ * 5. 以前的实现是通过：View中初始化一个presenter, 现在使用<WelcomPresenter> 例如: news</>
  */
 public class WelcomeActivity extends BaseMvpActivity<WelcomePresenter>
         implements WelcomeContract.View {

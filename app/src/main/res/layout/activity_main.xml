@@ -14,72 +14,75 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="55dp"
+            <!-- 用户头像　-->
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/main_user_icon"
+                android:layout_width="@dimen/icon_size_eighty"
+                android:layout_height="@dimen/icon_size_eighty"
+                android:layout_marginLeft="@dimen/size_twenty_five"
+                android:layout_marginTop="@dimen/size_fifty_five"
                 android:scaleType="fitXY"
-                android:src="@mipmap/photo"
+                android:src="@mipmap/logo"
                 app:riv_border_width="0dip"
-                app:riv_corner_radius="100dp" />
+                app:riv_corner_radius="@dimen/size_hundred" />
 
             <TextView
-                android:id="@+id/desc"
+                android:id="@+id/main_user_signature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="80dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/size_twenty"
+                android:layout_marginRight="@dimen/icon_size_eighty"
+                android:layout_marginTop="@dimen/size_six"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:padding="10dp"
-                android:text="微影，微一下"
+                android:padding="@dimen/size_ten"
+                android:text="@string/signature"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="@dimen/font_size_sixteen" />
 
         </LinearLayout>
 
         <ScrollView
-            android:id="@+id/scrollView"
+            android:id="@+id/main_drawer_scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_menu"
+            android:layout_above="@+id/main_bottom_menu"
             android:layout_below="@+id/top_menu">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_collect"
+                    android:id="@+id/drawer_tv_collect"
                     style="@style/MenuStyle"
                     android:text="@string/collection" />
 
                 <TextView
-                    android:id="@+id/tv_mydown"
+                    android:id="@+id/drawer_tv_download"
                     style="@style/MenuStyle"
                     android:text="@string/download" />
 
                 <TextView
-                    android:id="@+id/tv_fuli"
+                    android:id="@+id/drawer_tv_welfare"
                     style="@style/MenuStyle"
                     android:text="@string/fuli" />
 
                 <TextView
-                    android:id="@+id/tv_share"
+                    android:id="@+id/draw_tv_share"
                     style="@style/MenuStyle"
                     android:text="@string/share" />
 
                 <TextView
-                    android:id="@+id/tv_feedback"
+                    android:id="@+id/drawer_tv_feedback"
                     style="@style/MenuStyle"
                     android:text="@string/feedback" />
 
                 <TextView
-                    android:id="@+id/tv_setting"
+                    android:id="@+id/drawer_tv_settings"
                     style="@style/MenuStyle"
                     android:text="@string/setting" />
 
@@ -87,7 +90,7 @@
         </ScrollView>
 
         <LinearLayout
-            android:id="@+id/bottom_menu"
+            android:id="@+id/main_bottom_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -95,42 +98,35 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/about"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:padding="12dp"
-                android:text="关于"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:id="@+id/main_tv_about"
+                android:layout_marginLeft="@dimen/size_twenty_five"
+                style="@style/DrawerBottomStyle"
+                android:text="@string/about"/>
 
             <TextView
-                android:id="@+id/theme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:padding="12dp"
-                android:text="主题"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:id="@+id/main_tv_theme"
+                android:layout_marginLeft="@dimen/size_fifteen"
+                style="@style/DrawerBottomStyle"
+                android:text="@string/theme"/>
 
         </LinearLayout>
 
     </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
 
+    <!--　底部的选项卡　-->
     <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
         style="@style/both_match_style"
         android:background="?attr/background">
 
         <com.zcy.ghost.vivideo.widget.UnScrollViewPager
-            android:id="@+id/vp_content"
+            android:id="@+id/viewpager_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:paddingBottom="40dp" />
+            android:paddingBottom="@dimen/size_forty" />
 
         <RadioGroup
-            android:id="@+id/tab_rg_menu"
+            android:id="@+id/main_tab_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -138,29 +134,29 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/tab_rb_1"
+                android:id="@+id/main_tab_choice"
                 style="@style/tab_rb_style"
                 android:checked="true"
-                android:drawableTop="@drawable/tab_02"
-                android:text="精选" />
+                android:drawableTop="@drawable/tab_topic"
+                android:text="@string/good_choice" />
 
             <RadioButton
-                android:id="@+id/tab_rb_2"
+                android:id="@+id/main_tab_topic"
                 style="@style/tab_rb_style"
-                android:drawableTop="@drawable/tab_03"
-                android:text="专题" />
+                android:drawableTop="@drawable/tab_find"
+                android:text="@string/topic" />
 
             <RadioButton
-                android:id="@+id/tab_rb_3"
+                android:id="@+id/main_tab_find"
                 style="@style/tab_rb_style"
-                android:drawableTop="@drawable/tab_01"
-                android:text="发现" />
+                android:drawableTop="@drawable/tab_choice"
+                android:text="@string/find" />
 
             <RadioButton
-                android:id="@+id/tab_rb_4"
+                android:id="@+id/main_tab_myself"
                 style="@style/tab_rb_style"
-                android:drawableTop="@drawable/tab_04"
-                android:text="我的" />
+                android:drawableTop="@drawable/tab_myself"
+                android:text="@string/myself" />
 
         </RadioGroup>
     </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>

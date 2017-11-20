@@ -6,11 +6,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Scroller;
 
-import com.zcy.ghost.vivideo.utils.KL;
+import com.zcy.ghost.vivideo.utils.LogUtil;
 
-/**
- * Created by Xuanhao on 2016/3/8.
- */
 public class UnScrollViewPager extends ViewPager {
 
     private boolean isScrollable = false;
@@ -24,7 +21,6 @@ public class UnScrollViewPager extends ViewPager {
         super(context);
         this.mContext = context;
         Scroller scroller = new Scroller(mContext);
-
     }
 
     public void setScrollable(boolean scrollable) {
@@ -36,7 +32,7 @@ public class UnScrollViewPager extends ViewPager {
         if (isScrollable)
             return super.onTouchEvent(arg0);
         boolean b = super.onTouchEvent(arg0);
-        KL.e(UnScrollViewPager.class, "onTouchEvent" + b);
+        LogUtil.e(UnScrollViewPager.class, "onTouchEvent" + b);
         return false;
     }
 
