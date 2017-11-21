@@ -1,5 +1,5 @@
 <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/title"
+    android:id="@+id/fg_choice_title"
     android:layout_width="match_parent"
     android:layout_height="68dp"
     android:background="?attr/colorPrimary"
@@ -19,7 +19,7 @@
     </RelativeLayout>
 
     <com.zcy.ghost.vivideo.widget.theme.ColorTextView
-        android:id="@+id/title_name"
+        android:id="@+id/fg_choice_title_name"
         style="@style/title_tv_style"
         android:layout_centerHorizontal="true"
         android:maxLength="15"

@@ -36,7 +36,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.zcy.ghost.vivideo.R.id.recyclerView;
+import static com.zcy.ghost.vivideo.R.id.fg_choice_recyclerView;
 
 /**
  * Description: 首页搜索
@@ -47,7 +47,7 @@ public class SearchActivity extends SwipeBackActivity<SearchVideoListPresenter> 
 
     List<VideoInfo> list;
     VideoInfo videoInfo;
-    @BindView(recyclerView)
+    @BindView(fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
     VideoListAdapter mAdapter;
     int pageSize = 30;

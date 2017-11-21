@@ -39,7 +39,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.zcy.ghost.vivideo.R.id.recyclerView;
+import static com.zcy.ghost.vivideo.R.id.fg_choice_recyclerView;
 
 /**
  * Description:
@@ -50,13 +50,13 @@ public class TabMySelfFragment extends BaseMvpFragment<MinePresenter> implements
     public static final String SET_THEME = "SET_THEME";
     MineHistoryVideoListAdapter mAdapter;
     VideoInfo videoInfo;
-    @BindView(R.id.title_name)
+    @BindView(R.id.fg_choice_title_name)
     ColorTextView titleName;
     @BindView(R.id.rl_them)
     RelativeLayout rlThem;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(recyclerView)
+    @BindView(fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
     @BindView(R.id.tv_history)
     TextView mTvHistory;
@@ -69,7 +69,7 @@ public class TabMySelfFragment extends BaseMvpFragment<MinePresenter> implements
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_mine;
+        return R.layout.fragment_myself;
     }
 
     @Override

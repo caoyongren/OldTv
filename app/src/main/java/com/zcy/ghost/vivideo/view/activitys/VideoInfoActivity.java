@@ -43,7 +43,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
     ImageView ivCollect;
     @BindView(R.id.videoplayer)
     JCVideoPlayerStandard videoplayer;
-    @BindView(R.id.title_name)
+    @BindView(R.id.fg_choice_title_name)
     ColorTextView mTitleName;
     @BindView(R.id.viewpagertab)
     SmartTabLayout mViewpagertab;

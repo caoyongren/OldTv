@@ -5,10 +5,10 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/main_title" />
+    <include layout="@layout/include_top_title_layout" />
 
     <com.jude.easyrecyclerview.EasyRecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/fg_choice_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_empty="@layout/view_empty"

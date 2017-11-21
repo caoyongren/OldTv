@@ -1,5 +1,6 @@
 package com.zcy.ghost.vivideo.view.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -23,13 +24,13 @@ import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.RecommendPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
+import com.zcy.ghost.vivideo.utils.EventUtil;
+import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.view.activitys.MainActivity;
 import com.zcy.ghost.vivideo.view.activitys.SearchActivity;
 import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.view.adapter.BannerAdapter;
-import com.zcy.ghost.vivideo.view.adapter.RecommendAdapter;
-import com.zcy.ghost.vivideo.utils.EventUtil;
-import com.zcy.ghost.vivideo.utils.ScreenUtil;
+import com.zcy.ghost.vivideo.view.adapter.TabChoiceAdapter;
 import com.zcy.ghost.vivideo.widget.RollPagerView;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
@@ -52,36 +53,39 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
                                        RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
                                        View.OnClickListener {
 
-    @BindView(R.id.recyclerView)
+    @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView recyclerView;
     @Nullable
-    @BindView(R.id.title)
+    @BindView(R.id.fg_choice_title)
     ColorRelativeLayout title;
-    @BindView(R.id.title_name)
+    @BindView(R.id.fg_choice_title_name)
     ColorTextView titleName;
     RollPagerView banner;
     View headerView;
-    RecommendAdapter adapter;
+    TabChoiceAdapter adapter;
     TextView etSearchKey;
     RelativeLayout rlGoSearch;
     List<VideoInfo> recommend;
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_recommend;
+        return R.layout.fragment_choice;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void initView(LayoutInflater inflater) {
         EventBus.getDefault().register(this);
         title.setVisibility(View.GONE);
-        titleName.setText("精选");
+        titleName.setText(getResources().getString(R.string.good_choice));//str 需要从资源中获取；
+        titleName.setBackgroundColor(R.color.title_color);
+
         headerView = LayoutInflater.from(mContext).inflate(R.layout.recommend_header, null);
         banner = ButterKnife.findById(headerView, R.id.banner);
         rlGoSearch = ButterKnife.findById(headerView, R.id.rlGoSearch);
         etSearchKey = ButterKnife.findById(headerView, R.id.etSearchKey);
         banner.setPlayDelay(2000);
-        recyclerView.setAdapterWithProgress(adapter = new RecommendAdapter(getContext()));
+        recyclerView.setAdapterWithProgress(adapter = new TabChoiceAdapter(getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setErrorView(R.layout.view_error);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));

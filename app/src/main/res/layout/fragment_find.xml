@@ -3,7 +3,7 @@
     style="@style/both_match_style"
     android:orientation="vertical">
 
-    <include layout="@layout/main_title" />
+    <include layout="@layout/include_top_title_layout" />
 
     <FrameLayout style="@style/both_match_style">
 

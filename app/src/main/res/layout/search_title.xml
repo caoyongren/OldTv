@@ -1,10 +1,11 @@
-<com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                        android:id="@+id/title"
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="68dp"
-                                                        android:background="?attr/colorPrimary"
-                                                        android:paddingTop="20dp">
+<com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fg_choice_title"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="?attr/colorPrimary"
+    android:paddingTop="20dp">
+
     <RelativeLayout
         android:id="@+id/rl_back"
         android:layout_width="40dp"
@@ -15,10 +16,5 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@mipmap/back" />
-
     </RelativeLayout>
-
-
-
-
 </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>

@@ -49,6 +49,8 @@ import butterknife.OnClick;
  * date: 2017/9/6 14:57
  *
  * //viewPager 属于v4包
+ * 1. 主要对四个fragments的控制；
+ * 2. 对抽屉的控制
  */
 public class MainActivity extends BaseActivity implements
                                   RadioGroup.OnCheckedChangeListener,
@@ -232,7 +234,7 @@ public class MainActivity extends BaseActivity implements
                 .show();
     }
 
-    //抽屉中的menu: 收藏/ 下载/ 福利/ 分享/ 建议/ 设置/
+    //抽屉中的menu: 收藏/ 下载/ 福利/ 分享/ 建议/ 设置/ 关于　/ 主题/ ? 应该使用碎片，而不是 fragment.TODO
     @OnClick({R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare,
               R.id.draw_tv_share, R.id.drawer_tv_feedback, R.id.drawer_tv_settings,
               R.id.main_tv_about, R.id.main_tv_theme})
@@ -286,8 +288,8 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 
     @Override
@@ -311,6 +313,7 @@ public class MainActivity extends BaseActivity implements
         }
     }
 
+    //WelcomeActivity --> MainActivity
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);

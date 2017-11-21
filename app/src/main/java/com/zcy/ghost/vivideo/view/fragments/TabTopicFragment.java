@@ -16,7 +16,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.ClassificationPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.ClassificationContract;
 import com.zcy.ghost.vivideo.view.activitys.VideoListActivity;
-import com.zcy.ghost.vivideo.view.adapter.ClassificationAdapter;
+import com.zcy.ghost.vivideo.view.adapter.TabTopicAdapter;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
@@ -34,16 +34,16 @@ import butterknife.BindView;
  */
 public class TabTopicFragment extends BaseMvpFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
-    @BindView(R.id.title_name)
+    @BindView(R.id.fg_choice_title_name)
     ColorTextView titleName;
-    @BindView(R.id.recyclerView)
+    @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView recyclerView;
-    ClassificationAdapter adapter;
+    TabTopicAdapter adapter;
 
     @Override
     protected void initView(LayoutInflater inflater) {
         titleName.setText("专题");
-        recyclerView.setAdapterWithProgress(adapter = new ClassificationAdapter(getContext()));
+        recyclerView.setAdapterWithProgress(adapter = new TabTopicAdapter(getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setErrorView(R.layout.view_error);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));
@@ -110,7 +110,7 @@ public class TabTopicFragment extends BaseMvpFragment<ClassificationPresenter> i
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_classification;
+        return R.layout.fragment_topic;
     }
 
     @Override

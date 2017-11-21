@@ -43,7 +43,7 @@ public class SettingActivity extends SwipeBackActivity {
     RelativeLayout rlFeedback;
     @BindView(R.id.tv_cache)
     TextView tvCache;
-    @BindView(R.id.title_name)
+    @BindView(R.id.fg_choice_title_name)
     ColorTextView titleName;
 
     @Override

@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
  */
 public class VideoIntroFragment extends BaseFragment {
 
-    @BindView(R.id.recyclerView)
+    @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView recyclerView;
     TextViewExpandableAnimation tvExpand;
     View headerView;

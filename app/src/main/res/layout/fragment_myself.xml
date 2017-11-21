@@ -23,7 +23,7 @@
 
             <!--app:layout_scrollFlags="scroll|enterAlways"-->
 
-            <include layout="@layout/main_title" />
+            <include layout="@layout/include_top_title_layout" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -87,7 +87,7 @@
                 android:orientation="horizontal">
 
                 <com.jude.easyrecyclerview.EasyRecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/fg_choice_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginLeft="@dimen/mine_list_view_margin_left"

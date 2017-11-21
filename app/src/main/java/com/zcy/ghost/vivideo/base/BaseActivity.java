@@ -166,7 +166,7 @@ public abstract class BaseActivity extends SupportActivity {
 
     private void setTitleHeight(View view) {
         if (view != null) {
-            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.title);
+            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.fg_choice_title);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                 if (title != null) {
                     ViewGroup.LayoutParams lp = title.getLayoutParams();
