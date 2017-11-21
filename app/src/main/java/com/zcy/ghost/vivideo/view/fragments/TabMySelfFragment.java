@@ -50,7 +50,7 @@ public class TabMySelfFragment extends BaseMvpFragment<MinePresenter> implements
     public static final String SET_THEME = "SET_THEME";
     MineHistoryVideoListAdapter mAdapter;
     VideoInfo videoInfo;
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView titleName;
     @BindView(R.id.rl_them)
     RelativeLayout rlThem;

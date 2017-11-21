@@ -36,7 +36,7 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
 
     String mTitle = "";
     String mCatalogId = "";
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView mTitleName;
 
     @BindView(R.id.fg_choice_recyclerView)

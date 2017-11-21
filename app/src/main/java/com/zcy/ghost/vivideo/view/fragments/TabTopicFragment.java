@@ -34,7 +34,7 @@ import butterknife.BindView;
  */
 public class TabTopicFragment extends BaseMvpFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView titleName;
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView recyclerView;

@@ -34,7 +34,7 @@ import butterknife.BindView;
  */
 public class CommentFragment extends BaseMvpFragment<CommentPresenter> implements CommentContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
-    @BindView(R.id.fg_choice_recyclerView)
+    @BindView(R.id.fg_comment_recyclerView)
     EasyRecyclerView recyclerView;
     TextView tv_empty;
 

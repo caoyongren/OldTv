@@ -37,7 +37,7 @@ import butterknife.OnClick;
  */
 public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implements DiscoverContract.View {
 
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView titleName;
     @BindView(R.id.swipe_deck)
     SwipeDeck swipeDeck;
@@ -56,6 +56,11 @@ public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implemen
     @Override
     protected void initInject() {
         getFragmentComponent().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_find;
     }
 
     @Override
@@ -140,6 +145,7 @@ public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implemen
         mPresenter.getData();
     }
 
+
     @OnClick({R.id.btn_next, R.id.tv_nomore})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -150,14 +156,8 @@ public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implemen
         }
     }
 
-
     @Override
     public void showError(String msg) {
 
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.fragment_find;
     }
 }

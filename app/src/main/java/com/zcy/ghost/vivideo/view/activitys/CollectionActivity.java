@@ -38,7 +38,7 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
     RelativeLayout rlCollectClear;
     @BindView(R.id.rl_back)
     RelativeLayout rlBack;
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView titleName;
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;

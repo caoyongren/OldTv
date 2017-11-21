@@ -46,8 +46,8 @@ import butterknife.ButterKnife;
 
 /**
  * Description: 精选
- * Creator: yxc
- * date: $date $time
+ * 应用mvp
+ *
  */
 public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> implements
                                        RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
@@ -58,11 +58,11 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
     @Nullable
     @BindView(R.id.fg_choice_title)
     ColorRelativeLayout title;
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView titleName;
-    RollPagerView banner;
+    RollPagerView mHeaderBanner;
     View headerView;
-    TabChoiceAdapter adapter;
+    TabChoiceAdapter mTabChoiceAdapter;
     TextView etSearchKey;
     RelativeLayout rlGoSearch;
     List<VideoInfo> recommend;
@@ -80,12 +80,13 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
         titleName.setText(getResources().getString(R.string.good_choice));//str 需要从资源中获取；
         titleName.setBackgroundColor(R.color.title_color);
 
-        headerView = LayoutInflater.from(mContext).inflate(R.layout.recommend_header, null);
-        banner = ButterKnife.findById(headerView, R.id.banner);
-        rlGoSearch = ButterKnife.findById(headerView, R.id.rlGoSearch);
-        etSearchKey = ButterKnife.findById(headerView, R.id.etSearchKey);
-        banner.setPlayDelay(2000);
-        recyclerView.setAdapterWithProgress(adapter = new TabChoiceAdapter(getContext()));
+        headerView = LayoutInflater.from(mContext).inflate(R.layout.fragment_choice_header, null);
+        mHeaderBanner = ButterKnife.findById(headerView, R.id.fg_choice_banner);
+        rlGoSearch = ButterKnife.findById(headerView, R.id.fg_choice_rlGoSearch);
+        etSearchKey = ButterKnife.findById(headerView, R.id.fg_choice_etSearchKey);
+        mHeaderBanner.setPlayDelay(2000);
+
+        recyclerView.setAdapterWithProgress(mTabChoiceAdapter = new TabChoiceAdapter(getContext()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setErrorView(R.layout.view_error);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));
@@ -147,10 +148,10 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
                 }
             }
         });
-        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+        mTabChoiceAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                VideoInfoActivity.start(mContext, adapter.getItem(position));
+                VideoInfoActivity.start(mContext, mTabChoiceAdapter.getItem(position));
             }
         });
         recyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
@@ -171,12 +172,12 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
     @Override
     public void showContent(final VideoRes videoRes) {
         if (videoRes != null) {
-            adapter.clear();
+            mTabChoiceAdapter.clear();
             List<VideoInfo> videoInfos;
             for (int i = 1; i < videoRes.list.size(); i++) {
                 if (videoRes.list.get(i).title.equals("精彩推荐")) {
                     videoInfos = videoRes.list.get(i).childList;
-                    adapter.addAll(videoInfos);
+                    mTabChoiceAdapter.addAll(videoInfos);
                     break;
                 }
             }
@@ -186,13 +187,13 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
                     break;
                 }
             }
-            if (adapter.getHeaderCount() == 0) {
-                adapter.addHeader(new RecyclerArrayAdapter.ItemView() {
+            if (mTabChoiceAdapter.getHeaderCount() == 0) {
+                mTabChoiceAdapter.addHeader(new RecyclerArrayAdapter.ItemView() {
                     @Override
                     public View onCreateView(ViewGroup parent) {
-                        banner.setHintView(new IconHintView(getContext(), R.mipmap.ic_page_indicator_focused, R.mipmap.ic_page_indicator, ScreenUtil.dip2px(getContext(), 10)));
-                        banner.setHintPadding(0, 0, 0, ScreenUtil.dip2px(getContext(), 8));
-                        banner.setAdapter(new BannerAdapter(getContext(), videoRes.list.get(0).childList));
+                        mHeaderBanner.setHintView(new IconHintView(getContext(), R.mipmap.ic_page_indicator_focused, R.mipmap.ic_page_indicator, ScreenUtil.dip2px(getContext(), 10)));
+                        mHeaderBanner.setHintPadding(0, 0, 0, ScreenUtil.dip2px(getContext(), 8));
+                        mHeaderBanner.setAdapter(new BannerAdapter(getContext(), videoRes.list.get(0).childList));
                         return headerView;
                     }
 
@@ -215,9 +216,9 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
     @Subscriber(tag = MainActivity.Banner_Stop)
     public void stopBanner(boolean stop) {
         if (stop) {
-            banner.pause();
+            mHeaderBanner.pause();
         } else {
-            banner.resume();
+            mHeaderBanner.resume();
         }
     }
 
@@ -238,7 +239,7 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rlGoSearch:
+            case R.id.fg_choice_rlGoSearch:
                 Intent intent = new Intent(mContext, SearchActivity.class);
                 intent.putExtra("recommend", (Serializable) recommend);
                 mContext.startActivity(intent);

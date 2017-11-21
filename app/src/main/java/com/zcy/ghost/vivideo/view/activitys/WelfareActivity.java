@@ -29,7 +29,7 @@ import butterknife.OnClick;
  * date: 2017/9/6 14:57
  */
 public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> implements WelfareContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
-    @BindView(R.id.fg_choice_title_name)
+    @BindView(R.id.fg_title_name)
     ColorTextView titleName;
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;

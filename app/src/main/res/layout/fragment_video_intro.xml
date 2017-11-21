@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <com.jude.easyrecyclerview.EasyRecyclerView
-        android:id="@+id/fg_choice_recyclerView"
+        android:id="@+id/fg_video_info_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_empty="@layout/view_empty"
