@@ -23,9 +23,13 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Description: RetrofitHelper1
- * Creator: yxc
- * date: 2016/9/21 10:03
+ * Create by MasterMan
+ * Description:
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date: 2017-05-01
  */
 public class RetrofitHelper {
 
@@ -36,16 +40,121 @@ public class RetrofitHelper {
     public static VideoApis getVideoApi() {
         initOkHttp();
         if (videoApi == null) {
+            /**
+             * Retrofit:是Square公司开发的一款针对Android网络请求的框架，
+             * Retrofit2底层基于Okhttp实现的，　Okhttp现在已经得到google官方
+             * 认可，　大量的app都采用okHttp做网络请求，
+             *　源码: https://github.com/square/okhttp
+             * --------------------------------------------------------
+             *  //简单实例：
+             * 1. 创建业务请求接口.
+             *   public interface ServicesApi {
+             *       @GET("book/search")
+             *       Call<BookSearchResponse> getSearchBooks(
+             *       @Query("q") String name,
+             *       @Query("tag") String tag,
+             *       @Query("start" int start,
+             *       @Query("count") int count);
+             *   }
+             *   //@GET注解就表示get请求，@Query表示请求参数，将会以key=value的方式拼接在url后面.
+             * 2. 创建一个Retrofit的示例
+             *   Retrofit retrofit = new Retrofit.Build()
+             *       .baseUrl("https://api.douban.com/v2/")
+             *       .addConverterFactory(GsonConverterFactory.create()) //解析gson
+             *       .build();
+             *    BlueService service = retrofit.create(BlueService.class);
+             *
+             * 3. 调用请求方法
+             *    Call<BookSearchResponse> call = mBlueService.getSearchBooks("小王子", "", 0, 3);
+             *
+             * 4. Call其实在Retrofit中就是行使网络请求并处理返回值的类，
+             *    调用的时候会把需要拼接的参数传递进去，此处最后得到的url完整地址为
+             *    https://api.douban.com/v2/book/search?q=%E5%B0%8F%E7%8E%8B%E5%AD%90&tag=&start=0&count=3
+             *
+             * 5. 使用Call实例完成同步或异步请求．
+             *    BookSearchResponse response = call.execute().body();//子线程进行；
+             *
+             * 6. 进行异步
+             * 　　call.enqueue(new Callback<BookSearchResponse>() {
+             *           @Override
+             *           public void onResponse(Call<BookSearchResponse> call, Response<BookSearchResponse> response) {
+             *               asyncText.setText("异步请求结果: " + response.body().books.get(0).altTitle);
+             *           }
+             *           @Override
+             *           public void onFailure(Call<BookSearchResponse> call, Throwable t) {
+             *
+             *           }
+             * 　　});
+             *
+             * 7. build.gradle
+             *     compile 'com.squareup.retrofit2:retrofit:2.1.0'
+             *     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+             *     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+             * ================================================================
+             *
+             * Retrofit + RxJava结合使用
+             * 1. build.gradle
+             *    compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+             *    compile 'io.reactivex:rxandroid:1.2.1'
+             * 2. 将RetrofitService类中getPostInfo方法的返回值修改为Observable（被观察者）
+             *   public interface RetrofitService {
+             *       //获取快递信息
+             *       //Rx方式
+             *       //
+             *       //@param type 快递类型
+             *       //@param postid 快递单号
+             *       //@return Observable<PostInfo></>
+             *
+             *       @GET("query")
+             *       Observable<PostInfo> getPostInfoRx(
+             *       @Query("type" String type,
+             *       @Query("postid") String postid));
+             *   }
+             *
+             * 3. 在创建Retrofit时添加RxJava支持.
+             *   Retrofit retrofit = new Retrofit.Builder()
+             *       .baseUrl("http://www.kuaidi100.com/")
+             *       .addConvertFactory(GsonConverterFactory.create())
+             *       .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) //支持Rxjava
+             *       .build();
+             *
+             *   获取被观察者：
+             *   RetrofitService service = retrofit.create(RetrofitService.class);
+             *   Observable<PostInfo> observable = service.getPostInfoRx("master", "1111111");
+             *
+             * 4. 订阅
+             *   observable.subscribeOn(Schedulers.io())
+             *       .observeOn(AndroidSchedulers.mainThread())
+             *       .subscribe(new Observer<PostInfo>() { //订阅
+             *　　　　     @Override
+             *           public void onCompleted() {
+             *
+             *           }
+             *
+             *           @Override
+             *           public void onError(Throwable e){
+             *
+             *           }
+             *
+             *           @Override
+             *           public void onNext(PostInfo postInfo) {
+             *               Log.i("http", "postInfo.toString()");
+             *           }
+             *       });
+             *
+             * Blog: http://www.jianshu.com/p/021a2c6e128b
+             * */
             Retrofit retrofit = new Retrofit.Builder()
                     .client(okHttpClient)
-                    .baseUrl(VideoApis.HOST)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .baseUrl(VideoApis.HOST)//baseUrl
+                    .addConverterFactory(GsonConverterFactory.create())//ｇson解析
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//支持Rxjava
                     .build();
             videoApi = retrofit.create(VideoApis.class);
         }
         return videoApi;
     }
+
     public static GankApis getGankApis() {
         initOkHttp();
         if (gankApis == null) {

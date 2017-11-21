@@ -36,17 +36,19 @@ public class TabChoicePresenter extends RxPresenter<RecommendContract.View>
     }
 
     private void getPageHomeInfo() {
-        Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
-                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())//子线程
-                .compose(RxUtil.<VideoRes>handleResult())
+        //主要应用于线程处理；
+        Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()  //
+                .compose(RxUtil.<VideoHttpResponse<VideoRes>> rxSchedulerHelper())//子线程
+                .compose(RxUtil.<VideoRes> handleResult())
                 .subscribe(new Action1<VideoRes>() {
                     @Override
                     public void call(final VideoRes res) {
                         if (res != null) {
-                            //该方法实现在: TabChoiceFragment.java -> showContent(data);
+                            //该方法实现在: {TabChoiceFragment.java} -> showContent(data);
                             mView.showContent(res);
                             if (MainActivity.DEBUG) {
                                 Log.i(TAG, "subscribe call" + Thread.currentThread());
+                                Log.i(TAG, "pageUrl:" + RetrofitHelper.getVideoApi().getHomePage());
                             }
                         }
                     }
