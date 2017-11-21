@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
@@ -69,7 +69,7 @@ public class SwipeDeckAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        ImageLoader.load(context, data.get(position).pic, holder.offerImage);
+        ImageLoaderUtil.load(context, data.get(position).pic, holder.offerImage);
         String intro = "\t\t\t" + data.get(position).description;
         holder.tvIntroduction.setText(intro);
         holder.tv_title.setText(data.get(position).title);

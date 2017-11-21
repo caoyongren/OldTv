@@ -9,17 +9,17 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.view.activitys.MainActivity;
 
 /**
- * Description: 推荐
+ * Description: 精选
  * date: 2016/9/30 11:10
  */
 public class TabChoiceAdapter extends RecyclerArrayAdapter<VideoInfo> {
 
-    private static final String TAG = "MasterManChoiceAdapter";
+    private static final String TAG = "MasterChoiceAdapter";
 
     //只有上下文对象
     public TabChoiceAdapter(Context context) {
@@ -49,7 +49,7 @@ public class TabChoiceAdapter extends RecyclerArrayAdapter<VideoInfo> {
                 Log.i(TAG, "data.title " + data.title);
             }
             tv_title.setText(data.title);
-            ImageLoader.load(getContext(), data.pic, imgPicture);
+            ImageLoaderUtil.load(getContext(), data.pic, imgPicture);
         }
     }
 }

@@ -9,7 +9,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 
 /**
@@ -51,7 +51,7 @@ public class CommentAdapter extends RecyclerArrayAdapter<VideoType> {
             tv_like.setText(data.likeNum);
             tv_comment.setText(data.msg);
             if (!TextUtils.isEmpty(data.userPic))
-                ImageLoader.load(getContext(), data.userPic, avatar);
+                ImageLoaderUtil.load(getContext(), data.userPic, avatar);
         }
     }
 }

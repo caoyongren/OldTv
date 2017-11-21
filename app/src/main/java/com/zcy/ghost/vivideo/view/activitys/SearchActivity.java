@@ -18,7 +18,7 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.SwipeBackActivity;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.SearchKey;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
@@ -247,10 +247,10 @@ public class SearchActivity extends SwipeBackActivity<SearchVideoListPresenter> 
         if (list != null) {
             recommend = list;
             VideoInfo videoInfo = list.get(0);
-            ImageLoader.load(mContext, videoInfo.pic, imgVideo);
+            ImageLoaderUtil.load(mContext, videoInfo.pic, imgVideo);
             tvTitle.setText(videoInfo.title);
             videoInfo = list.get(1);
-            ImageLoader.load(mContext, videoInfo.pic, imgVideo1);
+            ImageLoaderUtil.load(mContext, videoInfo.pic, imgVideo1);
             tvTitle1.setText(videoInfo.title);
         } else
             llRecommend.setVisibility(View.GONE);

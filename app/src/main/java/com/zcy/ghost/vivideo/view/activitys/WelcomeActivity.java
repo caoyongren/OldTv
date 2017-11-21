@@ -4,7 +4,7 @@ import android.widget.ImageView;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseMvpActivity;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.presenter.WelcomePresenter;
 import com.zcy.ghost.vivideo.presenter.contract.WelcomeContract;
 import com.zcy.ghost.vivideo.utils.EventUtil;
@@ -55,7 +55,7 @@ public class WelcomeActivity extends BaseMvpActivity<WelcomePresenter>
         if (list != null) {
             int page = StringUtils.getRandomNumber(0, list.size() - 1);
             //图片加载工具,使用的是Glide;
-            ImageLoader.load(mContext, list.get(page), ivWelcomeBg);
+            ImageLoaderUtil.load(mContext, list.get(page), ivWelcomeBg);
             ivWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
         }
 

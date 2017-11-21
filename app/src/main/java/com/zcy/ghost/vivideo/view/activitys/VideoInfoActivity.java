@@ -14,7 +14,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.SwipeBackActivity;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
@@ -130,7 +130,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         this.videoRes = videoRes;
         mTitleName.setText(videoRes.title);
         if (!TextUtils.isEmpty(videoRes.pic))
-            ImageLoader.load(mContext, videoRes.pic, videoplayer.thumbImageView);
+            ImageLoaderUtil.load(mContext, videoRes.pic, videoplayer.thumbImageView);
         if (!TextUtils.isEmpty(videoRes.getVideoUrl())) {
             videoplayer.setUp(videoRes.getVideoUrl()
                     , JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, videoRes.title);

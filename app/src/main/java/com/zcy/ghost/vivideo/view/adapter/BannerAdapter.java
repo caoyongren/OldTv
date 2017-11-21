@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
 
@@ -45,7 +45,7 @@ public class BannerAdapter extends StaticPagerAdapter {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         imageView.setBackgroundResource(R.mipmap.default_320);
         //加载图片
-        ImageLoader.load(ctx, list.get(position).pic, imageView);
+        ImageLoaderUtil.load(ctx, list.get(position).pic, imageView);
         //点击事件
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

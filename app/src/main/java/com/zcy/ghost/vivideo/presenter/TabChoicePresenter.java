@@ -1,5 +1,7 @@
 package com.zcy.ghost.vivideo.presenter;
 
+import android.util.Log;
+
 import com.zcy.ghost.vivideo.base.RxPresenter;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
@@ -7,6 +9,7 @@ import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
+import com.zcy.ghost.vivideo.view.activitys.MainActivity;
 
 import javax.inject.Inject;
 
@@ -18,8 +21,9 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/21 16:26
  */
-public class TabChoicePresenter extends RxPresenter<RecommendContract.View> implements RecommendContract.Presenter {
-
+public class TabChoicePresenter extends RxPresenter<RecommendContract.View>
+                                implements RecommendContract.Presenter {
+    private static final String TAG = "MasterChoicePresenter";
     int page = 0;
 
     @Inject
@@ -33,13 +37,17 @@ public class TabChoicePresenter extends RxPresenter<RecommendContract.View> impl
 
     private void getPageHomeInfo() {
         Subscription rxSubscription = RetrofitHelper.getVideoApi().getHomePage()
-                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
+                .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())//子线程
                 .compose(RxUtil.<VideoRes>handleResult())
                 .subscribe(new Action1<VideoRes>() {
                     @Override
                     public void call(final VideoRes res) {
                         if (res != null) {
+                            //该方法实现在: TabChoiceFragment.java -> showContent(data);
                             mView.showContent(res);
+                            if (MainActivity.DEBUG) {
+                                Log.i(TAG, "subscribe call" + Thread.currentThread());
+                            }
                         }
                     }
                 }, new Action1<Throwable>() {

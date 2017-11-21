@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.component.ImageLoader;
+import com.zcy.ghost.vivideo.utils.ImageLoaderUtil;
 import com.zcy.ghost.vivideo.model.bean.VideoType;
 
 public class MineHistoryVideoListAdapter extends RecyclerArrayAdapter<VideoType> {
@@ -45,7 +45,7 @@ public class MineHistoryVideoListAdapter extends RecyclerArrayAdapter<VideoType>
 
             params.height = width;
             imgPicture.setLayoutParams(params);
-            ImageLoader.load(getContext(), data.pic, imgPicture);
+            ImageLoaderUtil.load(getContext(), data.pic, imgPicture);
         }
     }
 }

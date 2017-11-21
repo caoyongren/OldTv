@@ -69,7 +69,6 @@ public class HttpModule {
     @Provides
     @VideoUrl
     Retrofit provideVideoRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-        Log.i("TAG", "--provideVideoRetrofit");
         return createRetrofit(builder, client, VideoApis.HOST);
     }
 

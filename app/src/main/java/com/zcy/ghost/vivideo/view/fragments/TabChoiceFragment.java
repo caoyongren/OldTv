@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
                                        RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
                                        View.OnClickListener {
 
-    private static final String TAG = "MasterMan:TabChoiceFragment";
+    private static final String TAG = "MasterChoiceFragment";
     private static final int BANNER_PLAY_DELAY = 3000;//3秒
 
     @BindView(R.id.fg_choice_recyclerView)
@@ -196,18 +197,27 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
             mTabChoiceAdapter.clear();
             List<VideoInfo> videoInfos;
             for (int i = 1; i < videoRes.list.size(); i++) {
-                if (videoRes.list.get(i).title.equals("精彩推荐")) {
+                if (videoRes.list.get(i).title.equals("精彩推荐")) {//进行类型匹配
                     videoInfos = videoRes.list.get(i).childList;
+                    /**
+                     * Adds the specified Collection at the end of the array.
+                     * 适配器中添加所有数据．
+                     * */
+                    if (MainActivity.DEBUG) {
+                        Log.i(TAG, "videoRes=" + videoRes.list.get(i).childList.get(i).title);
+                    }
                     mTabChoiceAdapter.addAll(videoInfos);
                     break;
                 }
             }
+
             for (int i = 1; i < videoRes.list.size(); i++) {
                 if (videoRes.list.get(i).title.equals("免费推荐")) {
                     recommend = videoRes.list.get(i).childList;
                     break;
                 }
             }
+
             if (mTabChoiceAdapter.getHeaderCount() == 0) {
                 mTabChoiceAdapter.addHeader(new RecyclerArrayAdapter.ItemView() {
                     @Override
