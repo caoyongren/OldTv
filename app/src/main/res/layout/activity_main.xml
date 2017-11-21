@@ -31,7 +31,7 @@
                 android:id="@+id/main_user_signature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/size_twenty"
+                android:layout_marginLeft="@dimen/size_fifteen"
                 android:layout_marginRight="@dimen/icon_size_eighty"
                 android:layout_marginTop="@dimen/size_six"
                 android:ellipsize="end"

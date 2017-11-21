@@ -28,11 +28,11 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Description: ClassificationFragment
+ * Description: TabTopicFragment
  * Creator: yxc
  * date: 2016/9/21 17:45
  */
-public class ClassificationFragment extends BaseMvpFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class TabTopicFragment extends BaseMvpFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;

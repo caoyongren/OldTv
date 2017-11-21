@@ -48,7 +48,9 @@ import butterknife.ButterKnife;
  * Creator: yxc
  * date: $date $time
  */
-public class RecommendFragment extends BaseMvpFragment<RecommendPresenter> implements RecommendContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
+public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> implements
+                                       RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
+                                       View.OnClickListener {
 
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;

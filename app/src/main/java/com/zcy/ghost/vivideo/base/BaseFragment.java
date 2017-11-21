@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.utils.LogUtil;
 import com.zcy.ghost.vivideo.view.activitys.MainActivity;
-import com.zcy.ghost.vivideo.view.fragments.MineFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
@@ -215,7 +215,7 @@ public abstract class BaseFragment extends SupportFragment {
                     title.setLayoutParams(lp);
                     title.setPadding(0, 0, 0, 0);
                 }
-                if (TAG.equals(MineFragment.class.getSimpleName())) {
+                if (TAG.equals(TabMySelfFragment.class.getSimpleName())) {
                     Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
                     ViewGroup.LayoutParams lp = toolbar.getLayoutParams();
                     lp.height = ScreenUtil.dip2px(getContext(), 48);

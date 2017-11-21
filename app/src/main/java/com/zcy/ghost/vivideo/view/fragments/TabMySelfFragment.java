@@ -46,7 +46,7 @@ import static com.zcy.ghost.vivideo.R.id.recyclerView;
  * Creator: yxc
  * date: $date $time
  */
-public class MineFragment extends BaseMvpFragment<MinePresenter> implements MineContract.View {
+public class TabMySelfFragment extends BaseMvpFragment<MinePresenter> implements MineContract.View {
     public static final String SET_THEME = "SET_THEME";
     MineHistoryVideoListAdapter mAdapter;
     VideoInfo videoInfo;
@@ -137,7 +137,7 @@ public class MineFragment extends BaseMvpFragment<MinePresenter> implements Mine
                 getContext().startActivity(new Intent(mContext, CollectionActivity.class));
                 break;
             case R.id.rl_them:
-                EventBus.getDefault().post("", MineFragment.SET_THEME);
+                EventBus.getDefault().post("", TabMySelfFragment.SET_THEME);
                 break;
             case R.id.img_setting:
                 getContext().startActivity(new Intent(mContext, SettingActivity.class));

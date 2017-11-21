@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
@@ -20,16 +22,16 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.base.BaseActivity;
-import com.zcy.ghost.vivideo.view.adapter.ContentPagerAdapter;
-import com.zcy.ghost.vivideo.view.fragments.ClassificationFragment;
-import com.zcy.ghost.vivideo.view.fragments.DiscoverFragment;
-import com.zcy.ghost.vivideo.view.fragments.MineFragment;
-import com.zcy.ghost.vivideo.view.fragments.RecommendFragment;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.StringUtils;
 import com.zcy.ghost.vivideo.utils.ThemeUtil;
 import com.zcy.ghost.vivideo.utils.ThemeUtils;
+import com.zcy.ghost.vivideo.view.adapter.ContentViewPagerAdapter;
+import com.zcy.ghost.vivideo.view.fragments.TabTopicFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabChoiceFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabFindFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
 import com.zcy.ghost.vivideo.widget.ResideLayout;
 import com.zcy.ghost.vivideo.widget.UnScrollViewPager;
 
@@ -44,12 +46,16 @@ import butterknife.OnClick;
 
 /**
  * Description: 主页
- * Creator: yxc
  * date: 2017/9/6 14:57
+ *
+ * //viewPager 属于v4包
  */
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, ColorChooserDialog.ColorCallback {
+public class MainActivity extends BaseActivity implements
+                                  RadioGroup.OnCheckedChangeListener,
+                                  ColorChooserDialog.ColorCallback {
 
-    private static final String TAG = "MaiActivity";
+    private static final String TAG = "MasterMan-MaiActivity";
+    public static final boolean DEBUG = true;
     public static final String Set_Theme_Color = "Set_Theme_Color";
     public final static String Banner_Stop = "Banner_Stop";
 
@@ -58,9 +64,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @BindView(R.id.drawer_tv_collect)
     TextView tvCollect;
     @BindView(R.id.drawer_tv_download)
-    TextView tvMydown;
+    TextView tvdownload;
     @BindView(R.id.drawer_tv_welfare)
-    TextView tvFuli;
+    TextView tvWelfare;
     @BindView(R.id.draw_tv_share)
     TextView tvShare;
     @BindView(R.id.drawer_tv_feedback)
@@ -77,7 +83,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     UnScrollViewPager mViewPagerContent;
     @BindView(R.id.resideLayout)
     ResideLayout mResideLayout;
-    ContentPagerAdapter mPagerAdapter;
+    ContentViewPagerAdapter mPagerAdapter;
 
     @Override
     protected int getLayout() {
@@ -86,15 +92,37 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initView() {
+        //EventBus是一款针对Android优化的发布/订阅事件总线。
+        // 主要功能是替代Intent,Handler,BroadCast在Fragment，Activity，Service，线程之间传递消息.
+        // 优点是开销小，代码更优雅。以及将发送者和接收者解耦。
+        /**
+         * 使用流程:
+         * 1. 接收消息需注册: EventBus.getDefault().register(this);
+         * 2. 发送消息: eventBus.post(new AnyEventType event);
+         * 3. 接受消息实现: public void onEvent(AnyEvent event) {}
+         * 4. 解除注册: EventBus.getDefault().unregister(this);
+         * blog: http://blog.csdn.net/harvic880925/article/details/40660137
+         * */
         EventBus.getDefault().register(this);
         List<Fragment> fragments = initFragments();
-        mViewPagerContent.setScrollable(false);
-        mPagerAdapter = new ContentPagerAdapter(getSupportFragmentManager(), fragments);
+        //fragment: 精选/专题/发现/我的/　－－>可以向右滑动；
+        mViewPagerContent.setScrollable(true);
+        mPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPagerContent.setAdapter(mPagerAdapter);
-        mViewPagerContent.setOffscreenPageLimit(fragments.size());
+        if (DEBUG) {
+            Log.i(TAG, "fragment.size=" + fragments.size());
+        }
+        //setOffscreenPageLimit是小于<, 不是<=, so ＋　１．
+        mViewPagerContent.setOffscreenPageLimit(fragments.size() + 1);
+
+        initViewMenuIcon();
+    }
+
+    //menu : 收藏/下载/福利/分享/回馈/设置/关于/主题/－－＞前面的icon
+    private void initViewMenuIcon() {
         StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvMydown, MaterialDesignIconic.Icon.gmi_download, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvFuli, MaterialDesignIconic.Icon.gmi_mood, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvdownload, MaterialDesignIconic.Icon.gmi_download, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvWelfare, MaterialDesignIconic.Icon.gmi_mood, 16, 10);
         StringUtils.setIconDrawable(mContext, tvShare, MaterialDesignIconic.Icon.gmi_share, 16, 10);
         StringUtils.setIconDrawable(mContext, tvFeedback, MaterialDesignIconic.Icon.gmi_android, 16, 10);
         StringUtils.setIconDrawable(mContext, tvSetting, MaterialDesignIconic.Icon.gmi_settings, 16, 10);
@@ -104,7 +132,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void initEvent() {
+        //点击一个radiobutton实现切换: the callback to call on checked state change
         tabRgMenu.setOnCheckedChangeListener(this);
+
+        //viewPager 滑动监听.
         mViewPagerContent.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -112,6 +143,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
             @Override
             public void onPageSelected(int position) {
+                //
+                if (DEBUG) {
+                    Log.i(TAG, "viewPager: position" + position);
+                }
                 ((RadioButton) tabRgMenu.getChildAt(position)).setChecked(true);
             }
 
@@ -139,6 +174,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     private void postBannerState(final boolean stop) {
+        /**
+         * 通过handler进行延时．
+         * delayMillis WAIT_TIME: The delay (in milliseconds) until the Runnable will be executed.
+         * */
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -150,35 +189,39 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
         switch (checkedId) {
-            case R.id.main_tab_choice:
+            case R.id.main_tab_choice://精选
                 mViewPagerContent.setCurrentItem(0, false);
                 break;
-            case R.id.main_tab_topic:
+            case R.id.main_tab_topic://专题
                 mViewPagerContent.setCurrentItem(1, false);
                 break;
-            case R.id.main_tab_find:
+            case R.id.main_tab_find://发现
                 mViewPagerContent.setCurrentItem(2, false);
                 break;
-            case R.id.main_tab_myself:
+            case R.id.main_tab_myself://我的
                 mViewPagerContent.setCurrentItem(3, false);
+                break;
+            default:
+                Toast.makeText(mContext, "so sorry !", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
     private List<Fragment> initFragments() {
+        //精选-choice /主题-topic /　发现-find / 我的-myself
         List<Fragment> fragments = new ArrayList<>();
-        Fragment fragment1 = new RecommendFragment();
-        Fragment fragment2 = new ClassificationFragment();
-        Fragment fragment3 = new DiscoverFragment();
-        Fragment mineFragment = new MineFragment();
-        fragments.add(fragment1);
-        fragments.add(fragment2);
-        fragments.add(fragment3);
-        fragments.add(mineFragment);
+        Fragment fragmentChoice = new TabChoiceFragment();
+        Fragment fragmentTopic = new TabTopicFragment();
+        Fragment fragmentFind = new TabFindFragment();
+        Fragment fragmentMyself = new TabMySelfFragment();
+        fragments.add(fragmentChoice);
+        fragments.add(fragmentTopic);
+        fragments.add(fragmentFind);
+        fragments.add(fragmentMyself);
         return fragments;
     }
 
-    @Subscriber(tag = MineFragment.SET_THEME)
+    @Subscriber(tag = TabMySelfFragment.SET_THEME)
     public void setTheme(String content) {
         new ColorChooserDialog.Builder(this, R.string.theme)
                 .customColors(R.array.colors, null)
@@ -189,7 +232,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 .show();
     }
 
-    @OnClick({R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare, R.id.draw_tv_share, R.id.drawer_tv_feedback, R.id.drawer_tv_settings, R.id.main_tv_about, R.id.main_tv_theme})
+    //抽屉中的menu: 收藏/ 下载/ 福利/ 分享/ 建议/ 设置/
+    @OnClick({R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare,
+              R.id.draw_tv_share, R.id.drawer_tv_feedback, R.id.drawer_tv_settings,
+              R.id.main_tv_about, R.id.main_tv_theme})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.drawer_tv_collect:

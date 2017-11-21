@@ -5,10 +5,10 @@ import android.app.Activity;
 import com.zcy.ghost.vivideo.di.module.FragmentModule;
 import com.zcy.ghost.vivideo.di.scope.FragmentScope;
 import com.zcy.ghost.vivideo.view.fragments.CommentFragment;
-import com.zcy.ghost.vivideo.view.fragments.MineFragment;
-import com.zcy.ghost.vivideo.view.fragments.RecommendFragment;
-import com.zcy.ghost.vivideo.view.fragments.ClassificationFragment;
-import com.zcy.ghost.vivideo.view.fragments.DiscoverFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabFindFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabChoiceFragment;
+import com.zcy.ghost.vivideo.view.fragments.TabTopicFragment;
 
 import dagger.Component;
 
@@ -18,13 +18,13 @@ public interface FragmentComponent {
 
     Activity getActivity();
 
-    void inject(DiscoverFragment dailyFragment);
+    void inject(TabFindFragment dailyFragment);
 
-    void inject(ClassificationFragment dailyFragment);
+    void inject(TabTopicFragment dailyFragment);
 
-    void inject(RecommendFragment recommendFragment);
+    void inject(TabChoiceFragment tabChoiceFragment);
 
-    void inject(MineFragment mineFragment);
+    void inject(TabMySelfFragment tabMySelfFragment);
 
     void inject(CommentFragment commentFragment);
 

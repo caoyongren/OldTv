@@ -35,7 +35,7 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: $date $time
  */
-public class DiscoverFragment extends BaseMvpFragment<DiscoverPresenter> implements DiscoverContract.View {
+public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implements DiscoverContract.View {
 
     @BindView(R.id.title_name)
     ColorTextView titleName;
