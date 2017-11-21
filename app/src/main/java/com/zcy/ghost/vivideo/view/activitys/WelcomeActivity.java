@@ -43,6 +43,13 @@ public class WelcomeActivity extends BaseMvpActivity<WelcomePresenter>
         EventUtil.showToast(mContext, msg);
     }
 
+    /**
+     * showContent(data)方法
+     * 该方法在presenter中调用就是mvp中p在控制．
+     * 控制逻辑：
+     * 　　1. view 和presenter　都实现接口WelcomeContract.View
+     *    2. void showContent(data)
+     * */
     @Override
     public void showContent(List<String> list) {
         if (list != null) {

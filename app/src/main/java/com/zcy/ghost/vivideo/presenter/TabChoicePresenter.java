@@ -14,16 +14,16 @@ import rx.Subscription;
 import rx.functions.Action1;
 
 /**
- * Description: RecommendPresenter
+ * Description: TabChoicePresenter
  * Creator: yxc
  * date: 2016/9/21 16:26
  */
-public class RecommendPresenter extends RxPresenter<RecommendContract.View> implements RecommendContract.Presenter {
+public class TabChoicePresenter extends RxPresenter<RecommendContract.View> implements RecommendContract.Presenter {
 
     int page = 0;
 
     @Inject
-    public RecommendPresenter() {}
+    public TabChoicePresenter() {}
 
     @Override
     public void onRefresh() {
@@ -50,5 +50,4 @@ public class RecommendPresenter extends RxPresenter<RecommendContract.View> impl
                 });
         addSubscribe(rxSubscription);
     }
-
 }

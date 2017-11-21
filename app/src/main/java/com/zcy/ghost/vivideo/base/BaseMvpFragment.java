@@ -12,10 +12,11 @@ import com.zcy.ghost.vivideo.di.module.FragmentModule;
 import javax.inject.Inject;
 
 /**
- * Created by yuexingchuan on 17/9/14.
+ * .
  */
 
-public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragment implements BaseView {
+public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragment
+                                                               implements BaseView {
 
     @Inject
     protected T mPresenter;

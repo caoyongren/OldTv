@@ -22,7 +22,7 @@ import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.base.BaseMvpFragment;
 import com.zcy.ghost.vivideo.model.bean.VideoInfo;
 import com.zcy.ghost.vivideo.model.bean.VideoRes;
-import com.zcy.ghost.vivideo.presenter.RecommendPresenter;
+import com.zcy.ghost.vivideo.presenter.TabChoicePresenter;
 import com.zcy.ghost.vivideo.presenter.contract.RecommendContract;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
@@ -49,15 +49,18 @@ import butterknife.ButterKnife;
  * 应用mvp
  *
  */
-public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> implements
+public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> implements
                                        RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
                                        View.OnClickListener {
 
+    private static final String TAG = "MasterMan:TabChoiceFragment";
+    private static final int BANNER_PLAY_DELAY = 3000;//3秒
+
     @BindView(R.id.fg_choice_recyclerView)
-    EasyRecyclerView recyclerView;
+    EasyRecyclerView mChoiceRecyclerView;
     @Nullable
     @BindView(R.id.fg_choice_title)
-    ColorRelativeLayout title;
+    ColorRelativeLayout titleLayout;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
     RollPagerView mHeaderBanner;
@@ -76,24 +79,42 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
     @Override
     protected void initView(LayoutInflater inflater) {
         EventBus.getDefault().register(this);
-        title.setVisibility(View.GONE);
+        titleLayout.setVisibility(View.GONE);
         titleName.setText(getResources().getString(R.string.good_choice));//str 需要从资源中获取；
         titleName.setBackgroundColor(R.color.title_color);
 
-        headerView = LayoutInflater.from(mContext).inflate(R.layout.fragment_choice_header, null);
+        //(int resource, @Nullable ViewGroup root)
+        headerView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_choice_header, null);
         mHeaderBanner = ButterKnife.findById(headerView, R.id.fg_choice_banner);
         rlGoSearch = ButterKnife.findById(headerView, R.id.fg_choice_rlGoSearch);
         etSearchKey = ButterKnife.findById(headerView, R.id.fg_choice_etSearchKey);
-        mHeaderBanner.setPlayDelay(2000);
-
-        recyclerView.setAdapterWithProgress(mTabChoiceAdapter = new TabChoiceAdapter(getContext()));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setErrorView(R.layout.view_error);
+        mHeaderBanner.setPlayDelay(BANNER_PLAY_DELAY);
+        /**
+         * EasyRecyclerView.java
+         * 1.特点:
+         *   1.规范了ViewHolder，把ViewHolder封装起来，并让我们继承这个抽象类RecyclerView.ViewHolder。
+         *   2.把ItemView存放到RecyclerView.ViewHolder，通过复用RecyclerView.ViewHolder实现ItemView的复用。
+         *   3.RecyclerView.Adapter
+         *   4.compile 'com.camnter.easyrecyclerview:easyrecyclerview:1.1.0'
+         * 2.配置
+         *   1. LayoutMannager ＝ LinearLayoutManager
+         *   2. ItemAnimator ＝ DefaultItemAnimator
+         * 3. Decoration
+         *   1. EasyDividerItemDecoration
+         *   2. EasyBorderDividerItemDecoration
+         *
+         *   blog:
+         *   http://blog.csdn.net/qq_16430735/article/details/49341563#gradle
+         * */
+        mTabChoiceAdapter = new TabChoiceAdapter(getContext());
+        mChoiceRecyclerView.setAdapterWithProgress(mTabChoiceAdapter);
+        mChoiceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mChoiceRecyclerView.setErrorView(R.layout.view_error);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(getContext(), 8));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);
-        recyclerView.addItemDecoration(itemDecoration);
+        mChoiceRecyclerView.addItemDecoration(itemDecoration);
     }
 
     @Override
@@ -114,37 +135,37 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
         stopBanner(true);
     }
 
-
     @Override
     protected void initEvent() {
-        title.setOnClickListener(new View.OnClickListener() {
+        //防止重复点击
+        titleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (EventUtil.isFastDoubleClick()) {
-                    recyclerView.scrollToPosition(0);
+                    mChoiceRecyclerView.scrollToPosition(0);
                 }
             }
         });
-        recyclerView.setRefreshListener(this);
-        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        mChoiceRecyclerView.setRefreshListener(this);
+        mChoiceRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(RecyclerView mChoiceRecyclerView, int dx, int dy) {
                 if (getHeaderScroll() <= ScreenUtil.dip2px(mContext, 150)) {
                     new Handler().postAtTime(new Runnable() {
                         @Override
                         public void run() {
                             float percentage = (float) getHeaderScroll() / ScreenUtil.dip2px(mContext, 150);
-                            title.setAlpha(percentage);
+                            titleLayout.setAlpha(percentage);
                             if (percentage > 0)
-                                title.setVisibility(View.VISIBLE);
+                                titleLayout.setVisibility(View.VISIBLE);
                             else
-                                title.setVisibility(View.GONE);
+                                titleLayout.setVisibility(View.GONE);
 
                         }
                     }, 300);
                 } else {
-                    title.setAlpha(1.0f);
-                    title.setVisibility(View.VISIBLE);
+                    titleLayout.setAlpha(1.0f);
+                    titleLayout.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -154,10 +175,10 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
                 VideoInfoActivity.start(mContext, mTabChoiceAdapter.getItem(position));
             }
         });
-        recyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
+        mChoiceRecyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recyclerView.showProgress();
+                mChoiceRecyclerView.showProgress();
                 onRefresh();
             }
         });
@@ -210,7 +231,7 @@ public class TabChoiceFragment extends BaseMvpFragment<RecommendPresenter> imple
     public void refreshFaild(String msg) {
         if (!TextUtils.isEmpty(msg))
             showError(msg);
-        recyclerView.showError();
+        mChoiceRecyclerView.showError();
     }
 
     @Subscriber(tag = MainActivity.Banner_Stop)

@@ -15,6 +15,5 @@ public class VideoInfo implements Serializable {
     public String airTime;
     public String moreURL;
     public String loadType;
-    //    public String description;
-
+    //public String description;
 }
