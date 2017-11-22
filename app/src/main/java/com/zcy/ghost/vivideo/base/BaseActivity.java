@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.utils.LogUtil;
+import com.zcy.ghost.vivideo.utils.debug.LogUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
@@ -166,7 +166,7 @@ public abstract class BaseActivity extends SupportActivity {
 
     private void setTitleHeight(View view) {
         if (view != null) {
-            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.fg_choice_title);
+            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.shared_title);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                 if (title != null) {
                     ViewGroup.LayoutParams lp = title.getLayoutParams();

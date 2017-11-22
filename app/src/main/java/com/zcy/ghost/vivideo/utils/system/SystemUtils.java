@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.utils;
+package com.zcy.ghost.vivideo.utils.system;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -35,6 +35,7 @@ import android.util.DisplayMetrics;
 
 import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.model.bean.AppInfo;
+import com.zcy.ghost.vivideo.utils.debug.LogUtil;
 
 import java.io.File;
 import java.lang.reflect.Field;

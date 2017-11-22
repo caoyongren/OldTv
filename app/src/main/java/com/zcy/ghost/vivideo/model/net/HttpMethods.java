@@ -8,8 +8,8 @@ import com.zcy.ghost.vivideo.model.exception.ExceptionEngine;
 import com.zcy.ghost.vivideo.model.exception.ServerException;
 import com.zcy.ghost.vivideo.model.http.api.VideoApis;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
-import com.zcy.ghost.vivideo.utils.LogUtil;
-import com.zcy.ghost.vivideo.utils.SystemUtils;
+import com.zcy.ghost.vivideo.utils.debug.LogUtil;
+import com.zcy.ghost.vivideo.utils.system.SystemUtils;
 
 import java.io.File;
 import java.io.IOException;

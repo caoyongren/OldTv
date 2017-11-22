@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.utils;
+package com.zcy.ghost.vivideo.utils.system;
 
 import android.content.Context;
 import android.content.res.TypedArray;

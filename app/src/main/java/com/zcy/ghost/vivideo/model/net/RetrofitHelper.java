@@ -1,11 +1,13 @@
 package com.zcy.ghost.vivideo.model.net;
 
+import android.util.Log;
+
 import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.model.http.api.GankApis;
 import com.zcy.ghost.vivideo.model.http.api.VideoApis;
-import com.zcy.ghost.vivideo.utils.LogUtil;
-import com.zcy.ghost.vivideo.utils.SystemUtils;
+import com.zcy.ghost.vivideo.utils.system.SystemUtils;
+import com.zcy.ghost.vivideo.view.activitys.MainActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Date: 2017-05-01
  */
 public class RetrofitHelper {
-
+    private static final String TAG = "RetrofitHelper";
     private static OkHttpClient okHttpClient = null;
     private static VideoApis videoApi;
     private static GankApis gankApis;
@@ -146,11 +148,15 @@ public class RetrofitHelper {
              * */
             Retrofit retrofit = new Retrofit.Builder()
                     .client(okHttpClient)
-                    .baseUrl(VideoApis.HOST)//baseUrl
-                    .addConverterFactory(GsonConverterFactory.create())//ｇson解析
+                    .baseUrl(VideoApis.HOST)    //baseUrl
+                    .addConverterFactory(GsonConverterFactory.create())    //ｇson解析
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//支持Rxjava
                     .build();
             videoApi = retrofit.create(VideoApis.class);
+            if (MainActivity.FLAG) {
+                Log.i(MainActivity.DATA, "Retrofit: basUrl-->" + VideoApis.HOST);
+                Log.i(MainActivity.DATA, "Retrofit: getVideoApi-->" + videoApi);
+            }
         }
         return videoApi;
     }
@@ -190,9 +196,6 @@ public class RetrofitHelper {
                     int tryCount = 0;
                     Response response = chain.proceed(request);
                     while (!response.isSuccessful() && tryCount < 3) {
-
-                        LogUtil.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
-
                         tryCount++;
 
                         // retry the request

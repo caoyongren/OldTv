@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.utils;
+package com.zcy.ghost.vivideo.utils.debug;
 
 /**
  * 继承自 L 的 Log 输出类，提供日志统一管控的功能。

@@ -32,11 +32,17 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
- * Description: 影片详情
- * Creator: yxc
- * date: 2017/9/6 14:57
+ * Create by MasterMan
+ * Description:
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date: 2017-11-02
  */
 public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> implements VideoInfoContract.View {
+
+    public static final String VIDEO_INFO = "videoInfo";
 
     VideoInfo videoInfo;
     @BindView(R.id.iv_collect)
@@ -56,6 +62,11 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
 
     VideoRes videoRes;
     private Animation animation;
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_video_info;
+    }
 
     @Override
     protected void initView() {
@@ -93,11 +104,6 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
             return;
         }
         super.onBackPressed();
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.activity_video_info;
     }
 
     @OnClick(R.id.rl_back)
@@ -151,9 +157,24 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         getActivityComponent().inject(this);
     }
 
+    /**
+     * 所有的视频的打开都是通过该方法；
+     * VideoInfoActivity.start(context, videoInfo);
+     * */
     public static void start(Context context, VideoInfo videoInfo) {
+        /**
+         * 视频的启动；
+         * Intent intent = new Intent(Intent.ACTION_VIEW);
+         * String type = "video/mp4";
+         * Uri name = Uri.parse("file://sdcard/test.mp4");
+         * intent.setDataAndType(name, type);
+         * intent.setClassName(com.cooliris.media, com.cooliris.media.MovieView);
+         * startActivity(intent);
+         * */
         Intent starter = new Intent(context, VideoInfoActivity.class);
-        starter.putExtra("videoInfo", videoInfo);
+        starter.putExtra(VIDEO_INFO, videoInfo);
+        //starter.setClassName("com.cooliris.media",
+        //                     "com.cooliris.media.MovieView");
         context.startActivity(starter);
     }
 }

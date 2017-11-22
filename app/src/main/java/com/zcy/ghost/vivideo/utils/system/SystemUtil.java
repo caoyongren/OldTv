@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.utils;
+package com.zcy.ghost.vivideo.utils.system;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

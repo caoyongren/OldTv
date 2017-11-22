@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Scroller;
 
-import com.zcy.ghost.vivideo.utils.LogUtil;
+import com.zcy.ghost.vivideo.utils.debug.LogUtil;
 
 public class UnScrollViewPager extends ViewPager {
 

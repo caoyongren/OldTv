@@ -1,5 +1,9 @@
-<com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fg_choice_title"
+<!--
+影片详情
+-->
+<com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shared_title"
     android:layout_width="match_parent"
     android:layout_height="68dp"
     android:background="?attr/colorPrimary"

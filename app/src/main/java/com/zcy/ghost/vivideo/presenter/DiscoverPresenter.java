@@ -7,7 +7,7 @@ import com.zcy.ghost.vivideo.model.net.RetrofitHelper;
 import com.zcy.ghost.vivideo.presenter.contract.DiscoverContract;
 import com.zcy.ghost.vivideo.utils.RxUtil;
 import com.zcy.ghost.vivideo.utils.StringUtils;
-import com.zcy.ghost.vivideo.utils.SystemUtils;
+import com.zcy.ghost.vivideo.utils.system.SystemUtils;
 
 import javax.inject.Inject;
 

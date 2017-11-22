@@ -19,7 +19,7 @@ import com.zcy.ghost.vivideo.app.Constants;
 import com.zcy.ghost.vivideo.base.SwipeBackActivity;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
-import com.zcy.ghost.vivideo.utils.ThemeUtils;
+import com.zcy.ghost.vivideo.utils.system.ThemeUtils;
 import com.zcy.ghost.vivideo.widget.theme.ColorTextView;
 
 import butterknife.BindView;

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
-        android:id="@+id/fg_choice_title"
+        android:id="@+id/shared_title"
         android:layout_width="match_parent"
         android:layout_height="86dp"
         android:background="?attr/colorPrimary"
@@ -68,7 +68,7 @@
     <RelativeLayout
         android:id="@+id/rl_his_rec"
         style="@style/lmatch_hwrap_style"
-        android:layout_below="@+id/fg_choice_title">
+        android:layout_below="@+id/shared_title">
         <LinearLayout
             android:id="@+id/rl_history"
             style="@style/lmatch_hwrap_style"
@@ -193,7 +193,7 @@
         android:id="@+id/fg_choice_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/fg_choice_title"
+        android:layout_below="@+id/shared_title"
         android:visibility="gone"
         app:layout_empty="@layout/view_empty"
         app:layout_progress="@layout/view_progress"

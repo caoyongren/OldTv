@@ -25,8 +25,8 @@ import com.zcy.ghost.vivideo.base.BaseActivity;
 import com.zcy.ghost.vivideo.utils.EventUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.StringUtils;
-import com.zcy.ghost.vivideo.utils.ThemeUtil;
-import com.zcy.ghost.vivideo.utils.ThemeUtils;
+import com.zcy.ghost.vivideo.utils.system.ThemeUtil;
+import com.zcy.ghost.vivideo.utils.system.ThemeUtils;
 import com.zcy.ghost.vivideo.view.adapter.ContentViewPagerAdapter;
 import com.zcy.ghost.vivideo.view.fragments.TabTopicFragment;
 import com.zcy.ghost.vivideo.view.fragments.TabChoiceFragment;
@@ -55,9 +55,21 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity implements
                                   RadioGroup.OnCheckedChangeListener,
                                   ColorChooserDialog.ColorCallback {
-
-    private static final String TAG = "MasterMan-MaiActivity";
+    /**
+     * 每个类中TAG用于本类的调试．打印log
+     *
+     * DEBUG -> 整个项目的log控制．
+     *
+     * //数据打印实例：　精选模块
+     * FLAG --> 数据流程打印的log控制
+     *
+     * DATA --> 数据流程打印额检索
+     * */
+    private static final String TAG = "MaiActivity";
     public static final boolean DEBUG = true;
+    public static final boolean FLAG = true;
+    public static final String DATA = "DEBUG";
+
     public static final String Set_Theme_Color = "Set_Theme_Color";
     public final static String Banner_Stop = "Banner_Stop";
 

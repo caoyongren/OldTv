@@ -9,7 +9,7 @@ import com.zcy.ghost.vivideo.di.qualifier.GankUrl;
 import com.zcy.ghost.vivideo.di.qualifier.VideoUrl;
 import com.zcy.ghost.vivideo.model.http.api.GankApis;
 import com.zcy.ghost.vivideo.model.http.api.VideoApis;
-import com.zcy.ghost.vivideo.utils.SystemUtil;
+import com.zcy.ghost.vivideo.utils.system.SystemUtil;
 
 import java.io.File;
 import java.io.IOException;

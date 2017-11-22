@@ -19,7 +19,7 @@ import com.zcy.ghost.vivideo.view.activitys.MainActivity;
  */
 public class TabChoiceAdapter extends RecyclerArrayAdapter<VideoInfo> {
 
-    private static final String TAG = "MasterChoiceAdapter";
+    private static final String TAG = "TabChoiceAdapter";
 
     //只有上下文对象
     public TabChoiceAdapter(Context context) {
@@ -31,6 +31,7 @@ public class TabChoiceAdapter extends RecyclerArrayAdapter<VideoInfo> {
         return new ChoiceViewHolder(parent);
     }
 
+    //实现setData来实现UI修改。Adapter会在onCreateViewHolder里自动调用。
     class ChoiceViewHolder extends BaseViewHolder<VideoInfo> {
         ImageView imgPicture;
         TextView tv_title;
@@ -47,6 +48,11 @@ public class TabChoiceAdapter extends RecyclerArrayAdapter<VideoInfo> {
             if (MainActivity.DEBUG) {
                 Log.i(TAG, "data:" + data);
                 Log.i(TAG, "data.title " + data.title);
+            }
+
+            if (MainActivity.FLAG) {
+                Log.i(MainActivity.DATA, "adapter: setData data" + data);
+                Log.i(MainActivity.DATA, "adapter: setData title" + data.title);
             }
             tv_title.setText(data.title);
             ImageLoaderUtil.load(getContext(), data.pic, imgPicture);

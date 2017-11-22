@@ -54,13 +54,14 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
                                        RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
                                        View.OnClickListener {
 
-    private static final String TAG = "MasterChoiceFragment";
+    private static final String TAG = "TabChoiceFragment";
+
     private static final int BANNER_PLAY_DELAY = 3000;//3秒
 
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mChoiceRecyclerView;
     @Nullable
-    @BindView(R.id.fg_choice_title)
+    @BindView(R.id.shared_title)
     ColorRelativeLayout titleLayout;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
@@ -170,6 +171,12 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
                 }
             }
         });
+
+        /**
+         * 点击进入视频播放
+         *
+         * 监听的接口在{@RecyclerArrayAdapter.jva}, 适配器继承该接口，　以前都是自己写回调；
+         * */
         mTabChoiceAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -206,6 +213,9 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
                     if (MainActivity.DEBUG) {
                         Log.i(TAG, "videoRes=" + videoRes.list.get(i).childList.get(i).title);
                     }
+                    if (MainActivity.FLAG) {
+                        Log.i(MainActivity.DATA, "view: showContent--> videoInfos" + videoInfos);
+                    }
                     mTabChoiceAdapter.addAll(videoInfos);
                     break;
                 }
@@ -222,7 +232,11 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
                 mTabChoiceAdapter.addHeader(new RecyclerArrayAdapter.ItemView() {
                     @Override
                     public View onCreateView(ViewGroup parent) {
-                        mHeaderBanner.setHintView(new IconHintView(getContext(), R.mipmap.ic_page_indicator_focused, R.mipmap.ic_page_indicator, ScreenUtil.dip2px(getContext(), 10)));
+                        mHeaderBanner.setHintView(new IconHintView(getContext(),
+                                R.mipmap.ic_page_indicator_focused,
+                                R.mipmap.ic_page_indicator,
+                                ScreenUtil.dip2px(getContext(),
+                                        10)));
                         mHeaderBanner.setHintPadding(0, 0, 0, ScreenUtil.dip2px(getContext(), 8));
                         mHeaderBanner.setAdapter(new BannerAdapter(getContext(), videoRes.list.get(0).childList));
                         return headerView;

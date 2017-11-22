@@ -1,10 +1,11 @@
-package com.zcy.ghost.vivideo.utils;
+package com.zcy.ghost.vivideo.utils.system;
 
 import android.content.Context;
 
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.Constants;
+import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.widget.theme.Theme;
 
 /**

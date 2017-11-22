@@ -14,10 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zcy.ghost.vivideo.R;
-import com.zcy.ghost.vivideo.utils.LogUtil;
+import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.view.activitys.MainActivity;
 import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
-import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
 
@@ -45,7 +44,6 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onAttach(Context mContext) {
         super.onAttach(mContext);
-        LogUtil.d(this.getClass(), getName() + "------>onAttach");
         if (mContext != null) {
             this.mContext = mContext;
         } else {
@@ -56,12 +54,10 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtil.d(this.getClass(), getName() + "------>onCreate");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LogUtil.d(this.getClass(), getName() + "------>onCreateView");
         if (rootView == null) {
             rootView = inflater.inflate(getLayout(), container, false);
         }
@@ -78,26 +74,22 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LogUtil.d(this.getClass(), getName() + "------>onActivityCreated");
         initEvent();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        LogUtil.d(this.getClass(), getName() + "------>onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        LogUtil.d(this.getClass(), getName() + "------>onResume");
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LogUtil.d(this.getClass(), getName() + "------>onViewCreated");
         isViewPrepared = true;
         lazyFetchDataIfPrepared();
     }
@@ -105,19 +97,16 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onPause() {
         super.onPause();
-        LogUtil.d(this.getClass(), getName() + "------>onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        LogUtil.d(this.getClass(), getName() + "------>onStop");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        LogUtil.d(this.getClass(), getName() + "------>onDestroyView");
         // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
         hasFetchData = false;
         isViewPrepared = false;
@@ -126,7 +115,6 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtil.d(this.getClass(), getName() + "------>onDestroy");
         if (unbinder != null)
             unbinder.unbind();
     }
@@ -134,13 +122,11 @@ public abstract class BaseFragment extends SupportFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        LogUtil.d(this.getClass(), getName() + "------>onDetach");
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.v(TAG, getClass().getName() + "------>isVisibleToUser = " + isVisibleToUser);
         if (isVisibleToUser) {
             lazyFetchDataIfPrepared();
         }
@@ -207,7 +193,7 @@ public abstract class BaseFragment extends SupportFragment {
 
     private void setTitleHeight(View view) {
         if (view != null) {
-            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.fg_choice_title);
+            ColorRelativeLayout title = (ColorRelativeLayout) view.findViewById(R.id.shared_title);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                 if (title != null) {
                     ViewGroup.LayoutParams lp = title.getLayoutParams();

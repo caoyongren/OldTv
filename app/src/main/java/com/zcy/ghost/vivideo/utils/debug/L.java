@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.utils;
+package com.zcy.ghost.vivideo.utils.debug;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
