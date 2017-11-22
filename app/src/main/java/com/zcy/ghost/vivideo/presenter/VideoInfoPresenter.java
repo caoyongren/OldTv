@@ -28,7 +28,8 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/21 15:35
  */
-public class VideoInfoPresenter extends RxPresenter<VideoInfoContract.View> implements VideoInfoContract.Presenter {
+public class VideoInfoPresenter extends RxPresenter<VideoInfoContract.View>
+                                        implements VideoInfoContract.Presenter {
 
     public final static String Refresh_Video_Info = "Refresh_Video_Info";
     public final static String Put_DataId = "Put_DataId";

@@ -13,7 +13,7 @@
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<pattern>%date{ISO8601} [%thread] %-5level %class{5}:%line - %msg%n</pattern>
-			<!--<pattern>%d{HH:mm:ss} [%thread] [%.-1level] - %msg %n</pattern>-->
+
 		</encoder>
 		<file>${LOG_DIR}/run.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -24,10 +24,6 @@
 			</TimeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 	</appender>
-
-	<!--<root level="ERROR" >-->
-	    <!--<appender-ref ref="FILE" />-->
-	<!--</root>-->
 
 	<root level="DEBUG">
         <appender-ref ref="LOGCAT"/>

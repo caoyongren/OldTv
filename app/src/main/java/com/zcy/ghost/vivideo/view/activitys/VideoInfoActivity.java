@@ -40,19 +40,24 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Motto: 坚持自己的选择, 不动摇！
  * Date: 2017-11-02
  */
-public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> implements VideoInfoContract.View {
+public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter>
+                                       implements VideoInfoContract.View {
 
+    private static final String TAG = "VideoInfoActivity";
     public static final String VIDEO_INFO = "videoInfo";
 
     VideoInfo videoInfo;
     @BindView(R.id.video_header_iv_collect)
     ImageView ivCollect;
     @BindView(R.id.video_info_player)
-    JCVideoPlayerStandard videoplayer;
+    JCVideoPlayerStandard mVideo_info_player;
+
     @BindView(R.id.fg_title_name)
     ColorTextView mTitleName;
+
     @BindView(R.id.video_info_tab_view_pager)
     SmartTabLayout mVideoInfoTabViewpager;
+
     @BindView(R.id.video_info_viewpager)
     SwipeViewPager mViewpager;
 
@@ -73,18 +78,37 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
     protected void initView() {
         animation = AnimationUtils.loadAnimation(mContext, R.anim.view_hand);
         rlCollect.setVisibility(View.VISIBLE);
+        /**FragmentPagerItemAdapter 属于v4包
+         * 可以添加string.fragment
+         * //管理碎片: commentFragment//评论
+         * 介绍/VideoIntroFragment//介绍文字后面的视频推荐也属于介绍；
+         * -----------------------
+         * SwipeViewPager 属于v4包extends HorizontalScrollVieW这里用于切换；
+         * mVideoInfoTabViewpager
+         * */
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(mContext)
                 .add(R.string.video_intro, VideoIntroFragment.class)
                 .add(R.string.video_comment, CommentFragment.class)
                 .create());
         mViewpager.setAdapter(adapter);
-        mVideoInfoTabViewpager.setViewPager(mViewpager);
-        videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        videoplayer.backButton.setVisibility(View.GONE);
-        videoplayer.titleTextView.setVisibility(View.GONE);
-        videoplayer.tinyBackImageView.setVisibility(View.GONE);
 
+        mVideoInfoTabViewpager.setViewPager(mViewpager);
+        //视频的缩略图
+        mVideo_info_player.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mVideo_info_player.backButton.setVisibility(View.GONE);
+        mVideo_info_player.titleTextView.setVisibility(View.GONE);
+        mVideo_info_player.tinyBackImageView.setVisibility(View.GONE);
+
+        /**
+         * mPresenter定义｛＠BaseMvpActivity｝
+         * 属于mvp中，ｐ: 控制的方法
+         * 和｛＠TabChoiceFragment｝mPresenter.onRefresh();
+         * {@WelcomeeActivity}  mPresenter.getWelcomeData();
+         * 一样；
+         * －－－－－－－－－－－－－－－
+         *
+         * */
         mPresenter.prepareInfo(videoInfo);
     }
 
@@ -137,11 +161,11 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         this.videoRes = videoRes;
         mTitleName.setText(videoRes.title);
         if (!TextUtils.isEmpty(videoRes.pic))
-            ImageLoaderUtil.load(mContext, videoRes.pic, videoplayer.thumbImageView);
+            ImageLoaderUtil.load(mContext, videoRes.pic, mVideo_info_player.thumbImageView);
         if (!TextUtils.isEmpty(videoRes.getVideoUrl())) {
-            videoplayer.setUp(videoRes.getVideoUrl()
+            mVideo_info_player.setUp(videoRes.getVideoUrl()
                     , JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, videoRes.title);
-            videoplayer.onClick(videoplayer.thumbImageView);
+            mVideo_info_player.onClick(mVideo_info_player.thumbImageView);
         }
     }
 
