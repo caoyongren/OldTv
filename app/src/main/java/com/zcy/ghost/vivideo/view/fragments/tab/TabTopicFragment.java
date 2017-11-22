@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.view.fragments;
+package com.zcy.ghost.vivideo.view.fragments.tab;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;

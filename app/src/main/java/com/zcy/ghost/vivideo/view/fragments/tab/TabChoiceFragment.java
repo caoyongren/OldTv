@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.view.fragments;
+package com.zcy.ghost.vivideo.view.fragments.tab;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

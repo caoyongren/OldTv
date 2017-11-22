@@ -5,10 +5,10 @@ import android.app.Activity;
 import com.zcy.ghost.vivideo.dagger.module.FragmentModule;
 import com.zcy.ghost.vivideo.dagger.scope.FragmentScope;
 import com.zcy.ghost.vivideo.view.fragments.CommentFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabFindFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabChoiceFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabTopicFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabFindFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabMySelfFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabChoiceFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabTopicFragment;
 
 import dagger.Component;
 

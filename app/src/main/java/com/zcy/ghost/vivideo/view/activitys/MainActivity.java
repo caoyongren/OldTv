@@ -31,10 +31,10 @@ import com.zcy.ghost.vivideo.view.activitys.menu.CollectionActivity;
 import com.zcy.ghost.vivideo.view.activitys.menu.SettingActivity;
 import com.zcy.ghost.vivideo.view.activitys.menu.WelfareActivity;
 import com.zcy.ghost.vivideo.view.adapter.ContentViewPagerAdapter;
-import com.zcy.ghost.vivideo.view.fragments.TabTopicFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabChoiceFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabFindFragment;
-import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabTopicFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabChoiceFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabFindFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabMySelfFragment;
 import com.zcy.ghost.vivideo.widget.ResideLayout;
 import com.zcy.ghost.vivideo.widget.UnScrollViewPager;
 

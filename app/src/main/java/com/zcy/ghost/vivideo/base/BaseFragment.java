@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.view.activitys.MainActivity;
-import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;
+import com.zcy.ghost.vivideo.view.fragments.tab.TabMySelfFragment;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
 import com.zcy.ghost.vivideo.widget.theme.ColorUiUtil;
 
