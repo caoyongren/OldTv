@@ -45,7 +45,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
     public static final String VIDEO_INFO = "videoInfo";
 
     VideoInfo videoInfo;
-    @BindView(R.id.tv_header_iv_collect)
+    @BindView(R.id.video_header_iv_collect)
     ImageView ivCollect;
     @BindView(R.id.video_info_player)
     JCVideoPlayerStandard videoplayer;
@@ -58,7 +58,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
 
     @BindView(R.id.video_info_circle_loading)
     LVGhost mLoading;
-    @BindView(R.id.tv_header_rl_collect)
+    @BindView(R.id.video_header_rl_collect)
     RelativeLayout rlCollect;
 
     VideoRes videoRes;
@@ -107,7 +107,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         super.onBackPressed();
     }
 
-    @OnClick(R.id.tv_header_rl_back)
+    @OnClick(R.id.video_header_rl_back)
     public void back() {
         finish();
     }
@@ -145,7 +145,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         }
     }
 
-    @OnClick(R.id.tv_header_rl_collect)
+    @OnClick(R.id.video_header_rl_collect)
     public void onClick() {
         if (videoRes != null) {
             ivCollect.startAnimation(animation);

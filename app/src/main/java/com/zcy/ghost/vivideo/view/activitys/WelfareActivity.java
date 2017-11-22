@@ -120,7 +120,7 @@ public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> impleme
         mAdapter.addAll(list);
     }
 
-    @OnClick(R.id.tv_header_rl_back)
+    @OnClick(R.id.video_header_rl_back)
     public void onClick() {
         if (mContext instanceof WelfareActivity) {
             finish();

@@ -10,7 +10,7 @@
     android:background="?attr/background"
     android:orientation="vertical">
 
-    <include layout="@layout/include_commen_title" />
+    <include layout="@layout/include_video_header_title" />
 
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/video_info_player"

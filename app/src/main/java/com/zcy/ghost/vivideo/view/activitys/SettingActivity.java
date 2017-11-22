@@ -33,7 +33,7 @@ import butterknife.OnClick;
 public class SettingActivity extends SwipeBackActivity {
 
 
-    @BindView(R.id.tv_header_rl_back)
+    @BindView(R.id.video_header_rl_back)
     RelativeLayout rlBack;
     @BindView(R.id.rl_recommend)
     RelativeLayout rlRecommend;
@@ -57,10 +57,10 @@ public class SettingActivity extends SwipeBackActivity {
         tvCache.setText(EventUtil.getFormatSize(Glide.getPhotoCacheDir(this).length()));
     }
 
-    @OnClick({R.id.tv_header_rl_back, R.id.rl_recommend, R.id.rl_about, R.id.rl_feedback, R.id.rl_clearcache})
+    @OnClick({R.id.video_header_rl_back, R.id.rl_recommend, R.id.rl_about, R.id.rl_feedback, R.id.rl_clearcache})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_header_rl_back:
+            case R.id.video_header_rl_back:
                 finish();
                 break;
             case R.id.rl_recommend:

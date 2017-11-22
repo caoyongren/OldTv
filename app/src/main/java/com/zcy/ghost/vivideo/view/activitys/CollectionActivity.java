@@ -34,9 +34,9 @@ import butterknife.OnClick;
  */
 public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> implements CollectionContract.View {
 
-    @BindView(R.id.rl_collect_clear)
+    @BindView(R.id.video_header_collect_clear)
     RelativeLayout rlCollectClear;
-    @BindView(R.id.tv_header_rl_back)
+    @BindView(R.id.video_header_rl_back)
     RelativeLayout rlBack;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
@@ -91,17 +91,17 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
         mAdapter.addAll(list);
     }
 
-    @OnClick({R.id.tv_header_rl_back, R.id.rl_collect_clear})
+    @OnClick({R.id.video_header_rl_back, R.id.video_header_collect_clear})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_header_rl_back:
+            case R.id.video_header_rl_back:
                 if (mContext instanceof CollectionActivity) {
                     finish();
                 } else if (mContext instanceof HistoryActivity) {
                     finish();
                 }
                 break;
-            case R.id.rl_collect_clear:
+            case R.id.video_header_collect_clear:
                 mAdapter.clear();
                 mPresenter.delAllDatas();
                 break;
