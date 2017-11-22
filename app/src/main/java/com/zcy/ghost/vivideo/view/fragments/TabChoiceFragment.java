@@ -61,7 +61,7 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mChoiceRecyclerView;
     @Nullable
-    @BindView(R.id.shared_title)
+    @BindView(R.id.normal_title)
     ColorRelativeLayout titleLayout;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;

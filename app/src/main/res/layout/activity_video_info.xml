@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--
+影片详情
+-->
+<com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/both_match_style"
     android:background="?attr/background"
@@ -8,9 +13,9 @@
     <include layout="@layout/include_commen_title" />
 
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
-        android:id="@+id/videoplayer"
+        android:id="@+id/video_info_player"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/size_two_hundred"
         android:background="@color/white_translucent_20" />
 
     <RelativeLayout
@@ -19,7 +24,7 @@
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/ll_about"
+            android:id="@+id/video_info_ll_introduce"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_height"
             android:background="@color/white_translucent_20"
@@ -31,7 +36,7 @@
                 android:layout_weight="1" />
 
             <com.ogaclejapan.smarttablayout.SmartTabLayout
-                android:id="@+id/viewpagertab"
+                android:id="@+id/video_info_tab_view_pager"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -57,21 +62,8 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/ll_about" />
+            android:layout_below="@id/video_info_ll_introduce" />
 
-        <!--<com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--xmlns:circleprogress="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/circle_loading"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_gravity="center"-->
-        <!--circleprogress:autoStart="true"-->
-        <!--circleprogress:color1="@android:color/holo_red_light"-->
-        <!--circleprogress:color2="@android:color/holo_green_light"-->
-        <!--circleprogress:color3="@android:color/holo_blue_light"-->
-        <!--android:visibility="gone"/>-->
         <com.zcy.ghost.vivideo.widget.LVGhost
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/circle_loading"
