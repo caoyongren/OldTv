@@ -1,9 +1,9 @@
-package com.zcy.ghost.vivideo.di.module;
+package com.zcy.ghost.vivideo.dagger.module;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
-import com.zcy.ghost.vivideo.di.scope.FragmentScope;
+import com.zcy.ghost.vivideo.dagger.scope.FragmentScope;
 
 import dagger.Module;
 import dagger.Provides;

@@ -36,6 +36,9 @@ public class TabChoicePresenter extends RxPresenter<RecommendContract.View>
     @Override
     public void onRefresh() {
         page = 0;
+        if (MainActivity.FLAG) {
+            Log.i(MainActivity.DATA, "presenter: onRefresh");
+        }
         getPageHomeInfo();
     }
 

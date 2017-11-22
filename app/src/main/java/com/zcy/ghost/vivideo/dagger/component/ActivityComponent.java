@@ -1,9 +1,9 @@
-package com.zcy.ghost.vivideo.di.component;
+package com.zcy.ghost.vivideo.dagger.component;
 
 import android.app.Activity;
 
-import com.zcy.ghost.vivideo.di.module.ActivityModule;
-import com.zcy.ghost.vivideo.di.scope.ActivityScope;
+import com.zcy.ghost.vivideo.dagger.module.ActivityModule;
+import com.zcy.ghost.vivideo.dagger.scope.ActivityScope;
 import com.zcy.ghost.vivideo.view.activitys.CollectionActivity;
 import com.zcy.ghost.vivideo.view.activitys.HistoryActivity;
 import com.zcy.ghost.vivideo.view.activitys.SearchActivity;
@@ -37,5 +37,4 @@ public interface ActivityComponent {
     void inject(VideoListActivity videoListActivity);
 
     void inject(WelfareActivity welfareActivity);
-
 }

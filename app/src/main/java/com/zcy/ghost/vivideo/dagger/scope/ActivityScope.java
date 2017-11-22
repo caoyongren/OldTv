@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.di.scope;
+package com.zcy.ghost.vivideo.dagger.scope;
 
 import java.lang.annotation.Retention;
 
@@ -12,5 +12,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Scope
 @Retention(RUNTIME)
-public @interface FragmentScope {
+public @interface ActivityScope {
 }

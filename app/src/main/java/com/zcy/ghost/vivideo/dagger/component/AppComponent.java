@@ -1,9 +1,9 @@
-package com.zcy.ghost.vivideo.di.component;
+package com.zcy.ghost.vivideo.dagger.component;
 
 
 import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.di.module.AppModule;
-import com.zcy.ghost.vivideo.di.module.HttpModule;
+import com.zcy.ghost.vivideo.dagger.module.AppModule;
+import com.zcy.ghost.vivideo.dagger.module.HttpModule;
 import com.zcy.ghost.vivideo.model.DataManager;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 import com.zcy.ghost.vivideo.model.http.RetrofitHelper1;

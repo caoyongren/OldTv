@@ -3,9 +3,9 @@ package com.zcy.ghost.vivideo.base;
 import android.os.Bundle;
 
 import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.di.component.ActivityComponent;
-import com.zcy.ghost.vivideo.di.component.DaggerActivityComponent;
-import com.zcy.ghost.vivideo.di.module.ActivityModule;
+import com.zcy.ghost.vivideo.dagger.component.ActivityComponent;
+import com.zcy.ghost.vivideo.dagger.component.DaggerActivityComponent;
+import com.zcy.ghost.vivideo.dagger.module.ActivityModule;
 
 import javax.inject.Inject;
 

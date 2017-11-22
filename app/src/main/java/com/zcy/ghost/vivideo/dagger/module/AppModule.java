@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.di.module;
+package com.zcy.ghost.vivideo.dagger.module;
 
 
 import com.zcy.ghost.vivideo.app.App;

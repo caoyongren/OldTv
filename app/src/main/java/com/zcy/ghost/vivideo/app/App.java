@@ -5,10 +5,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.support.v7.app.AppCompatDelegate;
 
-import com.zcy.ghost.vivideo.di.component.AppComponent;
-import com.zcy.ghost.vivideo.di.component.DaggerAppComponent;
-import com.zcy.ghost.vivideo.di.module.AppModule;
-import com.zcy.ghost.vivideo.di.module.HttpModule;
+import com.zcy.ghost.vivideo.dagger.component.AppComponent;
+import com.zcy.ghost.vivideo.dagger.component.DaggerAppComponent;
+import com.zcy.ghost.vivideo.dagger.module.AppModule;
+import com.zcy.ghost.vivideo.dagger.module.HttpModule;
 import com.zcy.ghost.vivideo.model.db.RealmHelper;
 
 import java.util.HashSet;

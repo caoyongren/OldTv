@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.di.qualifier;
+package com.zcy.ghost.vivideo.dagger.qualifier;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -14,6 +14,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Qualifier
 @Documented
 @Retention(RUNTIME)
-public @interface VideoUrl {
+public @interface GankUrl {
 
 }

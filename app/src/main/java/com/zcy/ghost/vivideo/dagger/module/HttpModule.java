@@ -1,12 +1,12 @@
-package com.zcy.ghost.vivideo.di.module;
+package com.zcy.ghost.vivideo.dagger.module;
 
 
 import android.util.Log;
 
 import com.zcy.ghost.vivideo.BuildConfig;
 import com.zcy.ghost.vivideo.app.Constants;
-import com.zcy.ghost.vivideo.di.qualifier.GankUrl;
-import com.zcy.ghost.vivideo.di.qualifier.VideoUrl;
+import com.zcy.ghost.vivideo.dagger.qualifier.GankUrl;
+import com.zcy.ghost.vivideo.dagger.qualifier.VideoUrl;
 import com.zcy.ghost.vivideo.model.http.api.GankApis;
 import com.zcy.ghost.vivideo.model.http.api.VideoApis;
 import com.zcy.ghost.vivideo.utils.system.SystemUtil;

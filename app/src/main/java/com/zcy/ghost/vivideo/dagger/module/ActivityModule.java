@@ -1,8 +1,8 @@
-package com.zcy.ghost.vivideo.di.module;
+package com.zcy.ghost.vivideo.dagger.module;
 
 import android.app.Activity;
 
-import com.zcy.ghost.vivideo.di.scope.ActivityScope;
+import com.zcy.ghost.vivideo.dagger.scope.ActivityScope;
 
 import dagger.Module;
 import dagger.Provides;

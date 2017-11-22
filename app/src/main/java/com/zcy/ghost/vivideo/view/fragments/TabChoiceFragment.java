@@ -122,6 +122,9 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
     @Override
     protected void lazyFetchData() {
         super.lazyFetchData();
+        if (MainActivity.FLAG) {
+            Log.i(MainActivity.DATA, "view: lazyFetchData");
+        }
         mPresenter.onRefresh();
     }
 

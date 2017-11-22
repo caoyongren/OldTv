@@ -1,9 +1,9 @@
-package com.zcy.ghost.vivideo.di.component;
+package com.zcy.ghost.vivideo.dagger.component;
 
 import android.app.Activity;
 
-import com.zcy.ghost.vivideo.di.module.FragmentModule;
-import com.zcy.ghost.vivideo.di.scope.FragmentScope;
+import com.zcy.ghost.vivideo.dagger.module.FragmentModule;
+import com.zcy.ghost.vivideo.dagger.scope.FragmentScope;
 import com.zcy.ghost.vivideo.view.fragments.CommentFragment;
 import com.zcy.ghost.vivideo.view.fragments.TabFindFragment;
 import com.zcy.ghost.vivideo.view.fragments.TabMySelfFragment;

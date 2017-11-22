@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.di.component.DaggerFragmentComponent;
-import com.zcy.ghost.vivideo.di.component.FragmentComponent;
-import com.zcy.ghost.vivideo.di.module.FragmentModule;
+import com.zcy.ghost.vivideo.dagger.component.DaggerFragmentComponent;
+import com.zcy.ghost.vivideo.dagger.component.FragmentComponent;
+import com.zcy.ghost.vivideo.dagger.module.FragmentModule;
 
 import javax.inject.Inject;
 
