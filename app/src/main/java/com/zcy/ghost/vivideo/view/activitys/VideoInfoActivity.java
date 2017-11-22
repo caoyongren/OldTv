@@ -45,19 +45,20 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
     public static final String VIDEO_INFO = "videoInfo";
 
     VideoInfo videoInfo;
-    @BindView(R.id.iv_collect)
+    @BindView(R.id.tv_header_iv_collect)
     ImageView ivCollect;
     @BindView(R.id.video_info_player)
     JCVideoPlayerStandard videoplayer;
     @BindView(R.id.fg_title_name)
     ColorTextView mTitleName;
     @BindView(R.id.video_info_tab_view_pager)
-    SmartTabLayout mViewpagertab;
-    @BindView(R.id.viewpager)
+    SmartTabLayout mVideoInfoTabViewpager;
+    @BindView(R.id.video_info_viewpager)
     SwipeViewPager mViewpager;
-    @BindView(R.id.circle_loading)
+
+    @BindView(R.id.video_info_circle_loading)
     LVGhost mLoading;
-    @BindView(R.id.rl_collect)
+    @BindView(R.id.tv_header_rl_collect)
     RelativeLayout rlCollect;
 
     VideoRes videoRes;
@@ -78,7 +79,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
                 .add(R.string.video_comment, CommentFragment.class)
                 .create());
         mViewpager.setAdapter(adapter);
-        mViewpagertab.setViewPager(mViewpager);
+        mVideoInfoTabViewpager.setViewPager(mViewpager);
         videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         videoplayer.backButton.setVisibility(View.GONE);
         videoplayer.titleTextView.setVisibility(View.GONE);
@@ -106,7 +107,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         super.onBackPressed();
     }
 
-    @OnClick(R.id.rl_back)
+    @OnClick(R.id.tv_header_rl_back)
     public void back() {
         finish();
     }
@@ -144,7 +145,7 @@ public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter> imp
         }
     }
 
-    @OnClick(R.id.rl_collect)
+    @OnClick(R.id.tv_header_rl_collect)
     public void onClick() {
         if (videoRes != null) {
             ivCollect.startAnimation(animation);

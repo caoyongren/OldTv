@@ -37,7 +37,7 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
 
     @BindView(R.id.rl_collect_clear)
     RelativeLayout rlCollectClear;
-    @BindView(R.id.rl_back)
+    @BindView(R.id.tv_header_rl_back)
     RelativeLayout rlBack;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
@@ -92,10 +92,10 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
         mAdapter.addAll(list);
     }
 
-    @OnClick({R.id.rl_back, R.id.rl_collect_clear})
+    @OnClick({R.id.tv_header_rl_back, R.id.rl_collect_clear})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rl_back:
+            case R.id.tv_header_rl_back:
                 if (mContext instanceof CollectionActivity) {
                     finish();
                 } else if (mContext instanceof HistoryActivity) {

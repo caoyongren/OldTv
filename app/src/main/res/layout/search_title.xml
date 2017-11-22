@@ -7,7 +7,7 @@
     android:paddingTop="20dp">
 
     <RelativeLayout
-        android:id="@+id/rl_back"
+        android:id="@+id/tv_header_rl_back"
         android:layout_width="40dp"
         android:layout_height="match_parent">
 

@@ -102,7 +102,7 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
         });
     }
 
-    @OnClick(R.id.rl_back)
+    @OnClick(R.id.tv_header_rl_back)
     public void back() {
         if (mContext instanceof VideoListActivity) {
             finish();

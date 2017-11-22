@@ -7,7 +7,7 @@
     android:paddingTop="20dp">
 
     <RelativeLayout
-        android:id="@+id/rl_back"
+        android:id="@+id/tv_header_rl_back"
         android:layout_width="@dimen/size_forty"
         android:layout_height="match_parent">
 
@@ -28,7 +28,7 @@
         android:textColor="?attr/md_title_color" />
 
     <RelativeLayout
-        android:id="@+id/rl_collect"
+        android:id="@+id/tv_header_rl_collect"
         android:layout_width="40dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
@@ -36,7 +36,7 @@
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/iv_collect"
+            android:id="@+id/tv_header_iv_collect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
