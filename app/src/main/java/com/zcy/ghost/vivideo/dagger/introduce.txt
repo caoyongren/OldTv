@@ -1,0 +1,150 @@
+　　　　Dagger 2 介绍
+-----------------
+1. 什么是Dagger 2
+  Dagger是android的一个依赖注入框架，有别于其他的依赖注入框架使用的反射机制，
+Dagger是利用编译时生成辅助类的方式来完成调用，所以效率有了很大的提升，非常适合用于Android开发。
+Google从square那儿接手了Dagger之后，号称将Dagger的效率又提升了13%。
+-----------------
+2. Dagger注释
+  @Inject
+  1. 修饰变量，表示这个变量为需要注入的依赖
+  　　＠Inject
+     EmployeePresenter employeePresenter;
+  2. 修饰构造函数，表示这个类需要被注入依赖时，Dagger会调用这个构造函数进行实例化；
+     @Inject
+     public EmployeePresenter() {
+     }
+
+  @Module
+    修饰类, 表示此类的方法用来提供依赖．
+
+
+  ＠Provides
+    只能用来修饰Module类中的方法，用来提供依赖的实例.
+
+  @Component
+    修饰接口，起到注入器的作用，是@Inject和@Module之间的桥梁。提供所有你定义类型的实例。
+
+  @Scope
+    在Dagger中，依赖只有singleton和非singleton之分:
+    @Singleton标记是用于Application-Lever的单例.
+    自定义的scope用于生命周期更短的依赖;
+
+  @Qualifier
+    当类的类型不足以区分依赖时，就要使用这个标记了.
+    比如: 注入两个String实例，这个时候没把发区分．就需要@Qualifier.
+
+============================================================
+应用：
+－－－－－－－－－－－－
+1. build.gradle(app)
+          classpath 'me.tatarka:gradle-retrolambda:3.2.4'
+          classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+
+2. build.gradle(Module)
+
+  apply plugin: 'com.neenbedankt.android-apt'
+  apply plugin: 'me.tatarka.retrolambda'
+
+  android {
+      compileOptions {
+          sourceCompatibility JavaVersion.VERSION_1_8
+          targetCompatibility JavaVersion.VERSION_1_8
+      }
+  }
+
+  dependencies {
+      apt 'com.google.dagger:dagger-compiler:2.4'
+      compile 'com.google.dagger:dagger:2.4'
+      provided 'org.glassfish:javax.annotation:10.0-b28'
+  }
+
+3. 若是studio 3.0 : annotationProcessor 的功能来完全代替 android-apt
+
+4. 第一个inject 实例
+   1. class Poetry {
+       private String mPemo;
+
+       //①标记构造函数
+       @Inject
+       public Poetry() {
+         mPemo = "dagger 2";
+       }
+
+       public String getPemo() {
+         return mPemo;
+       }
+   }
+
+   2. MainActivity中注入
+   public class MainActivity extends AppCompatActivity {
+       //②　注入mPoetry
+       @Inject
+       Poetry mPoetry;
+
+       ....
+   }
+
+   3. 注入需要连接
+   ＠Component
+   public interface MainComponent {
+
+       ③连接器中的注入方法
+       void inject(MainActivity activity);
+   }
+
+   4. MainActivity中通过注入方法实现注入
+
+   DaggerMainComponent.builder()
+                      .builder()
+                      .inject(this);
+
+   --------------------------------
+
+5. 第二个案例：　＠Module
+    1.当类中存在多个构造函数时, ＠Inject也只能注解其中一个构造函数, 不能注解多个构造函数．
+    创建module包 , 构造器上使用@Provides
+    ＠Module
+    public class MainModule {
+
+      @Provides
+      public Gson provideGson() {
+        return new Gson();
+      }
+    }
+
+    2. 建立关联
+    @Component(modules = MainModule.class)
+    public interface MainComponent {
+      ...
+    }
+
+    3. MainActiivty中就可以使用mGson的实例了
+
+
+ －－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+ 扩展
+ １.Component可以依赖多个Module.
+
+  ＠Component(modules = {MainModule.class, PoetryModule.class})
+  public interface MainComponent {
+
+  }
+
+  2. 实例创建先Module 后　inject
+
+
+  3.@Scope
+  当MainComponent中存在多个注入时，　在MainActivity中会多次創建实例；
+  新建
+  @Scope
+  @Retention(RetentionPolicy.RUNTIME)
+  public @interface PoetryScope {
+
+  }
+
+   同时在Module与Component加上这个自定义Scope:
+
+===========
+end
