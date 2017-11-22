@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.view.activitys;
+package com.zcy.ghost.vivideo.view.activitys.menu;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
@@ -14,6 +14,8 @@ import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.CollectionPresenter;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
+import com.zcy.ghost.vivideo.view.activitys.HistoryActivity;
+import com.zcy.ghost.vivideo.view.activitys.VideoInfoActivity;
 import com.zcy.ghost.vivideo.view.adapter.VideoListAdapter;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;

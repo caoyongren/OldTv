@@ -14,6 +14,7 @@ import com.zcy.ghost.vivideo.model.bean.VideoType;
 import com.zcy.ghost.vivideo.presenter.CollectionPresenter;
 import com.zcy.ghost.vivideo.presenter.VideoInfoPresenter;
 import com.zcy.ghost.vivideo.presenter.contract.CollectionContract;
+import com.zcy.ghost.vivideo.view.activitys.menu.CollectionActivity;
 import com.zcy.ghost.vivideo.view.adapter.VideoListAdapter;
 import com.zcy.ghost.vivideo.utils.BeanUtil;
 import com.zcy.ghost.vivideo.utils.EventUtil;

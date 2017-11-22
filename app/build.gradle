@@ -98,7 +98,7 @@ dependencies {
     compile rootProject.ext.dependencies["material-design-iconic-typeface"]
     compile rootProject.ext.dependencies["fontawesome-typeface"]
     compile rootProject.ext.dependencies["foundation-icons-typeface"]
-    //di
+    //dagger
     compile rootProject.ext.dependencies["dagger"]
     compile rootProject.ext.dependencies["dagger-compiler"]
     compile rootProject.ext.dependencies["butterknife"]

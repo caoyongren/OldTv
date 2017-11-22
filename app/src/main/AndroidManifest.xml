@@ -33,7 +33,7 @@
             android:name=".view.activitys.VideoListActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name=".view.activitys.CollectionActivity"
+            android:name=".view.activitys.menu.CollectionActivity"
             android:theme="@style/CustomTransparent" />
         <activity
             android:name=".view.activitys.HistoryActivity"
@@ -44,7 +44,7 @@
             android:value="3b5a14c609a54bfd369ec43ead88852a" />
 
         <activity
-            android:name=".view.activitys.SettingActivity"
+            android:name=".view.activitys.menu.SettingActivity"
             android:theme="@style/CustomTransparent" />
         <activity
             android:name=".view.activitys.SearchActivity"
@@ -58,7 +58,7 @@
         <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
         <!--android:screenOrientation="portrait"-->
         <activity
-            android:name=".view.activitys.WelfareActivity"
+            android:name=".view.activitys.menu.WelfareActivity"
             android:theme="@style/CustomTransparent" />
     </application>
 

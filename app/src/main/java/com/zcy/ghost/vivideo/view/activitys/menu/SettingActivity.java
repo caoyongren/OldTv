@@ -1,4 +1,4 @@
-package com.zcy.ghost.vivideo.view.activitys;
+package com.zcy.ghost.vivideo.view.activitys.menu;
 
 import android.content.ClipboardManager;
 import android.content.Context;

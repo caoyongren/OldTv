@@ -144,7 +144,45 @@ Google从square那儿接手了Dagger之后，号称将Dagger的效率又提升�
 
   }
 
-   同时在Module与Component加上这个自定义Scope:
+  同时在Module与Component加上这个自定义Scope:
 
 ===========
+@Qualifier
+
+当Activity里面想要注入两个不同的Poetry实例，我们需要在AModule下添加一个
+生成Poetry的方法：　如下面这样, Dagger2无法区分哪个方法生成Poetry实例；
+
+@Module
+public class AModule {
+
+    @AScope
+    @Provides
+    public Poetry getPoetry(){
+        return new Poetry("万物美好");
+    }
+
+    @AScope
+    @Provides
+    public Poetry getOtherPoetry(){
+        return new Poetry("我在中间");
+    }
+}
+
+解决:
+@Qualifier
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PoetryQualifier {
+    String value() default "";
+}
+
+
+在Amodule的方法中
+
+＠PoetryQualifier("A")
+
+@PoetryQualifier("B)
+
+靠谱的demo: https://github.com/EvilBT/-Dagger2Demo
+
 end
