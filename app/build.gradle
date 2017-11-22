@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'android-apt'
 apply plugin: 'realm-android'
 
 android {
@@ -35,18 +34,6 @@ android {
         }
     }
     buildTypes {
-
-        debug {
-            // 显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-
-            versionNameSuffix "-debug"
-            minifyEnabled false
-            zipAlignEnabled false
-            shrinkResources false
-            signingConfig signingConfigs.debug
-        }
-
         release {
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "true"
@@ -61,6 +48,7 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def outputFile = output.outputFile
@@ -114,7 +102,7 @@ dependencies {
     compile rootProject.ext.dependencies["dagger"]
     compile rootProject.ext.dependencies["dagger-compiler"]
     compile rootProject.ext.dependencies["butterknife"]
-    //    apt rootProject.ext.dependencies["butterknife-compiler"]
+    // rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     provided rootProject.ext.dependencies["annotation"]
     compile rootProject.ext.dependencies["annotations"]
@@ -129,6 +117,6 @@ dependencies {
     releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
     debugCompile rootProject.ext.dependencies["leakcanary-android"]
     releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
-
+    //针对3.0的配置  3.0中apt --> annotationProcessor
     annotationProcessor"com.google.dagger:dagger-compiler:2.0.2"
 }
