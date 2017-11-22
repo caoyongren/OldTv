@@ -35,7 +35,6 @@ import android.util.DisplayMetrics;
 
 import com.zcy.ghost.vivideo.app.App;
 import com.zcy.ghost.vivideo.model.bean.AppInfo;
-import com.zcy.ghost.vivideo.utils.debug.LogUtil;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -553,6 +552,7 @@ public class SystemUtils {
      * @param context
      * @return
      */
+    @SuppressLint("MissingPermission")
     public static String getSerialNumber(Context context) {
         String serial = null;
         try {
@@ -563,7 +563,6 @@ public class SystemUtils {
                 TelephonyManager tManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
                 serial = tManager.getDeviceId();
             }
-            LogUtil.d(SystemUtils.class, "Serial:" + serial);
         } catch (Exception ignored) {
             ignored.printStackTrace();
         }

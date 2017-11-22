@@ -10,7 +10,6 @@ import android.view.WindowManager;
 
 import com.zcy.ghost.vivideo.R;
 import com.zcy.ghost.vivideo.app.App;
-import com.zcy.ghost.vivideo.utils.debug.LogUtil;
 import com.zcy.ghost.vivideo.utils.PreUtils;
 import com.zcy.ghost.vivideo.utils.ScreenUtil;
 import com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout;
@@ -33,7 +32,6 @@ public abstract class BaseActivity extends SupportActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onCreate");
         init();
 
         setContentView(getLayout());
@@ -53,38 +51,32 @@ public abstract class BaseActivity extends SupportActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onStart");
         setTitleHeight(getRootView(this));
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onRestart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.d(this.getClass(), this.getClass().getName() + "------>onDestroy");
         if (mUnBinder != null)
             mUnBinder.unbind();
         App.getInstance().unregisterActivity(this);

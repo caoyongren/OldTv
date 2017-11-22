@@ -8,7 +8,6 @@ import com.zcy.ghost.vivideo.model.exception.ExceptionEngine;
 import com.zcy.ghost.vivideo.model.exception.ServerException;
 import com.zcy.ghost.vivideo.model.http.api.VideoApis;
 import com.zcy.ghost.vivideo.model.http.response.VideoHttpResponse;
-import com.zcy.ghost.vivideo.utils.debug.LogUtil;
 import com.zcy.ghost.vivideo.utils.system.SystemUtils;
 
 import java.io.File;
@@ -60,8 +59,6 @@ public class HttpMethods {
                     int tryCount = 0;
                     Response response = chain.proceed(request);
                     while (!response.isSuccessful() && tryCount < 3) {
-
-                        LogUtil.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
 
                         tryCount++;
 

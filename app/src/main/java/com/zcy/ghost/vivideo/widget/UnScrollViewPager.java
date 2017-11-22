@@ -6,8 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Scroller;
 
-import com.zcy.ghost.vivideo.utils.debug.LogUtil;
-
 public class UnScrollViewPager extends ViewPager {
 
     private boolean isScrollable = false;
@@ -32,7 +30,6 @@ public class UnScrollViewPager extends ViewPager {
         if (isScrollable)
             return super.onTouchEvent(arg0);
         boolean b = super.onTouchEvent(arg0);
-        LogUtil.e(UnScrollViewPager.class, "onTouchEvent" + b);
         return false;
     }
 
