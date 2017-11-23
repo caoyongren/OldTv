@@ -1,5 +1,5 @@
 <configuration>
-	<property name="LOG_DIR" value="${EXTERNAL_STORAGE}/Android/data/com.cao.old.vivideo/.logs"/>
+	<property name="LOG_DIR" value="${EXTERNAL_STORAGE}/Android/data/com.master.old.vivideo/.logs"/>
 
 	<appender name="LOGCAT" class="ch.qos.logback.classic.android.LogcatAppender">
 		<tagEncoder>

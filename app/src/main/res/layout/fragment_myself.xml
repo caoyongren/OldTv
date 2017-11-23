@@ -27,7 +27,7 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <com.cao.old.tv.widget.theme.ColorRelativeLayout
+        <com.master.old.tv.widget.theme.ColorRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:background="?attr/mine_background"
@@ -38,7 +38,7 @@
                 style="@style/lmatch_hwrap_style"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@mipmap/my_set" />
-        </com.cao.old.tv.widget.theme.ColorRelativeLayout>
+        </com.master.old.tv.widget.theme.ColorRelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
     <!--包含可滑动的布局内容(RecyclerView,NestedScrollView,不支持ListView，ScrollView)

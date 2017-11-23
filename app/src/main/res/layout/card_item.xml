@@ -9,7 +9,7 @@
 
     <FrameLayout style="@style/both_match_style">
 
-        <com.cao.old.tv.widget.theme.RoundedImageView
+        <com.master.old.tv.widget.theme.RoundedImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"

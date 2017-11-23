@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.cao.old.tv.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                               xmlns:app="http://schemas.android.com/apk/res-auto"
-                                               style="@style/both_match_style"
-                                               android:background="?attr/background"
-                                               android:orientation="vertical">
+<com.master.old.tv.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                  style="@style/both_match_style"
+                                                  android:background="?attr/background"
+                                                  android:orientation="vertical">
 
     <include layout="@layout/include_video_header_title" />
 
@@ -14,4 +14,4 @@
         app:layout_empty="@layout/view_empty"
         app:layout_progress="@layout/view_progress"
         app:scrollbars="none" />
-</com.cao.old.tv.widget.theme.ColorLinearLayout>
+</com.master.old.tv.widget.theme.ColorLinearLayout>

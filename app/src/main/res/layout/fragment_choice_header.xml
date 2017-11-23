@@ -11,7 +11,7 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
-    <com.cao.old.tv.widget.RollPagerView
+    <com.master.old.tv.widget.RollPagerView
         android:id="@+id/fg_choice_banner"
         android:layout_width="match_parent"
         android:layout_height="200dp"

@@ -1,15 +1,15 @@
-<com.cao.old.tv.widget.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                    android:id="@+id/resideLayout"
-                                    style="@style/container_style">
+<com.master.old.tv.widget.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:id="@+id/resideLayout"
+                                       style="@style/container_style">
 
     <include layout="@layout/include_drawer_layout"/>
 
     <!--　底部的选项卡　-->
-    <com.cao.old.tv.widget.theme.ColorRelativeLayout
+    <com.master.old.tv.widget.theme.ColorRelativeLayout
         style="@style/both_match_style"
         android:background="?attr/background">
 
-        <com.cao.old.tv.widget.UnScrollViewPager
+        <com.master.old.tv.widget.UnScrollViewPager
             android:id="@+id/viewpager_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,6 +50,6 @@
                 android:text="@string/myself" />
 
         </RadioGroup>
-    </com.cao.old.tv.widget.theme.ColorRelativeLayout>
+    </com.master.old.tv.widget.theme.ColorRelativeLayout>
 
-</com.cao.old.tv.widget.ResideLayout>
+</com.master.old.tv.widget.ResideLayout>
