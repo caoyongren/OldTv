@@ -35,8 +35,6 @@ android {
     }
     buildTypes {
         release {
-            // 不显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "true"
             //Zipalign优化
             zipAlignEnabled true
             // 移除无用的resource文件
