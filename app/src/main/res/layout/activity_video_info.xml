@@ -3,7 +3,7 @@
 <!--
 影片详情
 -->
-<com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout
+<com.cao.old.tv.widget.theme.ColorLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/both_match_style"
@@ -58,16 +58,16 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <com.zcy.ghost.vivideo.widget.SwipeViewPager
+        <com.cao.old.tv.widget.SwipeViewPager
             android:id="@+id/video_info_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/video_info_ll_introduce" />
 
-        <com.zcy.ghost.vivideo.widget.LVGhost
+        <com.cao.old.tv.widget.LVGhost
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/video_info_circle_loading"
             style="@style/loading_style"/>
     </RelativeLayout>
 
-</com.zcy.ghost.vivideo.widget.theme.ColorLinearLayout>
+</com.cao.old.tv.widget.theme.ColorLinearLayout>

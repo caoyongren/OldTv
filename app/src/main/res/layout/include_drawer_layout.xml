@@ -4,7 +4,7 @@
               android:layout_height="match_parent">
 
     <!--　抽屉的布局　-->
-    <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
+    <com.cao.old.tv.widget.theme.ColorRelativeLayout
         android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -113,6 +113,6 @@
 
         </LinearLayout>
 
-    </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
+    </com.cao.old.tv.widget.theme.ColorRelativeLayout>
 
 </LinearLayout>

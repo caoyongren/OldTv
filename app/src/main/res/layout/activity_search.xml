@@ -6,7 +6,7 @@
     android:background="?attr/background"
     android:orientation="vertical">
 
-    <com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout
+    <com.cao.old.tv.widget.theme.ColorRelativeLayout
         android:id="@+id/normal_title"
         android:layout_width="match_parent"
         android:layout_height="86dp"
@@ -63,7 +63,7 @@
             android:text="@android:string/cancel"
             android:textColor="@color/white" />
 
-    </com.zcy.ghost.vivideo.widget.theme.ColorRelativeLayout>
+    </com.cao.old.tv.widget.theme.ColorRelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_his_rec"
@@ -95,7 +95,7 @@
             </RelativeLayout>
 
 
-            <com.zcy.ghost.vivideo.widget.WordWrapView
+            <com.cao.old.tv.widget.WordWrapView
                 android:id="@+id/wv_search_history"
                 style="@style/lmatch_hwrap_style"
                 android:layout_below="@+id/tv_search_history"
