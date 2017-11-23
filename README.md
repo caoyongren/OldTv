@@ -2,7 +2,7 @@
 
 ***
 
-## 个人改名为OldTv 专注与学习知识
+## 个人改名为OldTv 专注于学习知识
 
 OldTV，一款纯粹的在线视频App，基于Material Design + MVP + Dagger2 + RxJava + Retrofit + Realm + Glide 
 
