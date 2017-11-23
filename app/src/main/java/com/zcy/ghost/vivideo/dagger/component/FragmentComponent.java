@@ -18,16 +18,15 @@ public interface FragmentComponent {
 
     Activity getActivity();
 
-    void inject(TabFindFragment dailyFragment);
+    void inject(TabFindFragment findFragment);//发现
 
-    void inject(TabTopicFragment dailyFragment);
+    void inject(TabTopicFragment topicFragment);//专题
 
-    void inject(TabChoiceFragment tabChoiceFragment);
+    void inject(TabChoiceFragment tabChoiceFragment);//精选
 
-    void inject(TabMySelfFragment tabMySelfFragment);
+    void inject(TabMySelfFragment tabMySelfFragment);//我的
 
-    void inject(CommentFragment commentFragment);
+    void inject(CommentFragment commentFragment);//评论
 
-//    void inject(VideoIntroFragment videoIntroFragment);
-
+    //void inject(VideoIntroFragment videoIntroFragment);
 }

@@ -47,5 +47,4 @@ public class WelfareAdapter extends RecyclerArrayAdapter<GankItemBean> {
                     .into(imgPicture);
         }
     }
-
 }

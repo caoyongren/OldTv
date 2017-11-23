@@ -24,7 +24,7 @@ import dagger.Component;
 public interface ActivityComponent {
     Activity getActivity();
 
-    void inject(VideoInfoActivity videoInfoActivity);
+    void inject(VideoInfoActivity videoInfoActivity);//
 
     void inject(WelcomeActivity welcomeActivity);
 

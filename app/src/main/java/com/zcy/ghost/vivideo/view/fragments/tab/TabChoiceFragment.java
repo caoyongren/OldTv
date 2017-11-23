@@ -303,6 +303,11 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
 
     @Override
     protected void initInject() {
+        /**
+         * 注解实例的成功的连接；
+         * 通过{@FragmentComponent} method : void inject(TabChoiceFragment tabChoiceFragment);
+         * 实现；
+         * */
         getFragmentComponent().inject(this);
     }
 }
