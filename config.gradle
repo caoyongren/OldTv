@@ -1,3 +1,4 @@
+
 ext {
 
     android = [
@@ -80,6 +81,5 @@ ext {
             "leakcanary-android"             : "com.squareup.leakcanary:leakcanary-android:${dependVersion.leakcanary}",
             "leakcanary-android-no-op"       : "com.squareup.leakcanary:leakcanary-android-no-op:${dependVersion.leakcanary}"
     ]
-
 
 }
