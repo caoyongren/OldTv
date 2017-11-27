@@ -14,10 +14,17 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 /**
- * Created by lumingmin on 16/6/29.
+ * Create by MasterMan
+ * Description:
+ *   
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date:  
  */
 
-public class LVGhost extends View {
+public class OldTvView extends View {
 
 
     float mWidth = 0f;
@@ -29,15 +36,15 @@ public class LVGhost extends View {
     int mskirtH = 0;
     Path path = new Path();
 
-    public LVGhost(Context context) {
+    public OldTvView(Context context) {
         this(context, null);
     }
 
-    public LVGhost(Context context, AttributeSet attrs) {
+    public OldTvView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LVGhost(Context context, AttributeSet attrs, int defStyleAttr) {
+    public OldTvView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initPaint();
     }

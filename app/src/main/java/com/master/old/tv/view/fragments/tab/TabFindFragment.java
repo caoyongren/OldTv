@@ -20,7 +20,7 @@ import com.master.old.tv.view.adapter.SwipeDeckAdapter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.ScreenUtil;
-import com.master.old.tv.widget.LVGhost;
+import com.master.old.tv.widget.OldTvView;
 import com.master.old.tv.widget.SwipeDeck;
 import com.master.old.tv.widget.theme.ColorTextView;
 
@@ -44,7 +44,7 @@ public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implemen
     @BindView(R.id.swipeLayout)
     SwipeFrameLayout swipeLayout;
     @BindView(R.id.loading)
-    LVGhost loading;
+    OldTvView loading;
     @BindView(R.id.btn_next)
     Button btn_next;
     @BindView(R.id.tv_nomore)
