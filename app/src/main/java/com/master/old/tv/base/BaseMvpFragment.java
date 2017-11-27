@@ -51,6 +51,7 @@ public abstract class BaseMvpFragment<T extends BasePresenter>
 
     protected FragmentComponent getFragmentComponent() {
         //注入注解
+        //DaggerFragmentComponent是在编译的时候生成的。
         return DaggerFragmentComponent.builder()
                 .appComponent(App.getAppComponent())
                 .fragmentModule(getFragmentModule())

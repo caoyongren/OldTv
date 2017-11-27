@@ -184,5 +184,5 @@ public @interface PoetryQualifier {
 @PoetryQualifier("B)
 
 靠谱的demo: https://github.com/EvilBT/-Dagger2Demo
-
+blog: http://blog.fidroid.com/post/android/dagger-on-android-dagger2xiang-jie
 end
