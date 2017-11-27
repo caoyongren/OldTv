@@ -59,10 +59,14 @@ android {
     }
     buildToolsVersion '26.0.2'
 }
+
+
 repositories {
     maven { url "https://jitpack.io" }
     google()
 }
+
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -119,3 +123,14 @@ dependencies {
     //针对3.0的配置  3.0中apt --> annotationProcessor
     annotationProcessor"com.google.dagger:dagger-compiler:2.0.2"
 }
+/**
+* Gradle Android 项目中所包含各个文件和文件夹简要描述
+ * １. .gradle: 保存临时Gradle输出/缓存/支持其他元数据。
+ * 2. app: 根据名称, 在根目录的一个文件夹下嵌入单个模块，　每个模块都包含一个Gradle文件。
+ * 3. gradle : 文件夹下包含Gradle包装器。　一个JAR文件。
+ * 4. build.gradle: 整个项目构建逻辑在这个文件中。
+ * 5. gradle.properties: Gradle和JVM属性保存在这个文件中。
+ * 6. local.properties: 定义与本地机器相关的属性。
+ * 7. settings.gradle: 此文件在多项目构建或定义子项目的项目中是必须的。
+ * 8. build: 所有输出都在此文件中。
+* */
