@@ -79,6 +79,8 @@ repositories {
  * 　　优势：　当module多时可以更方便配置。
  *
  * 使用: apply from: "config.gradle"
+ *
+ * blog: http://www.jianshu.com/p/a092bcc3de7d
  */
 
 dependencies {
