@@ -12,14 +12,14 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
+import com.master.old.tv.presenter.tab.TabMyselfPresenter;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
-import com.master.old.tv.presenter.MinePresenter;
-import com.master.old.tv.presenter.VideoInfoPresenter;
-import com.master.old.tv.presenter.contract.MineContract;
+import com.master.old.tv.presenter.contract.tab.TabMyselfContract;
 import com.master.old.tv.view.activitys.menu.CollectionActivity;
 import com.master.old.tv.view.activitys.HistoryActivity;
 import com.master.old.tv.view.activitys.menu.SettingActivity;
@@ -46,7 +46,7 @@ import static com.master.old.tv.R.id.fg_choice_recyclerView;
  * Creator: yxc
  * date: $date $time
  */
-public class TabMySelfFragment extends BaseMvpFragment<MinePresenter> implements MineContract.View {
+public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter> implements TabMyselfContract.View {
     public static final String SET_THEME = "SET_THEME";
     MineHistoryVideoListAdapter mAdapter;
     VideoInfo videoInfo;
@@ -145,7 +145,7 @@ public class TabMySelfFragment extends BaseMvpFragment<MinePresenter> implements
         }
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Refresh_History_List)
+    @Subscriber(tag = TabChoicePresenter.VideoInfoPresenter.Refresh_History_List)
     public void setData(String tag) {
         mPresenter.getHistoryData();
     }

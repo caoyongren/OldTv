@@ -19,7 +19,7 @@
     <!--android:layout_centerHorizontal="true"-->
     <!--android:layout_centerVertical="true"-->
     <!--android:layout_gravity="center"/>-->
-<com.master.old.tv.widget.LVGhost
+<com.master.old.tv.widget.OldTvView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loading"
     style="@style/loading_style"/>

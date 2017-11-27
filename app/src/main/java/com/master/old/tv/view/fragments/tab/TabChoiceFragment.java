@@ -23,8 +23,8 @@ import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoRes;
-import com.master.old.tv.presenter.TabChoicePresenter;
-import com.master.old.tv.presenter.contract.RecommendContract;
+import com.master.old.tv.presenter.contract.tab.TabChoiceContract;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.view.activitys.MainActivity;
@@ -51,7 +51,7 @@ import butterknife.ButterKnife;
  *
  */
 public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> implements
-                                       RecommendContract.View, SwipeRefreshLayout.OnRefreshListener,
+                                       TabChoiceContract.View, SwipeRefreshLayout.OnRefreshListener,
                                        View.OnClickListener {
 
     private static final String TAG = "TabChoiceFragment";

@@ -14,7 +14,7 @@ import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.CommentPresenter;
-import com.master.old.tv.presenter.VideoInfoPresenter;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.contract.CommentContract;
 import com.master.old.tv.view.adapter.CommentAdapter;
 import com.master.old.tv.utils.EventUtil;
@@ -127,7 +127,7 @@ public class CommentFragment extends BaseMvpFragment<CommentPresenter> implement
         EventUtil.showToast(mContext, msg);
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Put_DataId)
+    @Subscriber(tag = TabChoicePresenter.VideoInfoPresenter.Put_DataId)
     public void setData(String dataId) {
         mPresenter.setMediaId(dataId);
         mPresenter.onRefresh();

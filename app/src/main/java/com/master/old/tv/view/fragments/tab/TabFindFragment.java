@@ -14,13 +14,13 @@ import com.master.old.tv.app.Constants;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.model.bean.VideoType;
-import com.master.old.tv.presenter.DiscoverPresenter;
-import com.master.old.tv.presenter.contract.DiscoverContract;
+import com.master.old.tv.presenter.tab.TabFindPresenter;
+import com.master.old.tv.presenter.contract.tab.TabFinderContract;
 import com.master.old.tv.view.adapter.SwipeDeckAdapter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.ScreenUtil;
-import com.master.old.tv.widget.LVGhost;
+import com.master.old.tv.widget.OldTvView;
 import com.master.old.tv.widget.SwipeDeck;
 import com.master.old.tv.widget.theme.ColorTextView;
 
@@ -35,7 +35,7 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: $date $time
  */
-public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implements DiscoverContract.View {
+public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implements TabFinderContract.View {
 
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
@@ -44,7 +44,7 @@ public class TabFindFragment extends BaseMvpFragment<DiscoverPresenter> implemen
     @BindView(R.id.swipeLayout)
     SwipeFrameLayout swipeLayout;
     @BindView(R.id.loading)
-    LVGhost loading;
+    OldTvView loading;
     @BindView(R.id.btn_next)
     Button btn_next;
     @BindView(R.id.tv_nomore)

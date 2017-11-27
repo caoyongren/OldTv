@@ -64,7 +64,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/video_info_ll_introduce" />
 
-        <com.master.old.tv.widget.LVGhost
+        <com.master.old.tv.widget.OldTvView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/video_info_circle_loading"
             style="@style/loading_style"/>

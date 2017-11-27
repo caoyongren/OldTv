@@ -13,8 +13,8 @@ import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoRes;
-import com.master.old.tv.presenter.ClassificationPresenter;
-import com.master.old.tv.presenter.contract.ClassificationContract;
+import com.master.old.tv.presenter.tab.TabTopicPresenter;
+import com.master.old.tv.presenter.contract.tab.TabTopicContract;
 import com.master.old.tv.view.activitys.VideoListActivity;
 import com.master.old.tv.view.adapter.TabTopicAdapter;
 import com.master.old.tv.utils.EventUtil;
@@ -32,7 +32,7 @@ import butterknife.BindView;
  * Creator: yxc
  * date: 2016/9/21 17:45
  */
-public class TabTopicFragment extends BaseMvpFragment<ClassificationPresenter> implements ClassificationContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class TabTopicFragment extends BaseMvpFragment<TabTopicPresenter> implements TabTopicContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;

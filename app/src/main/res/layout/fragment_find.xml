@@ -66,7 +66,7 @@
             <!--circleprogress:color1="@android:color/holo_red_light"-->
             <!--circleprogress:color2="@android:color/holo_green_light"-->
             <!--circleprogress:color3="@android:color/holo_blue_light" />-->
-        <com.master.old.tv.widget.LVGhost
+        <com.master.old.tv.widget.OldTvView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/loading"
             style="@style/loading_style"/>
