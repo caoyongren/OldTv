@@ -1,1 +1,2 @@
 include ':app'
+//仅定义了App子项目的路径。
