@@ -4,7 +4,7 @@ import com.master.old.tv.base.RxPresenter;
 import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.model.http.response.VideoHttpResponse;
 import com.master.old.tv.model.net.RetrofitHelper;
-import com.master.old.tv.presenter.contract.DiscoverContract;
+import com.master.old.tv.presenter.contract.tab.TabFinderContract;
 import com.master.old.tv.utils.RxUtil;
 import com.master.old.tv.utils.StringUtils;
 import com.master.old.tv.utils.system.SystemUtils;
@@ -20,7 +20,7 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class TabFindPresenter extends RxPresenter<DiscoverContract.View> implements DiscoverContract.Presenter {
+public class TabFindPresenter extends RxPresenter<TabFinderContract.View> implements TabFinderContract.Presenter {
     final String catalogId = "402834815584e463015584e539330016";
 
     int max = 108;

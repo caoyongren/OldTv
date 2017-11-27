@@ -15,7 +15,7 @@ import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.tab.TabFindPresenter;
-import com.master.old.tv.presenter.contract.DiscoverContract;
+import com.master.old.tv.presenter.contract.tab.TabFinderContract;
 import com.master.old.tv.view.adapter.SwipeDeckAdapter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.PreUtils;
@@ -35,7 +35,7 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: $date $time
  */
-public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implements DiscoverContract.View {
+public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implements TabFinderContract.View {
 
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;

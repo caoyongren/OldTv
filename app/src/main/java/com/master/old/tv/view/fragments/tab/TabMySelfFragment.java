@@ -19,7 +19,7 @@ import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
-import com.master.old.tv.presenter.contract.MineContract;
+import com.master.old.tv.presenter.contract.tab.TabMyselfContract;
 import com.master.old.tv.view.activitys.menu.CollectionActivity;
 import com.master.old.tv.view.activitys.HistoryActivity;
 import com.master.old.tv.view.activitys.menu.SettingActivity;
@@ -46,7 +46,7 @@ import static com.master.old.tv.R.id.fg_choice_recyclerView;
  * Creator: yxc
  * date: $date $time
  */
-public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter> implements MineContract.View {
+public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter> implements TabMyselfContract.View {
     public static final String SET_THEME = "SET_THEME";
     MineHistoryVideoListAdapter mAdapter;
     VideoInfo videoInfo;

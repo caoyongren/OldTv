@@ -1,4 +1,4 @@
-package com.master.old.tv.presenter.contract;
+package com.master.old.tv.presenter.contract.tab;
 
 
 import com.master.old.tv.base.BasePresenter;
@@ -12,7 +12,7 @@ import java.util.List;
  * Creator: cp
  * date: 2016/9/29 12:19
  */
-public interface MineContract {
+public interface TabMyselfContract {
 
     interface View extends BaseView {
 

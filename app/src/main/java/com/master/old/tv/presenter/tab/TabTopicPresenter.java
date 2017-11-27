@@ -5,7 +5,7 @@ import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.model.exception.ApiException;
 import com.master.old.tv.model.net.HttpMethods;
 import com.master.old.tv.model.net.MyObserver;
-import com.master.old.tv.presenter.contract.ClassificationContract;
+import com.master.old.tv.presenter.contract.tab.TabTopicContract;
 
 import javax.inject.Inject;
 
@@ -14,7 +14,7 @@ import javax.inject.Inject;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class TabTopicPresenter extends RxPresenter<ClassificationContract.View> implements ClassificationContract.Presenter {
+public class TabTopicPresenter extends RxPresenter<TabTopicContract.View> implements TabTopicContract.Presenter {
     int page = 0;
 
     @Inject

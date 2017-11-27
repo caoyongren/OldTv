@@ -10,7 +10,7 @@ import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.model.db.RealmHelper;
 import com.master.old.tv.model.http.response.VideoHttpResponse;
 import com.master.old.tv.model.net.RetrofitHelper;
-import com.master.old.tv.presenter.contract.RecommendContract;
+import com.master.old.tv.presenter.contract.tab.TabChoiceContract;
 import com.master.old.tv.presenter.contract.VideoInfoContract;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.RxUtil;
@@ -37,8 +37,8 @@ import rx.functions.Action1;
  * Motto: 坚持自己的选择, 不动摇！
  * Date: 2017/9/21 16:26
  */
-public class TabChoicePresenter extends RxPresenter<RecommendContract.View>
-                                implements RecommendContract.Presenter {
+public class TabChoicePresenter extends RxPresenter<TabChoiceContract.View>
+                                implements TabChoiceContract.Presenter {
     private static final String TAG = "TabChoicePresenter";
     int page = 0;
 

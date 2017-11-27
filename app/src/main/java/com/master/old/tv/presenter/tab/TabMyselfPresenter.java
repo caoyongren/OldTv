@@ -4,7 +4,7 @@ import com.master.old.tv.base.RxPresenter;
 import com.master.old.tv.model.bean.Record;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.model.db.RealmHelper;
-import com.master.old.tv.presenter.contract.MineContract;
+import com.master.old.tv.presenter.contract.tab.TabMyselfContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import javax.inject.Inject;
  * Creator: yxc
  * date: 2016/9/29 12:19
  */
-public class TabMyselfPresenter extends RxPresenter<MineContract.View> implements MineContract.Presenter {
+public class TabMyselfPresenter extends RxPresenter<TabMyselfContract.View> implements TabMyselfContract.Presenter {
     public static final int maxSize = 30;
 
     @Inject
