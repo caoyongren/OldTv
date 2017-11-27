@@ -34,6 +34,8 @@ android {
             keyPassword "zcyghost"
         }
     }
+    //控制构建的输出，它能够覆盖控制构建输出的其他配置。
+    //使用这个可以定义用于发布到Google play商店的特殊配置。
     buildTypes {
         release {
             //Zipalign优化
@@ -66,6 +68,18 @@ repositories {
     google()
 }
 
+/***
+ * 定义app的所有的依赖：
+ * 　　第一行: fileTree方法调用本地依赖。
+ * 　　　　包含libs子文件夹中的所有JAR文件。
+ * 　　第二行：声明了一个外部依赖，从远程仓库获取。
+ * 　　　公司id + 模块名称　+ 具体版本
+ *
+ * 本项目使用脚本config.gradle进行脚本统一管理
+ * 　　优势：　当module多时可以更方便配置。
+ *
+ * 使用: apply from: "config.gradle"
+ */
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
