@@ -23,7 +23,7 @@ import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoRes;
-import com.master.old.tv.presenter.TabChoicePresenter;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.contract.RecommendContract;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;

@@ -1,4 +1,4 @@
-package com.master.old.tv.presenter;
+package com.master.old.tv.presenter.tab;
 
 import com.master.old.tv.base.RxPresenter;
 import com.master.old.tv.model.bean.VideoRes;
@@ -10,15 +10,15 @@ import com.master.old.tv.presenter.contract.ClassificationContract;
 import javax.inject.Inject;
 
 /**
- * Description: ClassificationPresenter
+ * Description: TabTopicPresenter
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class ClassificationPresenter extends RxPresenter<ClassificationContract.View> implements ClassificationContract.Presenter {
+public class TabTopicPresenter extends RxPresenter<ClassificationContract.View> implements ClassificationContract.Presenter {
     int page = 0;
 
     @Inject
-    public ClassificationPresenter() {
+    public TabTopicPresenter() {
     }
 
     @Override

@@ -11,7 +11,7 @@ import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.master.old.tv.R;
 import com.master.old.tv.base.BaseFragment;
 import com.master.old.tv.model.bean.VideoRes;
-import com.master.old.tv.presenter.VideoInfoPresenter;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.adapter.RelatedAdapter;
 import com.master.old.tv.utils.ScreenUtil;
@@ -83,7 +83,7 @@ public class VideoIntroFragment extends BaseFragment {
         super.onDestroyView();
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Refresh_Video_Info)
+    @Subscriber(tag = TabChoicePresenter.VideoInfoPresenter.Refresh_Video_Info)
     public void setData(VideoRes videoInfo) {
         String dir = "导演：" + StringUtils.removeOtherCode(videoInfo.director);
         String act = "主演：" + StringUtils.removeOtherCode(videoInfo.actors);

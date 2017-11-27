@@ -1,4 +1,4 @@
-package com.master.old.tv.presenter;
+package com.master.old.tv.presenter.tab;
 
 import com.master.old.tv.base.RxPresenter;
 import com.master.old.tv.model.bean.Record;
@@ -16,11 +16,11 @@ import javax.inject.Inject;
  * Creator: yxc
  * date: 2016/9/29 12:19
  */
-public class MinePresenter extends RxPresenter<MineContract.View> implements MineContract.Presenter {
+public class TabMyselfPresenter extends RxPresenter<MineContract.View> implements MineContract.Presenter {
     public static final int maxSize = 30;
 
     @Inject
-    public MinePresenter() {
+    public TabMyselfPresenter() {
     }
 
     @Override

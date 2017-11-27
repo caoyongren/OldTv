@@ -1,4 +1,4 @@
-package com.master.old.tv.presenter;
+package com.master.old.tv.presenter.tab;
 
 import com.master.old.tv.base.RxPresenter;
 import com.master.old.tv.model.bean.VideoRes;
@@ -16,18 +16,18 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 
 /**
- * Description: DiscoverPresenter
+ * Description: TabFindPresenter
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class DiscoverPresenter extends RxPresenter<DiscoverContract.View> implements DiscoverContract.Presenter {
+public class TabFindPresenter extends RxPresenter<DiscoverContract.View> implements DiscoverContract.Presenter {
     final String catalogId = "402834815584e463015584e539330016";
 
     int max = 108;
     int min = 1;
 
     @Inject
-    public DiscoverPresenter() {
+    public TabFindPresenter() {
     }
 
     @Override

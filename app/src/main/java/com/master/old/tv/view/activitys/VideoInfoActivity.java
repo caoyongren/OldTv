@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -17,7 +18,6 @@ import com.master.old.tv.base.SwipeBackActivity;
 import com.master.old.tv.utils.ImageLoaderUtil;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoRes;
-import com.master.old.tv.presenter.VideoInfoPresenter;
 import com.master.old.tv.presenter.contract.VideoInfoContract;
 import com.master.old.tv.view.fragments.CommentFragment;
 import com.master.old.tv.view.fragments.VideoIntroFragment;
@@ -40,7 +40,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Motto: 坚持自己的选择, 不动摇！
  * Date: 2017-11-02
  */
-public class VideoInfoActivity extends SwipeBackActivity<VideoInfoPresenter>
+public class VideoInfoActivity extends SwipeBackActivity<TabChoicePresenter.VideoInfoPresenter>
                                        implements VideoInfoContract.View {
 
     private static final String TAG = "VideoInfoActivity";

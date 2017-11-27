@@ -12,7 +12,7 @@ import com.master.old.tv.base.SwipeBackActivity;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.CollectionPresenter;
-import com.master.old.tv.presenter.VideoInfoPresenter;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.contract.CollectionContract;
 import com.master.old.tv.view.activitys.menu.CollectionActivity;
 import com.master.old.tv.view.adapter.VideoListAdapter;
@@ -118,7 +118,7 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
         }
     }
 
-    @Subscriber(tag = VideoInfoPresenter.Refresh_Collection_List)
+    @Subscriber(tag = TabChoicePresenter.VideoInfoPresenter.Refresh_Collection_List)
     public void setData(String tag) {
         mPresenter.getCollectData();
     }
