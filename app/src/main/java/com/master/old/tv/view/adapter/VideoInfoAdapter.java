@@ -17,9 +17,9 @@ import com.master.old.tv.model.bean.VideoInfo;
  * Creator: yxc
  * date: 2016/9/30 11:10
  */
-public class RelatedAdapter extends RecyclerArrayAdapter<VideoInfo> {
+public class VideoInfoAdapter extends RecyclerArrayAdapter<VideoInfo> {
 
-    public RelatedAdapter(Context context) {
+    public VideoInfoAdapter(Context context) {
         super(context);
     }
 

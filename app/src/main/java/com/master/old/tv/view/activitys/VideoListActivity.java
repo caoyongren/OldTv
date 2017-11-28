@@ -16,7 +16,7 @@ import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.VideoListPresenter;
 import com.master.old.tv.presenter.contract.VideoListContract;
-import com.master.old.tv.view.adapter.VideoListAdapter;
+import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
@@ -41,7 +41,7 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
 
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
-    VideoListAdapter mAdapter;
+    CommonVideoListAdapter mVideoListAdapter;
 
     VideoInfo videoInfo;
     int pageSize = 30;
@@ -54,12 +54,12 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
     @Override
     protected void initView() {
         mTitleName.setText(mTitle);
-        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
+        mRecyclerView.setAdapterWithProgress(mVideoListAdapter = new CommonVideoListAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
-        mAdapter.setMore(R.layout.view_more, this);
-        mAdapter.setNoMore(R.layout.view_nomore);
+        mVideoListAdapter.setMore(R.layout.view_more, this);
+        mVideoListAdapter.setNoMore(R.layout.view_nomore);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
-        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
+        gridLayoutManager.setSpanSizeLookup(mVideoListAdapter.obtainGridSpanSizeLookUp(3));
         mRecyclerView.setLayoutManager(gridLayoutManager);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
@@ -80,17 +80,17 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
             }
         });
         mRecyclerView.setRefreshListener(this);
-        mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+        mVideoListAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                videoInfo = BeanUtil.VideoType2VideoInfo(mAdapter.getItem(position), videoInfo);
+                videoInfo = BeanUtil.VideoType2VideoInfo(mVideoListAdapter.getItem(position), videoInfo);
                 VideoInfoActivity.start(mContext, videoInfo);
             }
         });
-        mAdapter.setError(R.layout.view_error_footer).setOnClickListener(new View.OnClickListener() {
+        mVideoListAdapter.setError(R.layout.view_error_footer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter.resumeMore();
+                mVideoListAdapter.resumeMore();
             }
         });
         mRecyclerView.getErrorView().setOnClickListener(new View.OnClickListener() {
@@ -120,27 +120,27 @@ public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> imp
     public void loadMoreFaild(String msg) {
         if (!TextUtils.isEmpty(msg))
             showError(msg);
-        mAdapter.pauseMore();
+        mVideoListAdapter.pauseMore();
     }
 
     public void clearFooter() {
-        mAdapter.setMore(new View(mContext), this);
-        mAdapter.setError(new View(mContext));
-        mAdapter.setNoMore(new View(mContext));
+        mVideoListAdapter.setMore(new View(mContext), this);
+        mVideoListAdapter.setError(new View(mContext));
+        mVideoListAdapter.setNoMore(new View(mContext));
     }
 
     @Override
     public void showContent(List<VideoType> list) {
-        mAdapter.clear();
+        mVideoListAdapter.clear();
         if (list != null && list.size() < pageSize) {
             clearFooter();
         }
-        mAdapter.addAll(list);
+        mVideoListAdapter.addAll(list);
     }
 
     @Override
     public void showMoreContent(List<VideoType> list) {
-        mAdapter.addAll(list);
+        mVideoListAdapter.addAll(list);
     }
 
 

@@ -25,7 +25,7 @@ import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.model.db.RealmHelper;
 import com.master.old.tv.presenter.SearchVideoListPresenter;
 import com.master.old.tv.presenter.contract.SearchVideoListContract;
-import com.master.old.tv.view.adapter.VideoListAdapter;
+import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
@@ -49,7 +49,7 @@ public class SearchActivity extends SwipeBackActivity<SearchVideoListPresenter> 
     VideoInfo videoInfo;
     @BindView(fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
-    VideoListAdapter mAdapter;
+    CommonVideoListAdapter mAdapter;
     int pageSize = 30;
     @BindView(R.id.edt_search)
     EditText edtSearch;
@@ -77,7 +77,7 @@ public class SearchActivity extends SwipeBackActivity<SearchVideoListPresenter> 
 
     @Override
     protected void initView() {
-        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
+        mRecyclerView.setAdapterWithProgress(mAdapter = new CommonVideoListAdapter(mContext));
         mRecyclerView.setErrorView(R.layout.view_error);
         mAdapter.setMore(R.layout.view_more, this);
         mAdapter.setNoMore(R.layout.view_nomore);

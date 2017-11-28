@@ -13,7 +13,7 @@ import com.master.old.tv.base.BaseFragment;
 import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
-import com.master.old.tv.view.adapter.RelatedAdapter;
+import com.master.old.tv.view.adapter.VideoInfoAdapter;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.utils.StringUtils;
 import com.master.old.tv.widget.TextViewExpandableAnimation;
@@ -36,7 +36,7 @@ public class VideoIntroFragment extends BaseFragment {
     TextViewExpandableAnimation tvExpand;
     View headerView;
 
-    RelatedAdapter adapter;
+    VideoInfoAdapter adapter;
 
     @Override
     protected int getLayout() {
@@ -48,7 +48,7 @@ public class VideoIntroFragment extends BaseFragment {
         EventBus.getDefault().register(this);
         headerView = LayoutInflater.from(mContext).inflate(R.layout.intro_header, null);
         tvExpand = ButterKnife.findById(headerView, R.id.tv_expand);
-        recyclerView.setAdapter(adapter = new RelatedAdapter(getContext()));
+        recyclerView.setAdapter(adapter = new VideoInfoAdapter(getContext()));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
         gridLayoutManager.setSpanSizeLookup(adapter.obtainGridSpanSizeLookUp(3));
         recyclerView.setLayoutManager(gridLayoutManager);

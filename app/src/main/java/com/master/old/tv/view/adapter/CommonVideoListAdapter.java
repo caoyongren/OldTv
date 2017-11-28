@@ -16,10 +16,12 @@ import com.master.old.tv.model.bean.VideoType;
  * Description: 影片列表
  * Creator: yxc
  * date: 2016/9/30 11:10
+ *
+ * 该是适配器应用在: CollectionActivity / videoListActivity / SearchActivity / ＨistoryActivity 共用
  */
-public class VideoListAdapter extends RecyclerArrayAdapter<VideoType> {
+public class CommonVideoListAdapter extends RecyclerArrayAdapter<VideoType> {
 
-    public VideoListAdapter(Context context) {
+    public CommonVideoListAdapter(Context context) {
         super(context);
     }
 

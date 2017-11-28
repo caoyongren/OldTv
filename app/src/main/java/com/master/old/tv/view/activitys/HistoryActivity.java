@@ -15,7 +15,7 @@ import com.master.old.tv.presenter.CollectionPresenter;
 import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.contract.CollectionContract;
 import com.master.old.tv.view.activitys.drawer.CollectionActivity;
-import com.master.old.tv.view.adapter.VideoListAdapter;
+import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
@@ -44,7 +44,7 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
     ColorTextView titleName;
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
-    VideoListAdapter mAdapter;
+    CommonVideoListAdapter mVideoListAdapterHistory;
     VideoInfo videoInfo;
 
     @Override
@@ -57,9 +57,9 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
         EventBus.getDefault().register(this);
         setTitle();
         rlCollectClear.setVisibility(View.VISIBLE);
-        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
+        mRecyclerView.setAdapterWithProgress(mVideoListAdapterHistory = new CommonVideoListAdapter(mContext));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
-        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
+        gridLayoutManager.setSpanSizeLookup(mVideoListAdapterHistory.obtainGridSpanSizeLookUp(3));
         mRecyclerView.setLayoutManager(gridLayoutManager);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
@@ -72,10 +72,10 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
 
     @Override
     protected void initEvent() {
-        mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+        mVideoListAdapterHistory.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                videoInfo = BeanUtil.VideoType2VideoInfo(mAdapter.getItem(position), videoInfo);
+                videoInfo = BeanUtil.VideoType2VideoInfo(mVideoListAdapterHistory.getItem(position), videoInfo);
                 VideoInfoActivity.start(mContext, videoInfo);
             }
         });
@@ -89,8 +89,8 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
 
     @Override
     public void showContent(List<VideoType> list) {
-        mAdapter.clear();
-        mAdapter.addAll(list);
+        mVideoListAdapterHistory.clear();
+        mVideoListAdapterHistory.addAll(list);
     }
 
     @OnClick({R.id.video_header_rl_back, R.id.video_header_collect_clear})
@@ -104,7 +104,7 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
                 }
                 break;
             case R.id.video_header_collect_clear:
-                mAdapter.clear();
+                mVideoListAdapterHistory.clear();
                 mPresenter.delAllDatas();
                 break;
         }

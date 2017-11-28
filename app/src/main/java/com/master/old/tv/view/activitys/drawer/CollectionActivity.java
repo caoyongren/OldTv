@@ -16,7 +16,7 @@ import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.contract.CollectionContract;
 import com.master.old.tv.view.activitys.HistoryActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
-import com.master.old.tv.view.adapter.VideoListAdapter;
+import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
@@ -34,7 +34,8 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2017/9/6 14:57
  */
-public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> implements CollectionContract.View {
+public class CollectionActivity extends SwipeBackActivity<CollectionPresenter>
+                                implements CollectionContract.View {
 
     @BindView(R.id.video_header_collect_clear)
     RelativeLayout rlCollectClear;
@@ -44,7 +45,8 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
     ColorTextView titleName;
     @BindView(R.id.fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
-    VideoListAdapter mAdapter;
+
+    CommonVideoListAdapter mVideoListAdapterCollection;
     VideoInfo videoInfo;
 
     @Override
@@ -57,9 +59,9 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
         EventBus.getDefault().register(this);
         setTitle();
         rlCollectClear.setVisibility(View.VISIBLE);
-        mRecyclerView.setAdapterWithProgress(mAdapter = new VideoListAdapter(mContext));
+        mRecyclerView.setAdapterWithProgress(mVideoListAdapterCollection = new CommonVideoListAdapter(mContext));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
-        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
+        gridLayoutManager.setSpanSizeLookup(mVideoListAdapterCollection.obtainGridSpanSizeLookUp(3));
         mRecyclerView.setLayoutManager(gridLayoutManager);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
@@ -72,10 +74,10 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
 
     @Override
     protected void initEvent() {
-        mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+        mVideoListAdapterCollection.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                videoInfo = BeanUtil.VideoType2VideoInfo(mAdapter.getItem(position), videoInfo);
+                videoInfo = BeanUtil.VideoType2VideoInfo(mVideoListAdapterCollection.getItem(position), videoInfo);
                 VideoInfoActivity.start(mContext, videoInfo);
             }
         });
@@ -89,8 +91,8 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
 
     @Override
     public void showContent(List<VideoType> list) {
-        mAdapter.clear();
-        mAdapter.addAll(list);
+        mVideoListAdapterCollection.clear();
+        mVideoListAdapterCollection.addAll(list);
     }
 
     @OnClick({R.id.video_header_rl_back, R.id.video_header_collect_clear})
@@ -104,7 +106,7 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter> i
                 }
                 break;
             case R.id.video_header_collect_clear:
-                mAdapter.clear();
+                mVideoListAdapterCollection.clear();
                 mPresenter.delAllDatas();
                 break;
         }
