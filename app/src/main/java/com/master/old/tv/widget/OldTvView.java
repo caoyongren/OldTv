@@ -26,7 +26,6 @@ import android.view.animation.LinearInterpolator;
 
 public class OldTvView extends View {
 
-
     float mWidth = 0f;
     float mHight = 0f;
     Paint mPaint, mPaintHand, mPaintShadow, mPaintArms;
@@ -203,8 +202,6 @@ public class OldTvView extends View {
             shadowHigh = shadowHighMax - shadowHighMax / 0.25f * (mAnimatedValue - 0.75f);
 
         }
-
-
         rectFGhostShadow.top = mHight - 25 + shadowHigh;
         rectFGhostShadow.bottom = mHight - 5 - shadowHigh;
         rectFGhostShadow.left = rectFGhost.left + 5 + shadowHigh * 3;
@@ -280,17 +277,13 @@ public class OldTvView extends View {
                 } else {
                     wspace = -2;
                 }
-
-
             }
 
         });
         if (!valueAnimator.isRunning()) {
             wspace = -2;
             valueAnimator.start();
-
         }
-
         return valueAnimator;
     }
 

@@ -32,7 +32,7 @@ import com.master.old.tv.view.activitys.SearchActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.adapter.BannerAdapter;
 import com.master.old.tv.view.adapter.tab.TabChoiceAdapter;
-import com.master.old.tv.widget.RollPagerView;
+import com.master.old.tv.widget.customview.RollPagerView;
 import com.master.old.tv.widget.theme.ColorRelativeLayout;
 import com.master.old.tv.widget.theme.ColorTextView;
 
@@ -85,7 +85,11 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
         titleName.setText(getResources().getString(R.string.good_choice));//str 需要从资源中获取；
         titleName.setBackgroundColor(R.color.title_color);
 
-        //(int resource, @Nullable ViewGroup root)
+        /**
+         * 带滚动效果的头视图
+         * 自定义View: RollPagerView
+         * setPlayDelay();//设置滚动的时间。
+         * */
         headerView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_choice_header, null);
         mHeaderBanner = ButterKnife.findById(headerView, R.id.fg_choice_banner);
         rlGoSearch = ButterKnife.findById(headerView, R.id.fg_choice_rlGoSearch);

@@ -60,7 +60,8 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View>
         imgs.add("file:///android_asset/e.jpg");
         imgs.add("file:///android_asset/f.jpg");
         imgs.add("file:///android_asset/g.jpg");
+        imgs.add("file:///android_asset/j.jpg");
+        imgs.add("file:///android_asset/k.jpg");
         return imgs;
     }
-
 }

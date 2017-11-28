@@ -11,7 +11,8 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
-    <com.master.old.tv.widget.RollPagerView
+    <!-- 带滚动效果的头视图　-->
+    <com.master.old.tv.widget.customview.RollPagerView
         android:id="@+id/fg_choice_banner"
         android:layout_width="match_parent"
         android:layout_height="200dp"

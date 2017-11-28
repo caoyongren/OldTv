@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.customview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -29,9 +29,16 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * 支持轮播和提示的的viewpager
- */
+/*****************************
+ * Create by MasterMan
+ * Description:
+ *   支持轮播和提示的的viewpager
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date: 2017年１１月２８日 
+ *****************************/
 public class RollPagerView extends RelativeLayout implements ViewPager.OnPageChangeListener {
 
     private ViewPager mViewPager;
