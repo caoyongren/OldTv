@@ -37,7 +37,7 @@ public class TabChoiceAdapter extends RecyclerArrayAdapter<VideoInfo> {
         TextView tv_title;
 
         public ChoiceViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_video);//第二个构造函数
+            super(parent, R.layout.item_tab_choice_video);//第二个构造函数
             imgPicture = $(R.id.img_video);
             tv_title = $(R.id.tv_title);
             imgPicture.setScaleType(ImageView.ScaleType.CENTER_CROP);

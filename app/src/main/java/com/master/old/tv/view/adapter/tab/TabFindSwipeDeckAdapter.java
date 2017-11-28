@@ -68,7 +68,7 @@ public class TabFindSwipeDeckAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.card_item, parent, false);
+            convertView = inflater.inflate(R.layout.item_tab_find_card, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {

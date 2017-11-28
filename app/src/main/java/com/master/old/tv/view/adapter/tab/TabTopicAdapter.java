@@ -33,9 +33,9 @@ public class TabTopicAdapter extends RecyclerArrayAdapter<VideoInfo> {
         TextView tv_title;
 
         public ClassificationViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_found);
-            imgPicture = $(R.id.img_video);
-            tv_title = $(R.id.tv_title);
+            super(parent, R.layout.item_tab_topic);
+            imgPicture = $(R.id.item_topic_img_video);
+            tv_title = $(R.id.item_topic_tv_title);
             imgPicture.setScaleType(ImageView.ScaleType.FIT_XY);
         }
 

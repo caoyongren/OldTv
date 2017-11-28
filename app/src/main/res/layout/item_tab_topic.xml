@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white_translucent"
     android:padding="5dp">
 
-
     <ImageView
-        android:id="@+id/img_video"
+        android:id="@+id/item_topic_img_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -24,10 +24,9 @@
         android:paddingTop="3dp">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/item_topic_tv_title"
             style="@style/common_tv_bold_style"
             android:textColor="@color/white" />
     </LinearLayout>
-
 
 </RelativeLayout>

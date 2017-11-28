@@ -28,7 +28,7 @@ public class TabMyselfHistoryAdapter extends RecyclerArrayAdapter<VideoType> {
         TextView tv_title;
 
         public MineHistoryVideoListViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_mine_history);
+            super(parent, R.layout.item_tab_myself_history);
             imgPicture = $(R.id.img_video);
             tv_title = $(R.id.tv_title);
             imgPicture.setScaleType(ImageView.ScaleType.FIT_XY);
