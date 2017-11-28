@@ -202,7 +202,7 @@ public abstract class BaseFragment extends SupportFragment {
                     title.setPadding(0, 0, 0, 0);
                 }
                 if (TAG.equals(TabMySelfFragment.class.getSimpleName())) {
-                    Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+                    Toolbar toolbar = (Toolbar) view.findViewById(R.id.fg_myself_toolbar);
                     ViewGroup.LayoutParams lp = toolbar.getLayoutParams();
                     lp.height = ScreenUtil.dip2px(getContext(), 48);
                     toolbar.setLayoutParams(lp);

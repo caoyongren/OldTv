@@ -41,30 +41,41 @@ import butterknife.OnClick;
 
 import static com.master.old.tv.R.id.fg_choice_recyclerView;
 
-/**
+/*****************************
+ * Create by MasterMan
  * Description:
- * Creator: yxc
- * date: $date $time
- */
-public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter> implements TabMyselfContract.View {
+ *   我的模块
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date: ２０１７年１１月２８日
+ *****************************/
+public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
+                                       implements TabMyselfContract.View {
+    private static final String TAG = "TabMySelfFragment";
     public static final String SET_THEME = "SET_THEME";
+
     MineHistoryVideoListAdapter mAdapter;
+
     VideoInfo videoInfo;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
-    @BindView(R.id.rl_them)
+    @BindView(R.id.fg_myself_theme)
     RelativeLayout rlThem;
-    @BindView(R.id.toolbar)
+
+    @BindView(R.id.fg_myself_toolbar)
     Toolbar toolbar;
     @BindView(fg_choice_recyclerView)
     EasyRecyclerView mRecyclerView;
-    @BindView(R.id.tv_history)
+    @BindView(R.id.fg_myself_tv_history)
     TextView mTvHistory;
-    @BindView(R.id.tv_down)
+    @BindView(R.id.fg_myself_down_cache)
     TextView tvDown;
-    @BindView(R.id.tv_collection)
+
+    @BindView(R.id.fg_myself_tv_collection)
     TextView tvCollection;
-    @BindView(R.id.tv_them)
+    @BindView(R.id.fg_myself_tv_them)
     TextView tvThem;
 
     @Override
@@ -124,19 +135,20 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter> imple
     }
 
 
-    @OnClick({R.id.rl_record, R.id.rl_down, R.id.rl_collection, R.id.rl_them, R.id.img_setting})
+    @OnClick({R.id.fg_myself_rl_record, R.id.fg_myslef_rl_down_cache, R.id.fg_myself_collection,
+              R.id.fg_myself_theme, R.id.img_setting})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rl_record:
+            case R.id.fg_myself_rl_record:
                 getContext().startActivity(new Intent(mContext, HistoryActivity.class));
                 break;
-            case R.id.rl_down:
+            case R.id.fg_myslef_rl_down_cache:
                 EventUtil.showToast(getContext(), "敬请期待");
                 break;
-            case R.id.rl_collection:
+            case R.id.fg_myself_collection:
                 getContext().startActivity(new Intent(mContext, CollectionActivity.class));
                 break;
-            case R.id.rl_them:
+            case R.id.fg_myself_theme:
                 EventBus.getDefault().post("", TabMySelfFragment.SET_THEME);
                 break;
             case R.id.img_setting:

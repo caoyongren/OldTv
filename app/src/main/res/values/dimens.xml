@@ -76,4 +76,5 @@
     <dimen name="size_twenty">20dp</dimen>
     <dimen name="size_two_hundred">200dp</dimen>
     <dimen name="size_sixty_eight">68dp</dimen>
+    <dimen name="size_hundred_ten">110dp</dimen>
 </resources>
