@@ -50,5 +50,4 @@ public abstract class BaseMvpActivity<T extends BasePresenter>
     }
 
     protected abstract void initInject();
-
 }

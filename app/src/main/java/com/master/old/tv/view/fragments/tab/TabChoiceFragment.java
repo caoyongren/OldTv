@@ -65,6 +65,7 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
     ColorRelativeLayout titleLayout;
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
+
     RollPagerView mHeaderBanner;
     View headerView;
     TabChoiceAdapter mTabChoiceAdapter;
@@ -80,6 +81,7 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
     @SuppressLint("ResourceAsColor")
     @Override
     protected void initView(LayoutInflater inflater) {
+        Log.i(TAG, "initView");
         EventBus.getDefault().register(this);
         titleLayout.setVisibility(View.GONE);
         titleName.setText(getResources().getString(R.string.good_choice));//str 需要从资源中获取；
@@ -307,11 +309,12 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
 
     @Override
     protected void initInject() {
-        /**
+      /*
          * 注解实例的成功的连接；
          * 通过{@FragmentComponent} method : void inject(TabChoiceFragment tabChoiceFragment);
          * 实现；
          * */
+        Log.i(TAG, "initInject");
         getFragmentComponent().inject(this);
     }
 }

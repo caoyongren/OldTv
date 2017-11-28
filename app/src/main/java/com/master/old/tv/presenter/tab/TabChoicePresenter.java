@@ -42,6 +42,12 @@ public class TabChoicePresenter extends RxPresenter<TabChoiceContract.View>
     private static final String TAG = "TabChoicePresenter";
     int page = 0;
 
+    /**
+     * 注入构造器
+     * 体现了： dagger进行构造对象
+     *　---> mPresenter
+     * 这就类似第一个案例。
+     * */
     @Inject
     public TabChoicePresenter() {}
 
