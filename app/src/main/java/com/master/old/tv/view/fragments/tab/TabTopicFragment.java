@@ -16,7 +16,7 @@ import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.presenter.tab.TabTopicPresenter;
 import com.master.old.tv.presenter.contract.tab.TabTopicContract;
 import com.master.old.tv.view.activitys.VideoListActivity;
-import com.master.old.tv.view.adapter.TabTopicAdapter;
+import com.master.old.tv.view.adapter.tab.TabTopicAdapter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.utils.StringUtils;

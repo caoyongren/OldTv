@@ -16,7 +16,8 @@
             android:layout_gravity="center"
             android:visibility="gone" />
 
-        <com.daprlabs.cardstack.SwipeFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.daprlabs.cardstack.SwipeFrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
             android:id="@+id/swipeLayout"
             android:layout_width="match_parent"

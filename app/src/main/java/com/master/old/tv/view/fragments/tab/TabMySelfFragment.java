@@ -24,7 +24,7 @@ import com.master.old.tv.view.activitys.menu.CollectionActivity;
 import com.master.old.tv.view.activitys.HistoryActivity;
 import com.master.old.tv.view.activitys.menu.SettingActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
-import com.master.old.tv.view.adapter.MineHistoryVideoListAdapter;
+import com.master.old.tv.view.adapter.tab.TabMyselfHistoryAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
@@ -56,7 +56,7 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
     private static final String TAG = "TabMySelfFragment";
     public static final String SET_THEME = "SET_THEME";
 
-    MineHistoryVideoListAdapter mAdapter;
+    TabMyselfHistoryAdapter mMyselfHistoryAdapter;
 
     VideoInfo videoInfo;
     @BindView(R.id.fg_title_name)
@@ -95,9 +95,9 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
         StringUtils.setIconDrawable(mContext, tvCollection, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 15);
         StringUtils.setIconDrawable(mContext, tvThem, MaterialDesignIconic.Icon.gmi_palette, 16, 15);
 
-        mRecyclerView.setAdapter(mAdapter = new MineHistoryVideoListAdapter(mContext));
+        mRecyclerView.setAdapter(mMyselfHistoryAdapter = new TabMyselfHistoryAdapter(mContext));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);
-        gridLayoutManager.setSpanSizeLookup(mAdapter.obtainGridSpanSizeLookUp(3));
+        gridLayoutManager.setSpanSizeLookup(mMyselfHistoryAdapter.obtainGridSpanSizeLookUp(3));
         mRecyclerView.setLayoutManager(gridLayoutManager);
         SpaceDecoration itemDecoration = new SpaceDecoration(ScreenUtil.dip2px(mContext, 8));
         itemDecoration.setPaddingEdgeSide(true);
@@ -109,10 +109,10 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
 
     @Override
     protected void initEvent() {
-        mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+        mMyselfHistoryAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                videoInfo = BeanUtil.VideoType2VideoInfo(mAdapter.getItem(position), videoInfo);
+                videoInfo = BeanUtil.VideoType2VideoInfo(mMyselfHistoryAdapter.getItem(position), videoInfo);
                 VideoInfoActivity.start(getContext(), videoInfo);
             }
         });
@@ -125,8 +125,8 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
 
     @Override
     public void showContent(List<VideoType> list) {
-        mAdapter.clear();
-        mAdapter.addAll(list);
+        mMyselfHistoryAdapter.clear();
+        mMyselfHistoryAdapter.addAll(list);
         if (list.size() > 0) {
             mRecyclerView.setVisibility(View.VISIBLE);
         } else {

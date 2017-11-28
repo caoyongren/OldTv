@@ -31,7 +31,7 @@ import com.master.old.tv.view.activitys.MainActivity;
 import com.master.old.tv.view.activitys.SearchActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.adapter.BannerAdapter;
-import com.master.old.tv.view.adapter.TabChoiceAdapter;
+import com.master.old.tv.view.adapter.tab.TabChoiceAdapter;
 import com.master.old.tv.widget.RollPagerView;
 import com.master.old.tv.widget.theme.ColorRelativeLayout;
 import com.master.old.tv.widget.theme.ColorTextView;
