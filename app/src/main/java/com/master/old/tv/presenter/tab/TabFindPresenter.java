@@ -27,17 +27,17 @@ public class TabFindPresenter extends RxPresenter<TabFinderContract.View>
     int max = 108;
     int min = 1;
 
+    /**
+     * 注入的构造器
+     * */
     @Inject
     public TabFindPresenter() {
     }
 
     @Override
     public void getData() {
-        getNextVideos();
-    }
-
-    private void getNextVideos() {
-        Subscription rxSubscription = RetrofitHelper.getVideoApi().getVideoList(catalogId, getNextPage() + "")
+        Subscription rxSubscription = RetrofitHelper.getVideoApi()
+                .getVideoList(catalogId, getNextPage() + "")
                 .compose(RxUtil.<VideoHttpResponse<VideoRes>>rxSchedulerHelper())
                 .compose(RxUtil.<VideoRes>handleResult())
                 .subscribe(new Action1<VideoRes>() {
@@ -50,7 +50,6 @@ public class TabFindPresenter extends RxPresenter<TabFinderContract.View>
                            }, new Action1<Throwable>() {
                                @Override
                                public void call(Throwable throwable) {
-
                                    mView.refreshFaild(StringUtils.getErrorMsg(throwable.getMessage()));
                                }
                            }, new Action0() {
@@ -62,7 +61,6 @@ public class TabFindPresenter extends RxPresenter<TabFinderContract.View>
                 );
         addSubscribe(rxSubscription);
     }
-
 
     private int getNextPage() {
         int page = mView.getLastPage();

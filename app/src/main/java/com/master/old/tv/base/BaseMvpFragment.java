@@ -23,14 +23,17 @@ import javax.inject.Inject;
  */
 
 public abstract class BaseMvpFragment<T extends BasePresenter>
-                      extends BaseFragment implements BaseView {
-
+                                        extends BaseFragment implements BaseView {
     /**
      * mPresenter是需要注入的；
      *
      * 在getFragmentComponent()的调用的地方进行实现注入连接；
      * TabChoiceFragment实现注入连接；　extends {@BaseMvpFragment}
      * 则完成： Inject 注入　和　注入连接;
+     *
+     *  @Inject
+     *  public TabFindPresenter() {
+     *  }
      * */
     @Inject
     protected T mPresenter;

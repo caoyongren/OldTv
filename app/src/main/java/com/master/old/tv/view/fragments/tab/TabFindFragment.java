@@ -63,11 +63,6 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter>
     private List<VideoType> videos = new ArrayList<>();
 
     @Override
-    protected void initInject() {
-        getFragmentComponent().inject(this);
-    }
-
-    @Override
     protected int getLayout() {
         return R.layout.fragment_find;
     }
@@ -160,7 +155,6 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter>
         mPresenter.getData();
     }
 
-
     @OnClick({R.id.fg_find_btn_next, R.id.fg_find_tv_nomore})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -176,5 +170,10 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter>
     @Override
     public void showError(String msg) {
 
+    }
+
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.master.old.tv.R;
@@ -31,11 +32,11 @@ import butterknife.ButterKnife;
  * Date: 2017年11月２８日
  *****************************/
 public class TabFindSwipeDeckAdapter extends BaseAdapter {
-
+    private static final String TAG = "TabFindSwipeDeckAdapter";
     private List<VideoType> data;
     private Context context;
     private LayoutInflater inflater;
-    private VideoInfo videoInfo;
+    private VideoInfo mVideoInfo;
 
     public TabFindSwipeDeckAdapter(List<VideoType> data, Context context) {
         this.data = data;
@@ -82,15 +83,16 @@ public class TabFindSwipeDeckAdapter extends BaseAdapter {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(context, "打开-->" + data.get(position).title, Toast.LENGTH_SHORT).show();
                 switchData(data.get(position));
-                VideoInfoActivity.start(context, videoInfo);
+                VideoInfoActivity.start(context, mVideoInfo);
             }
         });
         return convertView;
     }
 
 
-    static class ViewHolder {
+    public static class ViewHolder {
         @BindView(R.id.offer_image)
         RoundedImageView offerImage;
         @BindView(R.id.tv_introduction)
@@ -106,13 +108,13 @@ public class TabFindSwipeDeckAdapter extends BaseAdapter {
     }
 
     private void switchData(VideoType videoType) {
-        if (videoInfo == null)
-            videoInfo = new VideoInfo();
-        videoInfo.title = videoType.title;
-        videoInfo.dataId = videoType.dataId;
-        videoInfo.pic = videoType.pic;
-        videoInfo.airTime = videoType.airTime;
-        videoInfo.score = videoType.score;
+        if (mVideoInfo == null) {
+            mVideoInfo = new VideoInfo();
+        }
+        mVideoInfo.title = videoType.title;
+        mVideoInfo.dataId = videoType.dataId;
+        mVideoInfo.pic = videoType.pic;
+        mVideoInfo.airTime = videoType.airTime;
+        mVideoInfo.score = videoType.score;
     }
-
 }
