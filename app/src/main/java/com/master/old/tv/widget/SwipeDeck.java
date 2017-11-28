@@ -29,7 +29,7 @@ import java.util.ArrayList;
  */
 public class SwipeDeck extends FrameLayout {
 
-    private static final String TAG = "SwipeDeck.java";
+    private static final String TAG = "SwipeDeck";
     private static int NUMBER_OF_CARDS;
     private float ROTATION_DEGREES;
     private float CARD_SPACING;

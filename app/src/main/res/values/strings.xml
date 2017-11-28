@@ -55,4 +55,6 @@
     <string name="topic">专题</string>
     <string name="find">发现</string>
     <string name="myself">我的</string>
+    <string name="change_tv">换一批</string>
+    <string name="no_more">没有了，点击换下一批</string>
 </resources>

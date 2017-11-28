@@ -77,4 +77,7 @@
     <dimen name="size_two_hundred">200dp</dimen>
     <dimen name="size_sixty_eight">68dp</dimen>
     <dimen name="size_hundred_ten">110dp</dimen>
+    <dimen name="size_thirty">30dp</dimen>
+    <dimen name="size_seventy">70dp</dimen>
+    <dimen name="size_font_thirteen">13sp</dimen>
 </resources>

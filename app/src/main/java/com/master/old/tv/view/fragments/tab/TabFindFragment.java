@@ -2,6 +2,7 @@ package com.master.old.tv.view.fragments.tab;
 
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,13 @@ import com.master.old.tv.app.Constants;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoRes;
 import com.master.old.tv.model.bean.VideoType;
-import com.master.old.tv.presenter.tab.TabFindPresenter;
 import com.master.old.tv.presenter.contract.tab.TabFinderContract;
-import com.master.old.tv.view.adapter.SwipeDeckAdapter;
+import com.master.old.tv.presenter.tab.TabFindPresenter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.ScreenUtil;
+import com.master.old.tv.view.activitys.MainActivity;
+import com.master.old.tv.view.adapter.tab.TabFindSwipeDeckAdapter;
 import com.master.old.tv.widget.OldTvView;
 import com.master.old.tv.widget.SwipeDeck;
 import com.master.old.tv.widget.theme.ColorTextView;
@@ -35,22 +37,29 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: $date $time
  */
-public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implements TabFinderContract.View {
+public class TabFindFragment extends BaseMvpFragment<TabFindPresenter>
+                                     implements TabFinderContract.View {
+    private static final String TAG = "TabFindFragment";
 
     @BindView(R.id.fg_title_name)
     ColorTextView titleName;
-    @BindView(R.id.swipe_deck)
+
+    @BindView(R.id.fg_find_swipe_deck)
     SwipeDeck swipeDeck;
-    @BindView(R.id.swipeLayout)
+
+    @BindView(R.id.fg_find_swipeLayout)
     SwipeFrameLayout swipeLayout;
-    @BindView(R.id.loading)
+
+    @BindView(R.id.fg_find_loading)
     OldTvView loading;
-    @BindView(R.id.btn_next)
+
+    @BindView(R.id.fg_find_btn_next)
     Button btn_next;
-    @BindView(R.id.tv_nomore)
+
+    @BindView(R.id.fg_find_tv_nomore)
     TextView tvNomore;
 
-    private SwipeDeckAdapter adapter;
+    private TabFindSwipeDeckAdapter mTabFindSwipeDeckAdapter;
     private List<VideoType> videos = new ArrayList<>();
 
     @Override
@@ -65,7 +74,8 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implement
 
     @Override
     protected void initView(LayoutInflater inflater) {
-        titleName.setText("发现");
+        titleName.setText(R.string.find);
+
         ViewGroup.LayoutParams lp = swipeDeck.getLayoutParams();
         lp.height = ScreenUtil.getScreenHeight(getContext()) / 3 * 2;
         swipeDeck.setLayoutParams(lp);
@@ -105,13 +115,18 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implement
 
     @Override
     public void showContent(VideoRes videoRes) {
+        if (MainActivity.DEBUG) {
+            for (int i = 0 ; i < videoRes.list.size(); i++) {
+                Log.i(TAG, "videoRes ====" + videoRes.list.get(i).pic);
+            }
+        }
+
         if (videoRes != null) {
             videos.clear();
             videos.addAll(videoRes.list);
             swipeDeck.removeAllViews();
-            swipeDeck.removeAllViews();
-            adapter = new SwipeDeckAdapter(videos, getContext());
-            swipeDeck.setAdapter(adapter);
+            mTabFindSwipeDeckAdapter = new TabFindSwipeDeckAdapter(videos, getContext());
+            swipeDeck.setAdapter(mTabFindSwipeDeckAdapter);
             tvNomore.setVisibility(View.VISIBLE);
         }
     }
@@ -130,12 +145,12 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implement
 
     @Override
     public int getLastPage() {
-        return PreUtils.getInt(getContext(), Constants.DISCOVERlASTpAGE, 1);
+        return PreUtils.getInt(getContext(), Constants.DISCOVERlASTPAGE, 1);
     }
 
     @Override
     public void setLastPage(int page) {
-        PreUtils.putInt(getContext(), Constants.DISCOVERlASTpAGE, page);
+        PreUtils.putInt(getContext(), Constants.DISCOVERlASTPAGE, page);
     }
 
     private void nextVideos() {
@@ -146,12 +161,14 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter> implement
     }
 
 
-    @OnClick({R.id.btn_next, R.id.tv_nomore})
+    @OnClick({R.id.fg_find_btn_next, R.id.fg_find_tv_nomore})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_next:
-            case R.id.tv_nomore:
+            case R.id.fg_find_btn_next:
+            case R.id.fg_find_tv_nomore:
                 nextVideos();
+                break;
+            default:
                 break;
         }
     }

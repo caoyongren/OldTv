@@ -20,7 +20,8 @@ import rx.functions.Action1;
  * Creator: yxc
  * date: 2016/9/21 17:55
  */
-public class TabFindPresenter extends RxPresenter<TabFinderContract.View> implements TabFinderContract.Presenter {
+public class TabFindPresenter extends RxPresenter<TabFinderContract.View>
+                                        implements TabFinderContract.Presenter {
     final String catalogId = "402834815584e463015584e539330016";
 
     int max = 108;
@@ -59,7 +60,6 @@ public class TabFindPresenter extends RxPresenter<TabFinderContract.View> implem
                                }
                            }
                 );
-
         addSubscribe(rxSubscription);
     }
 

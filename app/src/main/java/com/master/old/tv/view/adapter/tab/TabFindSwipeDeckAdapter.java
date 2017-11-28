@@ -1,4 +1,4 @@
-package com.master.old.tv.view.adapter;
+package com.master.old.tv.view.adapter.tab;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -20,19 +20,24 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Description: SwipeDeckAdapter
- * Creator: yxc
- * date: 2016/9/30 11:10
- */
-public class SwipeDeckAdapter extends BaseAdapter {
+/*****************************
+ * Create by MasterMan
+ * Description:
+ *   find module(发现的适配器)
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date: 2017年11月２８日
+ *****************************/
+public class TabFindSwipeDeckAdapter extends BaseAdapter {
 
     private List<VideoType> data;
     private Context context;
     private LayoutInflater inflater;
     private VideoInfo videoInfo;
 
-    public SwipeDeckAdapter(List<VideoType> data, Context context) {
+    public TabFindSwipeDeckAdapter(List<VideoType> data, Context context) {
         this.data = data;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

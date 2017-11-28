@@ -7,32 +7,34 @@
     <FrameLayout style="@style/both_match_style">
 
         <TextView
-            android:id="@+id/tv_nomore"
+            android:id="@+id/fg_find_tv_nomore"
             style="@style/common_tv_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="没有了，点击换下一批"
+            android:text="@string/no_more"
             android:layout_gravity="center"
             android:visibility="gone" />
 
         <com.daprlabs.cardstack.SwipeFrameLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/swipeLayout"
+            android:id="@+id/fg_find_swipeLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!--
 
+            -->
             <com.master.old.tv.widget.SwipeDeck
-                android:id="@+id/swipe_deck"
+                android:id="@+id/fg_find_swipe_deck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:paddingTop="30dp"
-                swipedeck:card_spacing="10dp"
+                android:paddingLeft="@dimen/size_forty"
+                android:paddingRight="@dimen/size_forty"
+                android:paddingTop="@dimen/size_thirty"
+                swipedeck:card_spacing="@dimen/size_ten"
                 swipedeck:max_visible="3"
                 swipedeck:opacity_end="0.2"
                 swipedeck:render_above="true"
@@ -40,38 +42,22 @@
 
 
             <Button
-                android:id="@+id/btn_next"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
+                android:id="@+id/fg_find_btn_next"
+                android:layout_width="@dimen/size_seventy"
+                android:layout_height="@dimen/size_thirty"
+                android:layout_marginTop="@dimen/size_ten"
                 android:background="@drawable/comm_btn_selector"
                 android:textColor="@color/comm_btn_color_selector"
-                android:textSize="13sp"
+                android:textSize="@dimen/size_font_thirteen"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="30dp"
-                android:text="换一批"/>
+                android:layout_marginBottom="@dimen/size_thirty"
+                android:text="@string/change_tv"/>
 
 
         </com.daprlabs.cardstack.SwipeFrameLayout>
 
-
-        <!--<com.zcy.ghost.vivideo.widget.circleprogress.CircleProgress xmlns:android="http://schemas.android.com/apk/res/android"-->
-            <!--xmlns:circleprogress="http://schemas.android.com/apk/res-auto"-->
-            <!--android:id="@+id/loading"-->
-            <!--android:layout_width="80dp"-->
-            <!--android:layout_height="80dp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_gravity="center"-->
-            <!--circleprogress:autoStart="true"-->
-            <!--circleprogress:color1="@android:color/holo_red_light"-->
-            <!--circleprogress:color2="@android:color/holo_green_light"-->
-            <!--circleprogress:color3="@android:color/holo_blue_light" />-->
         <com.master.old.tv.widget.OldTvView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/loading"
+            android:id="@+id/fg_find_loading"
             style="@style/loading_style"/>
     </FrameLayout>
-
-
 </LinearLayout>

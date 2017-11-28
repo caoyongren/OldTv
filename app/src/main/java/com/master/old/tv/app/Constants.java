@@ -16,7 +16,7 @@ public class Constants {
 
     public static final String PRIMARYCOLOR = "PRIMARYCOLOR";
     public static final String TITLECOLOR = "TITLECOLOR";
-    public static final String DISCOVERlASTpAGE = "DISCOVERlASTpAGE";
+    public static final String DISCOVERlASTPAGE = "DISCOVERlASTPAGE";
 
     public static final String PATH_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath() +
             File.separator + "codeest" + File.separator + "GeekNews";

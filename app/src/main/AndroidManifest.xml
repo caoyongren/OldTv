@@ -24,10 +24,10 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="com.master.old.tv.view.activitys.MainActivity" />
         <activity
             android:name="com.master.old.tv.view.activitys.VideoListActivity"
