@@ -1,4 +1,4 @@
-package com.master.old.tv.view.adapter;
+package com.master.old.tv.view.adapter.drawer;
 
 import android.content.Context;
 import android.view.ViewGroup;

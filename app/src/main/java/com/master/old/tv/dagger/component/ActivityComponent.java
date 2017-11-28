@@ -4,13 +4,13 @@ import android.app.Activity;
 
 import com.master.old.tv.dagger.module.ActivityModule;
 import com.master.old.tv.dagger.scope.ActivityScope;
-import com.master.old.tv.view.activitys.menu.CollectionActivity;
+import com.master.old.tv.view.activitys.drawer.CollectionActivity;
 import com.master.old.tv.view.activitys.HistoryActivity;
 import com.master.old.tv.view.activitys.SearchActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.activitys.VideoListActivity;
 import com.master.old.tv.view.activitys.WelcomeActivity;
-import com.master.old.tv.view.activitys.menu.WelfareActivity;
+import com.master.old.tv.view.activitys.drawer.WelfareActivity;
 
 import dagger.Component;
 

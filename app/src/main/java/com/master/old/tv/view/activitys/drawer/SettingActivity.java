@@ -1,4 +1,4 @@
-package com.master.old.tv.view.activitys.menu;
+package com.master.old.tv.view.activitys.drawer;
 
 import android.content.ClipboardManager;
 import android.content.Context;

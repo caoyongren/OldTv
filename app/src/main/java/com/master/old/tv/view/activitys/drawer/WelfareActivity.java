@@ -1,4 +1,4 @@
-package com.master.old.tv.view.activitys.menu;
+package com.master.old.tv.view.activitys.drawer;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -13,7 +13,7 @@ import com.master.old.tv.base.SwipeBackActivity;
 import com.master.old.tv.model.bean.GankItemBean;
 import com.master.old.tv.presenter.WelfarePresenter;
 import com.master.old.tv.presenter.contract.WelfareContract;
-import com.master.old.tv.view.adapter.WelfareAdapter;
+import com.master.old.tv.view.adapter.drawer.WelfareAdapter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.widget.theme.ColorTextView;

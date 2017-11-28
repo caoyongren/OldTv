@@ -1,4 +1,4 @@
-package com.master.old.tv.view.activitys.menu;
+package com.master.old.tv.view.activitys.drawer;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
