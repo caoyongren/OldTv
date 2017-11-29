@@ -8,15 +8,6 @@
         android:id="@+id/fg_myself_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--
-             标题栏
-        设置的layout_scrollFlags有如下几种选项：
-        scroll: 所有想滚动出屏幕的view都需要设置这个flag-没有设置这个flag的view将被固定在屏幕顶部。
-        enterAlways: 这个flag让任意向下的滚动都会导致该view变为可见,启用快速“返回模式”。
-        enterAlwaysCollapsed: 当你的视图已经设置minHeight属性又使用此标志时，
-                              你的视图只能以最小高度进入，只有当滚动视图到达顶部时才扩大到完整高度。
-        exitUntilCollapsed: 滚动退出屏幕，最后折叠在顶端。
-        -->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/fg_myself_toolbar"
@@ -35,11 +26,13 @@
             android:background="?attr/mine_background"
             android:gravity="center_vertical|right">
 
-            <ImageView
-                android:id="@+id/img_setting"
-                style="@style/lmatch_hwrap_style"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@mipmap/my_set" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_hundred_ten"
+                android:textSize="@dimen/size_ten"
+                android:textColor="@color/bel_red_text"
+                android:text="@string/about_old_tv"
+                />
         </com.master.old.tv.widget.theme.ColorRelativeLayout>
 
     </android.support.design.widget.AppBarLayout>

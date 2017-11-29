@@ -82,7 +82,7 @@
                     android:text="@string/share" />
 
                 <TextView
-                    android:id="@+id/drawer_tv_feedback"
+                    android:id="@+id/drawer_tv_advice"
                     style="@style/MenuStyle"
                     android:text="@string/feedback" />
 

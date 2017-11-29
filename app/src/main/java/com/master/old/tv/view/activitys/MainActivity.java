@@ -14,11 +14,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
-import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
-import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
-import com.pgyersdk.feedback.PgyFeedback;
-import com.pgyersdk.views.PgyerDialog;
 import com.master.old.tv.R;
 import com.master.old.tv.app.App;
 import com.master.old.tv.app.Constants;
@@ -28,15 +23,20 @@ import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.StringUtils;
 import com.master.old.tv.utils.system.ThemeUtil;
 import com.master.old.tv.utils.system.ThemeUtils;
+import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
 import com.master.old.tv.view.activitys.drawer.SettingActivity;
 import com.master.old.tv.view.activitys.drawer.WelfareActivity;
 import com.master.old.tv.view.adapter.ContentViewPagerAdapter;
-import com.master.old.tv.view.fragments.tab.TabTopicFragment;
 import com.master.old.tv.view.fragments.tab.TabChoiceFragment;
 import com.master.old.tv.view.fragments.tab.TabFindFragment;
 import com.master.old.tv.view.fragments.tab.TabMySelfFragment;
+import com.master.old.tv.view.fragments.tab.TabTopicFragment;
 import com.master.old.tv.widget.ResideLayout;
 import com.master.old.tv.widget.UnScrollViewPager;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
+import com.pgyersdk.feedback.PgyFeedback;
+import com.pgyersdk.views.PgyerDialog;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements
     TextView tvWelfare;
     @BindView(R.id.draw_tv_share)
     TextView tvShare;
-    @BindView(R.id.drawer_tv_feedback)
+    @BindView(R.id.drawer_tv_advice)
     TextView tvFeedback;
     @BindView(R.id.drawer_tv_settings)
     TextView tvSetting;
@@ -251,7 +251,7 @@ public class MainActivity extends BaseActivity implements
 
     //抽屉中的menu: 收藏/ 下载/ 福利/ 分享/ 建议/ 设置/ 关于　/ 主题/ ? 应该使用碎片，而不是 fragment.TODO
     @OnClick({R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare,
-              R.id.draw_tv_share, R.id.drawer_tv_feedback, R.id.drawer_tv_settings,
+              R.id.draw_tv_share, R.id.drawer_tv_advice, R.id.drawer_tv_settings,
               R.id.main_tv_about, R.id.main_tv_theme})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -272,14 +272,16 @@ public class MainActivity extends BaseActivity implements
                  * */
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.setting_recommend_content));
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().
+                                            getString(R.string.setting_recommend_content));
                 shareIntent.setType("text/plain");//更多支持分享的途径
 
                 //设置分享列表的标题，并且每次都显示分享列表
                 mContext.startActivity(Intent.createChooser(shareIntent, "分享到"));
                 break;
-            case R.id.drawer_tv_feedback:
+            case R.id.drawer_tv_advice:
                 // 以对话框的形式弹出
+                //PgyerDialog的独有形式；
                 PgyerDialog.setDialogTitleBackgroundColor(PreUtils.getString(mContext, Constants.PRIMARYCOLOR, "#000000"));
                 PgyerDialog.setDialogTitleTextColor(PreUtils.getString(mContext, Constants.TITLECOLOR, "#0aa485"));
                 PgyFeedback.getInstance().showDialog(mContext).d().setChecked(false);

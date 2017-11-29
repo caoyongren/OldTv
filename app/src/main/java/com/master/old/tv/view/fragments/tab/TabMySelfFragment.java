@@ -12,24 +12,23 @@ import android.widget.TextView;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
-import com.master.old.tv.presenter.tab.TabChoicePresenter;
-import com.master.old.tv.presenter.tab.TabMyselfPresenter;
-import com.master.old.tv.view.activitys.HistoryListActivity;
-import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.contract.tab.TabMyselfContract;
-import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
-import com.master.old.tv.view.activitys.drawer.SettingActivity;
-import com.master.old.tv.view.activitys.VideoInfoActivity;
-import com.master.old.tv.view.adapter.tab.TabMyselfHistoryAdapter;
+import com.master.old.tv.presenter.tab.TabChoicePresenter;
+import com.master.old.tv.presenter.tab.TabMyselfPresenter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.utils.StringUtils;
+import com.master.old.tv.view.activitys.HistoryListActivity;
+import com.master.old.tv.view.activitys.VideoInfoActivity;
+import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
+import com.master.old.tv.view.adapter.tab.TabMyselfHistoryAdapter;
 import com.master.old.tv.widget.theme.ColorTextView;
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -136,7 +135,7 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
 
 
     @OnClick({R.id.fg_myself_rl_record, R.id.fg_myslef_rl_down_cache, R.id.fg_myself_collection,
-              R.id.fg_myself_theme, R.id.img_setting})
+              R.id.fg_myself_theme})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fg_myself_rl_record:
@@ -150,9 +149,6 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
                 break;
             case R.id.fg_myself_theme:
                 EventBus.getDefault().post("", TabMySelfFragment.SET_THEME);
-                break;
-            case R.id.img_setting:
-                getContext().startActivity(new Intent(mContext, SettingActivity.class));
                 break;
         }
     }

@@ -38,7 +38,7 @@
     -->
 
     <string name="about_me">
-        \n博 客：<a href="https://github.com/caoyongren">jiankeufo</a>\n\nGithub：
+        \n博 客：<a href="https://github.com/caoyongren">MasterMan</a>\n\nGithub：
                 <a href="https://github.com/caoyongren/OldTv">OldTv</a>
     </string>
 
@@ -68,4 +68,12 @@
     <string name="click_again">再点一下　试试</string>
     <string name="more_and_more">更多加载中....</string>
     <string name="no_more_data">抱歉。。。。没有更多啦</string>
+    <string name="about_old_tv">
+        /*****************************\n\n
+         * Email: MatthewCaoYongren@gmail.com\n\n
+         * Blog: <a href = "http://blog.csdn.net/zhenxi2735768804/">http://blog.csdn.net/zhenxi2735768804/</a> \n\n
+         * Githup: <a href = "https://github.com/caoyongren">https://github.com/caoyongren</a>\n\n
+         * Motto: 坚持自己的选择, 不动摇！\n\n
+         *****************************/
+    </string>
 </resources>
