@@ -265,10 +265,15 @@ public class MainActivity extends BaseActivity implements
                 mContext.startActivity(new Intent(mContext, WelfareActivity.class));
                 break;
             case R.id.draw_tv_share:
+                /**
+                 * 更多关于分享知识:
+                 * blog:
+                 * http://www.wizardev.com/2017/08/20/Android%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%88%86%E4%BA%AB%E5%8A%9F%E8%83%BD/
+                 * */
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.setting_recommend_content));
-                shareIntent.setType("text/plain");
+                shareIntent.setType("text/plain");//更多支持分享的途径
 
                 //设置分享列表的标题，并且每次都显示分享列表
                 mContext.startActivity(Intent.createChooser(shareIntent, "分享到"));

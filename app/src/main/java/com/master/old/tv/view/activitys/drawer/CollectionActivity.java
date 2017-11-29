@@ -51,7 +51,7 @@ public class CollectionActivity extends SwipeBackActivity<CollectionPresenter>
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_collection;
+        return R.layout.activity_drawer_collection;
     }
 
     @Override

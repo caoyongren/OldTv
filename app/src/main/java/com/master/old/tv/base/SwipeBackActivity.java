@@ -21,7 +21,7 @@ public abstract class SwipeBackActivity<P extends RxPresenter> extends BaseMvpAc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         layout = (SwipeBackLayout) LayoutInflater.from(this).inflate(
-                R.layout.base, null);
+                R.layout.activity_swipe_base, null);
         layout.attachToActivity(this);
     }
 

@@ -86,7 +86,7 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    //base
+    //activity_swipe_base
     compile rootProject.ext.dependencies["appcompat-v7"]
     //network
     compile rootProject.ext.dependencies["retrofit"]
@@ -121,7 +121,6 @@ dependencies {
     compile rootProject.ext.dependencies["dagger"]
     compile rootProject.ext.dependencies["dagger-compiler"]
     compile rootProject.ext.dependencies["butterknife"]
-    // rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     provided rootProject.ext.dependencies["annotation"]
     compile rootProject.ext.dependencies["annotations"]

@@ -32,7 +32,9 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2017/9/6 14:57
  */
-public class VideoListActivity extends SwipeBackActivity<VideoListPresenter> implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+public class VideoListActivity extends SwipeBackActivity<VideoListPresenter>
+                               implements VideoListContract.View, SwipeRefreshLayout.OnRefreshListener,
+                                          RecyclerArrayAdapter.OnLoadMoreListener {
 
     String mTitle = "";
     String mCatalogId = "";

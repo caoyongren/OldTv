@@ -9,11 +9,25 @@ import com.master.old.tv.view.fragments.tab.TabFindFragment;
 import com.master.old.tv.view.fragments.tab.TabMySelfFragment;
 import com.master.old.tv.view.fragments.tab.TabChoiceFragment;
 import com.master.old.tv.view.fragments.tab.TabTopicFragment;
-
 import dagger.Component;
 
+/**
+ * dependenceies个人认为属于dagger2的高级应用
+ * blog: http://talentprince.github.io/2017/09/30/Advanced-Dagger2-Skills/
+ *
+ *依赖于AppComponent则就需要通过AppComponent来完成注入；
+ *
+ *    DaggerFragmentComponent.builder()
+ *          .appComponent(App.getAppComponent())
+ *          .fragmentModule(getFragmentModule())
+ *          .build();//通过AppComponent来完成注入；
+ * */
+
 @FragmentScope
-@Component(dependencies = AppComponent.class, modules = FragmentModule.class)
+@Component(
+        dependencies = AppComponent.class,
+        modules = FragmentModule.class
+)
 public interface FragmentComponent {
 
     Activity getActivity();

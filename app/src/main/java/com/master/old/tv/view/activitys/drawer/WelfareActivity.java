@@ -38,7 +38,7 @@ public class WelfareActivity extends SwipeBackActivity<WelfarePresenter> impleme
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_welfare;
+        return R.layout.activity_drawer_welfare;
     }
 
     @Override

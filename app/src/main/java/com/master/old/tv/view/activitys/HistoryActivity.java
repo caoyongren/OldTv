@@ -49,7 +49,7 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_collection;
+        return R.layout.activity_drawer_collection;
     }
 
     @Override

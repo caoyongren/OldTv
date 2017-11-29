@@ -33,13 +33,20 @@
     <string name="download">下载</string>
     <string name="about">关于我们</string>
     <string name="close">关闭</string>
-    <string name="about_me">\n博 客：<a href="http://blog.csdn.net/jiankeufo">jiankeufo</a>\n\nGithub：<a href="https://github.com/GeekGhost/Ghost">ghost</a></string>
+    <!--
+      在string中添加连接，使用标签
+    -->
+
+    <string name="about_me">
+        \n博 客：<a href="https://github.com/caoyongren">jiankeufo</a>\n\nGithub：
+                <a href="https://github.com/caoyongren/OldTv">OldTv</a>
+    </string>
 
     <string name="expand">展开</string>
     <string name="shrink">收起</string>
 
     <string name="setting_recommend">推荐给好友</string>
-    <string name="setting_recommend_content">发现一个看片神器\n\nhttps://github.com/GeekGhost/Ghost</string>
+    <string name="setting_recommend_content">发现一个看片神器\n\nhttps://github.com/caoyongren/OldTv</string>
     <string name="setting_recommend_url">https://github.com/GeekGhost/Ghost</string>
     <string name="setting_recommend_copy">复制</string>
     <string name="setting_recommend_clear">清理缓存</string>
@@ -57,4 +64,8 @@
     <string name="myself">我的</string>
     <string name="change_tv">换一批</string>
     <string name="no_more">没有了，点击换下一批</string>
+    <string name="no_data">没有数据啦</string>
+    <string name="click_again">再点一下　试试</string>
+    <string name="more_and_more">更多加载中....</string>
+    <string name="no_more_data">抱歉。。。。没有更多啦</string>
 </resources>

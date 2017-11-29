@@ -1,6 +1,7 @@
-<com.master.old.tv.widget.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                       android:id="@+id/resideLayout"
-                                       style="@style/container_style">
+<com.master.old.tv.widget.ResideLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/resideLayout"
+    style="@style/container_style">
 
     <include layout="@layout/include_drawer_layout"/>
 
