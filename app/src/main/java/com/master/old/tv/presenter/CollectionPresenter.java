@@ -5,7 +5,7 @@ import com.master.old.tv.model.bean.Collection;
 import com.master.old.tv.model.bean.Record;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.model.db.RealmHelper;
-import com.master.old.tv.presenter.contract.CollectionContract;
+import com.master.old.tv.presenter.contract.drawer.CollectionContract;
 import com.master.old.tv.presenter.tab.TabChoicePresenter;
 
 import org.simple.eventbus.EventBus;

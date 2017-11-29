@@ -135,18 +135,6 @@ public class MainActivity extends BaseActivity implements
         initViewMenuIcon();
     }
 
-    //menu : 收藏/下载/福利/分享/回馈/设置/关于/主题/－－＞前面的icon
-    private void initViewMenuIcon() {
-        StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvdownload, MaterialDesignIconic.Icon.gmi_download, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvWelfare, MaterialDesignIconic.Icon.gmi_mood, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvShare, MaterialDesignIconic.Icon.gmi_share, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvFeedback, MaterialDesignIconic.Icon.gmi_android, 16, 10);
-        StringUtils.setIconDrawable(mContext, tvSetting, MaterialDesignIconic.Icon.gmi_settings, 16, 10);
-        StringUtils.setIconDrawable(mContext, about, MaterialDesignIconic.Icon.gmi_account, 16, 10);
-        StringUtils.setIconDrawable(mContext, theme, MaterialDesignIconic.Icon.gmi_palette, 16, 10);
-    }
-
     @Override
     protected void initEvent() {
         //点击一个radiobutton实现切换: the callback to call on checked state change
@@ -188,6 +176,18 @@ public class MainActivity extends BaseActivity implements
                 postBannerState(false);
             }
         });
+    }
+
+    //menu : 收藏/下载/福利/分享/回馈/设置/关于/主题/－－＞前面的icon
+    private void initViewMenuIcon() {
+        StringUtils.setIconDrawable(mContext, tvCollect, MaterialDesignIconic.Icon.gmi_collection_bookmark, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvdownload, MaterialDesignIconic.Icon.gmi_download, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvWelfare, MaterialDesignIconic.Icon.gmi_mood, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvShare, MaterialDesignIconic.Icon.gmi_share, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvFeedback, MaterialDesignIconic.Icon.gmi_android, 16, 10);
+        StringUtils.setIconDrawable(mContext, tvSetting, MaterialDesignIconic.Icon.gmi_settings, 16, 10);
+        StringUtils.setIconDrawable(mContext, about, MaterialDesignIconic.Icon.gmi_account, 16, 10);
+        StringUtils.setIconDrawable(mContext, theme, MaterialDesignIconic.Icon.gmi_palette, 16, 10);
     }
 
     private void postBannerState(final boolean stop) {
@@ -255,6 +255,10 @@ public class MainActivity extends BaseActivity implements
               R.id.main_tv_about, R.id.main_tv_theme})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.main_user_icon:
+                Toast.makeText(mContext, "user icn", Toast.LENGTH_SHORT).show();
+
+                break;
             case R.id.drawer_tv_collect:
                 mContext.startActivity(new Intent(mContext, CollectionListActivity.class));
                 break;

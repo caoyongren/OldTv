@@ -12,7 +12,7 @@ import com.master.old.tv.R;
 import com.master.old.tv.base.SwipeBackActivity;
 import com.master.old.tv.model.bean.GankItemBean;
 import com.master.old.tv.presenter.WelfarePresenter;
-import com.master.old.tv.presenter.contract.WelfareContract;
+import com.master.old.tv.presenter.contract.drawer.WelfareContract;
 import com.master.old.tv.view.adapter.drawer.WelfareAdapter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;

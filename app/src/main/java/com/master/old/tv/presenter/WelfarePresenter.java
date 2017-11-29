@@ -7,7 +7,7 @@ import com.master.old.tv.base.RxPresenter;
 import com.master.old.tv.model.bean.GankHttpResponse;
 import com.master.old.tv.model.bean.GankItemBean;
 import com.master.old.tv.model.net.RetrofitHelper;
-import com.master.old.tv.presenter.contract.WelfareContract;
+import com.master.old.tv.presenter.contract.drawer.WelfareContract;
 import com.master.old.tv.utils.RxUtil;
 import com.master.old.tv.utils.StringUtils;
 

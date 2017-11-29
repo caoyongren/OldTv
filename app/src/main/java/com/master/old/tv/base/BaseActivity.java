@@ -19,11 +19,20 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
 
-/**
- * Description: Activity基类
- * Creator: yxc
- * date: 17/9/14
- */
+/*****************************
+ * Create by MasterMan
+ * Description:
+ *   抽象类: BaseActivity是项目中所有的Activity的父类
+ *   　　Method:
+ *       1. getLayout()
+ *       2. initView();
+ *       3. initEvent();
+ * Email: MatthewCaoYongren@gmail.com
+ * Blog: http://blog.csdn.net/zhenxi2735768804/
+ * Githup: https://github.com/caoyongren
+ * Motto: 坚持自己的选择, 不动摇！
+ * Date: 2017年10月１１日
+ *****************************/
 public abstract class BaseActivity extends SupportActivity {
 
     protected Activity mContext;
@@ -33,7 +42,6 @@ public abstract class BaseActivity extends SupportActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
-
         setContentView(getLayout());
         getIntentData();
         mContext = this;
@@ -42,6 +50,9 @@ public abstract class BaseActivity extends SupportActivity {
         initEvent();
     }
 
+    /**
+     * 设置主题的方式
+     * */
     protected void init() {
         setTranslucentStatus(true);
         onPreCreate();
@@ -76,10 +87,11 @@ public abstract class BaseActivity extends SupportActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        if (mUnBinder != null)
+        if (mUnBinder != null) {
             mUnBinder.unbind();
+        }
         App.getInstance().unregisterActivity(this);
+        super.onDestroy();
     }
 
     private void onPreCreate() {
@@ -174,6 +186,10 @@ public abstract class BaseActivity extends SupportActivity {
         return ((ViewGroup) context.findViewById(android.R.id.content)).getChildAt(0);
     }
 
+    /**
+     * 抽象类中可以有抽象方法/非抽象方法
+     *   抽象类中的抽象方法子类必须实现(除非子类是也是抽象类)
+     * */
     protected abstract int getLayout();
 
     protected void initView() {

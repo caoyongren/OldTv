@@ -13,7 +13,7 @@ import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.CollectionPresenter;
 import com.master.old.tv.presenter.tab.TabChoicePresenter;
-import com.master.old.tv.presenter.contract.CollectionContract;
+import com.master.old.tv.presenter.contract.drawer.CollectionContract;
 import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
 import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;

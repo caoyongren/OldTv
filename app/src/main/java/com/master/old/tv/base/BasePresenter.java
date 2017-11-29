@@ -8,6 +8,5 @@ package com.master.old.tv.base;
 
 public interface BasePresenter<T extends BaseView> {
     void attachView(T view);
-
     void detachView();
 }

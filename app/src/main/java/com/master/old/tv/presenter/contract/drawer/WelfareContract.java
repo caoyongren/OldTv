@@ -1,4 +1,4 @@
-package com.master.old.tv.presenter.contract;
+package com.master.old.tv.presenter.contract.drawer;
 
 import com.master.old.tv.base.BasePresenter;
 import com.master.old.tv.base.BaseView;
