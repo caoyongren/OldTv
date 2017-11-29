@@ -59,14 +59,63 @@ public class MainActivity extends BaseActivity implements
                                   RadioGroup.OnCheckedChangeListener,
                                   ColorChooserDialog.ColorCallback {
     /**
+     * 　　　=====>>>>>>>   写在前面的话　　<<<<<<<=========
      * 每个类中TAG用于本类的调试．打印log
      *
-     * DEBUG -> 整个项目的log控制．
+     * MainActivity.DEBUG -> 整个项目的log控制．
      *
      * //数据打印实例：　精选模块
      * FLAG --> 数据流程打印的log控制
-     *
      * DATA --> 数据流程打印额检索
+     * ========================
+     * 类名命名规范:
+     *   1. 特殊类名+位置;例如: tab draw
+     *   2. +该类的意思; 例如: Choice
+     *   3. +该类的类型; 例如: Activity / fragment
+     *
+     *   ---
+     *   布局文件命名
+     *   1. 根据类型: activity+/ fragment+ /item +
+     *   2. + 从属(意义) /choice
+     *   3. + 前面不够充分就补充
+     *---------
+     *
+     * 分包:(根据mvp模式)
+     *   1. base 基础类
+     *   2. util　工具类
+     *     - contants //常量
+     *     - helper
+     *       - db
+     *       - net
+     *   3. widget
+     *     - 1. system
+     *     - 2. 自定义View
+     *   4. app
+     *     - application
+     *   5. dl(dagger)
+     *
+     *   6. view
+     *     - adapter
+     *     - activity
+     *     - fragment
+     *   7. module
+     * ===================
+     * 驼峰规则这个就不说了
+     * 其他:(java)
+     *   1. 全局变量+ m
+     *   2. 字符常量+ 大写_NAME(只定义一份)
+     *     - A中定义, B中用直接调用。
+     *   3. 继承的方法保持顺序.
+     *   4. 方法要重复利用
+     *     - 在方法内完成需求。
+     *　　5. 方法注意参数后期扩展.
+     *   6. 切记不使用static.
+     *   7. 注意: OOM问题
+     *
+     *   (xml)
+     *   1. include 布局
+     *   2. style 样式
+     *   3. string/dimen/
      * */
     private static final String TAG = "MaiActivity";
     public static final boolean DEBUG = true;
