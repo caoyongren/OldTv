@@ -46,7 +46,7 @@ public class VideoIntroFragment extends BaseFragment {
     @Override
     protected void initView(LayoutInflater inflater) {
         EventBus.getDefault().register(this);
-        headerView = LayoutInflater.from(mContext).inflate(R.layout.fg_video_intro_header, null);
+        headerView = LayoutInflater.from(mContext).inflate(R.layout.fragment_video_intro_header, null);
         tvExpand = ButterKnife.findById(headerView, R.id.tv_expand);
         recyclerView.setAdapter(adapter = new VideoInfoAdapter(getContext()));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 3);

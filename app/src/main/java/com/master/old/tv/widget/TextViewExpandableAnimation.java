@@ -23,7 +23,7 @@ import com.master.old.tv.R;
 
 
 /**
- * 按行数进行折叠带过渡动画的TextView
+ * TextView
  * <br>custom TextView that can be expanded with a smooth transition animation
  */
 public class TextViewExpandableAnimation extends LinearLayout
@@ -201,7 +201,7 @@ public class TextViewExpandableAnimation extends LinearLayout
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.layout_textview_expand_animation, this);
+        inflater.inflate(R.layout.view_animation_tv_expand, this);
 
         rlToggleLayout = (RelativeLayout) findViewById(R.id.rl_expand_text_view_animation_toggle_layout);
 
