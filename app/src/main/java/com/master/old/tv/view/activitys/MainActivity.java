@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
+import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.pgyersdk.feedback.PgyFeedback;
@@ -27,7 +28,6 @@ import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.StringUtils;
 import com.master.old.tv.utils.system.ThemeUtil;
 import com.master.old.tv.utils.system.ThemeUtils;
-import com.master.old.tv.view.activitys.drawer.CollectionActivity;
 import com.master.old.tv.view.activitys.drawer.SettingActivity;
 import com.master.old.tv.view.activitys.drawer.WelfareActivity;
 import com.master.old.tv.view.adapter.ContentViewPagerAdapter;
@@ -256,7 +256,7 @@ public class MainActivity extends BaseActivity implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.drawer_tv_collect:
-                mContext.startActivity(new Intent(mContext, CollectionActivity.class));
+                mContext.startActivity(new Intent(mContext, CollectionListActivity.class));
                 break;
             case R.id.drawer_tv_download:
                 EventUtil.showToast(mContext, "敬请期待");

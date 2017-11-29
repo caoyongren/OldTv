@@ -43,7 +43,7 @@ import static com.master.old.tv.R.id.fg_choice_recyclerView;
  * Creator: yxc
  * date: 2017/9/6 14:57
  */
-public class SearchActivity extends SwipeBackActivity<SearchVideoListPresenter> implements SearchVideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
+public class SearchListActivity extends SwipeBackActivity<SearchVideoListPresenter> implements SearchVideoListContract.View, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
 
     List<VideoInfo> list;
     VideoInfo videoInfo;
@@ -167,8 +167,8 @@ public class SearchActivity extends SwipeBackActivity<SearchVideoListPresenter> 
                     RealmHelper.getInstance().insertSearchHistory(search);
                     search(searchStr);
                 } else {
-                    if (mContext instanceof SearchActivity) {
-                        ((SearchActivity) mContext).finish();
+                    if (mContext instanceof SearchListActivity) {
+                        ((SearchListActivity) mContext).finish();
                     }
                 }
                 break;

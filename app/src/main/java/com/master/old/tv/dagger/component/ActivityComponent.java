@@ -4,9 +4,9 @@ import android.app.Activity;
 
 import com.master.old.tv.dagger.module.ActivityModule;
 import com.master.old.tv.dagger.scope.ActivityScope;
-import com.master.old.tv.view.activitys.drawer.CollectionActivity;
-import com.master.old.tv.view.activitys.HistoryActivity;
-import com.master.old.tv.view.activitys.SearchActivity;
+import com.master.old.tv.view.activitys.HistoryListActivity;
+import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
+import com.master.old.tv.view.activitys.SearchListActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.activitys.VideoListActivity;
 import com.master.old.tv.view.activitys.WelcomeActivity;
@@ -29,11 +29,11 @@ public interface ActivityComponent {
 
     void inject(WelcomeActivity welcomeActivity);
 
-    void inject(CollectionActivity collectionActivity);
+    void inject(CollectionListActivity collectionListActivity);
 
-    void inject(HistoryActivity historyActivity);
+    void inject(HistoryListActivity historyListActivity);
 
-    void inject(SearchActivity searchActivity);
+    void inject(SearchListActivity searchListActivity);
 
     void inject(VideoListActivity videoListActivity);
 

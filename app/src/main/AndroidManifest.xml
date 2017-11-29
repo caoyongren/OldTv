@@ -33,10 +33,10 @@
             android:name="com.master.old.tv.view.activitys.VideoListActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name="com.master.old.tv.view.activitys.drawer.CollectionActivity"
+            android:name="com.master.old.tv.view.activitys.drawer.CollectionListActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name="com.master.old.tv.view.activitys.HistoryActivity"
+            android:name="com.master.old.tv.view.activitys.HistoryListActivity"
             android:theme="@style/CustomTransparent" />
 
         <meta-data
@@ -47,7 +47,7 @@
             android:name="com.master.old.tv.view.activitys.drawer.SettingActivity"
             android:theme="@style/CustomTransparent" />
         <activity
-            android:name="com.master.old.tv.view.activitys.SearchActivity"
+            android:name="com.master.old.tv.view.activitys.SearchListActivity"
             android:theme="@style/CustomTransparent" />
         <activity
             android:name="com.master.old.tv.view.activitys.VideoInfoActivity"

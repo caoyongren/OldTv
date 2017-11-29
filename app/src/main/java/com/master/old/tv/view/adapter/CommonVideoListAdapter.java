@@ -17,7 +17,7 @@ import com.master.old.tv.model.bean.VideoType;
  * Creator: yxc
  * date: 2016/9/30 11:10
  *
- * 该是适配器应用在: CollectionActivity / videoListActivity / SearchActivity / ＨistoryActivity 共用
+ * 该是适配器应用在: CollectionListActivity / videoListActivity / SearchListActivity / ＨistoryActivity 共用
  */
 public class CommonVideoListAdapter extends RecyclerArrayAdapter<VideoType> {
 
@@ -35,7 +35,7 @@ public class CommonVideoListAdapter extends RecyclerArrayAdapter<VideoType> {
         TextView tv_title;
 
         public VideoListViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_related);
+            super(parent, R.layout.item_list_videos);
             imgPicture = $(R.id.img_video);
             tv_title = $(R.id.tv_title);
             imgPicture.setScaleType(ImageView.ScaleType.FIT_XY);

@@ -28,7 +28,7 @@ import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.view.activitys.MainActivity;
-import com.master.old.tv.view.activitys.SearchActivity;
+import com.master.old.tv.view.activitys.SearchListActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.adapter.BannerAdapter;
 import com.master.old.tv.view.adapter.tab.TabChoiceAdapter;
@@ -294,7 +294,7 @@ public class TabChoiceFragment extends BaseMvpFragment<TabChoicePresenter> imple
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fg_choice_rlGoSearch:
-                Intent intent = new Intent(mContext, SearchActivity.class);
+                Intent intent = new Intent(mContext, SearchListActivity.class);
                 intent.putExtra("recommend", (Serializable) recommend);
                 mContext.startActivity(intent);
                 break;

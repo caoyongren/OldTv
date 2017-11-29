@@ -14,7 +14,7 @@ import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.CollectionPresenter;
 import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.contract.CollectionContract;
-import com.master.old.tv.view.activitys.drawer.CollectionActivity;
+import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
 import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
@@ -34,7 +34,7 @@ import butterknife.OnClick;
  * Creator: yxc
  * date: 2017/9/6 14:57
  */
-public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> implements CollectionContract.View {
+public class HistoryListActivity extends SwipeBackActivity<CollectionPresenter> implements CollectionContract.View {
 
     @BindView(R.id.video_header_collect_clear)
     RelativeLayout rlCollectClear;
@@ -97,9 +97,9 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.video_header_rl_back:
-                if (mContext instanceof CollectionActivity) {
+                if (mContext instanceof CollectionListActivity) {
                     finish();
-                } else if (mContext instanceof HistoryActivity) {
+                } else if (mContext instanceof HistoryListActivity) {
                     finish();
                 }
                 break;
@@ -111,9 +111,9 @@ public class HistoryActivity extends SwipeBackActivity<CollectionPresenter> impl
     }
 
     private void setTitle() {
-        if (mContext instanceof CollectionActivity) {
+        if (mContext instanceof CollectionListActivity) {
             titleName.setText("收藏");
-        } else if (mContext instanceof HistoryActivity) {
+        } else if (mContext instanceof HistoryListActivity) {
             titleName.setText("历史");
         }
     }

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <!--
-    CollectionActivity / videoListActivity / SearchActivity / ＨistoryActivity/
+        CollectionListActivityvity / videoListActivit/SearchListActivityvity / ＨistoryActivity/
     -->
 
     <RelativeLayout

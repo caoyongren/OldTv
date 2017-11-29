@@ -33,7 +33,7 @@ public class VideoInfoAdapter extends RecyclerArrayAdapter<VideoInfo> {
         TextView tv_title;
 
         public RelatedViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_related);
+            super(parent, R.layout.item_list_videos);
             imgPicture = $(R.id.img_video);
             tv_title = $(R.id.tv_title);
             imgPicture.setScaleType(ImageView.ScaleType.FIT_XY);

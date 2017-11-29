@@ -14,14 +14,14 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.master.old.tv.presenter.tab.TabChoicePresenter;
 import com.master.old.tv.presenter.tab.TabMyselfPresenter;
+import com.master.old.tv.view.activitys.HistoryListActivity;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.master.old.tv.R;
 import com.master.old.tv.base.BaseMvpFragment;
 import com.master.old.tv.model.bean.VideoInfo;
 import com.master.old.tv.model.bean.VideoType;
 import com.master.old.tv.presenter.contract.tab.TabMyselfContract;
-import com.master.old.tv.view.activitys.drawer.CollectionActivity;
-import com.master.old.tv.view.activitys.HistoryActivity;
+import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
 import com.master.old.tv.view.activitys.drawer.SettingActivity;
 import com.master.old.tv.view.activitys.VideoInfoActivity;
 import com.master.old.tv.view.adapter.tab.TabMyselfHistoryAdapter;
@@ -140,13 +140,13 @@ public class TabMySelfFragment extends BaseMvpFragment<TabMyselfPresenter>
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fg_myself_rl_record:
-                getContext().startActivity(new Intent(mContext, HistoryActivity.class));
+                getContext().startActivity(new Intent(mContext, HistoryListActivity.class));
                 break;
             case R.id.fg_myslef_rl_down_cache:
                 EventUtil.showToast(getContext(), "敬请期待");
                 break;
             case R.id.fg_myself_collection:
-                getContext().startActivity(new Intent(mContext, CollectionActivity.class));
+                getContext().startActivity(new Intent(mContext, CollectionListActivity.class));
                 break;
             case R.id.fg_myself_theme:
                 EventBus.getDefault().post("", TabMySelfFragment.SET_THEME);
