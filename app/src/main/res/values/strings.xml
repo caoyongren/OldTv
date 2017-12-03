@@ -76,4 +76,12 @@
          * Motto: 坚持自己的选择, 不动摇！\n\n
          *****************************/
     </string>
+    <string name="name_user">用户名：</string>
+    <string name="pwd_user">密　码:</string>
+    <string name="login_user">登录</string>
+    <string name="registered_user">注册</string>
+    <string name="input_name">请输入用户名</string>
+    <string name="input_pwd">请输入密码</string>
+
+    <string name="confirm">确认密码</string>
 </resources>

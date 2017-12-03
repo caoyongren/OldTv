@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.master.old.tv.R;
 import com.master.old.tv.app.App;
 import com.master.old.tv.app.Constants;
 import com.master.old.tv.base.BaseActivity;
+import com.master.old.tv.base.BaseDialog;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.StringUtils;
@@ -27,6 +29,7 @@ import com.master.old.tv.view.activitys.drawer.CollectionListActivity;
 import com.master.old.tv.view.activitys.drawer.SettingActivity;
 import com.master.old.tv.view.activitys.drawer.WelfareActivity;
 import com.master.old.tv.view.adapter.ContentViewPagerAdapter;
+import com.master.old.tv.view.dialog.DialogUser;
 import com.master.old.tv.view.fragments.tab.TabChoiceFragment;
 import com.master.old.tv.view.fragments.tab.TabFindFragment;
 import com.master.old.tv.view.fragments.tab.TabMySelfFragment;
@@ -121,12 +124,18 @@ public class MainActivity extends BaseActivity implements
     public static final boolean DEBUG = true;
     public static final boolean FLAG = true;
     public static final String DATA = "DEBUG";
-
     public static final String Set_Theme_Color = "Set_Theme_Color";
     public final static String Banner_Stop = "Banner_Stop";
 
+    //private BaseDialog mCurrentDialog;
+    private BaseDialog mDialogUser;
+    private BaseDialog mDialogLogin;
+
     private Long firstTime = 0L;
     final int WAIT_TIME = 200;
+
+    @BindView(R.id.main_user_icon)
+    ImageView mImageViewUser;
     @BindView(R.id.drawer_tv_collect)
     TextView tvCollect;
     @BindView(R.id.drawer_tv_download)
@@ -182,6 +191,7 @@ public class MainActivity extends BaseActivity implements
         mViewPagerContent.setOffscreenPageLimit(fragments.size() + 1);
 
         initViewMenuIcon();
+        mDialogUser = DialogUser.getInstance(mContext);
     }
 
     @Override
@@ -299,14 +309,15 @@ public class MainActivity extends BaseActivity implements
     }
 
     //抽屉中的menu: 收藏/ 下载/ 福利/ 分享/ 建议/ 设置/ 关于　/ 主题/ ? 应该使用碎片，而不是 fragment.TODO
-    @OnClick({R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare,
+    @OnClick({R.id.main_user_icon,R.id.drawer_tv_collect, R.id.drawer_tv_download, R.id.drawer_tv_welfare,
               R.id.draw_tv_share, R.id.drawer_tv_advice, R.id.drawer_tv_settings,
               R.id.main_tv_about, R.id.main_tv_theme})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_user_icon:
                 Toast.makeText(mContext, "user icn", Toast.LENGTH_SHORT).show();
-
+                //showDialog(mImageViewUser, mDialogUser);
+                mDialogUser.showDialog(mImageViewUser);
                 break;
             case R.id.drawer_tv_collect:
                 mContext.startActivity(new Intent(mContext, CollectionListActivity.class));
