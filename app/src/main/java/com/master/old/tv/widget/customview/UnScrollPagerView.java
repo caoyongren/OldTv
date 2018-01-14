@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.customview;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -6,16 +6,16 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Scroller;
 
-public class UnScrollViewPager extends ViewPager {
+public class UnScrollPagerView extends ViewPager {
 
     private boolean isScrollable = false;
     private Context mContext;
 
-    public UnScrollViewPager(Context context, AttributeSet attrs) {
+    public UnScrollPagerView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public UnScrollViewPager(Context context) {
+    public UnScrollPagerView(Context context) {
         super(context);
         this.mContext = context;
         Scroller scroller = new Scroller(mContext);

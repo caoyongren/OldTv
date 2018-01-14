@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.layout;
 
 
 import android.annotation.SuppressLint;
@@ -33,7 +33,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class ResideLayout extends ViewGroup {
+public class MainPagerLayout extends ViewGroup {
     private static final String TAG = "ResideLayout";
 
     /**
@@ -200,15 +200,15 @@ public class ResideLayout extends ViewGroup {
         }
     }
 
-    public ResideLayout(Context context) {
+    public MainPagerLayout(Context context) {
         this(context, null);
     }
 
-    public ResideLayout(Context context, AttributeSet attrs) {
+    public MainPagerLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ResideLayout(Context context, AttributeSet attrs, int defStyle) {
+    public MainPagerLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         final float density = context.getResources().getDisplayMetrics().density;
@@ -1321,11 +1321,11 @@ public class ResideLayout extends ViewGroup {
     }
 
     interface SlidingPanelLayoutImpl {
-        void invalidateChildRegion(ResideLayout parent, View child);
+        void invalidateChildRegion(MainPagerLayout parent, View child);
     }
 
     static class SlidingPanelLayoutImplBase implements SlidingPanelLayoutImpl {
-        public void invalidateChildRegion(ResideLayout parent, View child) {
+        public void invalidateChildRegion(MainPagerLayout parent, View child) {
             ViewCompat.postInvalidateOnAnimation(parent, child.getLeft(), child.getTop(),
                     child.getRight(), child.getBottom());
         }
@@ -1358,7 +1358,7 @@ public class ResideLayout extends ViewGroup {
         }
 
         @Override
-        public void invalidateChildRegion(ResideLayout parent, View child) {
+        public void invalidateChildRegion(MainPagerLayout parent, View child) {
             if (mGetDisplayList != null && mRecreateDisplayList != null) {
                 try {
                     mRecreateDisplayList.setBoolean(child, true);
@@ -1377,7 +1377,7 @@ public class ResideLayout extends ViewGroup {
 
     static class SlidingPanelLayoutImplJBMR1 extends SlidingPanelLayoutImplBase {
         @Override
-        public void invalidateChildRegion(ResideLayout parent, View child) {
+        public void invalidateChildRegion(MainPagerLayout parent, View child) {
             ViewCompat.setLayerPaint(child, ((LayoutParams) child.getLayoutParams()).dimPaint);
         }
     }
@@ -1392,7 +1392,7 @@ public class ResideLayout extends ViewGroup {
             copyNodeInfoNoChildren(info, superNode);
             superNode.recycle();
 
-            info.setClassName(ResideLayout.class.getName());
+            info.setClassName(MainPagerLayout.class.getName());
             info.setSource(host);
 
             final ViewParent parent = ViewCompat.getParentForAccessibility(host);
@@ -1418,7 +1418,7 @@ public class ResideLayout extends ViewGroup {
         public void onInitializeAccessibilityEvent(View host, AccessibilityEvent event) {
             super.onInitializeAccessibilityEvent(host, event);
 
-            event.setClassName(ResideLayout.class.getName());
+            event.setClassName(MainPagerLayout.class.getName());
         }
 
         @Override
@@ -1477,7 +1477,7 @@ public class ResideLayout extends ViewGroup {
 
         @Override
         public void run() {
-            if (mChildView.getParent() == ResideLayout.this) {
+            if (mChildView.getParent() == MainPagerLayout.this) {
                 ViewCompat.setLayerType(mChildView, ViewCompat.LAYER_TYPE_NONE, null);
                 invalidateChildRegion(mChildView);
             }

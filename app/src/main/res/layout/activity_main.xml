@@ -1,4 +1,4 @@
-<com.master.old.tv.widget.ResideLayout
+<com.master.old.tv.widget.layout.MainPagerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/resideLayout"
     style="@style/container_style">
@@ -10,7 +10,7 @@
         style="@style/both_match_style"
         android:background="?attr/background">
 
-        <com.master.old.tv.widget.UnScrollViewPager
+        <com.master.old.tv.widget.customview.UnScrollPagerView
             android:id="@+id/viewpager_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,4 +53,4 @@
         </RadioGroup>
     </com.master.old.tv.widget.theme.ColorRelativeLayout>
 
-</com.master.old.tv.widget.ResideLayout>
+</com.master.old.tv.widget.layout.MainPagerLayout>

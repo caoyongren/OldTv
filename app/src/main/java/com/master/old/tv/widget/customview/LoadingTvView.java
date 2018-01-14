@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.customview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -24,7 +24,7 @@ import android.view.animation.LinearInterpolator;
  * Date:  
  */
 
-public class OldTvView extends View {
+public class LoadingTvView extends View {
 
     float mWidth = 0f;
     float mHight = 0f;
@@ -35,15 +35,15 @@ public class OldTvView extends View {
     int mskirtH = 0;
     Path path = new Path();
 
-    public OldTvView(Context context) {
+    public LoadingTvView(Context context) {
         this(context, null);
     }
 
-    public OldTvView(Context context, AttributeSet attrs) {
+    public LoadingTvView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public OldTvView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LoadingTvView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initPaint();
     }
@@ -286,6 +286,4 @@ public class OldTvView extends View {
         }
         return valueAnimator;
     }
-
-
 }

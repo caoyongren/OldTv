@@ -22,8 +22,8 @@ import com.master.old.tv.utils.PreUtils;
 import com.master.old.tv.utils.ScreenUtil;
 import com.master.old.tv.view.activitys.MainActivity;
 import com.master.old.tv.view.adapter.tab.TabFindSwipeDeckAdapter;
-import com.master.old.tv.widget.OldTvView;
-import com.master.old.tv.widget.SwipeDeck;
+import com.master.old.tv.widget.customview.LoadingTvView;
+import com.master.old.tv.widget.customview.SwipeDeckView;
 import com.master.old.tv.widget.theme.ColorTextView;
 
 import java.util.ArrayList;
@@ -45,13 +45,13 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter>
     ColorTextView titleName;
 
     @BindView(R.id.fg_find_swipe_deck)
-    SwipeDeck swipeDeck;
+    SwipeDeckView swipeDeck;
 
     @BindView(R.id.fg_find_swipeLayout)
     SwipeFrameLayout swipeLayout;
 
     @BindView(R.id.fg_find_loading)
-    OldTvView loading;
+    LoadingTvView loading;
 
     @BindView(R.id.fg_find_btn_next)
     Button btn_next;
@@ -79,7 +79,7 @@ public class TabFindFragment extends BaseMvpFragment<TabFindPresenter>
 
     @Override
     protected void initEvent() {
-        swipeDeck.setEventCallback(new SwipeDeck.SwipeEventCallback() {
+        swipeDeck.setEventCallback(new SwipeDeckView.SwipeEventCallback() {
             @Override
             public void cardSwipedLeft(int position) {
 

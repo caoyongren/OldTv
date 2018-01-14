@@ -34,8 +34,8 @@ import com.master.old.tv.view.fragments.tab.TabChoiceFragment;
 import com.master.old.tv.view.fragments.tab.TabFindFragment;
 import com.master.old.tv.view.fragments.tab.TabMySelfFragment;
 import com.master.old.tv.view.fragments.tab.TabTopicFragment;
-import com.master.old.tv.widget.ResideLayout;
-import com.master.old.tv.widget.UnScrollViewPager;
+import com.master.old.tv.widget.layout.MainPagerLayout;
+import com.master.old.tv.widget.customview.UnScrollPagerView;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 import com.pgyersdk.feedback.PgyFeedback;
@@ -155,9 +155,9 @@ public class MainActivity extends BaseActivity implements
     @BindView(R.id.main_tab_menu)
     RadioGroup tabRgMenu;
     @BindView(R.id.viewpager_content)
-    UnScrollViewPager mViewPagerContent;
+    UnScrollPagerView mViewPagerContent;
     @BindView(R.id.resideLayout)
-    ResideLayout mResideLayout;
+    MainPagerLayout mResideLayout;
     ContentViewPagerAdapter mPagerAdapter;
 
     @Override
@@ -191,7 +191,7 @@ public class MainActivity extends BaseActivity implements
         mViewPagerContent.setOffscreenPageLimit(fragments.size() + 1);
 
         initViewMenuIcon();
-        mDialogUser = DialogUser.getInstance(mContext);
+        mDialogUser = DialogUser.getInstanceDialog(mContext);
     }
 
     @Override
@@ -219,7 +219,7 @@ public class MainActivity extends BaseActivity implements
             }
         });
 
-        mResideLayout.setPanelSlideListener(new ResideLayout.PanelSlideListener() {
+        mResideLayout.setPanelSlideListener(new MainPagerLayout.PanelSlideListener() {
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
                 postBannerState(true);

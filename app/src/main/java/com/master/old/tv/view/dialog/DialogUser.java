@@ -3,6 +3,7 @@ package com.master.old.tv.view.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +13,7 @@ import android.widget.TextView;
 
 import com.master.old.tv.R;
 import com.master.old.tv.base.BaseDialog;
-
-import butterknife.BindView;
+import com.master.old.tv.view.activitys.MainActivity;
 
 /*****************************
  * Create by MasterMan
@@ -27,32 +27,17 @@ import butterknife.BindView;
  * Date: 2017年11月29日
  *****************************/
 
-public class DialogUser extends BaseDialog{
+public class DialogUser extends BaseDialog implements View.OnClickListener{
 
+    private static final String TAG = "DialogUser";
     private Context mContext;
-
-    @BindView(R.id.dg_button_login)
     Button mButtonLogin;
-
-    @BindView(R.id.dg_button_register)
     Button mButtonRegister;
-
-    @BindView(R.id.dg_user_name)
     TextView mTextViewName;
-
-    @BindView(R.id.dg_input_name)
     TextView mTextViewInputName;
-
-    @BindView(R.id.dg_user_pwd)
     TextView mTextViewPwd;
-
-    @BindView(R.id.dg_input_pwd)
     EditText mEditTextInputPwd;
-
-    @BindView(R.id.dg_pwd_confirm)
     TextView mTextViewPwdConfirm;
-
-    @BindView(R.id.dg_confirm)
     LinearLayout mLinearLayoutConfirm;
 
     private static DialogUser mDialogUser;
@@ -64,7 +49,7 @@ public class DialogUser extends BaseDialog{
         setContentView(mContentView);
     }
 
-    public static DialogUser getInstance(Context context) {
+    public static DialogUser getInstanceDialog(Context context) {
         if (mDialogUser == null) {
             mDialogUser = new DialogUser(context);
         }
@@ -83,6 +68,14 @@ public class DialogUser extends BaseDialog{
 
     @Override
     public void initView() {
+        mButtonLogin = (Button) findViewById(R.id.dg_button_login);
+        mButtonRegister = (Button) findViewById(R.id.dg_button_register);
+        mTextViewName = (TextView) findViewById(R.id.dg_user_name);
+        mTextViewInputName = (TextView) findViewById(R.id.dg_input_name);
+        mTextViewPwd = (TextView) findViewById(R.id.dg_user_pwd);
+        mEditTextInputPwd = (EditText) findViewById(R.id.dg_input_pwd);
+        mTextViewPwdConfirm = (TextView) findViewById(R.id.dg_pwd_confirm);
+        mLinearLayoutConfirm = (LinearLayout) findViewById(R.id.dg_confirm);
     }
 
     @Override
@@ -92,6 +85,20 @@ public class DialogUser extends BaseDialog{
 
     @Override
     public void initListener() {
-        super.initListener();
+        mButtonLogin.setOnClickListener(this);
+        mButtonRegister.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.dg_button_register:
+                if (MainActivity.DEBUG) {
+                    Log.i(TAG, "master");
+                }
+                break;
+            case R.id.dg_button_login:
+                break;
+        }
     }
 }

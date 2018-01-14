@@ -29,7 +29,7 @@ import com.master.old.tv.view.adapter.CommonVideoListAdapter;
 import com.master.old.tv.utils.BeanUtil;
 import com.master.old.tv.utils.EventUtil;
 import com.master.old.tv.utils.ScreenUtil;
-import com.master.old.tv.widget.WordWrapView;
+import com.master.old.tv.widget.customview.WordWrapView;
 
 import java.util.List;
 

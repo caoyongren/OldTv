@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.customview;
 
 import android.content.Context;
 import android.util.AttributeSet;

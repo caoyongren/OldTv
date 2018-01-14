@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.customview;
 
 /**
  * Description:
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Created by aaron on 4/12/2015.
  */
-public class SwipeDeck extends FrameLayout {
+public class SwipeDeckView extends FrameLayout {
 
     private static final String TAG = "SwipeDeck";
     private static int NUMBER_OF_CARDS;
@@ -60,7 +60,7 @@ public class SwipeDeck extends FrameLayout {
     private int rightImageResource;
     private boolean cardInteraction;
 
-    public SwipeDeck(Context context, AttributeSet attrs) {
+    public SwipeDeckView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         TypedArray a = context.getTheme().obtainStyledAttributes(

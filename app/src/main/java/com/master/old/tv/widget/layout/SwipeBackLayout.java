@@ -1,4 +1,4 @@
-package com.master.old.tv.widget;
+package com.master.old.tv.widget.layout;
 
 import android.app.Activity;
 import android.content.Context;

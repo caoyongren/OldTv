@@ -22,7 +22,7 @@ import com.master.old.tv.presenter.contract.VideoInfoContract;
 import com.master.old.tv.view.fragments.CommentFragment;
 import com.master.old.tv.view.fragments.VideoIntroFragment;
 import com.master.old.tv.utils.EventUtil;
-import com.master.old.tv.widget.OldTvView;
+import com.master.old.tv.widget.customview.LoadingTvView;
 import com.master.old.tv.widget.SwipeViewPager;
 import com.master.old.tv.widget.theme.ColorTextView;
 
@@ -62,7 +62,7 @@ public class VideoInfoActivity extends SwipeBackActivity<TabChoicePresenter.Vide
     SwipeViewPager mViewpager;
 
     @BindView(R.id.video_info_circle_loading)
-    OldTvView mLoading;
+    LoadingTvView mLoading;
     @BindView(R.id.video_header_rl_collect)
     RelativeLayout rlCollect;
 

@@ -95,7 +95,7 @@
             </RelativeLayout>
 
 
-            <com.master.old.tv.widget.WordWrapView
+            <com.master.old.tv.widget.customview.WordWrapView
                 android:id="@+id/wv_search_history"
                 style="@style/lmatch_hwrap_style"
                 android:layout_below="@+id/tv_search_history"
