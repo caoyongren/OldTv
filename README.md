@@ -151,6 +151,19 @@ JJZhang：Like Mom
 
 [Github](https://github.com/2231856598)
 
+## TODO  
+
+### command line  
+
+- [ ] initiate  
+- [ ] participate  
+- [ ] redeem  
+- [ ] refund  
+
+### doc  
+- [x] ReadMe
+- [ ] ReadMe_CN
+
 ## License
 
 Copyright (c) 2016 codeestX
